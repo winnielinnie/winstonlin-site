@@ -10,9 +10,10 @@ This repo is intentionally simple:
 ## Local run
 
 ```bash
-python3 build_site.py
-python3 serve_site.py
+python3 scripts/local_preview.py
 ```
+
+That rebuilds the site and serves it locally at `http://127.0.0.1:8892`.
 
 ## Adding a post
 
