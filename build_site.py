@@ -125,7 +125,7 @@ def markdown_to_html(markdown_text):
 
 
 def page_layout(config, title, body, current_path="/"):
-    nav_items = [('Home', '/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
+    nav_items = [('Home', '/'), ('Start Here', '/start-here/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
     if config.get("github_url"):
         nav_items.append(('GitHub', config["github_url"]))
     if config.get("linkedin_url"):
@@ -163,7 +163,7 @@ def page_layout(config, title, body, current_path="/"):
 """
 
 
-def render_homepage(config, posts, projects, external_writing, case_studies):
+def render_homepage(config, posts, projects, external_writing, case_studies, discovery_paths, proof_points):
     latest_posts = []
     featured_posts = []
     for slug in config.get("home_featured_post_slugs", []):
@@ -222,9 +222,22 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
             """
         )
 
+    path_cards = []
+    for path in discovery_paths:
+        path_cards.append(
+            f"""
+            <article class="post-card">
+              <p class="meta">{html.escape(path['who'])}</p>
+              <h3><a href="/start-here/">{html.escape(path['title'])}</a></h3>
+              <p>{html.escape(path['why'])}</p>
+            </article>
+            """
+        )
+
     focus_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["focus_areas"]])
     now_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["now_items"]])
     experience_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["experience_highlights"]])
+    proof_items = "".join([f"<li>{html.escape(item)}</li>" for item in proof_points])
     intro_html = "".join([f"<p>{html.escape(paragraph)}</p>" for paragraph in config["intro_paragraphs"]])
     elsewhere_html = []
     if config.get("github_url"):
@@ -247,6 +260,16 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
       <div class="panel">
         <h2>What I work on</h2>
         <ul>{focus_items}</ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Start here</h2>
+        <a href="/start-here/">Audience paths</a>
+      </div>
+      <div class="card-grid">
+        {''.join(path_cards)}
       </div>
     </section>
 
@@ -296,19 +319,19 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
         <ul>{experience_items}</ul>
       </div>
       <div class="panel">
-        <h2>Now</h2>
-        <ul>{now_items}</ul>
+        <h2>Why this profile is worth your time</h2>
+        <ul>{proof_items}</ul>
       </div>
     </section>
 
     <section class="two-column">
       <div class="panel">
+        <h2>Now</h2>
+        <ul>{now_items}</ul>
+      </div>
+      <div class="panel">
         <h2>Elsewhere</h2>
         {''.join(elsewhere_html)}
-      </div>
-      <div class="panel prose">
-        <h2>What I want this to become</h2>
-        <p>A quiet home for work that tends to get lost otherwise: product notes, migration ideas, small Python tools, and a few stronger points of view than I can usually fit into slides.</p>
       </div>
     </section>
     """
@@ -376,6 +399,39 @@ def render_case_studies_page(config, case_studies):
     return page_layout(config, "Case Studies", body, "/case-studies/")
 
 
+def render_start_here_page(config, discovery_paths):
+    cards = []
+    for path in discovery_paths:
+        links = "".join(
+            [
+                f'<li><a href="{html.escape(link["url"])}">{html.escape(link["label"])}</a></li>'
+                for link in path["links"]
+            ]
+        )
+        cards.append(
+            f"""
+            <article class="timeline-item">
+              <p class="meta">{html.escape(path['who'])}</p>
+              <h2>{html.escape(path['title'])}</h2>
+              <p>{html.escape(path['why'])}</p>
+              <ul>{links}</ul>
+            </article>
+            """
+        )
+
+    body = f"""
+    <section class="section prose">
+      <p class="eyebrow">Start here</p>
+      <h1>A quicker path depending on what you are looking for</h1>
+      <p>Different people care about different proof. This page is the shortest route I know how to give each of them.</p>
+    </section>
+    <section class="section timeline">
+      {''.join(cards)}
+    </section>
+    """
+    return page_layout(config, "Start Here", body, "/start-here/")
+
+
 def render_post_page(config, post):
     article = f"""
     <article class="post-page prose">
@@ -406,15 +462,18 @@ def build():
     projects = load_json(CONTENT_DIR / "projects.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
+    discovery_paths = load_json(CONTENT_DIR / "discovery_paths.json")
+    proof_points = load_json(CONTENT_DIR / "proof_points.json")
     posts = load_posts()
 
     ensure_clean_dist()
     shutil.copy(STATIC_DIR / "styles.css", OUTPUT_DIR / "styles.css")
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies, discovery_paths, proof_points))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
+    write_text(OUTPUT_DIR / "start-here" / "index.html", render_start_here_page(config, discovery_paths))
 
     for post in posts:
         write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post))
