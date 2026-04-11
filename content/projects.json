@@ -1,0 +1,22 @@
+[
+  {
+    "name": "oci-fn-object-storage-router",
+    "url": "https://github.com/wnstn24/oci-fn-object-storage-router",
+    "summary": "A Python OCI Function for the common case where one bucket feeds several downstream systems."
+  },
+  {
+    "name": "oci-fn-csv-quality-gate",
+    "url": "https://github.com/wnstn24/oci-fn-csv-quality-gate",
+    "summary": "A Python OCI Function for rejecting bad CSVs early instead of letting them fail somewhere more expensive."
+  },
+  {
+    "name": "release-note-diff-cli",
+    "url": "https://github.com/wnstn24/release-note-diff-cli",
+    "summary": "A small Python script for diffing release notes without reading every line twice."
+  },
+  {
+    "name": "tiny-deck-linter",
+    "url": "",
+    "summary": "A Python utility for calling out the slide-outline problems that usually show up right before review."
+  }
+]

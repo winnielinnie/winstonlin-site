@@ -1,0 +1,30 @@
+{
+  "name": "Winston Lin",
+  "title": "Product leader for developer platforms, serverless, and infrastructure",
+  "tagline": "I work on cloud platforms and still like writing code when it helps make something clearer, faster, or easier to use.",
+  "location": "San Francisco, CA",
+  "email": "winstonl.96@gmail.com",
+  "linkedin_url": "",
+  "github_url": "https://github.com/wnstn24",
+  "intro_paragraphs": [
+    "Most of my work sits at the intersection of product, infrastructure, and developer experience. I have spent the last several years working on CI/CD, Kubernetes, and serverless platforms inside OCI.",
+    "This site is where I keep the parts of that work that are worth making public: notes on developer platforms, migration patterns, small Python tools, and a few opinions on how technical products earn trust."
+  ],
+  "focus_areas": [
+    "Developer platforms and adoption friction",
+    "Serverless and event-driven systems",
+    "Python tools for operational work",
+    "Migration readiness and practical product strategy"
+  ],
+  "experience_highlights": [
+    "Principal Product Manager for OCI Functions, focused on platform primitives, developer experience, and execution model",
+    "Previously led product work across OCI Kubernetes Engine and OCI DevOps / CI/CD",
+    "Built and launched internal platform capabilities that shortened delivery cycles and reduced operational drag",
+    "I like work that sits between product clarity and technical depth"
+  ],
+  "now_items": [
+    "Writing more openly about developer platform work",
+    "Turning real workflow pain into small public Python tools",
+    "Building a body of migration and DX notes that are actually readable"
+  ]
+}
