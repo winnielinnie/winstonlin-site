@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Building Internal Platforms Taught Me | Winston Lin</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div>
+        <p class="site-kicker">San Francisco, CA</p>
+        <a href="/" class="site-name">Winston Lin</a>
+      </div>
+      <nav><a href="/" class="active">Home</a><a href="/work/">Work</a><a href="/blog/">Writing</a><a href="https://github.com/wnstn24" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-04-11</p>
+      <h1>What Building Internal Platforms Taught Me</h1>
+      <p class="post-summary">Internal platforms expose product weaknesses quickly because the users are close enough to tell you exactly where the drag is.</p>
+      <p>Some of the most useful product lessons I have learned came from internal platform work rather than external launches.</p>
+<p>At first that seems backwards. External products feel more “real” because there is revenue, competition, and the usual market pressure. But internal platforms have a different kind of clarity. The users are close enough to you, technical enough to be specific, and busy enough to have no patience for ceremony.</p>
+<p>If the workflow is awkward, they will tell you.</p>
+<p>If the dependency model is confusing, they will tell you.</p>
+<p>If the platform saves ten steps in theory but adds three unpredictable ones in practice, they will definitely tell you.</p>
+<p>That is part of why I liked working on internal delivery and orchestration problems. When you are building systems that other engineering teams depend on, “product quality” stops meaning polish and starts meaning whether another team can reliably get their work done without having to reverse-engineer your assumptions.</p>
+<p>One of the strongest examples for me was working on deployment and service build orchestration. On paper, the problem looks procedural: codify sequencing, model dependencies, automate the flow. In practice, the real work is usually in the exceptions. Which steps are safe to standardize. Which teams need escape hatches. Which signals are reliable enough to block on. Which dependencies are real versus cultural leftovers.</p>
+<p>That is product work as much as systems work.</p>
+<p>Internal platforms also sharpen your view on trust. Engineers do not trust a platform because the slide says it is strategic. They trust it when it behaves predictably, when the failure states are legible, and when the team behind it shows good judgment about where to be strict and where to be flexible.</p>
+<p>I think that lesson carried forward into almost everything I worked on later. A lot of platform strategy is really just deciding which kinds of friction are acceptable and which ones compound into distrust.</p>
+      <p class="back-link"><a href="/blog/">Back to writing</a></p>
+    </article>
+    
+    </main>
+  </div>
+</body>
+</html>

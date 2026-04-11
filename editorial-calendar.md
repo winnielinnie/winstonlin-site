@@ -2,17 +2,17 @@
 
 ## Publish next
 
-1. `Developer Platforms Mostly Fail On Friction`
-2. `Migration Readiness Is A Product Problem`
-3. `Why I Still Like Small Python Tools`
+1. `What Building Internal Platforms Taught Me`
+2. `Feature Registries Are About Operational Clarity`
+3. a more specific post on serverless troubleshooting and trust
 
 ## Next six posts
 
 1. What good infrastructure docs actually do
 2. Why platform teams overbuild advanced controls too early
-3. The best product work I have seen in CI/CD was about removing ambiguity
-4. Serverless adoption problems that are really troubleshooting problems
-5. How I think about roadmap validation from customer conversations
+3. Serverless adoption problems that are really troubleshooting problems
+4. How I think about roadmap validation from customer conversations
+5. What orchestration platforms teach you about product scope
 6. Product strategy notes from working on both CI/CD and serverless
 
 ## Good repeatable source material

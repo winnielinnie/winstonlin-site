@@ -1,0 +1,46 @@
+[
+  {
+    "period": "2025 – Present",
+    "title": "OCI Functions",
+    "role": "Principal Product Manager",
+    "summary": "Leading product for OCI Functions across execution model, platform primitives, and developer experience.",
+    "details": [
+      "Focused on reducing migration friction and making the platform easier to adopt for real workloads.",
+      "Worked on AI-assisted deployment and troubleshooting workflows using reusable skills and MCP-style integrations.",
+      "Spend a lot of time on the unglamorous parts of platform trust: packaging, debugging, first-run experience, and operational clarity."
+    ]
+  },
+  {
+    "period": "2024 – 2025",
+    "title": "OCI Kubernetes Engine and Serverless",
+    "role": "Senior Product Manager",
+    "summary": "Led strategy across OCI Kubernetes Engine and OCI Functions with a heavy focus on AI/ML infrastructure needs and adoption quality.",
+    "details": [
+      "Drove targeted investments in Ubuntu support, GPU add-ons, and observability tooling.",
+      "Spent a lot of time balancing roadmap asks against the needs that actually moved usage.",
+      "Learned how often infrastructure products are judged less by architecture and more by how debuggable they feel under pressure."
+    ]
+  },
+  {
+    "period": "2022 – 2024",
+    "title": "OCI DevOps / CI/CD",
+    "role": "Senior Product Manager",
+    "summary": "Led strategy and development for OCI's DevOps portfolio from early concept through launch and internal adoption.",
+    "details": [
+      "Launched Service Installer, a region build orchestration platform that codified deployment sequencing for 250+ OCI services.",
+      "Helped cut software delivery time from roughly 3 months to 30 days.",
+      "Launched a feature registry with health and dependency tracing that reduced root-cause analysis time by 60%."
+    ]
+  },
+  {
+    "period": "2019 – 2022",
+    "title": "Earlier work",
+    "role": "Cisco / Sitetracker",
+    "summary": "Worked across enterprise implementation and hardware program management before moving deeper into platform product roles.",
+    "details": [
+      "Led implementation work for enterprise customers with complex operational environments.",
+      "Managed roadmap planning, validation, and release execution for new product programs at Cisco.",
+      "Built a Python automation script that cut compliance certification lead time by roughly 50%."
+    ]
+  }
+]

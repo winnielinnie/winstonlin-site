@@ -57,6 +57,13 @@ def load_posts():
     return list(sorted(posts, key=lambda post: post.date, reverse=True))
 
 
+def find_post(posts, slug):
+    for post in posts:
+        if post.slug == slug:
+            return post
+    return None
+
+
 def inline_markup(text):
     escaped = html.escape(text)
     escaped = re.sub(r"`([^`]+)`", r"<code>\1</code>", escaped)
@@ -118,7 +125,7 @@ def markdown_to_html(markdown_text):
 
 
 def page_layout(config, title, body, current_path="/"):
-    nav_items = [('Home', '/'), ('Writing', '/blog/')]
+    nav_items = [('Home', '/'), ('Work', '/work/'), ('Writing', '/blog/')]
     if config.get("github_url"):
         nav_items.append(('GitHub', config["github_url"]))
     if config.get("linkedin_url"):
@@ -158,7 +165,15 @@ def page_layout(config, title, body, current_path="/"):
 
 def render_homepage(config, posts, projects, external_writing):
     latest_posts = []
-    for post in posts[:3]:
+    featured_posts = []
+    for slug in config.get("home_featured_post_slugs", []):
+        post = find_post(posts, slug)
+        if post:
+            featured_posts.append(post)
+    if not featured_posts:
+        featured_posts = posts[:3]
+
+    for post in featured_posts:
         latest_posts.append(
             f"""
             <article class="post-card">
@@ -303,6 +318,55 @@ def render_blog_index(config, posts):
     return page_layout(config, "Writing", body, "/blog/")
 
 
+def render_work_page(config, work_items, topics):
+    work_html = []
+    for item in work_items:
+        details = "".join([f"<li>{html.escape(detail)}</li>" for detail in item["details"]])
+        work_html.append(
+            f"""
+            <article class="timeline-item">
+              <p class="meta">{html.escape(item['period'])} • {html.escape(item['role'])}</p>
+              <h2>{html.escape(item['title'])}</h2>
+              <p>{html.escape(item['summary'])}</p>
+              <ul>{details}</ul>
+            </article>
+            """
+        )
+
+    topics_html = []
+    for topic in topics:
+        topics_html.append(
+            f"""
+            <article class="project-card">
+              <h3>{html.escape(topic['title'])}</h3>
+              <p>{html.escape(topic['summary'])}</p>
+            </article>
+            """
+        )
+
+    body = f"""
+    <section class="section prose">
+      <p class="eyebrow">Selected work</p>
+      <h1>Work that sits between product clarity and technical depth</h1>
+      <p>The common thread across most of this is developer platforms: how they get adopted, where they create drag, and what makes them trustworthy under real conditions.</p>
+    </section>
+
+    <section class="section timeline">
+      {''.join(work_html)}
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Topics I keep coming back to</h2>
+      </div>
+      <div class="card-grid">
+        {''.join(topics_html)}
+      </div>
+    </section>
+    """
+    return page_layout(config, "Work", body, "/work/")
+
+
 def render_post_page(config, post):
     article = f"""
     <article class="post-page prose">
@@ -332,6 +396,8 @@ def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
+    work_items = load_json(CONTENT_DIR / "work.json")
+    topics = load_json(CONTENT_DIR / "topics.json")
     posts = load_posts()
 
     ensure_clean_dist()
@@ -340,6 +406,7 @@ def build():
 
     write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
+    write_text(OUTPUT_DIR / "work" / "index.html", render_work_page(config, work_items, topics))
 
     for post in posts:
         write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post))

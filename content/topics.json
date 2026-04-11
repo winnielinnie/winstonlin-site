@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Developer platform adoption",
+    "summary": "Where platform teams misread friction, and what actually moves trust and usage."
+  },
+  {
+    "title": "Migration readiness",
+    "summary": "Why migration is not just a field motion but a product quality problem."
+  },
+  {
+    "title": "Serverless developer experience",
+    "summary": "Packaging, troubleshooting, docs, and the first-hour experience for real workloads."
+  },
+  {
+    "title": "Internal platform products",
+    "summary": "What changes when the users are engineers inside your own company instead of external customers."
+  }
+]

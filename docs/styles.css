@@ -167,6 +167,16 @@ nav a:hover {
   gap: 16px;
 }
 
+.timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.timeline-item h2 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
 .prose p,
 .post-card p,
 .project-card p,

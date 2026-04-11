@@ -18,6 +18,11 @@
     "Python tools for operational work",
     "Migration readiness and practical product strategy"
   ],
+  "home_featured_post_slugs": [
+    "developer-platforms-mostly-fail-on-friction",
+    "what-building-internal-platforms-taught-me",
+    "migration-readiness-is-a-product-problem"
+  ],
   "experience_highlights": [
     "Principal Product Manager for OCI Functions, focused on platform primitives, developer experience, and execution model",
     "Previously led product work across OCI Kubernetes Engine and OCI DevOps / CI/CD",
