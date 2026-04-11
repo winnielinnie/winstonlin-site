@@ -1,0 +1,20 @@
+[
+  {
+    "title": "OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists",
+    "date": "2026-04-07",
+    "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns",
+    "publication": "Oracle Cloud Infrastructure Blog"
+  },
+  {
+    "title": "Introducing Long-Running Functions and Response Destinations with OCI Functions",
+    "date": "2025-10-31",
+    "url": "https://blogs.oracle.com/cloud-infrastructure/longrunning-functions-and-response-destinations",
+    "publication": "Oracle Cloud Infrastructure Blog"
+  },
+  {
+    "title": "Announcing support for larger memory functions in OCI Functions",
+    "date": "2024-12-17",
+    "url": "https://blogs.oracle.com/developers/post/support-for-3gb-memory-functions",
+    "publication": "Oracle Developers Blog"
+  }
+]

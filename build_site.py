@@ -156,7 +156,7 @@ def page_layout(config, title, body, current_path="/"):
 """
 
 
-def render_homepage(config, posts, projects):
+def render_homepage(config, posts, projects, external_writing):
     latest_posts = []
     for post in posts[:3]:
         latest_posts.append(
@@ -181,6 +181,17 @@ def render_homepage(config, posts, projects):
                 <p>{html.escape(project["summary"])}</p>
               </article>
             {link_end}
+            """
+        )
+
+    external_cards = []
+    for item in external_writing:
+        external_cards.append(
+            f"""
+            <article class="post-card">
+              <p class="meta">{html.escape(item['date'])} • {html.escape(item['publication'])}</p>
+              <h3><a href="{html.escape(item['url'])}" target="_blank" rel="noreferrer">{html.escape(item['title'])}</a></h3>
+            </article>
             """
         )
 
@@ -229,6 +240,16 @@ def render_homepage(config, posts, projects):
       </div>
       <div class="card-grid">
         {''.join(project_cards)}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Published elsewhere</h2>
+        <a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle author page</a>
+      </div>
+      <div class="card-grid">
+        {''.join(external_cards)}
       </div>
     </section>
 
@@ -310,13 +331,14 @@ def write_text(path, content):
 def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
+    external_writing = load_json(CONTENT_DIR / "external_writing.json")
     posts = load_posts()
 
     ensure_clean_dist()
     shutil.copy(STATIC_DIR / "styles.css", OUTPUT_DIR / "styles.css")
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
 
     for post in posts:

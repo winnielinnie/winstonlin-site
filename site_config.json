@@ -4,11 +4,13 @@
   "tagline": "I work on cloud platforms and still like writing code when it helps make something clearer, faster, or easier to use.",
   "location": "San Francisco, CA",
   "email": "winstonl.96@gmail.com",
-  "linkedin_url": "",
+  "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/wnstn24",
+  "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
   "intro_paragraphs": [
     "Most of my work sits at the intersection of product, infrastructure, and developer experience. I have spent the last several years working on CI/CD, Kubernetes, and serverless platforms inside OCI.",
-    "This site is where I keep the parts of that work that are worth making public: notes on developer platforms, migration patterns, small Python tools, and a few opinions on how technical products earn trust."
+    "This site is where I keep the parts of that work that are worth making public: notes on developer platforms, migration patterns, small Python tools, and a few opinions on how technical products earn trust.",
+    "Some of the writing here first appears on Oracle Blogs. Some of it starts as rough notes that I clean up later. I am aiming for useful over polished."
   ],
   "focus_areas": [
     "Developer platforms and adoption friction",
