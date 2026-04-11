@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Winston Lin</title>
+  <link>https://wnstn24.github.io/winstonlin-site/</link>
+  <description>Winston Lin writes about developer platforms, serverless, migration, and practical Python tools, with case studies from OCI Functions, Kubernetes, and CI/CD.</description>
+  <item>
+    <title>AI Support Products Are Workflow Products</title>
+    <link>https://wnstn24.github.io/winstonlin-site/blog/ai-support-products-are-workflow-products/</link>
+    <guid>https://wnstn24.github.io/winstonlin-site/blog/ai-support-products-are-workflow-products/</guid>
+    <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+    <description>A lot of AI support tooling gets framed as a model problem when the harder and more durable work is really in workflow design.</description>
+  </item>
+  <item>
+    <title>Developer Platforms Mostly Fail On Friction</title>
+    <link>https://wnstn24.github.io/winstonlin-site/blog/developer-platforms-mostly-fail-on-friction/</link>
+    <guid>https://wnstn24.github.io/winstonlin-site/blog/developer-platforms-mostly-fail-on-friction/</guid>
+    <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Missing features get attention, but most adoption problems start with friction that seems too small to matter.</description>
+  </item>
+  <item>
+    <title>Feature Registries Are About Operational Clarity</title>
+    <link>https://wnstn24.github.io/winstonlin-site/blog/feature-registries-are-about-operational-clarity/</link>
+    <guid>https://wnstn24.github.io/winstonlin-site/blog/feature-registries-are-about-operational-clarity/</guid>
+    <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+    <description>A good feature registry is less about cataloging and more about making dependency and health questions answerable under pressure.</description>
+  </item>
+  <item>
+    <title>Migration Readiness Is A Product Problem</title>
+    <link>https://wnstn24.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/</link>
+    <guid>https://wnstn24.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/</guid>
+    <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Teams often talk about migration as field work or services work, but product choices shape how hard a migration feels long before a customer starts.</description>
+  </item>
+  <item>
+    <title>Trustworthy AI Products Need Recovery Paths</title>
+    <link>https://wnstn24.github.io/winstonlin-site/blog/trustworthy-ai-products-need-recovery-paths/</link>
+    <guid>https://wnstn24.github.io/winstonlin-site/blog/trustworthy-ai-products-need-recovery-paths/</guid>
+    <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+    <description>The most important part of an AI product is often what happens after the model stops being confidently helpful.</description>
+  </item>
+  <item>
+    <title>What Building Internal Platforms Taught Me</title>
+    <link>https://wnstn24.github.io/winstonlin-site/blog/what-building-internal-platforms-taught-me/</link>
+    <guid>https://wnstn24.github.io/winstonlin-site/blog/what-building-internal-platforms-taught-me/</guid>
+    <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Internal platforms expose product weaknesses quickly because the users are close enough to tell you exactly where the drag is.</description>
+  </item>
+  <item>
+    <title>Why I Still Like Small Python Tools</title>
+    <link>https://wnstn24.github.io/winstonlin-site/blog/why-i-still-like-small-python-tools/</link>
+    <guid>https://wnstn24.github.io/winstonlin-site/blog/why-i-still-like-small-python-tools/</guid>
+    <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Small utilities do not get much attention, but they are still one of the best ways to reduce recurring operational drag.</description>
+  </item>
+</channel>
+</rss>

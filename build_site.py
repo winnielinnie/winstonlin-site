@@ -4,6 +4,7 @@ import posixpath
 import re
 import shutil
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -167,7 +168,12 @@ def absolute_url(config, path):
     return f"{site_url}{path}"
 
 
-def page_layout(config, title, body, current_path="/"):
+def format_rss_date(date_text):
+    dt = datetime.strptime(date_text, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    return dt.strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+
+def page_layout(config, title, body, current_path="/", meta_description=None, og_type="website"):
     nav_items = [('Home', '/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
     if config.get("github_url"):
         nav_items.append(('GitHub', config["github_url"]))
@@ -182,16 +188,18 @@ def page_layout(config, title, body, current_path="/"):
         href = url if external else relative_url(current_path, url)
         nav_html.append(f'<a href="{href}"{target}{active}>{html.escape(label)}</a>')
 
-    meta_description = html.escape(config.get("meta_description", config["tagline"]))
+    meta_description_text = meta_description or config.get("meta_description", config["tagline"])
+    meta_description_escaped = html.escape(meta_description_text)
     canonical = absolute_url(config, current_path)
     title_text = html.escape(config["name"]) if title == config["name"] else f"{html.escape(title)} | {html.escape(config['name'])}"
     canonical_tag = f'\n  <link rel="canonical" href="{html.escape(canonical)}">' if canonical else ""
+    favicon_tag = f'\n  <link rel="icon" type="image/svg+xml" href="{static_url(current_path, "favicon.svg")}">'
     og_tags = ""
     if canonical:
         og_tags = f"""
   <meta property="og:title" content="{title_text}">
-  <meta property="og:description" content="{meta_description}">
-  <meta property="og:type" content="website">
+  <meta property="og:description" content="{meta_description_escaped}">
+  <meta property="og:type" content="{html.escape(og_type)}">
   <meta property="og:url" content="{html.escape(canonical)}">
   <meta name="twitter:card" content="summary">
 """.rstrip()
@@ -202,7 +210,8 @@ def page_layout(config, title, body, current_path="/"):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title_text}</title>
-  <meta name="description" content="{meta_description}">{canonical_tag}
+  <meta name="description" content="{meta_description_escaped}">{canonical_tag}{favicon_tag}
+  <link rel="alternate" type="application/rss+xml" title="{html.escape(config['name'])} RSS" href="{static_url(current_path, 'feed.xml')}">
   <link rel="stylesheet" href="{static_url(current_path, 'styles.css')}">{og_tags}
 </head>
 <body>
@@ -362,7 +371,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
       </div>
     </section>
     """
-    return page_layout(config, config["name"], body, "/")
+    return page_layout(config, config["name"], body, "/", meta_description=config["tagline"])
 
 
 def render_blog_index(config, posts):
@@ -387,7 +396,13 @@ def render_blog_index(config, posts):
       {''.join(cards)}
     </section>
     """
-    return page_layout(config, "Writing", body, "/blog/")
+    return page_layout(
+        config,
+        "Writing",
+        body,
+        "/blog/",
+        meta_description="Notes on developer platforms, migration, AI workflow design, and small Python tools.",
+    )
 
 
 def render_case_studies_page(config, case_studies):
@@ -423,7 +438,13 @@ def render_case_studies_page(config, case_studies):
       {''.join(cards)}
     </section>
     """
-    return page_layout(config, "Case Studies", body, "/case-studies/")
+    return page_layout(
+        config,
+        "Case Studies",
+        body,
+        "/case-studies/",
+        meta_description="Selected product case studies spanning OCI Functions, Kubernetes, and CI/CD platform work.",
+    )
 
 
 def render_post_page(config, post):
@@ -436,7 +457,14 @@ def render_post_page(config, post):
       <p class="back-link"><a href="{relative_url(f'/blog/{post.slug}/', '/blog/')}">Back to writing</a></p>
     </article>
     """
-    return page_layout(config, post.title, article, f"/blog/{post.slug}/")
+    return page_layout(
+        config,
+        post.title,
+        article,
+        f"/blog/{post.slug}/",
+        meta_description=post.summary,
+        og_type="article",
+    )
 
 
 def ensure_clean_dist():
@@ -465,6 +493,47 @@ def write_support_files(config, posts):
     sitemap.append("</urlset>")
     write_text(OUTPUT_DIR / "sitemap.xml", "\n".join(sitemap))
     write_text(OUTPUT_DIR / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n")
+    feed_items = []
+    for post in posts[:20]:
+        post_url = absolute_url(config, f"/blog/{post.slug}/")
+        feed_items.append(
+            f"""  <item>
+    <title>{html.escape(post.title)}</title>
+    <link>{html.escape(post_url)}</link>
+    <guid>{html.escape(post_url)}</guid>
+    <pubDate>{html.escape(format_rss_date(post.date))}</pubDate>
+    <description>{html.escape(post.summary)}</description>
+  </item>"""
+        )
+    feed = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>{html.escape(config["name"])}</title>
+  <link>{html.escape(site_url + "/")}</link>
+  <description>{html.escape(config.get("meta_description", config["tagline"]))}</description>
+{chr(10).join(feed_items)}
+</channel>
+</rss>
+"""
+    write_text(OUTPUT_DIR / "feed.xml", feed)
+
+
+def render_not_found_page(config):
+    body = """
+    <section class="section prose">
+      <p class="eyebrow">Not found</p>
+      <h1>This page wandered off</h1>
+      <p>The link may be old, or I may have moved something while cleaning up the site.</p>
+      <p><a href="../">Back home</a></p>
+    </section>
+    """
+    return page_layout(
+        config,
+        "Not Found",
+        body,
+        "/404/",
+        meta_description="Winston Lin portfolio page not found.",
+    )
 
 
 def build():
@@ -475,12 +544,13 @@ def build():
     posts = load_posts()
 
     ensure_clean_dist()
-    shutil.copy(STATIC_DIR / "styles.css", OUTPUT_DIR / "styles.css")
+    shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
     write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
+    write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
 
     for post in posts:
         write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post))
