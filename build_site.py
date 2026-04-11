@@ -1,5 +1,6 @@
 import html
 import json
+import posixpath
 import re
 import shutil
 from dataclasses import dataclass
@@ -124,6 +125,48 @@ def markdown_to_html(markdown_text):
     return "\n".join(parts)
 
 
+def normalize_path(path):
+    if not path.startswith("/"):
+        path = f"/{path}"
+    if path != "/" and not path.endswith("/"):
+        path = f"{path}/"
+    return path
+
+
+def relative_url(current_path, target_path):
+    current_path = normalize_path(current_path)
+    target_path = normalize_path(target_path)
+
+    current_dir = current_path.lstrip("/")
+    target_dir = target_path.lstrip("/")
+
+    if current_dir == "":
+        base = "."
+    else:
+        base = current_dir
+
+    rel = posixpath.relpath(target_dir or ".", start=base)
+    if rel == ".":
+        return "./"
+    if not rel.endswith("/"):
+        rel = f"{rel}/"
+    return rel
+
+
+def static_url(current_path, asset_name):
+    return f"{relative_url(current_path, '/')}{asset_name}"
+
+
+def absolute_url(config, path):
+    site_url = config.get("site_url", "").rstrip("/")
+    if not site_url:
+        return ""
+    path = normalize_path(path)
+    if path == "/":
+        return f"{site_url}/"
+    return f"{site_url}{path}"
+
+
 def page_layout(config, title, body, current_path="/"):
     nav_items = [('Home', '/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
     if config.get("github_url"):
@@ -134,23 +177,40 @@ def page_layout(config, title, body, current_path="/"):
     for label, url in nav_items:
         external = url.startswith("http")
         target = ' target="_blank" rel="noreferrer"' if external else ""
-        active = ' class="active"' if url == current_path else ""
-        nav_html.append(f'<a href="{url}"{target}{active}>{html.escape(label)}</a>')
+        is_active = url == current_path or (url != "/" and current_path.startswith(url))
+        active = ' class="active"' if is_active else ""
+        href = url if external else relative_url(current_path, url)
+        nav_html.append(f'<a href="{href}"{target}{active}>{html.escape(label)}</a>')
+
+    meta_description = html.escape(config.get("meta_description", config["tagline"]))
+    canonical = absolute_url(config, current_path)
+    title_text = html.escape(config["name"]) if title == config["name"] else f"{html.escape(title)} | {html.escape(config['name'])}"
+    canonical_tag = f'\n  <link rel="canonical" href="{html.escape(canonical)}">' if canonical else ""
+    og_tags = ""
+    if canonical:
+        og_tags = f"""
+  <meta property="og:title" content="{title_text}">
+  <meta property="og:description" content="{meta_description}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{html.escape(canonical)}">
+  <meta name="twitter:card" content="summary">
+""".rstrip()
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{html.escape(title)} | {html.escape(config["name"])}</title>
-  <link rel="stylesheet" href="/styles.css">
+  <title>{title_text}</title>
+  <meta name="description" content="{meta_description}">{canonical_tag}
+  <link rel="stylesheet" href="{static_url(current_path, 'styles.css')}">{og_tags}
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
       <div>
         <p class="site-kicker">{html.escape(config["location"])}</p>
-        <a href="/" class="site-name">{html.escape(config["name"])}</a>
+        <a href="{relative_url(current_path, '/')}" class="site-name">{html.escape(config["name"])}</a>
       </div>
       <nav>{"".join(nav_html)}</nav>
     </header>
@@ -178,7 +238,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
             f"""
             <article class="post-card">
               <p class="meta">{html.escape(post.date)}</p>
-              <h3><a href="/blog/{html.escape(post.slug)}/">{html.escape(post.title)}</a></h3>
+              <h3><a href="{relative_url('/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
               <p>{html.escape(post.summary)}</p>
             </article>
             """
@@ -216,7 +276,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
             f"""
             <article class="post-card">
               <p class="meta">{html.escape(study['period'])}</p>
-              <h3><a href="/case-studies/">{html.escape(study['title'])}</a></h3>
+              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(study['title'])}</a></h3>
               <p>{html.escape(study['tagline'])}</p>
             </article>
             """
@@ -254,7 +314,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
     <section class="section">
       <div class="section-head">
         <h2>Case studies</h2>
-        <a href="/case-studies/">See all</a>
+        <a href="{relative_url('/', '/case-studies/')}">See all</a>
       </div>
       <div class="card-grid">
         {''.join(case_study_cards)}
@@ -264,7 +324,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
     <section class="section">
       <div class="section-head">
         <h2>Writing</h2>
-        <a href="/blog/">See all posts</a>
+        <a href="{relative_url('/', '/blog/')}">See all posts</a>
       </div>
       <div class="card-grid">
         {''.join(latest_posts)}
@@ -312,7 +372,7 @@ def render_blog_index(config, posts):
             f"""
             <article class="post-list-item">
               <p class="meta">{html.escape(post.date)}</p>
-              <h2><a href="/blog/{html.escape(post.slug)}/">{html.escape(post.title)}</a></h2>
+              <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
               <p>{html.escape(post.summary)}</p>
             </article>
             """
@@ -373,10 +433,10 @@ def render_post_page(config, post):
       <h1>{html.escape(post.title)}</h1>
       <p class="post-summary">{html.escape(post.summary)}</p>
       {markdown_to_html(post.body_markdown)}
-      <p class="back-link"><a href="/blog/">Back to writing</a></p>
+      <p class="back-link"><a href="{relative_url(f'/blog/{post.slug}/', '/blog/')}">Back to writing</a></p>
     </article>
     """
-    return page_layout(config, post.title, article)
+    return page_layout(config, post.title, article, f"/blog/{post.slug}/")
 
 
 def ensure_clean_dist():
@@ -389,6 +449,22 @@ def ensure_clean_dist():
 def write_text(path, content):
     path.parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(content)
+
+
+def write_support_files(config, posts):
+    site_url = config.get("site_url", "").rstrip("/")
+    if not site_url:
+        return
+
+    urls = ["/", "/blog/", "/case-studies/"] + [f"/blog/{post.slug}/" for post in posts]
+    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for path in urls:
+        sitemap.append("  <url>")
+        sitemap.append(f"    <loc>{html.escape(absolute_url(config, path))}</loc>")
+        sitemap.append("  </url>")
+    sitemap.append("</urlset>")
+    write_text(OUTPUT_DIR / "sitemap.xml", "\n".join(sitemap))
+    write_text(OUTPUT_DIR / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n")
 
 
 def build():
@@ -408,6 +484,8 @@ def build():
 
     for post in posts:
         write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post))
+
+    write_support_files(config, posts)
 
 
 if __name__ == "__main__":

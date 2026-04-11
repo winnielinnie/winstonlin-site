@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wnstn24.github.io/winstonlin-site/sitemap.xml

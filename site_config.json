@@ -3,6 +3,8 @@
   "title": "Developer platforms, serverless, and infrastructure",
   "tagline": "Most of my work has been in CI/CD, Kubernetes, and serverless. I still like building small Python tools when it helps make something clearer or easier to use.",
   "location": "San Francisco, CA",
+  "site_url": "https://wnstn24.github.io/winstonlin-site",
+  "meta_description": "Winston Lin writes about developer platforms, serverless, migration, and practical Python tools, with case studies from OCI Functions, Kubernetes, and CI/CD.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/wnstn24",
