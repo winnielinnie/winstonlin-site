@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies | Winston Lin</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div>
+        <p class="site-kicker">San Francisco, CA</p>
+        <a href="/" class="site-name">Winston Lin</a>
+      </div>
+      <nav><a href="/">Home</a><a href="/case-studies/" class="active">Case Studies</a><a href="/blog/">Writing</a><a href="https://github.com/wnstn24" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <section class="section prose">
+      <p class="eyebrow">Case studies</p>
+      <h1>Product work with more detail than a resume bullet</h1>
+      <p>These are intentionally sanitized, but still specific enough to show how I think about scope, tradeoffs, and what actually made the work difficult.</p>
+    </section>
+    <section class="section timeline">
+      
+            <article class="timeline-item">
+              <p class="meta">OCI DevOps / CI-CD</p>
+              <h2>Service Installer</h2>
+              <p class="post-summary">Shortened regional software delivery from roughly 3 months to 30 days by turning deployment sequencing into a product instead of tribal knowledge.</p>
+              <p><strong>Problem:</strong> OCI service launches depended on a tangle of manual sequencing, service-specific runbooks, and hidden dependencies. Even when teams knew the path, the process was slow and brittle.</p>
+              <h3>What I did</h3>
+              <ul><li>Helped frame the problem as a reusable orchestration product rather than one more internal process fix.</li><li>Worked through where sequencing could be standardized versus where teams needed controlled escape hatches.</li><li>Pushed toward a model that made dependencies visible enough to reason about instead of leaving them buried in institutional memory.</li></ul>
+              <h3>Why it was hard</h3>
+              <ul><li>The hard part was not automation by itself. It was deciding what deserved to become platform behavior versus local exception handling.</li><li>Internal platforms always face the temptation to encode every special case. That usually makes them worse.</li></ul>
+              <h3>Outcome</h3>
+              <ul><li>Regional delivery timelines dropped from about 3 months to roughly 30 days.</li><li>The work created a clearer foundation for internal teams to plan launches without having to rediscover the same dependency chains.</li></ul>
+            </article>
+            
+            <article class="timeline-item">
+              <p class="meta">OCI DevOps / CI-CD</p>
+              <h2>Feature Registry with Health and Dependency Tracing</h2>
+              <p class="post-summary">Built a clearer operating picture for features, ownership, and dependency health, helping cut root-cause analysis time by 60%.</p>
+              <p><strong>Problem:</strong> When things broke, people could often identify the symptom quickly but not the ownership chain, dependency path, or blast radius. That made investigation slower than it needed to be.</p>
+              <h3>What I did</h3>
+              <ul><li>Helped shape the registry around real operational questions instead of turning it into a passive inventory system.</li><li>Focused the design on health, dependency tracing, and ownership visibility rather than accumulating metadata for its own sake.</li><li>Spent a lot of time on what someone under pressure would need to know first.</li></ul>
+              <h3>Why it was hard</h3>
+              <ul><li>Registries are easy to overbuild and easy to let drift into irrelevance.</li><li>The challenge was making the information close enough to reality that engineers would still trust it when they actually needed it.</li></ul>
+              <h3>Outcome</h3>
+              <ul><li>Root-cause analysis time dropped by about 60%.</li><li>The work made dependency questions far more answerable during incidents and rollout debugging.</li></ul>
+            </article>
+            
+            <article class="timeline-item">
+              <p class="meta">OCI Functions</p>
+              <h2>AI-Assisted OCI Functions Workflows</h2>
+              <p class="post-summary">Worked on AI-assisted deployment and troubleshooting flows for OCI Functions to reduce setup drag and make platform recovery paths clearer.</p>
+              <p><strong>Problem:</strong> A lot of friction in serverless adoption comes from the first-run experience: packaging, environment setup, troubleshooting, and the gap between a docs path and a working deployment.</p>
+              <h3>What I did</h3>
+              <ul><li>Explored AI-assisted deployment and troubleshooting flows using MCP-style integrations and reusable skills.</li><li>Treated the problem as a workflow-design problem, not just a model-response problem.</li><li>Focused on making the output operationally useful: what should happen next, what failed, and how to recover.</li></ul>
+              <h3>Why it was hard</h3>
+              <ul><li>AI features are easy to demo and much harder to trust in real developer workflows.</li><li>The bar was not &#x27;did the assistant say something plausible.&#x27; The bar was whether it reduced friction without creating new ambiguity.</li></ul>
+              <h3>Outcome</h3>
+              <ul><li>Created a credible path for AI-assisted setup and triage instead of treating AI as a sidecar novelty.</li><li>Sharpened my view that trustworthy AI products need strong recovery paths, explicit boundaries, and good workflow design.</li></ul>
+            </article>
+            
+    </section>
+    
+    </main>
+  </div>
+</body>
+</html>

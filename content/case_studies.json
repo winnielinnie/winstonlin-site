@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "service-installer",
+    "title": "Service Installer",
+    "period": "OCI DevOps / CI-CD",
+    "tagline": "Shortened regional software delivery from roughly 3 months to 30 days by turning deployment sequencing into a product instead of tribal knowledge.",
+    "problem": "OCI service launches depended on a tangle of manual sequencing, service-specific runbooks, and hidden dependencies. Even when teams knew the path, the process was slow and brittle.",
+    "what_i_did": [
+      "Helped frame the problem as a reusable orchestration product rather than one more internal process fix.",
+      "Worked through where sequencing could be standardized versus where teams needed controlled escape hatches.",
+      "Pushed toward a model that made dependencies visible enough to reason about instead of leaving them buried in institutional memory."
+    ],
+    "why_it_was_hard": [
+      "The hard part was not automation by itself. It was deciding what deserved to become platform behavior versus local exception handling.",
+      "Internal platforms always face the temptation to encode every special case. That usually makes them worse."
+    ],
+    "outcome": [
+      "Regional delivery timelines dropped from about 3 months to roughly 30 days.",
+      "The work created a clearer foundation for internal teams to plan launches without having to rediscover the same dependency chains."
+    ]
+  },
+  {
+    "slug": "feature-registry",
+    "title": "Feature Registry with Health and Dependency Tracing",
+    "period": "OCI DevOps / CI-CD",
+    "tagline": "Built a clearer operating picture for features, ownership, and dependency health, helping cut root-cause analysis time by 60%.",
+    "problem": "When things broke, people could often identify the symptom quickly but not the ownership chain, dependency path, or blast radius. That made investigation slower than it needed to be.",
+    "what_i_did": [
+      "Helped shape the registry around real operational questions instead of turning it into a passive inventory system.",
+      "Focused the design on health, dependency tracing, and ownership visibility rather than accumulating metadata for its own sake.",
+      "Spent a lot of time on what someone under pressure would need to know first."
+    ],
+    "why_it_was_hard": [
+      "Registries are easy to overbuild and easy to let drift into irrelevance.",
+      "The challenge was making the information close enough to reality that engineers would still trust it when they actually needed it."
+    ],
+    "outcome": [
+      "Root-cause analysis time dropped by about 60%.",
+      "The work made dependency questions far more answerable during incidents and rollout debugging."
+    ]
+  },
+  {
+    "slug": "ai-assisted-functions-workflows",
+    "title": "AI-Assisted OCI Functions Workflows",
+    "period": "OCI Functions",
+    "tagline": "Worked on AI-assisted deployment and troubleshooting flows for OCI Functions to reduce setup drag and make platform recovery paths clearer.",
+    "problem": "A lot of friction in serverless adoption comes from the first-run experience: packaging, environment setup, troubleshooting, and the gap between a docs path and a working deployment.",
+    "what_i_did": [
+      "Explored AI-assisted deployment and troubleshooting flows using MCP-style integrations and reusable skills.",
+      "Treated the problem as a workflow-design problem, not just a model-response problem.",
+      "Focused on making the output operationally useful: what should happen next, what failed, and how to recover."
+    ],
+    "why_it_was_hard": [
+      "AI features are easy to demo and much harder to trust in real developer workflows.",
+      "The bar was not 'did the assistant say something plausible.' The bar was whether it reduced friction without creating new ambiguity."
+    ],
+    "outcome": [
+      "Created a credible path for AI-assisted setup and triage instead of treating AI as a sidecar novelty.",
+      "Sharpened my view that trustworthy AI products need strong recovery paths, explicit boundaries, and good workflow design."
+    ]
+  }
+]

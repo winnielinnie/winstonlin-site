@@ -125,7 +125,7 @@ def markdown_to_html(markdown_text):
 
 
 def page_layout(config, title, body, current_path="/"):
-    nav_items = [('Home', '/'), ('Work', '/work/'), ('Writing', '/blog/')]
+    nav_items = [('Home', '/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
     if config.get("github_url"):
         nav_items.append(('GitHub', config["github_url"]))
     if config.get("linkedin_url"):
@@ -163,7 +163,7 @@ def page_layout(config, title, body, current_path="/"):
 """
 
 
-def render_homepage(config, posts, projects, external_writing):
+def render_homepage(config, posts, projects, external_writing, case_studies):
     latest_posts = []
     featured_posts = []
     for slug in config.get("home_featured_post_slugs", []):
@@ -210,6 +210,18 @@ def render_homepage(config, posts, projects, external_writing):
             """
         )
 
+    case_study_cards = []
+    for study in case_studies[:3]:
+        case_study_cards.append(
+            f"""
+            <article class="post-card">
+              <p class="meta">{html.escape(study['period'])}</p>
+              <h3><a href="/case-studies/">{html.escape(study['title'])}</a></h3>
+              <p>{html.escape(study['tagline'])}</p>
+            </article>
+            """
+        )
+
     focus_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["focus_areas"]])
     now_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["now_items"]])
     experience_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["experience_highlights"]])
@@ -235,6 +247,16 @@ def render_homepage(config, posts, projects, external_writing):
       <div class="panel">
         <h2>What I work on</h2>
         <ul>{focus_items}</ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Case studies</h2>
+        <a href="/case-studies/">See all</a>
+      </div>
+      <div class="card-grid">
+        {''.join(case_study_cards)}
       </div>
     </section>
 
@@ -318,53 +340,40 @@ def render_blog_index(config, posts):
     return page_layout(config, "Writing", body, "/blog/")
 
 
-def render_work_page(config, work_items, topics):
-    work_html = []
-    for item in work_items:
-        details = "".join([f"<li>{html.escape(detail)}</li>" for detail in item["details"]])
-        work_html.append(
+def render_case_studies_page(config, case_studies):
+    cards = []
+    for study in case_studies:
+        what_i_did = "".join([f"<li>{html.escape(item)}</li>" for item in study["what_i_did"]])
+        why_it_was_hard = "".join([f"<li>{html.escape(item)}</li>" for item in study["why_it_was_hard"]])
+        outcome = "".join([f"<li>{html.escape(item)}</li>" for item in study["outcome"]])
+        cards.append(
             f"""
             <article class="timeline-item">
-              <p class="meta">{html.escape(item['period'])} • {html.escape(item['role'])}</p>
-              <h2>{html.escape(item['title'])}</h2>
-              <p>{html.escape(item['summary'])}</p>
-              <ul>{details}</ul>
-            </article>
-            """
-        )
-
-    topics_html = []
-    for topic in topics:
-        topics_html.append(
-            f"""
-            <article class="project-card">
-              <h3>{html.escape(topic['title'])}</h3>
-              <p>{html.escape(topic['summary'])}</p>
+              <p class="meta">{html.escape(study['period'])}</p>
+              <h2>{html.escape(study['title'])}</h2>
+              <p class="post-summary">{html.escape(study['tagline'])}</p>
+              <p><strong>Problem:</strong> {html.escape(study['problem'])}</p>
+              <h3>What I did</h3>
+              <ul>{what_i_did}</ul>
+              <h3>Why it was hard</h3>
+              <ul>{why_it_was_hard}</ul>
+              <h3>Outcome</h3>
+              <ul>{outcome}</ul>
             </article>
             """
         )
 
     body = f"""
     <section class="section prose">
-      <p class="eyebrow">Selected work</p>
-      <h1>Work that sits between product clarity and technical depth</h1>
-      <p>The common thread across most of this is developer platforms: how they get adopted, where they create drag, and what makes them trustworthy under real conditions.</p>
+      <p class="eyebrow">Case studies</p>
+      <h1>Product work with more detail than a resume bullet</h1>
+      <p>These are intentionally sanitized, but still specific enough to show how I think about scope, tradeoffs, and what actually made the work difficult.</p>
     </section>
-
     <section class="section timeline">
-      {''.join(work_html)}
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Topics I keep coming back to</h2>
-      </div>
-      <div class="card-grid">
-        {''.join(topics_html)}
-      </div>
+      {''.join(cards)}
     </section>
     """
-    return page_layout(config, "Work", body, "/work/")
+    return page_layout(config, "Case Studies", body, "/case-studies/")
 
 
 def render_post_page(config, post):
@@ -396,17 +405,16 @@ def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
-    work_items = load_json(CONTENT_DIR / "work.json")
-    topics = load_json(CONTENT_DIR / "topics.json")
+    case_studies = load_json(CONTENT_DIR / "case_studies.json")
     posts = load_posts()
 
     ensure_clean_dist()
     shutil.copy(STATIC_DIR / "styles.css", OUTPUT_DIR / "styles.css")
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
-    write_text(OUTPUT_DIR / "work" / "index.html", render_work_page(config, work_items, topics))
+    write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
 
     for post in posts:
         write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post))

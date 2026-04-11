@@ -16,10 +16,12 @@
     "Developer platforms and adoption friction",
     "Serverless and event-driven systems",
     "Python tools for operational work",
-    "Migration readiness and practical product strategy"
+    "Migration readiness and practical product strategy",
+    "AI products that need trust, workflow design, and operational clarity"
   ],
   "home_featured_post_slugs": [
     "developer-platforms-mostly-fail-on-friction",
+    "trustworthy-ai-products-need-recovery-paths",
     "what-building-internal-platforms-taught-me",
     "migration-readiness-is-a-product-problem"
   ],
