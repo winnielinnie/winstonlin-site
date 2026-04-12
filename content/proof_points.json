@@ -1,6 +1,18 @@
 [
-  "Built and launched internal platform capabilities that shortened delivery cycles and reduced operational drag.",
-  "Led product across CI/CD, Kubernetes, and serverless platforms inside OCI.",
-  "Writes publicly about platform adoption, migration, and AI workflow trust.",
-  "Publishes small Python tools that feel close to real operating problems rather than portfolio filler."
+  {
+    "label": "Platform PM",
+    "text": "CI/CD, Kubernetes, and serverless inside OCI."
+  },
+  {
+    "label": "AI workflows",
+    "text": "Focused on trust, recovery paths, and useful operating loops."
+  },
+  {
+    "label": "Business advisor",
+    "text": "AI, operations, and transformation work for operating teams."
+  },
+  {
+    "label": "Cross-border lens",
+    "text": "Consumer and operating businesses across the US and Asia."
+  }
 ]

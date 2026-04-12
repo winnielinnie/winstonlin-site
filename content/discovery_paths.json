@@ -1,57 +1,45 @@
 [
   {
-    "title": "If you're hiring a PM for AI or agent products",
-    "who": "AI companies, agent startups, technical recruiters, product leaders",
-    "why": "Start with the parts of the portfolio that show trust, workflow design, and operational thinking rather than generic AI enthusiasm.",
+    "title": "AI workflow product",
+    "who": "AI / agent teams",
+    "why": "Workflow design, recovery paths, and operational trust over model theater.",
     "links": [
       {
-        "label": "Trustworthy AI Products Need Recovery Paths",
+        "label": "Recovery paths",
         "url": "/blog/trustworthy-ai-products-need-recovery-paths/"
       },
       {
-        "label": "AI Support Products Are Workflow Products",
-        "url": "/blog/ai-support-products-are-workflow-products/"
-      },
-      {
-        "label": "AI-Assisted OCI Functions Workflows",
-        "url": "/case-studies/"
+        "label": "Real workspace",
+        "url": "/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/"
       }
     ]
   },
   {
-    "title": "If you're hiring for platform, infrastructure, or developer tools",
-    "who": "Developer platform teams, cloud companies, infrastructure orgs",
-    "why": "This path is the clearest proof of where I have spent most of my operating time: developer experience, migration, orchestration, and platform trust.",
+    "title": "Platform & infra",
+    "who": "Hiring teams",
+    "why": "Developer experience, migration, orchestration, and platform trust.",
     "links": [
       {
-        "label": "Service Installer case study",
+        "label": "Service Installer",
         "url": "/case-studies/"
       },
       {
-        "label": "Developer Platforms Mostly Fail On Friction",
+        "label": "Platform friction",
         "url": "/blog/developer-platforms-mostly-fail-on-friction/"
-      },
-      {
-        "label": "What Building Internal Platforms Taught Me",
-        "url": "/blog/what-building-internal-platforms-taught-me/"
       }
     ]
   },
   {
-    "title": "If you're a founder, startup operator, or investor",
-    "who": "Founders, startup PM leaders, venture or operator networks",
-    "why": "This path shows how I think about product leverage, operational clarity, and where small tools or better system design change outcomes.",
+    "title": "Operators & investors",
+    "who": "Founders / operators",
+    "why": "AI, ops, and business transformation with a cross-border view.",
     "links": [
       {
-        "label": "Feature Registry case study",
-        "url": "/case-studies/"
-      },
-      {
-        "label": "Migration Readiness Is A Product Problem",
+        "label": "Business systems",
         "url": "/blog/migration-readiness-is-a-product-problem/"
       },
       {
-        "label": "Why I Still Like Small Python Tools",
+        "label": "Small tools",
         "url": "/blog/why-i-still-like-small-python-tools/"
       }
     ]

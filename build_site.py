@@ -293,7 +293,14 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     proof_cards = []
     for item in proof_points:
-        proof_cards.append(f'<article class="proof-card"><p>{html.escape(item)}</p></article>')
+        proof_cards.append(
+            f"""
+            <article class="proof-card">
+              <p class="proof-label">{html.escape(item["label"])}</p>
+              <p>{html.escape(item["text"])}</p>
+            </article>
+            """
+        )
 
     path_cards = []
     for path in discovery_paths:
@@ -334,9 +341,8 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
           <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
           <p>{html.escape(current_note.summary)}</p>
           <ul>
-            <li>Turns rough notes into decks, memos, and customer follow-up</li>
-            <li>Keeps source material, drafts, and assets in one workspace</li>
-            <li>Useful because it reduces iteration time, not because it sounds futuristic</li>
+            <li>Notes into decks, follow-up, and drafts</li>
+            <li>One workspace for files, drafts, and assets</li>
           </ul>
         </article>
         """
@@ -372,7 +378,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     <section class="section">
       <div class="section-head">
         <h2>Start here</h2>
-        <span class="section-note">A few cleaner entry points depending on what you're looking for.</span>
+        <span class="section-note">Three quick entry points.</span>
       </div>
       <div class="card-grid path-grid">
         {''.join(path_cards)}
