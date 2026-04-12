@@ -402,7 +402,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         </article>
         <article class="hero-context-item">
           <p class="meta">How I work</p>
-          <p>Operator, advisor, and investor focused on growth and business systems.</p>
+          <p>Advisor, operator, and investor focused on growth and business systems.</p>
         </article>
         <article class="hero-context-item">
           <p class="meta">What is here</p>
@@ -413,7 +413,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     {current_note_html}
 
     <section class="bio-strip">
-      <p>I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on growth, service design, and business systems across the US and Asia.</p>
+      <p>I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on growth, service design, and business systems across the US and Asia, including businesses in areas like plastics and supplements.</p>
     </section>
 
     <section class="editorial-grid">
