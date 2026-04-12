@@ -99,30 +99,30 @@ nav a:hover {
 }
 
 .hero {
-  padding: 20px 0 12px;
+  padding: 14px 0 8px;
   margin-bottom: 8px;
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 6vw, 5rem);
-  line-height: 0.93;
-  max-width: 920px;
-  margin: 0 0 16px;
+  font-size: clamp(2rem, 4.5vw, 3.7rem);
+  line-height: 0.96;
+  max-width: 760px;
+  margin: 0 0 12px;
   letter-spacing: -0.03em;
 }
 
 .lead {
-  max-width: 720px;
-  font-size: 1.18rem;
+  max-width: 650px;
+  font-size: 1.06rem;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.56;
 }
 
 .hero-links {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 
 .button-link {
@@ -502,7 +502,7 @@ code {
   }
 
   .hero {
-    padding-top: 8px;
+    padding-top: 4px;
   }
 
   .hero-links {

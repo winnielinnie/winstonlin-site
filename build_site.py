@@ -350,7 +350,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     body = f"""
     <section class="hero-grid">
       <div class="hero">
-        <p class="eyebrow">Developer platforms • serverless • infrastructure</p>
+        <p class="eyebrow">Product • AI • systems</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
