@@ -342,10 +342,10 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <article class="spotlight-card">
           <p class="eyebrow">Featured note</p>
           <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
-          <p>How I turn notes and files into a working PM system.</p>
-          <div class="spotlight-tags">
-            <span>Real workspace</span>
-            <span>PM workflow</span>
+          <p class="spotlight-summary">How I turn notes and files into a working PM system.</p>
+          <div class="spotlight-footer">
+            <p class="spotlight-meta">Real workspace • PM workflow</p>
+            <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read note</a>
           </div>
         </article>
         """

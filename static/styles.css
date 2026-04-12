@@ -110,9 +110,9 @@ nav a.active::after {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(290px, 0.85fr);
-  gap: 20px;
-  align-items: stretch;
-  margin-bottom: 10px;
+  gap: 18px;
+  align-items: start;
+  margin-bottom: 8px;
 }
 
 .hero {
@@ -496,42 +496,63 @@ nav a.active::after {
 }
 
 .spotlight-card {
-  background: linear-gradient(180deg, rgba(255, 248, 239, 0.98), rgba(248, 240, 229, 0.95));
-  border-color: rgba(155, 73, 44, 0.24);
-  padding: 22px;
-  box-shadow: 0 18px 42px rgba(113, 50, 31, 0.08);
+  align-self: start;
+  background: linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(250, 244, 236, 0.94));
+  border-color: rgba(155, 73, 44, 0.18);
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 12px 28px rgba(113, 50, 31, 0.06);
+  position: relative;
 }
 
-.spotlight-card p:last-child {
-  margin-bottom: 0;
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: 16px 0 0 16px;
+  background: linear-gradient(180deg, rgba(146, 82, 55, 0.7), rgba(154, 119, 65, 0.45));
 }
 
-.spotlight-tags,
+.spotlight-summary {
+  margin: 0;
+}
+
+.spotlight-footer,
 .path-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 10px;
+  margin-top: 12px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.spotlight-tags span,
+.spotlight-meta,
+.spotlight-link,
 .path-links a {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  padding: 0.42rem 0.72rem;
-  border-radius: 999px;
-  text-decoration: none;
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.2;
 }
 
-.spotlight-tags span {
-  background: rgba(255, 252, 247, 0.74);
-  border: 1px solid rgba(155, 73, 44, 0.16);
-  color: #5a2f20;
+.spotlight-meta {
+  margin: 0;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.spotlight-link {
+  text-decoration: none;
+  color: var(--accent-deep);
+  white-space: nowrap;
+}
+
+.spotlight-link:hover {
+  color: var(--ink);
 }
 
 .path-grid {
