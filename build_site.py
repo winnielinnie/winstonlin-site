@@ -395,44 +395,11 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
         <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
       </div>
-      <div class="hero-context">
-        <article class="hero-context-item">
-          <p class="meta">Who I am</p>
-          <p>Product leader across AI, serverless, Kubernetes, and CI/CD.</p>
-        </article>
-        <article class="hero-context-item">
-          <p class="meta">How I work</p>
-          <p>Advisor, operator, and investor focused on growth and business systems.</p>
-        </article>
-        <article class="hero-context-item">
-          <p class="meta">What is here</p>
-          <p>Notes, case studies, and small tools from real product and operating work.</p>
-        </article>
-      </div>
+      <p class="hero-kickerline">Product leader across AI, serverless, Kubernetes, and CI/CD. Advisor, operator, and investor focused on growth and business systems.</p>
     </section>
-    {current_note_html}
 
     <section class="bio-strip">
       <p>I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on growth, service design, and business systems across the US and Asia, including businesses in areas like plastics and supplements.</p>
-    </section>
-
-    <section class="editorial-grid">
-      <div>
-        <p class="meta">Browse</p>
-        <ul class="editorial-list">
-          <li><a href="{relative_url('/', '/blog/')}">Writing on AI, platforms, and operating systems</a></li>
-          <li><a href="{relative_url('/', '/case-studies/')}">Case studies from real product work</a></li>
-          <li><a href="{html.escape(projects[0]['url'])}" target="_blank" rel="noreferrer">{html.escape(projects[0]['name'])}</a> and other small tools</li>
-        </ul>
-      </div>
-      <div>
-        <p class="meta">Good Fit</p>
-        <ul class="editorial-list">
-          <li>AI and agent product teams</li>
-          <li>Developer platform and infrastructure roles</li>
-          <li>Operators, founders, and business builders</li>
-        </ul>
-      </div>
     </section>
 
     <section class="proof-grid">
@@ -447,6 +414,8 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         {''.join(path_cards)}
       </div>
     </section>
+
+    {current_note_html}
 
     <section class="section">
       <div class="section-head">
