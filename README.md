@@ -1,6 +1,6 @@
 # winstonlin-site
 
-Personal site and writing home for Winston Lin.
+Personal site for Winston Lin: writing, case studies, and a small set of public technical projects.
 
 This repo is intentionally simple:
 - content lives in Markdown
@@ -27,4 +27,4 @@ That creates a dated Markdown file under `content/posts/`.
 
 - No framework on purpose
 - No external Python dependencies
-- Built for easy iteration, not maximal abstraction
+- Built for easy iteration and readable structure
