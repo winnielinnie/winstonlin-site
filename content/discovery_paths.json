@@ -32,15 +32,15 @@
   {
     "title": "Operators",
     "who": "Founders / operators",
-    "why": "AI and business systems.",
+    "why": "Growth, service, and business systems.",
     "links": [
+      {
+        "label": "Operating model",
+        "url": "/blog/growth-breaks-in-the-operating-model/"
+      },
       {
         "label": "Migration readiness",
         "url": "/blog/migration-readiness-is-a-product-problem/"
-      },
-      {
-        "label": "Small Python tools",
-        "url": "/blog/why-i-still-like-small-python-tools/"
       }
     ]
   }

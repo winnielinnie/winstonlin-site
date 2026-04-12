@@ -10,7 +10,7 @@
   "github_url": "https://github.com/winnielinnie",
   "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
   "intro_paragraphs": [
-    "I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on AI, process, and business systems across the US and Asia."
+    "I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on growth, service design, and business systems across the US and Asia."
   ],
   "focus_areas": [
     "Developer platforms",
@@ -22,7 +22,7 @@
   "home_featured_post_slugs": [
     "how-i-use-ai-as-a-pm-with-a-real-workspace",
     "developer-platforms-mostly-fail-on-friction",
-    "trustworthy-ai-products-need-recovery-paths"
+    "growth-breaks-in-the-operating-model"
   ],
   "experience_highlights": [
     "Principal Product Manager for OCI Functions, focused on developer experience and execution model",
