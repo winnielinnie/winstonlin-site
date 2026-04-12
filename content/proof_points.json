@@ -1,14 +1,14 @@
 [
   {
-    "label": "Platform PM",
-    "text": "CI/CD, Kubernetes, and serverless inside OCI."
+    "label": "Platform",
+    "text": "CI/CD, Kubernetes, and serverless at platform scale."
   },
   {
-    "label": "AI workflows",
-    "text": "Focused on trust, recovery paths, and useful operating loops."
+    "label": "AI product",
+    "text": "Workflow design, recovery paths, and day-two reality."
   },
   {
-    "label": "Operator / investor",
-    "text": "AI, operations, and cross-border businesses across the US and Asia."
+    "label": "Operator lens",
+    "text": "AI, operations, and business systems across the US and Asia."
   }
 ]

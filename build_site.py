@@ -307,7 +307,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         links_html = []
         for link in path["links"]:
             links_html.append(
-                f'<li><a href="{relative_url("/", link["url"])}">{html.escape(link["label"])}</a></li>'
+                f'<a href="{relative_url("/", link["url"])}">{html.escape(link["label"])}</a>'
             )
         path_cards.append(
             f"""
@@ -315,7 +315,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
               <p class="meta">{html.escape(path["who"])}</p>
               <h3>{html.escape(path["title"])}</h3>
               <p>{html.escape(path["why"])}</p>
-              <ul>{''.join(links_html)}</ul>
+              <div class="path-links">{''.join(links_html)}</div>
             </article>
             """
         )
@@ -335,13 +335,13 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     if current_note:
         current_note_html = f"""
         <article class="spotlight-card">
-          <p class="eyebrow">New</p>
+          <p class="eyebrow">Featured note</p>
           <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
-          <p>How I actually use AI in product work, with a real workspace behind it.</p>
-          <ul>
-            <li>Notes into decks, follow-up, and drafts</li>
-            <li>One workspace for files, drafts, and assets</li>
-          </ul>
+          <p>How I turn notes, files, and follow-up into a working PM system.</p>
+          <div class="spotlight-tags">
+            <span>Real workspace</span>
+            <span>PM workflow</span>
+          </div>
         </article>
         """
 
@@ -351,7 +351,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <article class="feature-card">
           <p class="meta">Writing</p>
           <h3><a href="{relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/')}">How I use AI as a PM</a></h3>
-          <p>How a real workspace turns notes and files into usable outputs.</p>
+          <p>Keeping AI useful inside actual product work.</p>
         </article>
         """
     )
@@ -362,7 +362,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             <article class="feature-card">
               <p class="meta">Case study</p>
               <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(study['title'])}</a></h3>
-              <p>Deployment orchestration that cut regional delivery from about 3 months to 30 days.</p>
+              <p>Regional deployment orchestration from about 3 months to 30 days.</p>
             </article>
             """
         )
@@ -373,7 +373,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             <article class="feature-card">
               <p class="meta">Project</p>
               <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
-              <p>Python function pattern for routing one bucket to several downstream systems.</p>
+              <p>Python pattern for routing one bucket to multiple downstream systems.</p>
             </article>
             """
         )
@@ -381,7 +381,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     body = f"""
     <section class="hero-grid">
       <div class="hero">
-        <p class="eyebrow">AI • infra • ops</p>
+        <p class="eyebrow">AI • product • ops</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
@@ -405,7 +405,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     <section class="section">
       <div class="section-head">
         <h2>Start here</h2>
-        <span class="section-note">Three quick entry points.</span>
       </div>
       <div class="card-grid path-grid">
         {''.join(path_cards)}

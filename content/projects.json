@@ -1,8 +1,8 @@
 [
   {
-    "name": "oci-fn-object-storage-router",
+    "name": "Object Storage Router",
     "url": "https://github.com/winnielinnie/oci-fn-object-storage-router",
-    "summary": "A Python OCI Function for the common case where one bucket feeds several downstream systems."
+    "summary": "A Python function pattern for when one bucket feeds several downstream systems."
   },
   {
     "name": "doc-ship-check",

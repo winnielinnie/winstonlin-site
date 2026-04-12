@@ -1,23 +1,23 @@
 [
   {
-    "title": "AI workflow product",
-    "who": "AI / agent teams",
-    "why": "Workflow design, recovery paths, and trust.",
+    "title": "AI workflow",
+    "who": "AI / product teams",
+    "why": "Product quality in AI workflows.",
     "links": [
       {
         "label": "Recovery paths",
         "url": "/blog/trustworthy-ai-products-need-recovery-paths/"
       },
       {
-        "label": "Real workspace",
+        "label": "Workspace article",
         "url": "/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/"
       }
     ]
   },
   {
-    "title": "Platform & infra",
+    "title": "Platform",
     "who": "Hiring teams",
-    "why": "Developer experience, migration, and platform trust.",
+    "why": "Developer experience, migration, and platform judgment.",
     "links": [
       {
         "label": "Service Installer",
@@ -30,16 +30,16 @@
     ]
   },
   {
-    "title": "Operators & investors",
+    "title": "Operators",
     "who": "Founders / operators",
-    "why": "AI, ops, and business transformation with an operator lens.",
+    "why": "AI, process, and business systems in real companies.",
     "links": [
       {
-        "label": "Business systems",
+        "label": "Migration readiness",
         "url": "/blog/migration-readiness-is-a-product-problem/"
       },
       {
-        "label": "Small tools",
+        "label": "Small Python tools",
         "url": "/blog/why-i-still-like-small-python-tools/"
       }
     ]
