@@ -408,7 +408,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     <section class="section">
       <div class="section-head">
-        <h2>Start here</h2>
+        <h2>Focus areas</h2>
       </div>
       <div class="card-grid path-grid">
         {''.join(path_cards)}

@@ -1,8 +1,8 @@
 [
   {
-    "title": "AI workflow",
-    "who": "AI / product teams",
-    "why": "AI workflow quality.",
+    "title": "AI product",
+    "who": "AI",
+    "why": "Workflow quality, recovery, and adoption.",
     "links": [
       {
         "label": "Recovery paths",
@@ -15,9 +15,9 @@
     ]
   },
   {
-    "title": "Platform",
-    "who": "Hiring teams",
-    "why": "Developer experience and migration.",
+    "title": "Platform systems",
+    "who": "Platform",
+    "why": "Developer experience, migration, and scale.",
     "links": [
       {
         "label": "Service Installer",
@@ -31,8 +31,8 @@
   },
   {
     "title": "Business strategy",
-    "who": "Founders / business leaders",
-    "why": "Growth, service, and business systems.",
+    "who": "Strategy",
+    "why": "Growth, service design, and business systems.",
     "links": [
       {
         "label": "Operating model",
