@@ -1,20 +1,21 @@
 :root {
-  --paper: #f5efe7;
-  --paper-deep: #efe6db;
-  --panel: rgba(255, 252, 247, 0.94);
-  --panel-strong: rgba(255, 250, 245, 0.98);
+  --paper: #f6f1ea;
+  --paper-deep: #ece3d7;
+  --panel: rgba(255, 253, 249, 0.94);
+  --panel-strong: rgba(255, 251, 246, 0.98);
   --ink: #171412;
-  --muted: #655d56;
-  --line: #d9ccbf;
-  --accent: #9b492c;
-  --accent-deep: #7b3118;
-  --accent-green: #2e5a54;
-  --accent-gold: #977633;
-  --accent-soft: #f0ddd1;
-  --shadow: rgba(55, 36, 20, 0.08);
-  --sans: Inter, "Aptos", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  --radius: 22px;
+  --muted: #625b55;
+  --line: #dbcfc2;
+  --accent: #925237;
+  --accent-deep: #71321f;
+  --accent-green: #355f5a;
+  --accent-gold: #9a7741;
+  --accent-soft: #efdfd5;
+  --shadow: rgba(40, 29, 20, 0.075);
+  --shadow-soft: rgba(40, 29, 20, 0.045);
+  --sans: "Manrope", "Aptos", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  --display: "Newsreader", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --radius: 18px;
 }
 
 * {
@@ -29,10 +30,12 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(155, 73, 44, 0.14), transparent 24%),
-    radial-gradient(circle at 88% 14%, rgba(46, 90, 84, 0.1), transparent 19%),
-    linear-gradient(180deg, #fbf8f4 0%, var(--paper) 58%, #f8f3ed 100%);
-  font-family: var(--serif);
+    radial-gradient(circle at top left, rgba(146, 82, 55, 0.13), transparent 24%),
+    radial-gradient(circle at 84% 12%, rgba(53, 95, 90, 0.09), transparent 20%),
+    linear-gradient(180deg, #fcfaf6 0%, var(--paper) 56%, #f7f1ea 100%);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -42,9 +45,9 @@ a {
 }
 
 .page-shell {
-  max-width: 1040px;
+  max-width: 1060px;
   margin: 0 auto;
-  padding: 28px 18px 72px;
+  padding: 28px 20px 72px;
 }
 
 .site-header {
@@ -52,8 +55,8 @@ a {
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 34px;
-  padding: 8px 0 0;
+  margin-bottom: 36px;
+  padding: 10px 0 0;
 }
 
 .site-kicker,
@@ -68,9 +71,11 @@ a {
 }
 
 .site-name {
-  font-size: 1.22rem;
+  font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: 0.01em;
   text-decoration: none;
+  font-family: var(--sans);
 }
 
 nav {
@@ -83,12 +88,23 @@ nav a {
   text-decoration: none;
   color: var(--muted);
   font-family: var(--sans);
-  padding: 0.25rem 0;
+  padding: 0.2rem 0;
+  position: relative;
 }
 
 nav a.active,
 nav a:hover {
   color: var(--ink);
+}
+
+nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.2rem;
+  height: 1px;
+  background: rgba(23, 20, 18, 0.7);
 }
 
 .hero-grid {
@@ -100,23 +116,25 @@ nav a:hover {
 }
 
 .hero {
-  padding: 12px 0 4px;
+  padding: 10px 0 2px;
 }
 
 .hero h1 {
   margin: 0 0 10px;
-  max-width: 690px;
-  font-size: clamp(2.05rem, 4.4vw, 3.45rem);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  max-width: 700px;
+  font-size: clamp(2.3rem, 4.6vw, 3.95rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
   text-wrap: balance;
+  font-family: var(--display);
+  font-weight: 600;
 }
 
 .lead {
-  max-width: 610px;
+  max-width: 560px;
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.52;
+  font-size: 1.02rem;
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -132,19 +150,21 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(219, 207, 194, 0.92);
   border-radius: 999px;
-  padding: 0.78rem 1.08rem;
-  background: rgba(255, 252, 247, 0.78);
+  padding: 0.76rem 1.02rem;
+  background: rgba(255, 252, 247, 0.82);
   text-decoration: none;
   font-family: var(--sans);
-  font-size: 0.94rem;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
 .button-link:hover {
   transform: translateY(-1px);
-  border-color: rgba(123, 49, 24, 0.35);
+  border-color: rgba(113, 50, 31, 0.35);
+  box-shadow: 0 14px 28px var(--shadow-soft);
 }
 
 .button-link.primary {
@@ -175,6 +195,9 @@ nav a:hover {
 .prose h2 {
   margin: 0 0 12px;
   font-size: clamp(1.45rem, 3vw, 1.95rem);
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 .section-note {
@@ -192,7 +215,7 @@ nav a:hover {
 
 .about-panel {
   max-width: 860px;
-  background: linear-gradient(180deg, rgba(255, 252, 247, 0.95), rgba(250, 245, 238, 0.95));
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(249, 244, 237, 0.94));
 }
 
 .page-intro-panel {
@@ -213,7 +236,7 @@ nav a:hover {
   background: var(--panel-strong);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 20px 48px var(--shadow);
+  box-shadow: 0 16px 40px var(--shadow);
 }
 
 .panel,
@@ -256,8 +279,8 @@ nav a:hover {
 .feature-card {
   background: rgba(255, 252, 247, 0.88);
   border: 1px solid rgba(217, 204, 191, 0.84);
-  border-radius: 20px;
-  box-shadow: 0 15px 32px rgba(55, 36, 20, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 14px 30px var(--shadow-soft);
   padding: 18px 18px 19px;
   position: relative;
   overflow: hidden;
@@ -298,13 +321,16 @@ nav a:hover {
 
 .feature-card h3 {
   margin: 0 0 10px;
-  font-size: 1.14rem;
-  line-height: 1.22;
+  font-size: 1.2rem;
+  line-height: 1.14;
   text-wrap: balance;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .feature-card p:last-child {
@@ -386,8 +412,8 @@ nav a:hover {
 .post-list-item:hover,
 .timeline-item:hover {
   transform: translateY(-2px);
-  border-color: rgba(123, 49, 24, 0.36);
-  box-shadow: 0 24px 56px rgba(55, 36, 20, 0.1);
+  border-color: rgba(113, 50, 31, 0.28);
+  box-shadow: 0 22px 52px rgba(40, 29, 20, 0.09);
 }
 
 .project-card h3,
@@ -398,6 +424,9 @@ nav a:hover {
 .timeline-item h2 {
   margin: 0 0 10px;
   font-size: 1.3rem;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .post-list,
@@ -422,7 +451,7 @@ nav a:hover {
   overflow: hidden;
   padding: 15px 16px 16px;
   background: rgba(255, 253, 249, 0.84);
-  box-shadow: 0 14px 28px rgba(55, 36, 20, 0.05);
+  box-shadow: 0 12px 24px var(--shadow-soft);
 }
 
 .proof-card:nth-child(1) {
@@ -452,7 +481,8 @@ nav a:hover {
 .proof-label {
   margin: 0 0 8px;
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
@@ -469,6 +499,7 @@ nav a:hover {
   background: linear-gradient(180deg, rgba(255, 248, 239, 0.98), rgba(248, 240, 229, 0.95));
   border-color: rgba(155, 73, 44, 0.24);
   padding: 22px;
+  box-shadow: 0 18px 42px rgba(113, 50, 31, 0.08);
 }
 
 .spotlight-card p:last-child {
@@ -492,7 +523,8 @@ nav a:hover {
   border-radius: 999px;
   text-decoration: none;
   font-family: var(--sans);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -508,6 +540,7 @@ nav a:hover {
 
 .path-card {
   background: rgba(255, 251, 246, 0.88);
+  border-radius: 16px;
 }
 
 .path-card:nth-child(1) {
@@ -658,8 +691,8 @@ nav a:hover {
 .feature-card p,
 .timeline-item p,
 .timeline-item li {
-  font-size: 1rem;
-  line-height: 1.64;
+  font-size: 0.98rem;
+  line-height: 1.66;
   color: #29231f;
 }
 
@@ -671,15 +704,18 @@ nav a:hover {
 }
 
 .post-summary {
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   color: var(--muted);
 }
 
-.site-name,
+.site-name {
+  font-family: var(--sans);
+}
+
 h1,
 h2,
 h3 {
-  font-family: var(--serif);
+  font-family: var(--display);
 }
 
 .panel h2,
@@ -698,6 +734,16 @@ h3 {
 
 .back-link {
   margin-top: 28px;
+}
+
+.post-page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.post-page h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 0.98;
 }
 
 code {

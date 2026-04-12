@@ -219,6 +219,9 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title_text}</title>
   <meta name="description" content="{meta_description_escaped}">{canonical_tag}{favicon_tag}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
   <link rel="alternate" type="application/rss+xml" title="{html.escape(config['name'])} RSS" href="{static_url(current_path, 'feed.xml')}">
   <link rel="stylesheet" href="{static_url(current_path, 'styles.css')}">{og_tags}
 </head>
