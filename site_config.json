@@ -1,41 +1,34 @@
 {
   "name": "Winston Lin",
-  "title": "Developer platforms, serverless, and infrastructure",
-  "tagline": "Most of my work has been in CI/CD, Kubernetes, and serverless. I still like building small Python tools when it helps make something clearer or easier to use.",
+  "title": "Developer platforms, serverless, and cloud infrastructure",
+  "tagline": "Over the last several years I have worked across CI/CD, Kubernetes, and serverless, with a focus on platform adoption, migration, and execution at scale.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Winston Lin writes about developer platforms, serverless, migration, and practical Python tools, with case studies from OCI Functions, Kubernetes, and CI/CD.",
+  "meta_description": "Winston Lin writes about developer platforms, serverless, migration, and infrastructure product strategy, with case studies spanning OCI Functions, Kubernetes, and CI/CD.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
   "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
   "intro_paragraphs": [
-    "Most of my work sits somewhere between product, infrastructure, and developer experience. Over the last several years I have worked on CI/CD, Kubernetes, and serverless platforms inside OCI.",
-    "This is a simple place to keep the parts of that work that translate well in public: case studies, a few notes on platform work, and small Python projects I would actually want to maintain.",
-    "Some of the writing here first shows up on Oracle Blogs. Some of it starts as rough notes and gets cleaned up later. I would rather it be useful than polished."
+    "Most of my work sits at the intersection of product, infrastructure, and developer experience. Over the last several years I have worked across CI/CD, Kubernetes, and serverless platforms inside OCI.",
+    "This site keeps the parts of that work that translate well in public: case studies, a few notes on platform and product strategy, and selected tools tied to real operating problems.",
+    "Some of the writing here first appears on Oracle Blogs. Some of it starts as notes and gets cleaned up later. I try to keep it direct."
   ],
   "focus_areas": [
     "Developer platforms and adoption friction",
     "Serverless and event-driven systems",
-    "Python tools for operational work",
     "Migration readiness and practical product strategy",
     "AI products that need trust and operational clarity"
   ],
   "home_featured_post_slugs": [
     "developer-platforms-mostly-fail-on-friction",
     "trustworthy-ai-products-need-recovery-paths",
-    "what-building-internal-platforms-taught-me",
-    "migration-readiness-is-a-product-problem"
+    "what-building-internal-platforms-taught-me"
   ],
   "experience_highlights": [
     "Principal Product Manager for OCI Functions, focused on platform primitives, developer experience, and execution model",
     "Previously led product work across OCI Kubernetes Engine and OCI DevOps / CI/CD",
     "Built and launched internal platform capabilities that shortened delivery cycles and reduced operational drag",
-    "I tend to do my best work where product clarity and technical depth both matter"
-  ],
-  "now_items": [
-    "Writing more openly about developer platform work",
-    "Turning real workflow pain into small public Python tools",
-    "Building a body of migration and DX notes that are actually readable"
+    "Most of my work has been in platform and infrastructure products that need to earn trust from technical users"
   ]
 }

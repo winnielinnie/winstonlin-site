@@ -305,7 +305,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
 
     body = f"""
     <section class="hero">
-      <p class="eyebrow">Product leader • developer platforms • Python tools</p>
+      <p class="eyebrow">Developer platforms • serverless • infrastructure</p>
       <h1>{html.escape(config["title"])}</h1>
       <p class="lead">{html.escape(config["tagline"])}</p>
     </section>
