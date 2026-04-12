@@ -1,22 +1,17 @@
 [
   {
     "name": "oci-fn-object-storage-router",
-    "url": "https://github.com/wnstn24/oci-fn-object-storage-router",
+    "url": "https://github.com/winnielinnie/oci-fn-object-storage-router",
     "summary": "A Python OCI Function for the common case where one bucket feeds several downstream systems."
   },
   {
     "name": "doc-ship-check",
-    "url": "https://github.com/wnstn24/doc-ship-check",
+    "url": "https://github.com/winnielinnie/doc-ship-check",
     "summary": "A Python script for the last mile of docs cleanup before publishing."
   },
   {
     "name": "release-note-diff-cli",
-    "url": "https://github.com/wnstn24/release-note-diff-cli",
+    "url": "https://github.com/winnielinnie/release-note-diff-cli",
     "summary": "A small Python script for diffing release notes without reading every line twice."
-  },
-  {
-    "name": "oci-fn-csv-quality-gate",
-    "url": "https://github.com/wnstn24/oci-fn-csv-quality-gate",
-    "summary": "A Python OCI Function for validating inbound CSV files against a required schema contract."
   }
 ]
