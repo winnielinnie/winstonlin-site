@@ -1,14 +1,14 @@
 [
   {
     "label": "Platform",
-    "text": "CI/CD, Kubernetes, and serverless at platform scale."
+    "text": "CI/CD, Kubernetes, and serverless."
   },
   {
     "label": "AI product",
-    "text": "Workflow design, recovery paths, and day-two reality."
+    "text": "Workflow quality and recovery."
   },
   {
     "label": "Operator lens",
-    "text": "AI, operations, and business systems across the US and Asia."
+    "text": "Business systems across the US and Asia."
   }
 ]

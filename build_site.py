@@ -339,7 +339,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <article class="spotlight-card">
           <p class="eyebrow">Featured note</p>
           <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
-          <p>How I turn notes, files, and follow-up into a working PM system.</p>
+          <p>How I turn notes and files into a working PM system.</p>
           <div class="spotlight-tags">
             <span>Real workspace</span>
             <span>PM workflow</span>
@@ -353,7 +353,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <article class="feature-card">
           <p class="meta">Writing</p>
           <h3><a href="{relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/')}">How I use AI as a PM</a></h3>
-          <p>Keeping AI useful inside actual product work.</p>
+          <p>Keeping AI useful in real product work.</p>
         </article>
         """
     )
@@ -364,7 +364,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             <article class="feature-card">
               <p class="meta">Case study</p>
               <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(study['title'])}</a></h3>
-              <p>Regional deployment orchestration from about 3 months to 30 days.</p>
+              <p>Regional delivery from about 3 months to 30 days.</p>
             </article>
             """
         )
@@ -375,7 +375,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             <article class="feature-card">
               <p class="meta">Project</p>
               <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
-              <p>Python pattern for routing one bucket to multiple downstream systems.</p>
+              <p>Python pattern for bucket routing.</p>
             </article>
             """
         )
@@ -466,8 +466,8 @@ def render_blog_index(config, posts):
     <section class="section page-intro">
       <div class="panel prose page-intro-panel">
         <p class="eyebrow">Writing</p>
-        <h1>Notes on AI product, platforms, and useful tools</h1>
-        <p>Shorter than essays. More specific than hot takes.</p>
+        <h1>Notes on AI, platforms, and tools</h1>
+        <p>Short, specific, useful.</p>
       </div>
     </section>
     <section class="section">
@@ -496,9 +496,9 @@ def render_blog_index(config, posts):
 
 def render_case_studies_page(config, case_studies):
     summary_cards = [
-        {"label": "Delivery", "text": "Regional software delivery from about 3 months to 30 days."},
-        {"label": "Operations", "text": "Root-cause analysis cut by about 60% through better system clarity."},
-        {"label": "AI workflows", "text": "AI-assisted setup and triage designed around recovery, not novelty."},
+        {"label": "Delivery", "text": "Regional delivery from about 3 months to 30 days."},
+        {"label": "Operations", "text": "Root-cause analysis cut by about 60%."},
+        {"label": "AI workflows", "text": "AI-assisted setup and triage with better recovery."},
     ]
     summary_html = []
     for item in summary_cards:
@@ -551,7 +551,7 @@ def render_case_studies_page(config, case_studies):
       <div class="panel prose page-intro-panel">
         <p class="eyebrow">Case studies</p>
         <h1>Selected product work</h1>
-        <p>Enough detail to show how I think. Still short enough to scan.</p>
+        <p>Short enough to scan. Specific enough to matter.</p>
       </div>
     </section>
     <section class="proof-grid case-proof-grid">

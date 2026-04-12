@@ -2,7 +2,7 @@
   {
     "title": "AI workflow",
     "who": "AI / product teams",
-    "why": "Product quality in AI workflows.",
+    "why": "AI workflow quality.",
     "links": [
       {
         "label": "Recovery paths",
@@ -17,7 +17,7 @@
   {
     "title": "Platform",
     "who": "Hiring teams",
-    "why": "Developer experience, migration, and platform judgment.",
+    "why": "Developer experience and migration.",
     "links": [
       {
         "label": "Service Installer",
@@ -32,7 +32,7 @@
   {
     "title": "Operators",
     "who": "Founders / operators",
-    "why": "AI, process, and business systems in real companies.",
+    "why": "AI and business systems.",
     "links": [
       {
         "label": "Migration readiness",

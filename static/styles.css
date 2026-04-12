@@ -301,10 +301,38 @@ nav a:hover {
   font-size: 1.14rem;
   line-height: 1.22;
   text-wrap: balance;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .feature-card p:last-child {
   margin-bottom: 0;
+}
+
+.feature-card p,
+.post-list-item p,
+.proof-card p,
+.path-card p,
+.lead {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.feature-card p,
+.post-list-item p,
+.path-card p {
+  -webkit-line-clamp: 2;
+}
+
+.proof-card p {
+  -webkit-line-clamp: 2;
+}
+
+.lead {
+  -webkit-line-clamp: 2;
 }
 
 .external-card {
@@ -532,6 +560,13 @@ nav a:hover {
 .post-list-item h2 a,
 .timeline-item h2 {
   text-wrap: balance;
+}
+
+.post-list-item h2 a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .study-head {
