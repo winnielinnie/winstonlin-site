@@ -183,6 +183,10 @@ nav a:hover {
   gap: 18px;
 }
 
+.about-panel {
+  max-width: 860px;
+}
+
 .panel,
 .post-card,
 .project-card,
@@ -221,9 +225,46 @@ nav a:hover {
   align-items: stretch;
 }
 
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .project-card,
 .post-card {
   height: 100%;
+}
+
+.feature-card {
+  background: rgba(255, 251, 246, 0.88);
+  border: 1px solid rgba(215, 199, 180, 0.88);
+  border-radius: 20px;
+  box-shadow: 0 16px 34px rgba(55, 36, 20, 0.05);
+  padding: 20px 22px;
+}
+
+.feature-card:nth-child(1) {
+  background: linear-gradient(180deg, rgba(243, 247, 244, 0.96), rgba(255, 252, 247, 0.88));
+}
+
+.feature-card:nth-child(2) {
+  background: linear-gradient(180deg, rgba(252, 245, 239, 0.96), rgba(255, 252, 247, 0.88));
+}
+
+.feature-card:nth-child(3) {
+  background: linear-gradient(180deg, rgba(247, 243, 232, 0.96), rgba(255, 252, 247, 0.88));
+}
+
+.feature-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.24rem;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.feature-card p:last-child {
+  margin-bottom: 0;
 }
 
 .external-card {
@@ -383,24 +424,6 @@ nav a:hover {
   line-height: 1.38;
 }
 
-.closing-grid {
-  align-items: start;
-  gap: 20px;
-}
-
-.compact-panel {
-  padding: 22px 24px;
-}
-
-.background-list {
-  display: grid;
-  gap: 12px;
-}
-
-.background-list li {
-  line-height: 1.58;
-}
-
 .elsewhere-links {
   display: grid;
   gap: 14px;
@@ -417,6 +440,28 @@ nav a:hover {
 .elsewhere-links a:hover {
   color: var(--accent-deep);
   border-bottom-color: rgba(127, 50, 24, 0.3);
+}
+
+.simple-footer {
+  margin-top: 26px;
+  padding-top: 2px;
+}
+
+.compact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.compact-links a {
+  font-size: 0.95rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+  color: var(--muted);
+}
+
+.compact-links a:hover {
+  color: var(--ink);
 }
 
 .timeline-item h2 {
@@ -488,7 +533,8 @@ code {
   .intro-grid,
   .card-grid,
   .path-grid,
-  .external-grid {
+  .external-grid,
+  .feature-grid {
     grid-template-columns: 1fr;
     display: grid;
   }

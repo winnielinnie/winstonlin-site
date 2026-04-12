@@ -320,17 +320,15 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             """
         )
 
-    focus_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["focus_areas"]])
-    experience_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["experience_highlights"]])
     intro_html = "".join([f"<p>{html.escape(paragraph)}</p>" for paragraph in config["intro_paragraphs"]])
     elsewhere_html = []
-    if config.get("oracle_blogs_url"):
-        elsewhere_html.append(f'<a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle Blogs</a>')
     if config.get("github_url"):
         elsewhere_html.append(f'<a href="{html.escape(config["github_url"])}" target="_blank" rel="noreferrer">GitHub</a>')
     if config.get("linkedin_url"):
         elsewhere_html.append(f'<a href="{html.escape(config["linkedin_url"])}" target="_blank" rel="noreferrer">LinkedIn</a>')
-    elsewhere_html.append(f'<a href="mailto:{html.escape(config["email"])}">{html.escape(config["email"])}</a>')
+    if config.get("oracle_blogs_url"):
+        elsewhere_html.append(f'<a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle Blogs</a>')
+    elsewhere_html.append(f'<a href="mailto:{html.escape(config["email"])}">Email</a>')
 
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     current_note_html = ""
@@ -339,7 +337,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <article class="spotlight-card">
           <p class="eyebrow">New</p>
           <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
-          <p>{html.escape(current_note.summary)}</p>
+          <p>How I actually use AI in product work, with a real workspace behind it.</p>
           <ul>
             <li>Notes into decks, follow-up, and drafts</li>
             <li>One workspace for files, drafts, and assets</li>
@@ -347,10 +345,43 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         </article>
         """
 
+    featured_work_cards = []
+    featured_work_cards.append(
+        f"""
+        <article class="feature-card">
+          <p class="meta">Writing</p>
+          <h3><a href="{relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/')}">How I use AI as a PM</a></h3>
+          <p>How a real workspace turns notes and files into usable outputs.</p>
+        </article>
+        """
+    )
+    if case_studies:
+        study = case_studies[0]
+        featured_work_cards.append(
+            f"""
+            <article class="feature-card">
+              <p class="meta">Case study</p>
+              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(study['title'])}</a></h3>
+              <p>Deployment orchestration that cut regional delivery from about 3 months to 30 days.</p>
+            </article>
+            """
+        )
+    if projects:
+        project = projects[0]
+        featured_work_cards.append(
+            f"""
+            <article class="feature-card">
+              <p class="meta">Project</p>
+              <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
+              <p>Python function pattern for routing one bucket to several downstream systems.</p>
+            </article>
+            """
+        )
+
     body = f"""
     <section class="hero-grid">
       <div class="hero">
-        <p class="eyebrow">AI • infrastructure • operations</p>
+        <p class="eyebrow">AI • infra • ops</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
@@ -365,13 +396,9 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
       {''.join(proof_cards)}
     </section>
 
-    <section class="two-column intro-grid">
-      <div class="panel prose">
+    <section class="section">
+      <div class="panel prose about-panel">
         {intro_html}
-      </div>
-      <div class="panel">
-        <h2>What I keep working on</h2>
-        <ul>{focus_items}</ul>
       </div>
     </section>
 
@@ -387,53 +414,16 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     <section class="section">
       <div class="section-head">
-        <h2>Case studies</h2>
-        <a href="{relative_url('/', '/case-studies/')}">See all</a>
+        <h2>Selected work</h2>
+        <a href="{relative_url('/', '/blog/')}">More writing</a>
       </div>
-      <div class="card-grid">
-        {''.join(case_study_cards)}
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Writing</h2>
-        <a href="{relative_url('/', '/blog/')}">See all posts</a>
-      </div>
-      <div class="card-grid">
-        {''.join(latest_posts)}
+      <div class="feature-grid">
+        {''.join(featured_work_cards)}
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <h2>Selected projects</h2>
-        <a href="{html.escape(config["github_url"])}" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-      <div class="card-grid">
-        {''.join(project_cards)}
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Published elsewhere</h2>
-        <a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle author page</a>
-      </div>
-      <div class="external-grid">
-        {''.join(external_cards)}
-      </div>
-    </section>
-
-    <section class="two-column closing-grid">
-      <div class="panel compact-panel">
-        <h2>Background</h2>
-        <ul class="background-list">{experience_items}</ul>
-      </div>
-      <div class="panel compact-panel">
-        <h2>Elsewhere</h2>
-        <div class="elsewhere-links">{''.join(elsewhere_html)}</div>
-      </div>
+    <section class="section simple-footer">
+      <div class="elsewhere-links compact-links">{''.join(elsewhere_html)}</div>
     </section>
     """
     return page_layout(config, config["name"], body, "/", meta_description=config["tagline"])

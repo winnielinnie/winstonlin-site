@@ -2,7 +2,7 @@
   {
     "title": "AI workflow product",
     "who": "AI / agent teams",
-    "why": "Workflow design, recovery paths, and operational trust over model theater.",
+    "why": "Workflow design, recovery paths, and trust.",
     "links": [
       {
         "label": "Recovery paths",
@@ -17,7 +17,7 @@
   {
     "title": "Platform & infra",
     "who": "Hiring teams",
-    "why": "Developer experience, migration, orchestration, and platform trust.",
+    "why": "Developer experience, migration, and platform trust.",
     "links": [
       {
         "label": "Service Installer",
@@ -32,7 +32,7 @@
   {
     "title": "Operators & investors",
     "who": "Founders / operators",
-    "why": "AI, ops, and business transformation with a practical operating lens.",
+    "why": "AI, ops, and business transformation with an operator lens.",
     "links": [
       {
         "label": "Business systems",

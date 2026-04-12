@@ -1,7 +1,7 @@
 {
   "name": "Winston Lin",
-  "title": "Product across AI, infrastructure, and operations",
-  "tagline": "I work on AI workflows, developer platforms, and business systems, from serverless and tooling to operations and transformation.",
+  "title": "Product for AI, infrastructure, and operations",
+  "tagline": "I work on AI workflows, developer platforms, and business operations.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
   "meta_description": "Winston Lin writes about AI workflows, developer platforms, infrastructure, and business systems, with case studies from OCI Functions, Kubernetes, and CI/CD.",
@@ -10,7 +10,7 @@
   "github_url": "https://github.com/winnielinnie",
   "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
   "intro_paragraphs": [
-    "Most of my work sits between product, infrastructure, and execution. I’ve led product work across CI/CD, Kubernetes, and serverless, mostly inside OCI.",
+    "I’ve led product work across CI/CD, Kubernetes, and serverless, mostly inside OCI.",
     "Outside core cloud work, I also advise businesses on AI, operations, and transformation, and invest in operating businesses across Taiwan, Hong Kong, Singapore, and the US."
   ],
   "focus_areas": [
