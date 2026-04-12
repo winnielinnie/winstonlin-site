@@ -232,7 +232,7 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
 """
 
 
-def render_homepage(config, posts, projects, external_writing, case_studies):
+def render_homepage(config, posts, projects, external_writing, case_studies, proof_points, discovery_paths):
     latest_posts = []
     featured_posts = []
     for slug in config.get("home_featured_post_slugs", []):
@@ -291,6 +291,28 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
             """
         )
 
+    proof_cards = []
+    for item in proof_points:
+        proof_cards.append(f'<article class="proof-card"><p>{html.escape(item)}</p></article>')
+
+    path_cards = []
+    for path in discovery_paths:
+        links_html = []
+        for link in path["links"]:
+            links_html.append(
+                f'<li><a href="{relative_url("/", link["url"])}">{html.escape(link["label"])}</a></li>'
+            )
+        path_cards.append(
+            f"""
+            <article class="path-card">
+              <p class="meta">{html.escape(path["who"])}</p>
+              <h3>{html.escape(path["title"])}</h3>
+              <p>{html.escape(path["why"])}</p>
+              <ul>{''.join(links_html)}</ul>
+            </article>
+            """
+        )
+
     focus_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["focus_areas"]])
     experience_items = "".join([f"<li>{html.escape(item)}</li>" for item in config["experience_highlights"]])
     intro_html = "".join([f"<p>{html.escape(paragraph)}</p>" for paragraph in config["intro_paragraphs"]])
@@ -303,11 +325,38 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
         elsewhere_html.append(f'<p><a href="{html.escape(config["linkedin_url"])}" target="_blank" rel="noreferrer">LinkedIn</a></p>')
     elsewhere_html.append(f'<p><a href="mailto:{html.escape(config["email"])}">{html.escape(config["email"])}</a></p>')
 
+    current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
+    current_note_html = ""
+    if current_note:
+        current_note_html = f"""
+        <article class="spotlight-card">
+          <p class="eyebrow">New</p>
+          <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
+          <p>{html.escape(current_note.summary)}</p>
+          <ul>
+            <li>Turns rough notes into decks, memos, and customer follow-up</li>
+            <li>Keeps source material, drafts, and assets in one workspace</li>
+            <li>Useful because it reduces iteration time, not because it sounds futuristic</li>
+          </ul>
+        </article>
+        """
+
     body = f"""
-    <section class="hero">
-      <p class="eyebrow">Developer platforms • serverless • infrastructure</p>
-      <h1>{html.escape(config["title"])}</h1>
-      <p class="lead">{html.escape(config["tagline"])}</p>
+    <section class="hero-grid">
+      <div class="hero">
+        <p class="eyebrow">Developer platforms • serverless • infrastructure</p>
+        <h1>{html.escape(config["title"])}</h1>
+        <p class="lead">{html.escape(config["tagline"])}</p>
+        <div class="hero-links">
+          <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
+          <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
+        </div>
+      </div>
+      {current_note_html}
+    </section>
+
+    <section class="proof-grid">
+      {''.join(proof_cards)}
     </section>
 
     <section class="two-column intro-grid">
@@ -317,6 +366,16 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
       <div class="panel">
         <h2>What I keep working on</h2>
         <ul>{focus_items}</ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Start here</h2>
+        <span class="section-note">A few cleaner entry points depending on what you're looking for.</span>
+      </div>
+      <div class="card-grid path-grid">
+        {''.join(path_cards)}
       </div>
     </section>
 
@@ -539,6 +598,8 @@ def render_not_found_page(config):
 def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
+    proof_points = load_json(CONTENT_DIR / "proof_points.json")
+    discovery_paths = load_json(CONTENT_DIR / "discovery_paths.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
     posts = load_posts()
@@ -547,7 +608,7 @@ def build():
     shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies, proof_points, discovery_paths))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
     write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
