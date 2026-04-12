@@ -272,7 +272,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     for item in external_writing:
         external_cards.append(
             f"""
-            <article class="post-card">
+            <article class="external-card">
               <p class="meta">{html.escape(item['date'])} • {html.escape(item['publication'])}</p>
               <h3><a href="{html.escape(item['url'])}" target="_blank" rel="noreferrer">{html.escape(item['title'])}</a></h3>
             </article>
@@ -318,12 +318,12 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     intro_html = "".join([f"<p>{html.escape(paragraph)}</p>" for paragraph in config["intro_paragraphs"]])
     elsewhere_html = []
     if config.get("oracle_blogs_url"):
-        elsewhere_html.append(f'<p><a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle Blogs</a></p>')
+        elsewhere_html.append(f'<a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle Blogs</a>')
     if config.get("github_url"):
-        elsewhere_html.append(f'<p><a href="{html.escape(config["github_url"])}" target="_blank" rel="noreferrer">GitHub</a></p>')
+        elsewhere_html.append(f'<a href="{html.escape(config["github_url"])}" target="_blank" rel="noreferrer">GitHub</a>')
     if config.get("linkedin_url"):
-        elsewhere_html.append(f'<p><a href="{html.escape(config["linkedin_url"])}" target="_blank" rel="noreferrer">LinkedIn</a></p>')
-    elsewhere_html.append(f'<p><a href="mailto:{html.escape(config["email"])}">{html.escape(config["email"])}</a></p>')
+        elsewhere_html.append(f'<a href="{html.escape(config["linkedin_url"])}" target="_blank" rel="noreferrer">LinkedIn</a>')
+    elsewhere_html.append(f'<a href="mailto:{html.escape(config["email"])}">{html.escape(config["email"])}</a>')
 
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     current_note_html = ""
@@ -414,19 +414,19 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <h2>Published elsewhere</h2>
         <a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle author page</a>
       </div>
-      <div class="card-grid">
+      <div class="external-grid">
         {''.join(external_cards)}
       </div>
     </section>
 
-    <section class="two-column">
-      <div class="panel">
+    <section class="two-column closing-grid">
+      <div class="panel compact-panel">
         <h2>Background</h2>
-        <ul>{experience_items}</ul>
+        <ul class="background-list">{experience_items}</ul>
       </div>
-      <div class="panel">
+      <div class="panel compact-panel">
         <h2>Elsewhere</h2>
-        {''.join(elsewhere_html)}
+        <div class="elsewhere-links">{''.join(elsewhere_html)}</div>
       </div>
     </section>
     """
