@@ -107,16 +107,9 @@ nav a.active::after {
   background: rgba(23, 20, 18, 0.7);
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(290px, 0.85fr);
-  gap: 18px;
-  align-items: start;
-  margin-bottom: 8px;
-}
-
 .hero {
   padding: 10px 0 2px;
+  max-width: 960px;
 }
 
 .hero h1 {
@@ -143,6 +136,28 @@ nav a.active::after {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 16px;
+}
+
+.hero-context {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.hero-context-item {
+  padding: 14px 14px 15px;
+  border: 1px solid rgba(219, 207, 194, 0.82);
+  border-radius: 14px;
+  background: rgba(255, 252, 247, 0.7);
+  box-shadow: 0 10px 24px var(--shadow-soft);
+}
+
+.hero-context-item p:last-child {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #2b2521;
 }
 
 .button-link {
@@ -496,13 +511,30 @@ nav a.active::after {
 }
 
 .spotlight-card {
-  align-self: start;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
   background: linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(250, 244, 236, 0.94));
   border-color: rgba(155, 73, 44, 0.18);
   border-radius: 16px;
-  padding: 18px 18px 16px;
+  padding: 16px 18px 15px;
   box-shadow: 0 12px 28px rgba(113, 50, 31, 0.06);
   position: relative;
+}
+
+.spotlight-band {
+  margin-top: 16px;
+}
+
+.spotlight-main {
+  min-width: 0;
+}
+
+.spotlight-card h2 {
+  margin-bottom: 6px;
+  font-size: 1.15rem;
+  line-height: 1.12;
 }
 
 .spotlight-card::before {
@@ -516,6 +548,8 @@ nav a.active::after {
 
 .spotlight-summary {
   margin: 0;
+  max-width: 560px;
+  color: #3b332d;
 }
 
 .spotlight-footer,
@@ -523,9 +557,15 @@ nav a.active::after {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 12px;
   align-items: center;
   justify-content: space-between;
+}
+
+.spotlight-footer {
+  flex-shrink: 0;
+  min-width: 165px;
+  margin-top: 0;
+  justify-content: flex-end;
 }
 
 .spotlight-meta,
@@ -543,6 +583,7 @@ nav a.active::after {
   margin: 0;
   color: var(--muted);
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .spotlight-link {
@@ -776,12 +817,12 @@ code {
 }
 
 @media (max-width: 860px) {
-  .hero-grid,
   .proof-grid,
   .card-grid,
   .path-grid,
   .external-grid,
   .feature-grid,
+  .hero-context,
   .study-grid,
   .two-column,
   .intro-grid {
@@ -804,6 +845,16 @@ code {
 
   .hero {
     padding-top: 4px;
+  }
+
+  .spotlight-card {
+    display: block;
+  }
+
+  .spotlight-footer {
+    min-width: 0;
+    margin-top: 12px;
+    justify-content: space-between;
   }
 
   .panel,

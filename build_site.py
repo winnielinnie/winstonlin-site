@@ -339,15 +339,19 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     current_note_html = ""
     if current_note:
         current_note_html = f"""
-        <article class="spotlight-card">
-          <p class="eyebrow">Featured note</p>
-          <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
-          <p class="spotlight-summary">How I turn notes and files into a working PM system.</p>
-          <div class="spotlight-footer">
-            <p class="spotlight-meta">Real workspace • PM workflow</p>
-            <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read note</a>
-          </div>
-        </article>
+        <section class="spotlight-band">
+          <article class="spotlight-card">
+            <div class="spotlight-main">
+              <p class="eyebrow">Featured note</p>
+              <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
+              <p class="spotlight-summary">How I turn notes and files into a working PM system.</p>
+            </div>
+            <div class="spotlight-footer">
+              <p class="spotlight-meta">Real workspace • PM workflow</p>
+              <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read note</a>
+            </div>
+          </article>
+        </section>
         """
 
     featured_work_cards = []
@@ -384,18 +388,30 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         )
 
     body = f"""
-    <section class="hero-grid">
-      <div class="hero">
-        <p class="eyebrow">AI • product • ops</p>
-        <h1>{html.escape(config["title"])}</h1>
-        <p class="lead">{html.escape(config["tagline"])}</p>
-        <div class="hero-links">
-          <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
-          <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
-        </div>
+    <section class="hero">
+      <p class="eyebrow">AI • product • ops</p>
+      <h1>{html.escape(config["title"])}</h1>
+      <p class="lead">{html.escape(config["tagline"])}</p>
+      <div class="hero-links">
+        <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
+        <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
       </div>
-      {current_note_html}
+      <div class="hero-context">
+        <article class="hero-context-item">
+          <p class="meta">Who I am</p>
+          <p>Product leader across AI, serverless, Kubernetes, and CI/CD.</p>
+        </article>
+        <article class="hero-context-item">
+          <p class="meta">How I work</p>
+          <p>Operator, advisor, and investor focused on growth and business systems.</p>
+        </article>
+        <article class="hero-context-item">
+          <p class="meta">What is here</p>
+          <p>Notes, case studies, and small tools from real product and operating work.</p>
+        </article>
+      </div>
     </section>
+    {current_note_html}
 
     <section class="proof-grid">
       {''.join(proof_cards)}
