@@ -334,7 +334,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             """
         )
 
-    intro_html = "".join([f"<p>{html.escape(paragraph)}</p>" for paragraph in config["intro_paragraphs"]])
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     current_note_html = ""
     if current_note:
@@ -413,14 +412,31 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     </section>
     {current_note_html}
 
-    <section class="proof-grid">
-      {''.join(proof_cards)}
+    <section class="bio-strip">
+      <p>I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on growth, service design, and business systems across the US and Asia.</p>
     </section>
 
-    <section class="section">
-      <div class="panel prose about-panel">
-        {intro_html}
+    <section class="editorial-grid">
+      <div>
+        <p class="meta">Browse</p>
+        <ul class="editorial-list">
+          <li><a href="{relative_url('/', '/blog/')}">Writing on AI, platforms, and operating systems</a></li>
+          <li><a href="{relative_url('/', '/case-studies/')}">Case studies from real product work</a></li>
+          <li><a href="{html.escape(projects[0]['url'])}" target="_blank" rel="noreferrer">{html.escape(projects[0]['name'])}</a> and other small tools</li>
+        </ul>
       </div>
+      <div>
+        <p class="meta">Good Fit</p>
+        <ul class="editorial-list">
+          <li>AI and agent product teams</li>
+          <li>Developer platform and infrastructure roles</li>
+          <li>Operators, founders, and business builders</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="proof-grid">
+      {''.join(proof_cards)}
     </section>
 
     <section class="section">
