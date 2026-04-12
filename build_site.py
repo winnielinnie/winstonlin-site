@@ -194,6 +194,14 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
     title_text = html.escape(config["name"]) if title == config["name"] else f"{html.escape(title)} | {html.escape(config['name'])}"
     canonical_tag = f'\n  <link rel="canonical" href="{html.escape(canonical)}">' if canonical else ""
     favicon_tag = f'\n  <link rel="icon" type="image/svg+xml" href="{static_url(current_path, "favicon.svg")}">'
+    footer_links = []
+    if config.get("github_url"):
+        footer_links.append(f'<a href="{html.escape(config["github_url"])}" target="_blank" rel="noreferrer">GitHub</a>')
+    if config.get("linkedin_url"):
+        footer_links.append(f'<a href="{html.escape(config["linkedin_url"])}" target="_blank" rel="noreferrer">LinkedIn</a>')
+    if config.get("oracle_blogs_url"):
+        footer_links.append(f'<a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle Blogs</a>')
+    footer_links.append(f'<a href="mailto:{html.escape(config["email"])}">Email</a>')
     og_tags = ""
     if canonical:
         og_tags = f"""
@@ -226,6 +234,9 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
     <main>
       {body}
     </main>
+    <footer class="site-footer">
+      <div class="compact-links">{''.join(footer_links)}</div>
+    </footer>
   </div>
 </body>
 </html>
@@ -321,15 +332,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         )
 
     intro_html = "".join([f"<p>{html.escape(paragraph)}</p>" for paragraph in config["intro_paragraphs"]])
-    elsewhere_html = []
-    if config.get("github_url"):
-        elsewhere_html.append(f'<a href="{html.escape(config["github_url"])}" target="_blank" rel="noreferrer">GitHub</a>')
-    if config.get("linkedin_url"):
-        elsewhere_html.append(f'<a href="{html.escape(config["linkedin_url"])}" target="_blank" rel="noreferrer">LinkedIn</a>')
-    if config.get("oracle_blogs_url"):
-        elsewhere_html.append(f'<a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle Blogs</a>')
-    elsewhere_html.append(f'<a href="mailto:{html.escape(config["email"])}">Email</a>')
-
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     current_note_html = ""
     if current_note:
@@ -420,17 +422,37 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         {''.join(featured_work_cards)}
       </div>
     </section>
-
-    <section class="section simple-footer">
-      <div class="elsewhere-links compact-links">{''.join(elsewhere_html)}</div>
-    </section>
     """
     return page_layout(config, config["name"], body, "/", meta_description=config["tagline"])
 
 
 def render_blog_index(config, posts):
+    featured_posts = []
+    featured_slugs = config.get("home_featured_post_slugs", [])[:3]
+    for slug in featured_slugs:
+        post = find_post(posts, slug)
+        if post:
+            featured_posts.append(post)
+    if not featured_posts:
+        featured_posts = posts[:3]
+
+    featured_cards = []
+    featured_keys = {post.slug for post in featured_posts}
+    for post in featured_posts:
+        featured_cards.append(
+            f"""
+            <article class="feature-card">
+              <p class="meta">{html.escape(post.date)}</p>
+              <h3><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
+              <p>{html.escape(post.summary)}</p>
+            </article>
+            """
+        )
+
     cards = []
     for post in posts:
+        if post.slug in featured_keys:
+            continue
         cards.append(
             f"""
             <article class="post-list-item">
@@ -441,12 +463,25 @@ def render_blog_index(config, posts):
             """
         )
     body = f"""
-    <section class="section prose">
-      <p class="eyebrow">Writing</p>
-      <h1>Notes on platform work, migration, and small tools</h1>
-      <p>I am trying to keep these fairly direct. Less “content,” more notes that might actually help another builder think something through.</p>
+    <section class="section page-intro">
+      <div class="panel prose page-intro-panel">
+        <p class="eyebrow">Writing</p>
+        <h1>Notes on AI product, platforms, and useful tools</h1>
+        <p>Shorter than essays. More specific than hot takes.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head">
+        <h2>Start with</h2>
+      </div>
+      <div class="feature-grid">
+        {''.join(featured_cards)}
+      </div>
     </section>
     <section class="section post-list">
+      <div class="section-head">
+        <h2>All notes</h2>
+      </div>
       {''.join(cards)}
     </section>
     """
@@ -460,6 +495,22 @@ def render_blog_index(config, posts):
 
 
 def render_case_studies_page(config, case_studies):
+    summary_cards = [
+        {"label": "Delivery", "text": "Regional software delivery from about 3 months to 30 days."},
+        {"label": "Operations", "text": "Root-cause analysis cut by about 60% through better system clarity."},
+        {"label": "AI workflows", "text": "AI-assisted setup and triage designed around recovery, not novelty."},
+    ]
+    summary_html = []
+    for item in summary_cards:
+        summary_html.append(
+            f"""
+            <article class="proof-card">
+              <p class="proof-label">{html.escape(item['label'])}</p>
+              <p>{html.escape(item['text'])}</p>
+            </article>
+            """
+        )
+
     cards = []
     for study in case_studies:
         what_i_did = "".join([f"<li>{html.escape(item)}</li>" for item in study["what_i_did"]])
@@ -468,25 +519,43 @@ def render_case_studies_page(config, case_studies):
         cards.append(
             f"""
             <article class="timeline-item">
-              <p class="meta">{html.escape(study['period'])}</p>
-              <h2>{html.escape(study['title'])}</h2>
-              <p class="post-summary">{html.escape(study['tagline'])}</p>
-              <p><strong>Problem:</strong> {html.escape(study['problem'])}</p>
-              <h3>What I did</h3>
-              <ul>{what_i_did}</ul>
-              <h3>Why it was hard</h3>
-              <ul>{why_it_was_hard}</ul>
-              <h3>Outcome</h3>
-              <ul>{outcome}</ul>
+              <div class="study-head">
+                <p class="meta">{html.escape(study['period'])}</p>
+                <h2>{html.escape(study['title'])}</h2>
+                <p class="post-summary">{html.escape(study['tagline'])}</p>
+              </div>
+              <section class="study-problem">
+                <p class="meta">Problem</p>
+                <p>{html.escape(study['problem'])}</p>
+              </section>
+              <div class="study-grid">
+                <section class="study-section">
+                  <p class="meta">What I did</p>
+                  <ul>{what_i_did}</ul>
+                </section>
+                <section class="study-section">
+                  <p class="meta">Why it was hard</p>
+                  <ul>{why_it_was_hard}</ul>
+                </section>
+                <section class="study-section">
+                  <p class="meta">Outcome</p>
+                  <ul>{outcome}</ul>
+                </section>
+              </div>
             </article>
             """
         )
 
     body = f"""
-    <section class="section prose">
-      <p class="eyebrow">Case studies</p>
-      <h1>Product work with more detail than a resume bullet</h1>
-      <p>These are intentionally sanitized, but still specific enough to show how I think about scope, tradeoffs, and what actually made the work difficult.</p>
+    <section class="section page-intro">
+      <div class="panel prose page-intro-panel">
+        <p class="eyebrow">Case studies</p>
+        <h1>Selected product work</h1>
+        <p>Enough detail to show how I think. Still short enough to scan.</p>
+      </div>
+    </section>
+    <section class="proof-grid case-proof-grid">
+      {''.join(summary_html)}
     </section>
     <section class="section timeline">
       {''.join(cards)}
