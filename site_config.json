@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
   "title": "Developer platforms, serverless, and cloud infrastructure",
-  "tagline": "Over the last several years I have worked across CI/CD, Kubernetes, and serverless, with a focus on platform adoption, migration, and execution at scale.",
+  "tagline": "Over the last several years I have worked across CI/CD, Kubernetes, and serverless, with a focus on platform adoption, migration, and day-two product quality.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Winston Lin writes about developer platforms, serverless, migration, and infrastructure product strategy, with case studies spanning OCI Functions, Kubernetes, and CI/CD.",
+  "meta_description": "Winston Lin writes about developer platforms, serverless, migration, and infrastructure product strategy, with case studies from OCI Functions, Kubernetes, and CI/CD.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
@@ -29,6 +29,6 @@
     "Principal Product Manager for OCI Functions, focused on platform primitives, developer experience, and execution model",
     "Previously led product work across OCI Kubernetes Engine and OCI DevOps / CI/CD",
     "Built and launched internal platform capabilities that shortened delivery cycles and reduced operational drag",
-    "Most of my work has been in platform and infrastructure products that need to earn trust from technical users"
+    "Most of my work has been in platform and infrastructure products that need to earn trust from technical users over time"
   ]
 }
