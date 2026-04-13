@@ -591,6 +591,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
           <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
           <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
         </div>
+        <p class="hero-kickerline">Case studies go deep on the work, writing carries the shorter notes, and code keeps the practical patterns close.</p>
       </div>
     </section>
 
