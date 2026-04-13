@@ -1024,14 +1024,14 @@ nav a.active::after {
 
 .showcase-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  gap: 16px;
   align-items: stretch;
 }
 
 .showcase-stack {
   display: grid;
-  gap: 18px;
+  gap: 16px;
   height: 100%;
 }
 
@@ -1093,6 +1093,27 @@ nav a.active::after {
   color: #776e68;
 }
 
+.showcase-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.showcase-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.34rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 206, 196, 0.88);
+  background: rgba(255, 252, 247, 0.72);
+  color: #5f5751;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .showcase-card .spotlight-link {
   margin-top: 12px;
 }
@@ -1107,6 +1128,11 @@ nav a.active::after {
 .showcase-stack .spotlight-link {
   margin-top: auto;
   padding-top: 14px;
+}
+
+.showcase-primary .spotlight-link {
+  margin-top: 12px;
+  padding-top: 0;
 }
 
 .post-list-item,

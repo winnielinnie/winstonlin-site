@@ -483,6 +483,12 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
         featured_study = case_studies[0]
         featured_summary = html.escape(featured_study.get("home_summary", featured_study["tagline"]))
         featured_keyline = html.escape(featured_study.get("home_keyline", ""))
+        featured_focus = featured_study.get("home_focus", [])
+        featured_focus_html = ""
+        if featured_focus:
+            featured_focus_html = '<div class="showcase-chip-row">' + "".join(
+                f'<span class="showcase-chip">{html.escape(item)}</span>' for item in featured_focus[:4]
+            ) + "</div>"
         note_card = ""
         if current_note:
             note_card = f"""
@@ -516,6 +522,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
               <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
               <p class="showcase-summary">{featured_summary}</p>
               {f'<p class="showcase-keyline">{featured_keyline}</p>' if featured_keyline else ''}
+              {featured_focus_html}
               <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}">View details</a>
             </article>
             <div class="showcase-stack">
