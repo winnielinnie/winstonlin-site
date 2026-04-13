@@ -29,89 +29,131 @@
     </header>
     <main>
       
-    <section class="section page-intro">
-      <div class="panel prose page-intro-panel">
+    <section class="hero page-hero">
+      <div class="hero-copy page-hero-copy">
         <p class="eyebrow">Platform and AI work</p>
         <h1>Case studies</h1>
-        <p>Three examples of product systems that improved delivery speed, operational clarity, and workflow quality.</p>
+        <p class="lead">Five examples across serverless, platform systems, and enterprise delivery.</p>
       </div>
     </section>
     <section class="section timeline">
       
             <article class="timeline-item">
-              <div class="study-head">
-                <p class="meta">OCI Platform Infrastructure</p>
-                <h2>Deterministic Region Delivery</h2>
-                <p class="post-summary">Turned regional delivery from reactive coordination into a deterministic orchestration system, helping compress timelines from months to about 30 days.</p>
-              </div>
-              <section class="study-problem">
-                <p class="meta">Problem</p>
-                <p>Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies. The result was unpredictable timelines, repeated war rooms, and too much operational work happening in real time.</p>
-              </section>
-              <div class="study-grid">
-                <section class="study-section">
-                  <p class="meta">What I did</p>
-                  <ul><li>Helped frame the work as a product for deterministic orchestration rather than one more coordination layer on top of messy existing processes.</li><li>Pushed toward formal build specifications that made build-time dependencies, execution order, and rollback paths explicit enough to validate before execution.</li><li>Focused the design on testability, interventions, and high-confidence rollout sets so teams could catch breakage before it blocked a live regional build.</li></ul>
-                </section>
-                <section class="study-section">
-                  <p class="meta">Why it was hard</p>
-                  <ul><li>The hard part was not automation alone. It was deciding what needed to become shared platform behavior versus what should stay a local service concern.</li><li>Region build systems accumulate exceptions quickly, so the product challenge was creating enough structure to make the plan deterministic without hard-coding every edge case.</li></ul>
-                </section>
-                <section class="study-section">
-                  <p class="meta">Outcome</p>
-                  <ul><li>Regional delivery timelines dropped from about 3 months to roughly 30 days.</li><li>The work created a more predictable foundation for launch planning, earlier dependency validation, and far less real-time coordination during critical build windows.</li></ul>
-                </section>
-              </div>
-            </article>
-            
-            <article class="timeline-item">
-              <div class="study-head">
-                <p class="meta">OCI Platform Infrastructure</p>
-                <h2>Service Dependency and Health Registry</h2>
-                <p class="post-summary">Built an authoritative model for service dependencies, health, and ownership that helped cut root-cause analysis time by 60%.</p>
-              </div>
-              <section class="study-problem">
-                <p class="meta">Problem</p>
-                <p>When incidents or build failures happened, teams could usually see the symptom but not the true dependency path, ownership chain, or impact radius. Critical service data was fragmented, stale, and too dependent on tribal knowledge.</p>
-              </section>
-              <div class="study-grid">
-                <section class="study-section">
-                  <p class="meta">What I did</p>
-                  <ul><li>Helped shape the service around operational questions rather than turning it into a passive inventory or metadata dump.</li><li>Focused the model on versioned dependency contracts, health states, support attribution, and enough curation to keep the data trustworthy over time.</li><li>Worked backward from operator workflows so the product could answer the questions people actually have during incidents and blocked builds.</li></ul>
-                </section>
-                <section class="study-section">
-                  <p class="meta">Why it was hard</p>
-                  <ul><li>A registry only matters if it stays current enough to be trusted under pressure.</li><li>The challenge was balancing a strong formal model with an onboarding path that service teams would actually adopt and maintain.</li></ul>
-                </section>
-                <section class="study-section">
-                  <p class="meta">Outcome</p>
-                  <ul><li>Root-cause analysis time dropped by about 60%.</li><li>The work made ownership, dependency, and impact questions far more answerable during incidents, rollout debugging, and regional build operations.</li></ul>
-                </section>
-              </div>
-            </article>
-            
-            <article class="timeline-item">
+              <span class="card-glyph glyph-functions" aria-hidden="true"></span>
               <div class="study-head">
                 <p class="meta">OCI Functions</p>
                 <h2>AI-Assisted OCI Functions Workflows</h2>
-                <p class="post-summary">Worked on AI-assisted deployment and troubleshooting flows for OCI Functions to reduce setup drag and make platform recovery paths clearer.</p>
+                <p class="post-summary">Worked on AI-assisted setup and troubleshooting flows for OCI Functions, with emphasis on recovery and operationally useful output.</p>
               </div>
-              <section class="study-problem">
-                <p class="meta">Problem</p>
-                <p>A lot of friction in serverless adoption comes from the first-run experience: packaging, environment setup, troubleshooting, and the gap between a docs path and a working deployment.</p>
-              </section>
-              <div class="study-grid">
-                <section class="study-section">
-                  <p class="meta">What I did</p>
-                  <ul><li>Explored AI-assisted deployment and troubleshooting flows using MCP-style integrations and reusable skills.</li><li>Treated the problem as a workflow-design problem, not just a model-response problem.</li><li>Focused on making the output operationally useful: what should happen next, what failed, and how to recover.</li></ul>
+              <p class="study-problem-copy">Serverless adoption often breaks on the first-run experience: packaging, environment setup, troubleshooting, and the distance between docs and a working deployment.</p>
+              <div class="study-signal-grid">
+                <section class="study-signal">
+                  <p class="meta">Focus</p>
+                  <p>Explored AI-assisted setup and troubleshooting flows using MCP-style integrations and reusable skills.</p>
                 </section>
-                <section class="study-section">
-                  <p class="meta">Why it was hard</p>
-                  <ul><li>AI features are easy to demo and much harder to trust in real developer workflows.</li><li>The bar was not &#x27;did the assistant say something plausible.&#x27; The bar was whether it reduced friction without creating new ambiguity.</li></ul>
+                <section class="study-signal">
+                  <p class="meta">Constraint</p>
+                  <p>AI features are easy to demo and much harder to trust in real developer workflows.</p>
                 </section>
-                <section class="study-section">
-                  <p class="meta">Outcome</p>
-                  <ul><li>Created a credible path for AI-assisted setup and triage instead of treating AI as a sidecar novelty.</li><li>Sharpened my view that trustworthy AI products need strong recovery paths, explicit boundaries, and good workflow design.</li></ul>
+                <section class="study-signal">
+                  <p class="meta">Result</p>
+                  <p>Created a credible path for AI-assisted setup and triage instead of treating AI as a novelty.</p>
+                </section>
+              </div>
+            </article>
+            
+            <article class="timeline-item">
+              <span class="card-glyph glyph-platform" aria-hidden="true"></span>
+              <div class="study-head">
+                <p class="meta">OCI Containers</p>
+                <h2>Scaling OKE for AI and Platform Workloads</h2>
+                <p class="post-summary">Focused product investments that made OKE more viable for AI and production workloads, especially around host images, observability, and node lifecycle friction.</p>
+              </div>
+              <p class="study-problem-copy">The real blockers were operational: slow or brittle node bring-up, image availability issues, limited observability, and infrastructure rough edges that became painful at scale.</p>
+              <div class="study-signal-grid">
+                <section class="study-signal">
+                  <p class="meta">Focus</p>
+                  <p>Worked across customer signals, internal constraints, and roadmap tradeoffs to focus on the platform gaps that most directly blocked adoption.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Constraint</p>
+                  <p>A lot of the pain sat at the seams between imaging, capacity, and adjacent infrastructure teams, so progress required alignment across multiple systems rather than one isolated feature.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Result</p>
+                  <p>Helped move OKE toward a stronger fit for AI and other demanding production workloads.</p>
+                </section>
+              </div>
+            </article>
+            
+            <article class="timeline-item">
+              <span class="card-glyph glyph-code" aria-hidden="true"></span>
+              <div class="study-head">
+                <p class="meta">OCI Dev Platform</p>
+                <h2>Dependency and Health Registry</h2>
+                <p class="post-summary">Built a model for dependencies, health, and ownership that made root-cause analysis materially faster.</p>
+              </div>
+              <p class="study-problem-copy">When incidents or build failures happened, teams could usually see the symptom but not the real dependency path, ownership chain, or impact radius.</p>
+              <div class="study-signal-grid">
+                <section class="study-signal">
+                  <p class="meta">Focus</p>
+                  <p>Helped shape the service around operational questions rather than turning it into a passive inventory.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Constraint</p>
+                  <p>A registry only matters if it stays current enough to be trusted under pressure.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Result</p>
+                  <p>Helped cut root-cause analysis time by about 60%.</p>
+                </section>
+              </div>
+            </article>
+            
+            <article class="timeline-item">
+              <span class="card-glyph glyph-code" aria-hidden="true"></span>
+              <div class="study-head">
+                <p class="meta">OCI Dev Platform</p>
+                <h2>Regional Delivery Orchestration</h2>
+                <p class="post-summary">Turned regional delivery from reactive coordination into an orchestration system with clearer sequencing, validation, and rollback paths.</p>
+              </div>
+              <p class="study-problem-copy">Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies.</p>
+              <div class="study-signal-grid">
+                <section class="study-signal">
+                  <p class="meta">Focus</p>
+                  <p>Helped frame the work as a product for orchestration rather than one more coordination layer on top of messy existing processes.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Constraint</p>
+                  <p>The hard part was not automation alone. It was deciding what needed to become shared platform behavior versus what should stay local.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Result</p>
+                  <p>Helped compress regional delivery timelines from about 3 months to roughly 30 days.</p>
+                </section>
+              </div>
+            </article>
+            
+            <article class="timeline-item">
+              <span class="card-glyph glyph-strategy" aria-hidden="true"></span>
+              <div class="study-head">
+                <p class="meta">Sitetracker</p>
+                <h2>Enterprise Delivery Through Better Discovery</h2>
+                <p class="post-summary">Led enterprise implementations by turning vague requests into working solutions, clearer processes, and software teams could actually adopt.</p>
+              </div>
+              <p class="study-problem-copy">Customers often arrived with feature requests, but the real challenge was usually buried in broken handoffs, unclear ownership, inconsistent field operations, or reporting gaps.</p>
+              <div class="study-signal-grid">
+                <section class="study-signal">
+                  <p class="meta">Focus</p>
+                  <p>Ran discovery with business and operational stakeholders to separate stated requests from the actual workflow and service problems underneath them.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Constraint</p>
+                  <p>Enterprise customers rarely hand you a clean requirement set. A lot of the work was identifying the real bottleneck before the team overfit to the wrong request.</p>
+                </section>
+                <section class="study-signal">
+                  <p class="meta">Result</p>
+                  <p>Delivered solutions that supported large operational teams and gave customers a clearer path from system design to day-to-day adoption.</p>
                 </section>
               </div>
             </article>

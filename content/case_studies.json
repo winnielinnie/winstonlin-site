@@ -1,52 +1,12 @@
 [
   {
-    "slug": "service-installer",
-    "title": "Deterministic Region Delivery",
-    "period": "OCI Platform Infrastructure",
-    "tagline": "Turned regional delivery from reactive coordination into a deterministic orchestration system, helping compress timelines from months to about 30 days.",
-    "problem": "Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies. The result was unpredictable timelines, repeated war rooms, and too much operational work happening in real time.",
-    "what_i_did": [
-      "Helped frame the work as a product for deterministic orchestration rather than one more coordination layer on top of messy existing processes.",
-      "Pushed toward formal build specifications that made build-time dependencies, execution order, and rollback paths explicit enough to validate before execution.",
-      "Focused the design on testability, interventions, and high-confidence rollout sets so teams could catch breakage before it blocked a live regional build."
-    ],
-    "why_it_was_hard": [
-      "The hard part was not automation alone. It was deciding what needed to become shared platform behavior versus what should stay a local service concern.",
-      "Region build systems accumulate exceptions quickly, so the product challenge was creating enough structure to make the plan deterministic without hard-coding every edge case."
-    ],
-    "outcome": [
-      "Regional delivery timelines dropped from about 3 months to roughly 30 days.",
-      "The work created a more predictable foundation for launch planning, earlier dependency validation, and far less real-time coordination during critical build windows."
-    ]
-  },
-  {
-    "slug": "feature-registry",
-    "title": "Service Dependency and Health Registry",
-    "period": "OCI Platform Infrastructure",
-    "tagline": "Built an authoritative model for service dependencies, health, and ownership that helped cut root-cause analysis time by 60%.",
-    "problem": "When incidents or build failures happened, teams could usually see the symptom but not the true dependency path, ownership chain, or impact radius. Critical service data was fragmented, stale, and too dependent on tribal knowledge.",
-    "what_i_did": [
-      "Helped shape the service around operational questions rather than turning it into a passive inventory or metadata dump.",
-      "Focused the model on versioned dependency contracts, health states, support attribution, and enough curation to keep the data trustworthy over time.",
-      "Worked backward from operator workflows so the product could answer the questions people actually have during incidents and blocked builds."
-    ],
-    "why_it_was_hard": [
-      "A registry only matters if it stays current enough to be trusted under pressure.",
-      "The challenge was balancing a strong formal model with an onboarding path that service teams would actually adopt and maintain."
-    ],
-    "outcome": [
-      "Root-cause analysis time dropped by about 60%.",
-      "The work made ownership, dependency, and impact questions far more answerable during incidents, rollout debugging, and regional build operations."
-    ]
-  },
-  {
     "slug": "ai-assisted-functions-workflows",
     "title": "AI-Assisted OCI Functions Workflows",
     "period": "OCI Functions",
-    "tagline": "Worked on AI-assisted deployment and troubleshooting flows for OCI Functions to reduce setup drag and make platform recovery paths clearer.",
-    "problem": "A lot of friction in serverless adoption comes from the first-run experience: packaging, environment setup, troubleshooting, and the gap between a docs path and a working deployment.",
+    "tagline": "Worked on AI-assisted setup and troubleshooting flows for OCI Functions, with emphasis on recovery and operationally useful output.",
+    "problem": "Serverless adoption often breaks on the first-run experience: packaging, environment setup, troubleshooting, and the distance between docs and a working deployment.",
     "what_i_did": [
-      "Explored AI-assisted deployment and troubleshooting flows using MCP-style integrations and reusable skills.",
+      "Explored AI-assisted setup and troubleshooting flows using MCP-style integrations and reusable skills.",
       "Treated the problem as a workflow-design problem, not just a model-response problem.",
       "Focused on making the output operationally useful: what should happen next, what failed, and how to recover."
     ],
@@ -55,8 +15,88 @@
       "The bar was not 'did the assistant say something plausible.' The bar was whether it reduced friction without creating new ambiguity."
     ],
     "outcome": [
-      "Created a credible path for AI-assisted setup and triage instead of treating AI as a sidecar novelty.",
+      "Created a credible path for AI-assisted setup and triage instead of treating AI as a novelty.",
       "Sharpened my view that trustworthy AI products need strong recovery paths, explicit boundaries, and good workflow design."
+    ]
+  },
+  {
+    "slug": "oke-ai-ml-platform-improvements",
+    "title": "Scaling OKE for AI and Platform Workloads",
+    "period": "OCI Containers",
+    "tagline": "Focused product investments that made OKE more viable for AI and production workloads, especially around host images, observability, and node lifecycle friction.",
+    "problem": "The real blockers were operational: slow or brittle node bring-up, image availability issues, limited observability, and infrastructure rough edges that became painful at scale.",
+    "what_i_did": [
+      "Worked across customer signals, internal constraints, and roadmap tradeoffs to focus on the platform gaps that most directly blocked adoption.",
+      "Helped drive investments around Ubuntu support, GPU-related platform needs, and observability improvements so OKE better matched how modern infrastructure teams actually run demanding workloads.",
+      "Treated the work as platform product design, not just feature intake, by pushing on migration readiness, operational clarity, and the day-two experience."
+    ],
+    "why_it_was_hard": [
+      "A lot of the pain sat at the seams between imaging, capacity, and adjacent infrastructure teams, so progress required alignment across multiple systems rather than one isolated feature.",
+      "The challenge was deciding which platform issues were true product blockers versus one-off edge cases, then prioritizing the ones that would materially improve production confidence."
+    ],
+    "outcome": [
+      "Helped move OKE toward a stronger fit for AI and other demanding production workloads.",
+      "Reinforced my approach to infrastructure product work: adoption is often won by reducing operational drag, not just adding surface area."
+    ]
+  },
+  {
+    "slug": "feature-registry",
+    "title": "Dependency and Health Registry",
+    "period": "OCI Dev Platform",
+    "tagline": "Built a model for dependencies, health, and ownership that made root-cause analysis materially faster.",
+    "problem": "When incidents or build failures happened, teams could usually see the symptom but not the real dependency path, ownership chain, or impact radius.",
+    "what_i_did": [
+      "Helped shape the service around operational questions rather than turning it into a passive inventory.",
+      "Focused the model on versioned dependency contracts, health states, support attribution, and enough curation to keep the data trustworthy over time.",
+      "Worked backward from operator workflows so the product could answer the questions people actually have during incidents and blocked builds."
+    ],
+    "why_it_was_hard": [
+      "A registry only matters if it stays current enough to be trusted under pressure.",
+      "The challenge was balancing a strong formal model with an onboarding path that service teams would actually adopt and maintain."
+    ],
+    "outcome": [
+      "Helped cut root-cause analysis time by about 60%.",
+      "The work made ownership, dependency, and impact questions far more answerable during incidents, rollout debugging, and regional build operations."
+    ]
+  },
+  {
+    "slug": "service-installer",
+    "title": "Regional Delivery Orchestration",
+    "period": "OCI Dev Platform",
+    "tagline": "Turned regional delivery from reactive coordination into an orchestration system with clearer sequencing, validation, and rollback paths.",
+    "problem": "Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies.",
+    "what_i_did": [
+      "Helped frame the work as a product for orchestration rather than one more coordination layer on top of messy existing processes.",
+      "Pushed toward formal build specifications that made build-time dependencies, execution order, and rollback paths explicit enough to validate before execution.",
+      "Focused the design on testability, interventions, and high-confidence rollout sets so teams could catch breakage before it blocked a live regional build."
+    ],
+    "why_it_was_hard": [
+      "The hard part was not automation alone. It was deciding what needed to become shared platform behavior versus what should stay local.",
+      "Region build systems accumulate exceptions quickly, so the product challenge was creating enough structure to make the plan deterministic without hard-coding every edge case."
+    ],
+    "outcome": [
+      "Helped compress regional delivery timelines from about 3 months to roughly 30 days.",
+      "The work created a more predictable foundation for launch planning, earlier dependency validation, and far less real-time coordination during critical build windows."
+    ]
+  },
+  {
+    "slug": "sitetracker-enterprise-delivery",
+    "title": "Enterprise Delivery Through Better Discovery",
+    "period": "Sitetracker",
+    "tagline": "Led enterprise implementations by turning vague requests into working solutions, clearer processes, and software teams could actually adopt.",
+    "problem": "Customers often arrived with feature requests, but the real challenge was usually buried in broken handoffs, unclear ownership, inconsistent field operations, or reporting gaps.",
+    "what_i_did": [
+      "Ran discovery with business and operational stakeholders to separate stated requests from the actual workflow and service problems underneath them.",
+      "Designed implementable solutions across process design, system configuration, and rollout planning so the software matched how teams really worked.",
+      "Translated customer pain points into concrete delivery choices that balanced business value, technical constraints, and time to launch."
+    ],
+    "why_it_was_hard": [
+      "Enterprise customers rarely hand you a clean requirement set. A lot of the work was identifying the real bottleneck before the team overfit to the wrong request.",
+      "Good implementation work required credibility with both business users and technical teams, because the best answer often involved changing process design as much as changing software."
+    ],
+    "outcome": [
+      "Delivered solutions that supported large operational teams and gave customers a clearer path from system design to day-to-day adoption.",
+      "The work sharpened my ability to get to the real requirement quickly, design around it, and tie product decisions back to business impact."
     ]
   }
 ]

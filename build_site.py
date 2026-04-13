@@ -435,16 +435,15 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
     showcase_html = ""
     if case_studies:
         featured_study = case_studies[0]
-        study_outcomes = "".join(
-            [f"<li>{html.escape(item)}</li>" for item in featured_study["outcome"][:2]]
-        )
+        showcase_takeaway = html.escape(featured_study["outcome"][0]) if featured_study.get("outcome") else ""
         note_card = ""
         if current_note:
             note_card = f"""
             <article class="showcase-card">
+              <span class="card-glyph glyph-ai" aria-hidden="true"></span>
               <p class="meta">From the essays</p>
               <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h3>
-              <p>How I use a real workspace to turn notes, files, and raw material into shipping work.</p>
+              <p>A practical workspace for turning raw material into shipping work.</p>
               <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read essay</a>
             </article>
             """
@@ -453,24 +452,27 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
             article = external_writing[0]
             article_card = f"""
             <article class="showcase-card">
+              <span class="card-glyph glyph-platform" aria-hidden="true"></span>
               <p class="meta">Published article</p>
-              <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article['title'])}</a></h3>
-              <p>Patterns, migration shape, and practical design guidance from recent Functions work.</p>
+              <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article.get('short_title', article['title']))}</a></h3>
+              <p>Patterns and design guidance from recent Functions work.</p>
               <a class="spotlight-link" href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">Read article</a>
             </article>
             """
         showcase_html = f"""
-        <section class="section showcase-section">
+        <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head">
-            <h2>Case study spotlight</h2>
-            <a href="{relative_url('/', '/case-studies/')}">View case studies</a>
+            <h2>Current focus</h2>
+            <a href="{relative_url('/', '/case-studies/')}">All case studies</a>
           </div>
           <div class="showcase-grid">
             <article class="showcase-card showcase-primary">
+              <span class="card-glyph glyph-functions" aria-hidden="true"></span>
               <p class="meta">{html.escape(featured_study['period'])}</p>
               <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
               <p class="showcase-summary">{html.escape(featured_study['tagline'])}</p>
-              <ul class="showcase-list">{study_outcomes}</ul>
+              <p class="showcase-takeaway">{showcase_takeaway}</p>
+              <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}">View details</a>
             </article>
             <div class="showcase-stack">
               {note_card}
@@ -485,6 +487,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
         project_cards.append(
             f"""
             <article class="feature-card">
+              <span class="card-glyph glyph-code" aria-hidden="true"></span>
               <p class="meta">{html.escape(project['label'])}</p>
               <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
               <p>{html.escape(project['summary'])}</p>
@@ -495,43 +498,39 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
     practice_items = [
         {
             "label": "AI-PM workspace",
-            "title": "Turn raw material into decisions and artifacts",
-            "text": "Turn notes, spreadsheets, screenshots, and drafts into decks, follow-up, and publishable work.",
+            "title": "AI workflows",
+            "text": "Recovery, workflow quality, and usable output from messy raw material.",
             "url": relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/'),
-            "link_label": "Read note",
+            "link_label": "Read essay",
+            "icon": "glyph-ai",
         },
         {
             "label": "Platform product",
-            "title": "Work at the layer where adoption is won or lost",
-            "text": "Shape product across OCI Functions, CI/CD, and adjacent platform systems, with a focus on migration quality, friction, and recovery.",
+            "title": "Platform product",
+            "text": "Migration, reliability, and developer experience at platform scale.",
             "url": relative_url('/', '/case-studies/'),
-            "link_label": "View work",
+            "link_label": "View case studies",
+            "icon": "glyph-platform",
         },
         {
-            "label": "Business strategy",
-            "title": "Apply the same lens to operating models",
-            "text": "Apply product thinking to growth, service design, and operating systems.",
+            "label": "Business systems",
+            "title": "Business systems",
+            "text": "Growth, service design, and operating models that hold up under scale.",
             "url": relative_url('/', '/blog/growth-breaks-in-the-operating-model/'),
-            "link_label": "Read note",
+            "link_label": "Read essay",
+            "icon": "glyph-strategy",
         },
     ]
     focus_cards = []
     for path, item in zip(discovery_paths, practice_items):
-        links_html = [f'<a href="{item["url"]}">{html.escape(item["link_label"])}</a>']
-        seen_urls = {item["url"]}
-        for link in path["links"]:
-            link_url = relative_url("/", link["url"])
-            if link_url in seen_urls:
-                continue
-            links_html.append(f'<a href="{link_url}">{html.escape(link["label"])}</a>')
-            break
         focus_cards.append(
             f"""
             <article class="focus-card">
-              <h3>{html.escape(path["title"])}</h3>
-              <p class="focus-summary">{html.escape(path["why"])}</p>
+              <span class="card-glyph {item['icon']}" aria-hidden="true"></span>
+              <p class="meta">{html.escape(path["who"])}</p>
+              <h3>{html.escape(item["title"])}</h3>
               <p class="focus-detail">{html.escape(item["text"])}</p>
-              <div class="path-links">{''.join(links_html)}</div>
+              <div class="path-links"><a href="{item['url']}">{html.escape(item["link_label"])}</a></div>
             </article>
             """
         )
@@ -539,7 +538,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
     body = f"""
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Case studies, essays, and tools</p>
+        <p class="eyebrow">Selected work</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
@@ -549,21 +548,20 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
       </div>
     </section>
 
-    <section class="section work-section">
+    {showcase_html}
+
+    <section class="section work-section section-frame section-frame-explore">
       <div class="section-head">
-        <h2>Browse by area</h2>
-        <p class="section-note">Three ways to move through the work.</p>
+        <h2>Ways I work</h2>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
       </div>
     </section>
 
-    {showcase_html}
-
-    <section class="section">
+    <section class="section section-frame section-frame-open-source">
       <div class="section-head">
-        <h2>Open source</h2>
+        <h2>Selected code</h2>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -590,6 +588,7 @@ def render_blog_index(config, posts):
         featured_cards.append(
             f"""
             <article class="feature-card">
+              <span class="card-glyph glyph-note" aria-hidden="true"></span>
               <p class="meta">{html.escape(post.date)}</p>
               <h3><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
               <p>{html.escape(post.summary)}</p>
@@ -604,6 +603,7 @@ def render_blog_index(config, posts):
         cards.append(
             f"""
             <article class="post-list-item">
+              <span class="card-glyph glyph-note" aria-hidden="true"></span>
               <p class="meta">{html.escape(post.date)}</p>
               <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
               <p>{html.escape(post.summary)}</p>
@@ -611,17 +611,16 @@ def render_blog_index(config, posts):
             """
         )
     body = f"""
-    <section class="section page-intro">
-      <div class="panel prose page-intro-panel">
+    <section class="hero page-hero">
+      <div class="hero-copy page-hero-copy">
         <p class="eyebrow">Writing</p>
         <h1>Essays on platform, AI, and operations</h1>
-        <p>Short product essays on workflow quality, migration, recovery, and the systems behind adoption.</p>
+        <p class="lead">Short essays on workflow quality, migration, AI product design, and operating models.</p>
       </div>
     </section>
     <section class="section">
-      <div class="section-head">
-        <h2>Start here</h2>
-        <p class="section-note">Three essays to start with.</p>
+      <div class="section-head section-head-stack">
+        <h2>Featured essays</h2>
       </div>
       <div class="feature-grid">
         {''.join(featured_cards)}
@@ -646,33 +645,38 @@ def render_blog_index(config, posts):
 def render_case_studies_page(config, case_studies):
     cards = []
     for study in case_studies:
-        what_i_did = "".join([f"<li>{html.escape(item)}</li>" for item in study["what_i_did"]])
-        why_it_was_hard = "".join([f"<li>{html.escape(item)}</li>" for item in study["why_it_was_hard"]])
-        outcome = "".join([f"<li>{html.escape(item)}</li>" for item in study["outcome"]])
+        glyph = "glyph-platform"
+        if "Functions" in study["period"]:
+            glyph = "glyph-functions"
+        elif "Sitetracker" in study["period"]:
+            glyph = "glyph-strategy"
+        elif "Dev Platform" in study["period"]:
+            glyph = "glyph-code"
+        focus = html.escape(study["what_i_did"][0])
+        constraint = html.escape(study["why_it_was_hard"][0])
+        result = html.escape(study["outcome"][0])
         cards.append(
             f"""
             <article class="timeline-item">
+              <span class="card-glyph {glyph}" aria-hidden="true"></span>
               <div class="study-head">
                 <p class="meta">{html.escape(study['period'])}</p>
                 <h2>{html.escape(study['title'])}</h2>
                 <p class="post-summary">{html.escape(study['tagline'])}</p>
               </div>
-              <section class="study-problem">
-                <p class="meta">Problem</p>
-                <p>{html.escape(study['problem'])}</p>
-              </section>
-              <div class="study-grid">
-                <section class="study-section">
-                  <p class="meta">What I did</p>
-                  <ul>{what_i_did}</ul>
+              <p class="study-problem-copy">{html.escape(study['problem'])}</p>
+              <div class="study-signal-grid">
+                <section class="study-signal">
+                  <p class="meta">Focus</p>
+                  <p>{focus}</p>
                 </section>
-                <section class="study-section">
-                  <p class="meta">Why it was hard</p>
-                  <ul>{why_it_was_hard}</ul>
+                <section class="study-signal">
+                  <p class="meta">Constraint</p>
+                  <p>{constraint}</p>
                 </section>
-                <section class="study-section">
-                  <p class="meta">Outcome</p>
-                  <ul>{outcome}</ul>
+                <section class="study-signal">
+                  <p class="meta">Result</p>
+                  <p>{result}</p>
                 </section>
               </div>
             </article>
@@ -680,11 +684,11 @@ def render_case_studies_page(config, case_studies):
         )
 
     body = f"""
-    <section class="section page-intro">
-      <div class="panel prose page-intro-panel">
+    <section class="hero page-hero">
+      <div class="hero-copy page-hero-copy">
         <p class="eyebrow">Platform and AI work</p>
         <h1>Case studies</h1>
-        <p>Three examples of product systems that improved delivery speed, operational clarity, and workflow quality.</p>
+        <p class="lead">Five examples across serverless, platform systems, and enterprise delivery.</p>
       </div>
     </section>
     <section class="section timeline">

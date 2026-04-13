@@ -1,26 +1,26 @@
 [
   {
-    "title": "AI in practice",
+    "title": "AI workflows",
     "who": "AI",
-    "why": "Workflow quality, recovery, and usable output.",
+    "why": "Recovery, workflow quality, and usable output.",
     "links": [
       {
         "label": "Recovery paths",
         "url": "/blog/trustworthy-ai-products-need-recovery-paths/"
       },
       {
-        "label": "Workspace essay",
+        "label": "Workspace",
         "url": "/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/"
       }
     ]
   },
   {
-    "title": "Platform systems",
+    "title": "Platform product",
     "who": "Platform",
-    "why": "Developer experience, migration, and reliability.",
+    "why": "Migration, developer experience, and reliability.",
     "links": [
       {
-        "label": "Region delivery",
+        "label": "Case studies",
         "url": "/case-studies/"
       },
       {
@@ -30,12 +30,12 @@
     ]
   },
   {
-    "title": "Operating model",
+    "title": "Business systems",
     "who": "Strategy",
-    "why": "Growth, service design, and business systems.",
+    "why": "Growth, service design, and operating models.",
     "links": [
       {
-        "label": "Operating model",
+        "label": "Growth",
         "url": "/blog/growth-breaks-in-the-operating-model/"
       },
       {
