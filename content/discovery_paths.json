@@ -1,6 +1,6 @@
 [
   {
-    "title": "AI product",
+    "title": "AI workflows",
     "who": "AI",
     "why": "Workflow quality, recovery, and adoption.",
     "links": [
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "title": "Platform systems",
+    "title": "Cloud platforms",
     "who": "Platform",
     "why": "Developer experience, migration, and scale.",
     "links": [
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "title": "Business strategy",
+    "title": "Business systems",
     "who": "Strategy",
     "why": "Growth, service design, and business systems.",
     "links": [

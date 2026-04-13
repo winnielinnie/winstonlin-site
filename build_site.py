@@ -246,6 +246,190 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
 """
 
 
+def render_diagram(kind):
+    diagrams = {
+        "hero": """
+        <div class="diagram-card hero-diagram" aria-hidden="true">
+          <svg viewBox="0 0 420 300" role="img">
+            <defs>
+              <linearGradient id="heroPanel" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="rgba(255,252,247,0.98)"/>
+                <stop offset="100%" stop-color="rgba(247,242,233,0.94)"/>
+              </linearGradient>
+            </defs>
+            <rect x="12" y="12" width="396" height="276" rx="26" fill="url(#heroPanel)" stroke="rgba(219,207,194,0.92)"/>
+            <rect x="38" y="52" width="102" height="40" rx="14" fill="rgba(243,248,246,0.96)" stroke="rgba(46,90,84,0.20)"/>
+            <rect x="38" y="130" width="102" height="40" rx="14" fill="rgba(252,245,239,0.96)" stroke="rgba(155,73,44,0.18)"/>
+            <rect x="38" y="208" width="102" height="40" rx="14" fill="rgba(247,243,232,0.96)" stroke="rgba(151,118,51,0.18)"/>
+            <rect x="160" y="90" width="104" height="78" rx="18" fill="rgba(255,253,249,0.98)" stroke="rgba(23,20,18,0.10)"/>
+            <rect x="286" y="40" width="98" height="40" rx="14" fill="rgba(255,253,249,0.96)" stroke="rgba(23,20,18,0.10)"/>
+            <rect x="286" y="130" width="98" height="40" rx="14" fill="rgba(255,253,249,0.96)" stroke="rgba(23,20,18,0.10)"/>
+            <rect x="286" y="220" width="98" height="40" rx="14" fill="rgba(255,253,249,0.96)" stroke="rgba(23,20,18,0.10)"/>
+            <path d="M140 72 C155 72 150 115 160 120" fill="none" stroke="rgba(46,90,84,0.55)" stroke-width="2.2"/>
+            <path d="M140 150 C155 150 150 130 160 129" fill="none" stroke="rgba(155,73,44,0.50)" stroke-width="2.2"/>
+            <path d="M140 228 C155 228 150 145 160 140" fill="none" stroke="rgba(151,118,51,0.46)" stroke-width="2.2"/>
+            <path d="M264 128 C276 128 274 60 286 60" fill="none" stroke="rgba(23,20,18,0.36)" stroke-width="2.2"/>
+            <path d="M264 128 C276 128 274 150 286 150" fill="none" stroke="rgba(23,20,18,0.36)" stroke-width="2.2"/>
+            <path d="M264 128 C276 128 274 240 286 240" fill="none" stroke="rgba(23,20,18,0.36)" stroke-width="2.2"/>
+            <text x="59" y="77" class="diagram-label">notes</text>
+            <text x="58" y="155" class="diagram-label">systems</text>
+            <text x="59" y="233" class="diagram-label">signals</text>
+            <text x="181" y="121" class="diagram-title">product</text>
+            <text x="184" y="143" class="diagram-title">judgment</text>
+            <text x="305" y="65" class="diagram-label">decisions</text>
+            <text x="316" y="155" class="diagram-label">docs</text>
+            <text x="316" y="245" class="diagram-label">shipping</text>
+          </svg>
+        </div>
+        """,
+        "case-studies": """
+        <section class="diagram-band">
+          <article class="diagram-card mini-diagram-card">
+            <p class="meta">Orchestration</p>
+            <svg viewBox="0 0 520 120" role="img" aria-label="Deterministic delivery diagram">
+              <rect x="12" y="34" width="116" height="44" rx="16" class="tone-a"/>
+              <rect x="202" y="34" width="116" height="44" rx="16" class="tone-b"/>
+              <rect x="392" y="34" width="116" height="44" rx="16" class="tone-c"/>
+              <path d="M128 56 H202" class="diagram-line"/>
+              <path d="M318 56 H392" class="diagram-line"/>
+              <text x="39" y="60" class="diagram-label">build specs</text>
+              <text x="234" y="60" class="diagram-label">plan + test</text>
+              <text x="425" y="60" class="diagram-label">ship region</text>
+            </svg>
+          </article>
+          <article class="diagram-card mini-diagram-card">
+            <p class="meta">Visibility</p>
+            <svg viewBox="0 0 520 120" role="img" aria-label="Dependency and health diagram">
+              <circle cx="82" cy="60" r="22" class="tone-a"/>
+              <circle cx="196" cy="36" r="20" class="tone-b"/>
+              <circle cx="196" cy="84" r="20" class="tone-b"/>
+              <circle cx="326" cy="60" r="22" class="tone-c"/>
+              <circle cx="442" cy="60" r="22" class="tone-d"/>
+              <path d="M104 54 L176 40" class="diagram-line"/>
+              <path d="M104 66 L176 80" class="diagram-line"/>
+              <path d="M216 36 L304 56" class="diagram-line"/>
+              <path d="M216 84 L304 64" class="diagram-line"/>
+              <path d="M348 60 L420 60" class="diagram-line"/>
+              <text x="55" y="65" class="diagram-label">service</text>
+              <text x="178" y="41" class="diagram-label">skills</text>
+              <text x="176" y="89" class="diagram-label">health</text>
+              <text x="304" y="65" class="diagram-label">graph</text>
+              <text x="420" y="65" class="diagram-label">owner</text>
+            </svg>
+          </article>
+        </section>
+        """,
+        "how-i-use-ai-as-a-pm-with-a-real-workspace": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 140" role="img" aria-label="Workspace flow diagram">
+            <rect x="18" y="44" width="120" height="46" rx="16" class="tone-a"/>
+            <rect x="168" y="44" width="120" height="46" rx="16" class="tone-b"/>
+            <rect x="318" y="44" width="120" height="46" rx="16" class="tone-c"/>
+            <rect x="468" y="44" width="120" height="46" rx="16" class="tone-d"/>
+            <rect x="618" y="44" width="84" height="46" rx="16" class="tone-e"/>
+            <path d="M138 67 H168" class="diagram-line"/>
+            <path d="M288 67 H318" class="diagram-line"/>
+            <path d="M438 67 H468" class="diagram-line"/>
+            <path d="M588 67 H618" class="diagram-line"/>
+            <text x="46" y="71" class="diagram-label">notes</text>
+            <text x="201" y="71" class="diagram-label">data</text>
+            <text x="355" y="71" class="diagram-label">deck</text>
+            <text x="489" y="71" class="diagram-label">follow-up</text>
+            <text x="642" y="71" class="diagram-label">docs</text>
+          </svg>
+        </section>
+        """,
+        "feature-registries-are-about-operational-clarity": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 170" role="img" aria-label="Dependency clarity diagram">
+            <circle cx="112" cy="86" r="24" class="tone-a"/>
+            <circle cx="264" cy="52" r="22" class="tone-b"/>
+            <circle cx="264" cy="120" r="22" class="tone-b"/>
+            <circle cx="430" cy="86" r="26" class="tone-c"/>
+            <circle cx="596" cy="86" r="24" class="tone-d"/>
+            <path d="M136 78 L242 57" class="diagram-line"/>
+            <path d="M136 94 L242 115" class="diagram-line"/>
+            <path d="M286 52 L404 80" class="diagram-line"/>
+            <path d="M286 120 L404 92" class="diagram-line"/>
+            <path d="M456 86 L572 86" class="diagram-line"/>
+            <text x="80" y="91" class="diagram-label">service</text>
+            <text x="242" y="57" class="diagram-label">owners</text>
+            <text x="244" y="125" class="diagram-label">health</text>
+            <text x="396" y="91" class="diagram-label">dependencies</text>
+            <text x="561" y="91" class="diagram-label">impact</text>
+          </svg>
+        </section>
+        """,
+        "developer-platforms-mostly-fail-on-friction": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 150" role="img" aria-label="Platform adoption flow diagram">
+            <rect x="28" y="56" width="130" height="40" rx="16" class="tone-a"/>
+            <rect x="202" y="56" width="130" height="40" rx="16" class="tone-b"/>
+            <rect x="376" y="56" width="130" height="40" rx="16" class="tone-c"/>
+            <rect x="550" y="56" width="130" height="40" rx="16" class="tone-d"/>
+            <path d="M158 76 H202" class="diagram-line"/>
+            <path d="M332 76 H376" class="diagram-line"/>
+            <path d="M506 76 H550" class="diagram-line"/>
+            <circle cx="180" cy="44" r="5" class="tone-e"/>
+            <circle cx="354" cy="44" r="5" class="tone-e"/>
+            <circle cx="528" cy="44" r="5" class="tone-e"/>
+            <text x="66" y="80" class="diagram-label">setup</text>
+            <text x="232" y="80" class="diagram-label">first run</text>
+            <text x="419" y="80" class="diagram-label">repeatable</text>
+            <text x="591" y="80" class="diagram-label">team use</text>
+            <text x="163" y="37" class="diagram-label">friction</text>
+            <text x="337" y="37" class="diagram-label">friction</text>
+            <text x="511" y="37" class="diagram-label">friction</text>
+          </svg>
+        </section>
+        """,
+        "migration-readiness-is-a-product-problem": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 160" role="img" aria-label="Migration readiness diagram">
+            <rect x="34" y="54" width="120" height="44" rx="16" class="tone-a"/>
+            <rect x="198" y="54" width="120" height="44" rx="16" class="tone-b"/>
+            <rect x="362" y="54" width="120" height="44" rx="16" class="tone-c"/>
+            <rect x="526" y="54" width="120" height="44" rx="16" class="tone-d"/>
+            <path d="M154 76 H198" class="diagram-line"/>
+            <path d="M318 76 H362" class="diagram-line"/>
+            <path d="M482 76 H526" class="diagram-line"/>
+            <path d="M94 116 C182 136 498 136 586 116" class="diagram-line"/>
+            <text x="66" y="79" class="diagram-label">dev loop</text>
+            <text x="223" y="79" class="diagram-label">packaging</text>
+            <text x="396" y="79" class="diagram-label">docs</text>
+            <text x="558" y="79" class="diagram-label">cutover</text>
+            <text x="282" y="132" class="diagram-label">confidence is built before migration starts</text>
+          </svg>
+        </section>
+        """,
+        "trustworthy-ai-products-need-recovery-paths": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 186" role="img" aria-label="AI recovery path diagram">
+            <rect x="26" y="42" width="118" height="42" rx="16" class="tone-a"/>
+            <rect x="194" y="42" width="118" height="42" rx="16" class="tone-b"/>
+            <rect x="362" y="42" width="118" height="42" rx="16" class="tone-c"/>
+            <rect x="530" y="42" width="118" height="42" rx="16" class="tone-d"/>
+            <path d="M144 63 H194" class="diagram-line"/>
+            <path d="M312 63 H362" class="diagram-line"/>
+            <path d="M480 63 H530" class="diagram-line"/>
+            <path d="M421 84 V122" class="diagram-line"/>
+            <path d="M421 122 H290" class="diagram-line"/>
+            <path d="M421 122 H552" class="diagram-line"/>
+            <rect x="224" y="122" width="132" height="36" rx="14" class="tone-e"/>
+            <rect x="486" y="122" width="132" height="36" rx="14" class="tone-e"/>
+            <text x="63" y="67" class="diagram-label">request</text>
+            <text x="232" y="67" class="diagram-label">model</text>
+            <text x="384" y="67" class="diagram-label">check</text>
+            <text x="563" y="67" class="diagram-label">answer</text>
+            <text x="252" y="145" class="diagram-label">fallback</text>
+            <text x="525" y="145" class="diagram-label">human review</text>
+          </svg>
+        </section>
+        """,
+    }
+    return diagrams.get(kind, "")
+
+
 def render_homepage(config, posts, projects, external_writing, case_studies, proof_points, discovery_paths):
     latest_posts = []
     featured_posts = []
@@ -422,7 +606,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         focus_cards.append(
             f"""
             <article class="focus-card">
-              <p class="meta">{html.escape(path["who"])}</p>
               <h3>{html.escape(path["title"])}</h3>
               <p class="focus-summary">{html.escape(path["why"])}</p>
               <p class="focus-detail">{html.escape(item["text"])}</p>
@@ -432,13 +615,16 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         )
 
     body = f"""
-    <section class="hero">
-      <h1>{html.escape(config["title"])}</h1>
-      <p class="lead">{html.escape(config["tagline"])}</p>
-      <div class="hero-links">
-        <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
-        <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
+    <section class="hero hero-layout">
+      <div class="hero-copy">
+        <h1>{html.escape(config["title"])}</h1>
+        <p class="lead">{html.escape(config["tagline"])}</p>
+        <div class="hero-links">
+          <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
+          <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
+        </div>
       </div>
+      {render_diagram("hero")}
     </section>
 
     <section class="proof-grid">
@@ -600,6 +786,7 @@ def render_case_studies_page(config, case_studies):
     <section class="proof-grid case-proof-grid">
       {''.join(summary_html)}
     </section>
+    {render_diagram("case-studies")}
     <section class="section timeline">
       {''.join(cards)}
     </section>
@@ -614,11 +801,13 @@ def render_case_studies_page(config, case_studies):
 
 
 def render_post_page(config, post):
+    post_diagram = render_diagram(post.slug)
     article = f"""
     <article class="post-page prose">
       <p class="meta">{html.escape(post.date)}</p>
       <h1>{html.escape(post.title)}</h1>
       <p class="post-summary">{html.escape(post.summary)}</p>
+      {post_diagram}
       {markdown_to_html(post.body_markdown)}
       <p class="back-link"><a href="{relative_url(f'/blog/{post.slug}/', '/blog/')}">Back to writing</a></p>
     </article>

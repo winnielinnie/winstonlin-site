@@ -33,6 +33,30 @@
       <p class="meta">2026-04-11</p>
       <h1>Trustworthy AI Products Need Recovery Paths</h1>
       <p class="post-summary">The most important part of an AI product is often what happens after the model stops being confidently helpful.</p>
+      
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 186" role="img" aria-label="AI recovery path diagram">
+            <rect x="26" y="42" width="118" height="42" rx="16" class="tone-a"/>
+            <rect x="194" y="42" width="118" height="42" rx="16" class="tone-b"/>
+            <rect x="362" y="42" width="118" height="42" rx="16" class="tone-c"/>
+            <rect x="530" y="42" width="118" height="42" rx="16" class="tone-d"/>
+            <path d="M144 63 H194" class="diagram-line"/>
+            <path d="M312 63 H362" class="diagram-line"/>
+            <path d="M480 63 H530" class="diagram-line"/>
+            <path d="M421 84 V122" class="diagram-line"/>
+            <path d="M421 122 H290" class="diagram-line"/>
+            <path d="M421 122 H552" class="diagram-line"/>
+            <rect x="224" y="122" width="132" height="36" rx="14" class="tone-e"/>
+            <rect x="486" y="122" width="132" height="36" rx="14" class="tone-e"/>
+            <text x="63" y="67" class="diagram-label">request</text>
+            <text x="232" y="67" class="diagram-label">model</text>
+            <text x="384" y="67" class="diagram-label">check</text>
+            <text x="563" y="67" class="diagram-label">answer</text>
+            <text x="252" y="145" class="diagram-label">fallback</text>
+            <text x="525" y="145" class="diagram-label">human review</text>
+          </svg>
+        </section>
+        
       <p>One of the easier ways to fool yourself in AI product work is to spend too much time on the best-case demo.</p>
 <p>The happy path matters. Of course it does. If the product cannot do anything useful when conditions are favorable, there is nothing to build on. But a lot of AI products win attention on the happy path and lose trust everywhere else.</p>
 <p>That is usually because the recovery model is weak.</p>

@@ -112,6 +112,17 @@ nav a.active::after {
   max-width: 960px;
 }
 
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.8fr);
+  gap: 26px;
+  align-items: center;
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
 .hero h1 {
   margin: 0 0 10px;
   max-width: 700px;
@@ -136,6 +147,73 @@ nav a.active::after {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 16px;
+}
+
+.diagram-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(247, 242, 233, 0.94));
+  border: 1px solid rgba(219, 207, 194, 0.92);
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(58, 44, 32, 0.08);
+  overflow: hidden;
+}
+
+.diagram-card svg,
+.post-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-diagram {
+  max-width: 368px;
+  justify-self: end;
+  padding: 6px;
+}
+
+.diagram-line {
+  fill: none;
+  stroke: rgba(23, 20, 18, 0.36);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.diagram-label {
+  font-family: var(--sans);
+  font-size: 14px;
+  fill: #5f5954;
+  letter-spacing: 0.01em;
+}
+
+.diagram-title {
+  font-family: var(--display);
+  font-size: 22px;
+  fill: #211b17;
+}
+
+.tone-a {
+  fill: rgba(243, 248, 246, 0.96);
+  stroke: rgba(46, 90, 84, 0.22);
+}
+
+.tone-b {
+  fill: rgba(252, 245, 239, 0.96);
+  stroke: rgba(155, 73, 44, 0.20);
+}
+
+.tone-c {
+  fill: rgba(247, 243, 232, 0.96);
+  stroke: rgba(151, 118, 51, 0.20);
+}
+
+.tone-d {
+  fill: rgba(255, 253, 249, 0.98);
+  stroke: rgba(23, 20, 18, 0.12);
+}
+
+.tone-e {
+  fill: rgba(250, 245, 238, 0.96);
+  stroke: rgba(113, 50, 31, 0.15);
 }
 
 .hero-kickerline {
@@ -459,6 +537,21 @@ nav a.active::after {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 10px 0 2px;
+}
+
+.diagram-band {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.mini-diagram-card {
+  padding: 14px 14px 10px;
+}
+
+.mini-diagram-card .meta {
+  margin-bottom: 10px;
 }
 
 .proof-card {
@@ -855,6 +948,16 @@ h3 {
   margin: 0 auto;
 }
 
+.post-diagram {
+  max-width: 680px;
+  margin: 18px auto 24px;
+  padding: 10px 12px;
+  border: 1px solid rgba(219, 207, 194, 0.92);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(247, 242, 233, 0.95));
+  box-shadow: 0 10px 22px rgba(58, 44, 32, 0.07);
+}
+
 .post-page h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.98;
@@ -872,6 +975,7 @@ code {
   .proof-grid,
   .card-grid,
   .path-grid,
+  .diagram-band,
   .external-grid,
   .feature-grid,
   .study-grid,
@@ -896,6 +1000,11 @@ code {
 
   .hero {
     padding-top: 4px;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .spotlight-card {
