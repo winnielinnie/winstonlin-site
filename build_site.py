@@ -390,36 +390,43 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         {
             "label": "AI-PM workspace",
             "title": "Turn raw material into decisions and artifacts",
-            "text": "Use one working environment for customer notes, spreadsheets, screenshots, decks, follow-up, and publishable drafts.",
+            "text": "Turn notes, spreadsheets, screenshots, and drafts into decks, follow-up, and publishable work.",
             "url": relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/'),
             "link_label": "Read note",
         },
         {
             "label": "Platform product",
             "title": "Work at the layer where adoption is won or lost",
-            "text": "Product work across OCI Functions, Kubernetes, and CI/CD, with an emphasis on migration quality, friction, and recovery.",
+            "text": "Shape product across OCI Functions, Kubernetes, and CI/CD, with a focus on migration quality, friction, and recovery.",
             "url": relative_url('/', '/case-studies/'),
             "link_label": "View work",
         },
         {
             "label": "Business strategy",
             "title": "Apply the same lens to operating models",
-            "text": "Advise operators on growth, service design, and business systems.",
+            "text": "Apply product thinking to growth, service design, and operating systems.",
             "url": relative_url('/', '/blog/growth-breaks-in-the-operating-model/'),
             "link_label": "Read note",
         },
     ]
-    practice_html = []
-    for item in practice_items:
-        practice_html.append(
+    focus_cards = []
+    for path, item in zip(discovery_paths, practice_items):
+        links_html = [f'<a href="{item["url"]}">{html.escape(item["link_label"])}</a>']
+        seen_urls = {item["url"]}
+        for link in path["links"]:
+            link_url = relative_url("/", link["url"])
+            if link_url in seen_urls:
+                continue
+            links_html.append(f'<a href="{link_url}">{html.escape(link["label"])}</a>')
+            break
+        focus_cards.append(
             f"""
-            <article class="practice-item">
-              <p class="meta">{html.escape(item["label"])}</p>
-              <div class="practice-copy">
-                <h3>{html.escape(item["title"])}</h3>
-                <p>{html.escape(item["text"])}</p>
-              </div>
-              <a class="practice-link" href="{item["url"]}">{html.escape(item["link_label"])}</a>
+            <article class="focus-card">
+              <p class="meta">{html.escape(path["who"])}</p>
+              <h3>{html.escape(path["title"])}</h3>
+              <p class="focus-summary">{html.escape(path["why"])}</p>
+              <p class="focus-detail">{html.escape(item["text"])}</p>
+              <div class="path-links">{''.join(links_html)}</div>
             </article>
             """
         )
@@ -442,16 +449,8 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
       <div class="section-head">
         <h2>What I work on</h2>
       </div>
-      <div class="card-grid path-grid">
-        {''.join(path_cards)}
-      </div>
-      <div class="practice-panel">
-        <div class="section-head practice-head">
-          <h2>In practice</h2>
-        </div>
-        <div class="practice-list">
-          {''.join(practice_html)}
-        </div>
+      <div class="card-grid focus-grid">
+        {''.join(focus_cards)}
       </div>
     </section>
 
