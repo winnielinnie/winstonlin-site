@@ -374,6 +374,12 @@ nav a.active::after {
   margin: 0;
 }
 
+.page-hero-writing h1 {
+  max-width: none;
+  font-size: clamp(1.82rem, 3.25vw, 2.5rem);
+  text-wrap: nowrap;
+}
+
 .page-topic-strip {
   display: flex;
   flex-wrap: wrap;
@@ -1472,6 +1478,11 @@ code {
 
   .page-hero {
     margin-bottom: 22px;
+  }
+
+  .page-hero-writing h1 {
+    font-size: clamp(1.9rem, 6vw, 2.45rem);
+    text-wrap: balance;
   }
 
   .page-topic-strip {
