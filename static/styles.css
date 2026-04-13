@@ -638,7 +638,7 @@ nav a.active::after {
 
 .about-photo-card {
   padding: 12px;
-  max-width: 230px;
+  max-width: 250px;
   justify-self: start;
   position: sticky;
   top: 22px;
@@ -646,14 +646,23 @@ nav a.active::after {
 
 .about-photo {
   display: block;
+  margin: 0;
   border-radius: 16px;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255, 251, 246, 0.96), rgba(247, 242, 233, 0.94));
 }
 
+.about-photo img,
 .about-photo-visual {
   width: 100%;
+  display: block;
   aspect-ratio: 3 / 4;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% 86%;
+}
+
+.about-photo-visual {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
