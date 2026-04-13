@@ -729,6 +729,10 @@ nav a.active::after {
   margin-top: 16px;
 }
 
+.oracle-blogs-head {
+  gap: 6px;
+}
+
 .oracle-blogs-list {
   max-width: 760px;
 }
@@ -775,10 +779,13 @@ nav a.active::after {
 
 .oracle-blogs-link {
   display: inline-flex;
-  margin-top: 14px;
   font-size: 0.86rem;
   color: var(--accent-deep);
   text-decoration: none;
+}
+
+.oracle-blogs-link-head {
+  margin-top: 0;
 }
 
 .oracle-blogs-link:hover {

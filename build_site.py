@@ -811,12 +811,12 @@ def render_blog_index(config, posts):
         <section class="section oracle-blogs-section">
           <div class="section-head section-head-stack oracle-blogs-head">
             <h2>Also on Oracle Blogs</h2>
+            <a class="oracle-blogs-link oracle-blogs-link-head" href="{oracle_author_url}" target="_blank" rel="noreferrer">View author profile and all Oracle Blogs posts</a>
           </div>
           <div class="oracle-blogs-list">
             <ul>
               {''.join(oracle_blog_items)}
             </ul>
-            <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">See author profile and all blogs on Oracle Blogs</a>
           </div>
         </section>
         """
