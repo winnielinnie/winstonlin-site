@@ -1,9 +1,29 @@
 [
   {
+    "slug": "oci-functions-product-direction",
+    "title": "Reframing OCI Functions Around Adoption and Reliable Execution",
+    "period": "OCI Functions",
+    "tagline": "Shaped product direction for OCI Functions around code-only deploy, developer trust, async clarity, migration readiness, and AI-era execution.",
+    "problem": "OCI Functions had real platform strengths, but the first-run path still felt heavier than the market leaders and the broader story around reliable async work, migration, and agent-style execution was too fragmented.",
+    "what_i_did": [
+      "Built the product thesis and priority order around code-only onboarding, debugging and trust, async clarity, OCI-native automation, and selective expansion into long-running and agent workflows.",
+      "Synthesized customer pain, market shifts, and backlog reality into a clearer roadmap story instead of treating each request as an isolated feature ask.",
+      "Turned detached invocation, delivery destinations, provisioned concurrency, and OCI service adjacency into a more coherent narrative about reliable completion and secure enterprise automation."
+    ],
+    "why_it_was_hard": [
+      "The hard part was sequencing the work honestly: simplify first, earn trust second, then expand into workflow and AI-native execution without turning the product into a grab bag.",
+      "Functions sat in a market where AWS, Azure, Cloudflare, and Vercel were each shaping expectations in different ways, so the product story had to be both credible and differentiated."
+    ],
+    "outcome": [
+      "Created a clearer strategic frame for OCI Functions as the OCI execution layer for automation, integrations, and emerging agent actions.",
+      "Grounded the roadmap in a small set of adoption and trust bets instead of chasing feature parity."
+    ]
+  },
+  {
     "slug": "ai-assisted-functions-workflows",
     "title": "AI-Assisted OCI Functions Workflows",
     "period": "OCI Functions",
-    "tagline": "Worked on AI-assisted setup and troubleshooting for OCI Functions, especially around recovery and next-step guidance.",
+    "tagline": "Explored AI-assisted setup and troubleshooting for OCI Functions, especially around recovery and next-step guidance.",
     "problem": "Serverless adoption often breaks on the first-run experience: packaging, environment setup, troubleshooting, and the distance between docs and a working deployment.",
     "what_i_did": [
       "Explored AI-assisted setup and troubleshooting flows using MCP-style integrations and reusable skills.",
@@ -17,6 +37,26 @@
     "outcome": [
       "Created a credible path for AI-assisted setup and triage instead of treating AI as a novelty.",
       "Sharpened my view that trustworthy AI products need strong recovery paths, explicit boundaries, and good workflow design."
+    ]
+  },
+  {
+    "slug": "oci-functions-migration-and-docs",
+    "title": "Functions Migration and DX Storytelling",
+    "period": "OCI Functions",
+    "tagline": "Built migration, patterns, and docs narratives that made OCI Functions easier to understand for real workloads, not just hello-world demos.",
+    "problem": "A lot of the OCI Functions value was buried in scattered docs and product surfaces. Migration from Lambda, async behavior, and common design patterns were all understandable, but not yet packaged in the way users actually needed.",
+    "what_i_did": [
+      "Developed a migration story for moving AWS Lambda workloads to OCI Functions by preserving business logic and replacing cloud-specific integration code.",
+      "Wrote and shaped practical design content around common Functions patterns, OCI-native integration flows, identity, eventing, and operational gotchas.",
+      "Treated docs and external content as product surface, using them to reduce fear, clarify concept mapping, and shorten time to first useful success."
+    ],
+    "why_it_was_hard": [
+      "Good infrastructure docs have to be precise enough for practitioners while still giving architects and field teams a simple mental model they can reuse.",
+      "The challenge was to tell an honest migration and design story without pretending OCI Functions was identical to Lambda or hiding the platform differences that matter."
+    ],
+    "outcome": [
+      "Created a more credible migration and usage narrative for OCI Functions across docs, blogs, and pattern-oriented content.",
+      "Made it easier to explain OCI Functions as a practical runtime for event-driven automation instead of an abstract serverless feature."
     ]
   },
   {
