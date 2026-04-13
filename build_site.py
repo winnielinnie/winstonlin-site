@@ -503,7 +503,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
         {
             "label": "Platform product",
             "title": "Work at the layer where adoption is won or lost",
-            "text": "Shape product across OCI Functions, Kubernetes, and CI/CD, with a focus on migration quality, friction, and recovery.",
+            "text": "Shape product across OCI Functions, CI/CD, and adjacent platform systems, with a focus on migration quality, friction, and recovery.",
             "url": relative_url('/', '/case-studies/'),
             "link_label": "View work",
         },
@@ -696,7 +696,7 @@ def render_case_studies_page(config, case_studies):
         "Case Studies",
         body,
         "/case-studies/",
-        meta_description="Case studies spanning OCI Functions, Kubernetes, and CI/CD platform work.",
+        meta_description="Case studies spanning OCI Functions, CI/CD, and adjacent platform systems.",
     )
 
 

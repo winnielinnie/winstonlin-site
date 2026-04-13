@@ -1,16 +1,16 @@
 {
   "name": "Winston Lin",
   "title": "AI, infrastructure, and business systems",
-  "tagline": "I’m Winston Lin. I’ve led product across CI/CD, Kubernetes, and serverless. This site brings together case studies, essays, and small tools on AI in practice, platform quality, and business systems.",
+  "tagline": "I’m Winston Lin. I’ve led product across serverless, CI/CD, and developer platforms. This site brings together case studies, essays, and small tools on AI in practice, platform quality, and business systems.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Case studies, essays, and small tools on AI in practice, platform quality, and business systems, with work spanning OCI Functions, Kubernetes, and CI/CD.",
+  "meta_description": "Case studies, essays, and small tools on AI in practice, platform quality, and business systems, with work centered on OCI Functions and CI/CD.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
   "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
   "intro_paragraphs": [
-    "I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on growth, service design, and business systems."
+    "I’ve led product across serverless, CI/CD, and developer platforms, and I also work with operators on growth, service design, and business systems."
   ],
   "focus_areas": [
     "Developer platforms",
@@ -26,7 +26,7 @@
   ],
   "experience_highlights": [
     "Principal Product Manager for OCI Functions, focused on developer experience and execution model",
-    "Previously led product work across OCI Kubernetes Engine and OCI DevOps / CI/CD",
+    "Previously led product work across OCI DevOps / CI/CD and adjacent platform systems",
     "Built internal platform capabilities that shortened delivery cycles and reduced operational drag"
   ]
 }
