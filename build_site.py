@@ -481,7 +481,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
     showcase_html = ""
     if case_studies:
         featured_study = case_studies[0]
-        showcase_takeaway = html.escape(featured_study["outcome"][0]) if featured_study.get("outcome") else ""
+        featured_summary = html.escape(featured_study.get("home_summary", featured_study["tagline"]))
         note_card = ""
         if current_note:
             note_card = f"""
@@ -507,14 +507,13 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head section-head-stack">
             <h2>Featured work</h2>
-            <p class="section-note">A quick slice across recent case work, writing, and public material.</p>
+            <p class="section-note">Recent case work, notes, and public material.</p>
           </div>
           <div class="showcase-grid">
             <article class="showcase-card showcase-primary">
               <p class="meta">{html.escape(featured_study['period'])}</p>
               <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
-              <p class="showcase-summary">{html.escape(featured_study['tagline'])}</p>
-              <p class="showcase-takeaway">{showcase_takeaway}</p>
+              <p class="showcase-summary">{featured_summary}</p>
               <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}">View details</a>
             </article>
             <div class="showcase-stack">
@@ -591,7 +590,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
     <section class="section work-section section-frame section-frame-explore">
       <div class="section-head section-head-stack">
         <h2>Browse by format</h2>
-        <p class="section-note">The site is small: deeper case studies, shorter writing, and a few practical Python tools.</p>
+        <p class="section-note">Deeper case studies, shorter writing, and a few practical Python tools.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
