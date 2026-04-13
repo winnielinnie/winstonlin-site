@@ -1052,12 +1052,13 @@ nav a.active::after {
   display: grid;
   grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
   gap: 18px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .showcase-stack {
   display: grid;
   gap: 18px;
+  height: 100%;
 }
 
 .showcase-card {
@@ -1071,6 +1072,7 @@ nav a.active::after {
 .showcase-primary {
   background: linear-gradient(180deg, rgba(252, 249, 245, 0.99), rgba(247, 243, 237, 0.95));
   border-color: rgba(212, 200, 189, 0.92);
+  height: 100%;
 }
 
 .showcase-stack .showcase-card:first-child {
@@ -1119,6 +1121,18 @@ nav a.active::after {
 
 .showcase-card .spotlight-link {
   margin-top: 12px;
+}
+
+.showcase-primary,
+.showcase-stack .showcase-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase-primary .spotlight-link,
+.showcase-stack .spotlight-link {
+  margin-top: auto;
+  padding-top: 14px;
 }
 
 .post-list-item,
