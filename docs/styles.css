@@ -544,6 +544,14 @@ nav a.active::after {
   margin-top: 8px;
 }
 
+.page-about .page-hero {
+  margin-bottom: 12px;
+}
+
+.page-about .page-hero-copy {
+  padding-bottom: 8px;
+}
+
 .panel,
 .post-card,
 .project-card,
