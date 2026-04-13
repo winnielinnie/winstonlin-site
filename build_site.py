@@ -476,25 +476,29 @@ def render_diagram(kind):
     return diagrams.get(kind, "")
 
 
-def render_homepage(config, posts, projects, external_writing, case_studies):
+def render_homepage(config, posts, projects, case_studies):
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
     if case_studies:
         featured_study = case_studies[0]
+        broader_study = next(
+            (study for study in case_studies if study["slug"] == "sitetracker-enterprise-delivery"),
+            case_studies[1] if len(case_studies) > 1 else None,
+        )
         featured_summary = html.escape(featured_study.get("home_summary", featured_study["tagline"]))
         showcase_cards = [
             f"""
-            <article class="showcase-card showcase-primary">
+            <article class="showcase-card">
               <p class="meta">{html.escape(featured_study['period'])}</p>
-              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
+              <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(featured_study['slug'])}">{html.escape(featured_study['title'])}</a></h3>
               <p class="showcase-summary">{featured_summary}</p>
-              <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}">View details</a>
+              <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}#{html.escape(featured_study['slug'])}">Read case study</a>
             </article>
             """
         ]
-        note_card = ""
         if current_note:
-            note_card = f"""
+            showcase_cards.append(
+                f"""
             <article class="showcase-card">
               <p class="meta">Essay</p>
               <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h3>
@@ -502,28 +506,15 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
               <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read essay</a>
             </article>
             """
-            showcase_cards.append(note_card)
-        article_card = ""
-        if external_writing:
-            article = external_writing[0]
-            article_card = f"""
-            <article class="showcase-card">
-              <p class="meta">Published article</p>
-              <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article.get('short_title', article['title']))}</a></h3>
-              <p>Patterns and design guidance from recent Functions work.</p>
-              <a class="spotlight-link" href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">Read article</a>
-            </article>
-            """
-            showcase_cards.append(article_card)
-        if projects:
-            repo = projects[0]
+            )
+        if broader_study:
             showcase_cards.append(
                 f"""
                 <article class="showcase-card">
-                  <p class="meta">Repository</p>
-                  <h3><a href="{html.escape(repo['url'])}" target="_blank" rel="noreferrer">{html.escape(repo['name'])}</a></h3>
-                  <p>{html.escape(repo['summary'])}</p>
-                  <a class="spotlight-link" href="{html.escape(repo['url'])}" target="_blank" rel="noreferrer">View repository</a>
+                  <p class="meta">{html.escape(broader_study['period'])}</p>
+                  <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(broader_study['slug'])}">{html.escape(broader_study['title'])}</a></h3>
+                  <p>{html.escape(broader_study['tagline'])}</p>
+                  <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}#{html.escape(broader_study['slug'])}">See broader work</a>
                 </article>
                 """
             )
@@ -531,10 +522,10 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head section-head-stack">
             <h2>Featured work</h2>
-            <p class="section-note">Selected examples of product, writing, and platform work.</p>
+            <p class="section-note">Three quick entry points into the work.</p>
           </div>
           <div class="showcase-grid">
-            {''.join(showcase_cards[:4])}
+            {''.join(showcase_cards[:3])}
           </div>
         </section>
         """
@@ -669,11 +660,6 @@ def render_blog_index(config, posts):
         <h1>Essays on platform, AI, and operations</h1>
         <p class="lead">Essays on product friction, migration, AI workflows, and how teams actually get work done.</p>
       </div>
-      <div class="page-topic-strip" aria-label="Writing themes">
-        <span class="topic-pill topic-pill-ai">AI workflows</span>
-        <span class="topic-pill topic-pill-platform">Platform quality</span>
-        <span class="topic-pill topic-pill-strategy">Operating models</span>
-      </div>
     </section>
     <section class="section">
       <div class="section-head section-head-stack">
@@ -707,7 +693,7 @@ def render_case_studies_page(config, case_studies):
         result = html.escape(study["outcome"][0])
         cards.append(
             f"""
-            <article class="timeline-item">
+            <article class="timeline-item" id="{html.escape(study['slug'])}">
               <div class="study-head">
                 <p class="meta">{html.escape(study['period'])}</p>
                 <h2>{html.escape(study['title'])}</h2>
@@ -739,7 +725,6 @@ def render_case_studies_page(config, case_studies):
         <h1>Case studies</h1>
         <p class="lead">Selected projects spanning product, platform, and delivery work.</p>
       </div>
-      {render_diagram("case-studies")}
     </section>
     <section class="section timeline">
       {''.join(cards)}
@@ -848,7 +833,6 @@ def render_not_found_page(config):
 def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
-    external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
     posts = load_posts()
 
@@ -856,7 +840,7 @@ def build():
     shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, case_studies))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
     write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
