@@ -58,52 +58,52 @@
       
             <article class="timeline-item">
               <div class="study-head">
-                <p class="meta">OCI DevOps / CI-CD</p>
-                <h2>Service Installer</h2>
-                <p class="post-summary">Shortened regional software delivery from roughly 3 months to 30 days by turning deployment sequencing into a product instead of tribal knowledge.</p>
+                <p class="meta">OCI Platform Infrastructure</p>
+                <h2>Deterministic Region Delivery</h2>
+                <p class="post-summary">Turned regional delivery from reactive coordination into a deterministic orchestration system, helping compress timelines from months to about 30 days.</p>
               </div>
               <section class="study-problem">
                 <p class="meta">Problem</p>
-                <p>OCI service launches depended on a tangle of manual sequencing, service-specific runbooks, and hidden dependencies. Even when teams knew the path, the process was slow and brittle.</p>
+                <p>Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies. The result was unpredictable timelines, repeated war rooms, and too much operational work happening in real time.</p>
               </section>
               <div class="study-grid">
                 <section class="study-section">
                   <p class="meta">What I did</p>
-                  <ul><li>Helped frame the problem as a reusable orchestration product rather than one more internal process fix.</li><li>Worked through where sequencing could be standardized versus where teams needed controlled escape hatches.</li><li>Pushed toward a model that made dependencies visible enough to reason about instead of leaving them buried in institutional memory.</li></ul>
+                  <ul><li>Helped frame the work as a product for deterministic orchestration rather than one more coordination layer on top of messy existing processes.</li><li>Pushed toward formal build specifications that made build-time dependencies, execution order, and rollback paths explicit enough to validate before execution.</li><li>Focused the design on testability, interventions, and high-confidence rollout sets so teams could catch breakage before it blocked a live regional build.</li></ul>
                 </section>
                 <section class="study-section">
                   <p class="meta">Why it was hard</p>
-                  <ul><li>The hard part was not automation by itself. It was deciding what deserved to become platform behavior versus local exception handling.</li><li>Internal platforms always face the temptation to encode every special case. That usually makes them worse.</li></ul>
+                  <ul><li>The hard part was not automation alone. It was deciding what needed to become shared platform behavior versus what should stay a local service concern.</li><li>Region build systems accumulate exceptions quickly, so the product challenge was creating enough structure to make the plan deterministic without hard-coding every edge case.</li></ul>
                 </section>
                 <section class="study-section">
                   <p class="meta">Outcome</p>
-                  <ul><li>Regional delivery timelines dropped from about 3 months to roughly 30 days.</li><li>The work created a clearer foundation for internal teams to plan launches without having to rediscover the same dependency chains.</li></ul>
+                  <ul><li>Regional delivery timelines dropped from about 3 months to roughly 30 days.</li><li>The work created a more predictable foundation for launch planning, earlier dependency validation, and far less real-time coordination during critical build windows.</li></ul>
                 </section>
               </div>
             </article>
             
             <article class="timeline-item">
               <div class="study-head">
-                <p class="meta">OCI DevOps / CI-CD</p>
-                <h2>Feature Registry with Health and Dependency Tracing</h2>
-                <p class="post-summary">Built a clearer operating picture for features, ownership, and dependency health, helping cut root-cause analysis time by 60%.</p>
+                <p class="meta">OCI Platform Infrastructure</p>
+                <h2>Service Dependency and Health Registry</h2>
+                <p class="post-summary">Built an authoritative model for service dependencies, health, and ownership that helped cut root-cause analysis time by 60%.</p>
               </div>
               <section class="study-problem">
                 <p class="meta">Problem</p>
-                <p>When things broke, people could often identify the symptom quickly but not the ownership chain, dependency path, or blast radius. That made investigation slower than it needed to be.</p>
+                <p>When incidents or build failures happened, teams could usually see the symptom but not the true dependency path, ownership chain, or impact radius. Critical service data was fragmented, stale, and too dependent on tribal knowledge.</p>
               </section>
               <div class="study-grid">
                 <section class="study-section">
                   <p class="meta">What I did</p>
-                  <ul><li>Helped shape the registry around real operational questions instead of turning it into a passive inventory system.</li><li>Focused the design on health, dependency tracing, and ownership visibility rather than accumulating metadata for its own sake.</li><li>Spent a lot of time on what someone under pressure would need to know first.</li></ul>
+                  <ul><li>Helped shape the service around operational questions rather than turning it into a passive inventory or metadata dump.</li><li>Focused the model on versioned dependency contracts, health states, support attribution, and enough curation to keep the data trustworthy over time.</li><li>Worked backward from operator workflows so the product could answer the questions people actually have during incidents and blocked builds.</li></ul>
                 </section>
                 <section class="study-section">
                   <p class="meta">Why it was hard</p>
-                  <ul><li>Registries are easy to overbuild and easy to let drift into irrelevance.</li><li>The challenge was making the information close enough to reality that engineers would still trust it when they actually needed it.</li></ul>
+                  <ul><li>A registry only matters if it stays current enough to be trusted under pressure.</li><li>The challenge was balancing a strong formal model with an onboarding path that service teams would actually adopt and maintain.</li></ul>
                 </section>
                 <section class="study-section">
                   <p class="meta">Outcome</p>
-                  <ul><li>Root-cause analysis time dropped by about 60%.</li><li>The work made dependency questions far more answerable during incidents and rollout debugging.</li></ul>
+                  <ul><li>Root-cause analysis time dropped by about 60%.</li><li>The work made ownership, dependency, and impact questions far more answerable during incidents, rollout debugging, and regional build operations.</li></ul>
                 </section>
               </div>
             </article>

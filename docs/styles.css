@@ -115,8 +115,8 @@ nav a.active::after {
 .hero h1 {
   margin: 0 0 10px;
   max-width: 700px;
-  font-size: clamp(2.3rem, 4.6vw, 3.95rem);
-  line-height: 0.94;
+  font-size: clamp(1.95rem, 4vw, 3.2rem);
+  line-height: 0.97;
   letter-spacing: -0.035em;
   text-wrap: balance;
   font-family: var(--display);
