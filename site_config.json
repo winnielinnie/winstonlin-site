@@ -29,5 +29,38 @@
     "Principal Product Manager for OCI Functions, focused on developer experience and execution model",
     "Previously led product work across OCI DevOps / CI/CD and adjacent platform systems",
     "Built internal platform capabilities that shortened delivery cycles and reduced operational drag"
-  ]
+  ],
+  "about": {
+    "intro": [
+      "I’m a product leader working across AI workflows, serverless, developer platforms, and business systems. Most of my work sits in the overlap between technical judgment, workflow design, and the practical realities of getting teams to adopt something new.",
+      "Professionally, that has meant leading product across OCI Functions, CI/CD, and adjacent platform systems. Outside the core cloud work, I also advise operators, startups, and smaller businesses on growth, service design, and how to build operating models that actually hold up over time."
+    ],
+    "professional": [
+      {
+        "title": "Product leadership",
+        "text": "Lead product work where technical depth and product judgment both matter, especially in infrastructure and developer-facing systems."
+      },
+      {
+        "title": "Execution clarity",
+        "text": "Translate ambiguous customer pain into product direction, sharper narratives, and practical execution paths."
+      },
+      {
+        "title": "Public surface area",
+        "text": "Build public-facing artifacts too: docs, migration stories, demos, writing, and smaller tools that make a product easier to understand and trust."
+      }
+    ],
+    "personal": [
+      "I like work that gets closer to the real environment, whether that means sitting with users, walking an operational workflow end to end, or understanding the business constraints around a product.",
+      "Outside of day-to-day product work, I spend time with operators and founders, follow international business closely, and stay interested in how good systems scale across different markets and contexts.",
+      "I also just like building things: small Python tools, workflow experiments, and practical assets that make complicated work feel more usable."
+    ],
+    "interests": [
+      "AI and workflow design",
+      "Developer tools and platform strategy",
+      "Business systems and operating models",
+      "Cross-border growth and market expansion",
+      "Small tools that solve real problems",
+      "Travel, hiking, and seeing how people work in the real world"
+    ]
+  }
 }
