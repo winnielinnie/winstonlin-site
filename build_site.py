@@ -827,15 +827,11 @@ def render_case_studies_page(config, case_studies):
     group_sections = []
     for period, studies in grouped.items():
         group_id = slugify(period)
-        study_links = []
         cards = []
         for study in studies:
             focus = html.escape(study["what_i_did"][0])
             constraint = html.escape(study["why_it_was_hard"][0])
             result = html.escape(study["outcome"][0])
-            study_links.append(
-                f'<a href="#{html.escape(study["slug"])}">{html.escape(study["title"])}</a>'
-            )
             cards.append(
                 f"""
                 <article class="timeline-item" id="{html.escape(study['slug'])}">
@@ -864,12 +860,7 @@ def render_case_studies_page(config, case_studies):
             )
         jump_links.append(
             f"""
-            <article class="jump-row">
-              <h3><a href="#{html.escape(group_id)}">{html.escape(period)}</a></h3>
-              <div class="jump-inline-list">
-                {'<span class="jump-sep">•</span>'.join(study_links)}
-              </div>
-            </article>
+            <a class="jump-area-link" href="#{html.escape(group_id)}">{html.escape(period)}</a>
             """
         )
         group_sections.append(
@@ -898,7 +889,7 @@ def render_case_studies_page(config, case_studies):
         <h2>Jump by area</h2>
         <p class="section-note">Quick links into the main work areas.</p>
       </div>
-      <div class="jump-grid">
+      <div class="jump-scroller">
         {''.join(jump_links)}
       </div>
     </section>
