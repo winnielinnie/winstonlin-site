@@ -1,5 +1,11 @@
 [
   {
+    "label": "Public surface",
+    "name": "winstonlin-site",
+    "url": "https://github.com/winnielinnie/winstonlin-site",
+    "summary": "A lightweight Python-built portfolio site that routes case studies, notes, and project links without a framework."
+  },
+  {
     "label": "Functions pattern",
     "name": "Object Storage Router",
     "url": "https://github.com/winnielinnie/oci-fn-object-storage-router",

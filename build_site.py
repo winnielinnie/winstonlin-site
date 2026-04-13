@@ -236,9 +236,14 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
 <body class="{body_class}">
   <div class="page-shell">
     <header class="site-header">
-      <div>
+      <div class="site-brand">
         <p class="site-kicker">{html.escape(config["location"])}</p>
-        <a href="{relative_url(current_path, '/')}" class="site-name">{html.escape(config["name"])}</a>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="{static_url(current_path, 'winston-headshot.jpg')}" alt="Portrait of Winston">
+          </figure>
+          <a href="{relative_url(current_path, '/')}" class="site-name">{html.escape(config["name"])}</a>
+        </div>
       </div>
       <nav>{"".join(nav_html)}</nav>
     </header>
@@ -537,6 +542,26 @@ def render_diagram(kind):
           </svg>
         </section>
         """,
+        "public-surfaces-should-route-not-recite": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 170" role="img" aria-label="Public surfaces routing diagram">
+            <rect x="38" y="50" width="120" height="42" rx="16" class="tone-a"/>
+            <rect x="204" y="50" width="132" height="42" rx="16" class="tone-b"/>
+            <rect x="382" y="50" width="132" height="42" rx="16" class="tone-c"/>
+            <rect x="560" y="50" width="122" height="42" rx="16" class="tone-d"/>
+            <path d="M158 71 H204" class="diagram-line"/>
+            <path d="M336 71 H382" class="diagram-line"/>
+            <path d="M514 71 H560" class="diagram-line"/>
+            <path d="M270 92 V124" class="diagram-line"/>
+            <path d="M270 124 H622" class="diagram-line"/>
+            <text x="70" y="75" class="diagram-label">profile</text>
+            <text x="238" y="75" class="diagram-label">site</text>
+            <text x="418" y="75" class="diagram-label">repo</text>
+            <text x="587" y="75" class="diagram-label">deeper proof</text>
+            <text x="352" y="144" class="diagram-label">good surfaces route to the next useful depth</text>
+          </svg>
+        </section>
+        """,
     }
     return diagrams.get(kind, "")
 
@@ -681,21 +706,12 @@ def render_homepage(config, posts, projects, case_studies):
 
     body = f"""
     <section class="hero">
-      <div class="hero-layout">
-        <div class="hero-copy">
-          <p class="eyebrow">Work and Writing</p>
-          <h1>{html.escape(config["title"])}</h1>
-          <p class="lead">{html.escape(config["tagline"])}</p>
-          <div class="hero-links">
-            <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
-            <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
-          </div>
-        </div>
-        <div class="hero-aside">
-          <figure class="hero-portrait">
-            <img src="{static_url('/', 'winston-headshot.jpg')}" alt="Portrait of Winston">
-          </figure>
-        </div>
+      <p class="eyebrow">Work and Writing</p>
+      <h1>{html.escape(config["title"])}</h1>
+      <p class="lead">{html.escape(config["tagline"])}</p>
+      <div class="hero-links">
+        <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
+        <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
       </div>
     </section>
 
@@ -714,11 +730,11 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories and experiments</h2>
-        <p class="section-note">Small Python tools, reusable serverless patterns, and a few lighter workflow experiments.</p>
+        <p class="section-note">Small Python tools, reusable serverless patterns, and public-facing workflow experiments.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
-        {''.join(project_cards[:6])}
+        {''.join(project_cards)}
       </div>
     </section>
     """
@@ -727,13 +743,13 @@ def render_homepage(config, posts, projects, case_studies):
 
 def render_blog_index(config, posts):
     featured_posts = []
-    featured_slugs = config.get("home_featured_post_slugs", [])[:3]
+    featured_slugs = config.get("home_featured_post_slugs", [])[:4]
     for slug in featured_slugs:
         post = find_post(posts, slug)
         if post:
             featured_posts.append(post)
     if not featured_posts:
-        featured_posts = posts[:3]
+        featured_posts = posts[:4]
 
     featured_cards = []
     featured_keys = {post.slug for post in featured_posts}

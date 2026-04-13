@@ -21,30 +21,26 @@
 <body class="page-home">
   <div class="page-shell">
     <header class="site-header">
-      <div>
+      <div class="site-brand">
         <p class="site-kicker">San Francisco, CA</p>
-        <a href="./" class="site-name">Winston Lin</a>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="./winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="./" class="site-name">Winston Lin</a>
+        </div>
       </div>
       <nav><a href="./" class="active">Home</a><a href="case-studies/">Case Studies</a><a href="blog/">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
     </header>
     <main>
       
     <section class="hero">
-      <div class="hero-layout">
-        <div class="hero-copy">
-          <p class="eyebrow">Work and Writing</p>
-          <h1>AI, software, and business systems</h1>
-          <p class="lead">I&#x27;m Winston. I work across serverless, platform products, and business systems, and I also advise and invest in smaller businesses and startups. This site brings together case studies, writing, and Python tools from that work.</p>
-          <div class="hero-links">
-            <a class="button-link primary" href="case-studies/">Read case studies</a>
-            <a class="button-link" href="blog/">Browse writing</a>
-          </div>
-        </div>
-        <div class="hero-aside">
-          <figure class="hero-portrait">
-            <img src="./winston-headshot.jpg" alt="Portrait of Winston">
-          </figure>
-        </div>
+      <p class="eyebrow">Work and Writing</p>
+      <h1>AI, software, and business systems</h1>
+      <p class="lead">I&#x27;m Winston. I work across serverless, platform products, and business systems, and I also advise and invest in smaller businesses and startups. This site brings together case studies, writing, and Python tools from that work.</p>
+      <div class="hero-links">
+        <a class="button-link primary" href="case-studies/">Read case studies</a>
+        <a class="button-link" href="blog/">Browse writing</a>
       </div>
     </section>
 
@@ -135,11 +131,17 @@
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories and experiments</h2>
-        <p class="section-note">Small Python tools, reusable serverless patterns, and a few lighter workflow experiments.</p>
+        <p class="section-note">Small Python tools, reusable serverless patterns, and public-facing workflow experiments.</p>
         <a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
         
+            <article class="feature-card">
+              <p class="meta">Public surface</p>
+              <h3><a href="https://github.com/winnielinnie/winstonlin-site" target="_blank" rel="noreferrer">winstonlin-site</a></h3>
+              <p>A lightweight Python-built portfolio site that routes case studies, notes, and project links without a framework.</p>
+            </article>
+            
             <article class="feature-card">
               <p class="meta">Functions pattern</p>
               <h3><a href="https://github.com/winnielinnie/oci-fn-object-storage-router" target="_blank" rel="noreferrer">Object Storage Router</a></h3>
