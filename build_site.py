@@ -29,6 +29,11 @@ def load_json(path):
     return json.loads(Path(path).read_text())
 
 
+def slugify(text):
+    slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    return slug or "section"
+
+
 def parse_frontmatter(text):
     if not text.startswith("---\n"):
         raise ValueError("Missing frontmatter")
@@ -656,8 +661,10 @@ def render_homepage(config, posts, projects, case_studies):
         </section>
         """
 
+    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:6]
+
     project_cards = []
-    for project in projects:
+    for project in selected_projects:
         project_cards.append(
             f"""
             <article class="feature-card">
@@ -727,10 +734,21 @@ def render_homepage(config, posts, projects, case_studies):
       </div>
     </section>
 
+    <section class="section personal-band">
+      <div class="personal-band-photo">
+        <img src="{static_url('/', 'winston-trail.jpg')}" alt="Winston outdoors on a mountain trail">
+      </div>
+      <div class="personal-band-copy">
+        <p class="eyebrow">Beyond the screen</p>
+        <h2>Most of my work starts by getting closer to the real operating environment.</h2>
+        <p class="section-note">That applies to cloud products too: the useful signal is usually in the actual workflow, the terrain around it, and the tradeoffs people live with day to day.</p>
+      </div>
+    </section>
+
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
-        <h2>Selected repositories and experiments</h2>
-        <p class="section-note">Small Python tools, reusable serverless patterns, and public-facing workflow experiments.</p>
+        <h2>Selected repositories</h2>
+        <p class="section-note">A smaller set of Python tools and reusable patterns with real practical use behind them.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -743,13 +761,13 @@ def render_homepage(config, posts, projects, case_studies):
 
 def render_blog_index(config, posts):
     featured_posts = []
-    featured_slugs = config.get("home_featured_post_slugs", [])[:4]
+    featured_slugs = config.get("home_featured_post_slugs", [])[:3]
     for slug in featured_slugs:
         post = find_post(posts, slug)
         if post:
             featured_posts.append(post)
     if not featured_posts:
-        featured_posts = posts[:4]
+        featured_posts = posts[:3]
 
     featured_cards = []
     featured_keys = {post.slug for post in featured_posts}
@@ -810,35 +828,70 @@ def render_blog_index(config, posts):
 
 
 def render_case_studies_page(config, case_studies):
-    cards = []
+    grouped = {}
     for study in case_studies:
-        focus = html.escape(study["what_i_did"][0])
-        constraint = html.escape(study["why_it_was_hard"][0])
-        result = html.escape(study["outcome"][0])
-        cards.append(
+        grouped.setdefault(study["period"], []).append(study)
+
+    jump_links = []
+    group_sections = []
+    for period, studies in grouped.items():
+        group_id = slugify(period)
+        study_links = []
+        cards = []
+        for study in studies:
+            focus = html.escape(study["what_i_did"][0])
+            constraint = html.escape(study["why_it_was_hard"][0])
+            result = html.escape(study["outcome"][0])
+            study_links.append(
+                f'<a href="#{html.escape(study["slug"])}">{html.escape(study["title"])}</a>'
+            )
+            cards.append(
+                f"""
+                <article class="timeline-item" id="{html.escape(study['slug'])}">
+                  <div class="study-head">
+                    <p class="meta">{html.escape(study['period'])}</p>
+                    <h2>{html.escape(study['title'])}</h2>
+                    <p class="post-summary">{html.escape(study['tagline'])}</p>
+                  </div>
+                  <p class="study-problem-copy">{html.escape(study['problem'])}</p>
+                  <div class="study-signal-grid">
+                    <section class="study-signal">
+                      <p class="meta">Focus</p>
+                      <p>{focus}</p>
+                    </section>
+                    <section class="study-signal">
+                      <p class="meta">Constraint</p>
+                      <p>{constraint}</p>
+                    </section>
+                    <section class="study-signal">
+                      <p class="meta">Result</p>
+                      <p>{result}</p>
+                    </section>
+                  </div>
+                </article>
+                """
+            )
+        jump_links.append(
             f"""
-            <article class="timeline-item" id="{html.escape(study['slug'])}">
-              <div class="study-head">
-                <p class="meta">{html.escape(study['period'])}</p>
-                <h2>{html.escape(study['title'])}</h2>
-                <p class="post-summary">{html.escape(study['tagline'])}</p>
-              </div>
-              <p class="study-problem-copy">{html.escape(study['problem'])}</p>
-              <div class="study-signal-grid">
-                <section class="study-signal">
-                  <p class="meta">Focus</p>
-                  <p>{focus}</p>
-                </section>
-                <section class="study-signal">
-                  <p class="meta">Constraint</p>
-                  <p>{constraint}</p>
-                </section>
-                <section class="study-signal">
-                  <p class="meta">Result</p>
-                  <p>{result}</p>
-                </section>
+            <article class="jump-card">
+              <h3><a href="#{html.escape(group_id)}">{html.escape(period)}</a></h3>
+              <div class="jump-link-list">
+                {''.join(study_links)}
               </div>
             </article>
+            """
+        )
+        group_sections.append(
+            f"""
+            <section class="case-group" id="{html.escape(group_id)}">
+              <div class="section-head section-head-stack case-group-head">
+                <h2>{html.escape(period)}</h2>
+                <a class="mini-link" href="#case-jumps">Back to jump list</a>
+              </div>
+              <div class="timeline">
+                {''.join(cards)}
+              </div>
+            </section>
             """
         )
 
@@ -850,8 +903,17 @@ def render_case_studies_page(config, case_studies):
         <p class="lead">Selected projects spanning product, platform, and delivery work.</p>
       </div>
     </section>
-    <section class="section timeline">
-      {''.join(cards)}
+    <section class="section jump-section" id="case-jumps">
+      <div class="section-head section-head-stack">
+        <h2>Jump by area</h2>
+        <p class="section-note">Use the categories below to move straight to the part of the work you care about.</p>
+      </div>
+      <div class="jump-grid">
+        {''.join(jump_links)}
+      </div>
+    </section>
+    <section class="section case-study-groups">
+      {''.join(group_sections)}
     </section>
     """
     return page_layout(
