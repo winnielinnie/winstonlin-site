@@ -945,7 +945,20 @@ def render_case_studies_page(config, case_studies):
 
 def render_about_page(config):
     about = config.get("about", {})
-    intro = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("intro", []))
+    intro_parts = []
+    for index, paragraph in enumerate(about.get("intro", [])):
+        intro_parts.append(f"<p>{html.escape(paragraph)}</p>")
+        if index == 0:
+            intro_parts.append(
+                f"""
+                <figure class="about-photo-card about-photo-card-inline">
+                  <div class="about-photo">
+                    <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
+                  </div>
+                </figure>
+                """
+            )
+    intro = "".join(intro_parts)
     background_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("background", []))
     personal_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("personal", []))
 
@@ -974,11 +987,6 @@ def render_about_page(config):
             {personal_paragraphs}
           </section>
         </div>
-      </div>
-      <div class="about-photo-card">
-        <figure class="about-photo">
-          <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
-        </figure>
       </div>
     </section>
     """
