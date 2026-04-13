@@ -631,12 +631,13 @@ def render_blog_index(config, posts):
       <div class="panel prose page-intro-panel">
         <p class="eyebrow">Writing</p>
         <h1>Notes on AI, platforms, and tools</h1>
-        <p>Short, specific, useful.</p>
+        <p>Product notes on workflow quality, migration, recovery, and the systems behind adoption.</p>
       </div>
     </section>
     <section class="section">
       <div class="section-head">
-        <h2>Start with</h2>
+        <h2>Featured notes</h2>
+        <p class="section-note">A compact place to start.</p>
       </div>
       <div class="feature-grid">
         {''.join(featured_cards)}
@@ -644,7 +645,7 @@ def render_blog_index(config, posts):
     </section>
     <section class="section post-list">
       <div class="section-head">
-        <h2>All notes</h2>
+        <h2>All writing</h2>
       </div>
       {''.join(cards)}
     </section>
@@ -660,15 +661,16 @@ def render_blog_index(config, posts):
 
 def render_case_studies_page(config, case_studies):
     summary_cards = [
-        {"label": "Delivery", "text": "Regional delivery from about 3 months to 30 days."},
-        {"label": "Operations", "text": "Root-cause analysis cut by about 60%."},
-        {"label": "AI workflows", "text": "AI-assisted setup and triage with better recovery."},
+        {"value": "30 days", "label": "Regional delivery", "text": "Build timelines compressed from about 3 months through deterministic orchestration."},
+        {"value": "60%", "label": "Faster RCA", "text": "Dependency and health visibility made incident response materially faster."},
+        {"value": "AI-assisted", "label": "Setup + triage", "text": "Workflow-driven deployment and troubleshooting with clearer recovery paths."},
     ]
     summary_html = []
     for item in summary_cards:
         summary_html.append(
             f"""
             <article class="proof-card">
+              <p class="proof-value">{html.escape(item['value'])}</p>
               <p class="proof-label">{html.escape(item['label'])}</p>
               <p>{html.escape(item['text'])}</p>
             </article>
@@ -715,13 +717,12 @@ def render_case_studies_page(config, case_studies):
       <div class="panel prose page-intro-panel">
         <p class="eyebrow">Case studies</p>
         <h1>Selected product work</h1>
-        <p>Short enough to scan. Specific enough to matter.</p>
+        <p>Three product systems that improved delivery speed, operational clarity, and developer workflow quality.</p>
       </div>
     </section>
     <section class="proof-grid case-proof-grid">
       {''.join(summary_html)}
     </section>
-    {render_diagram("case-studies")}
     <section class="section timeline">
       {''.join(cards)}
     </section>

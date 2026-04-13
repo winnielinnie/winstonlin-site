@@ -274,6 +274,20 @@ nav a.active::after {
   margin-bottom: 14px;
 }
 
+.section-head a {
+  color: var(--accent-deep);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.section-head a:hover {
+  color: var(--ink);
+}
+
 .section-head h2,
 .panel h2,
 .prose h1,
@@ -301,6 +315,11 @@ nav a.active::after {
 .page-intro-panel {
   max-width: 760px;
   background: linear-gradient(180deg, rgba(255, 252, 247, 0.95), rgba(248, 243, 236, 0.96));
+}
+
+.page-intro-panel p:last-child {
+  max-width: 40rem;
+  color: var(--muted);
 }
 
 .panel,
@@ -360,7 +379,7 @@ nav a.active::after {
   background: rgba(255, 252, 247, 0.88);
   border: 1px solid rgba(217, 204, 191, 0.84);
   border-radius: 16px;
-  box-shadow: 0 14px 30px var(--shadow-soft);
+  box-shadow: 0 16px 34px var(--shadow-soft);
   padding: 18px 18px 19px;
   position: relative;
   overflow: hidden;
@@ -544,7 +563,7 @@ nav a.active::after {
   overflow: hidden;
   padding: 18px 18px 16px;
   background: rgba(255, 253, 249, 0.84);
-  box-shadow: 0 12px 24px var(--shadow-soft);
+  box-shadow: 0 16px 30px var(--shadow-soft);
 }
 
 .proof-card:nth-child(1) {
@@ -574,10 +593,14 @@ nav a.active::after {
 .proof-value {
   margin: 0 0 4px;
   font-family: var(--display);
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(1.7rem, 3.4vw, 2.45rem);
   line-height: 0.92;
   letter-spacing: -0.05em;
   color: #1c1714;
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+  text-wrap: balance;
 }
 
 .proof-label {
@@ -729,7 +752,7 @@ nav a.active::after {
   background: rgba(255, 251, 246, 0.88);
   border: 1px solid var(--line);
   border-radius: 18px;
-  box-shadow: 0 16px 32px var(--shadow-soft);
+  box-shadow: 0 16px 34px var(--shadow-soft);
   padding: 20px;
   min-height: 100%;
 }
@@ -855,6 +878,10 @@ nav a.active::after {
 
 .timeline-item::before {
   background: linear-gradient(90deg, rgba(46, 90, 84, 0.28), rgba(155, 73, 44, 0.2));
+}
+
+.timeline-item h2 {
+  max-width: 34rem;
 }
 
 .post-list-item h2 a,
