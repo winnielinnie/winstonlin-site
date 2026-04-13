@@ -729,7 +729,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section work-section section-frame section-frame-explore">
       <div class="section-head section-head-stack">
         <h2>Browse by format</h2>
-        <p class="section-note">Case studies go deeper, writing stays concise, and repositories show the hands-on side.</p>
+        <p class="section-note">Case studies go deeper, writing is faster to scan, and repositories show the hands-on side.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
@@ -739,7 +739,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories</h2>
-        <p class="section-note">A smaller set of Python tools and reusable patterns with real practical use behind them.</p>
+        <p class="section-note">A smaller set of Python tools drawn from real workflow pain, docs work, and platform operations.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -826,7 +826,7 @@ def render_blog_index(config, posts):
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
         <h1>Writing on platform, AI, and operations</h1>
-        <p class="lead">Notes on product friction, migration, AI workflows, and how teams actually get work done.</p>
+        <p class="lead">Short notes on platform judgment, migration, AI workflows, and the systems behind adoption.</p>
       </div>
     </section>
     <section class="section">
@@ -915,15 +915,15 @@ def render_case_studies_page(config, case_studies):
     body = f"""
     <section class="page-hero page-hero-case">
       <div class="page-hero-copy">
-        <p class="eyebrow">Platform and AI work</p>
+        <p class="eyebrow">Product, platform, and delivery</p>
         <h1>Case studies</h1>
-        <p class="lead">Selected projects spanning product, platform, and delivery work.</p>
+        <p class="lead">A small set of projects across product direction, platform quality, and delivery.</p>
       </div>
     </section>
     <section class="section jump-section" id="case-jumps">
       <div class="section-head section-head-stack">
         <h2>Jump by area</h2>
-        <p class="section-note">Quick links into the main work areas.</p>
+        <p class="section-note">Quick ways into the main areas of work.</p>
       </div>
       <div class="jump-scroller">
         {''.join(jump_links)}
