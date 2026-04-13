@@ -498,6 +498,45 @@ def render_diagram(kind):
           </svg>
         </section>
         """,
+        "fun-projects-are-how-i-test-workflow-ideas": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 170" role="img" aria-label="Fun projects workflow diagram">
+            <rect x="36" y="50" width="124" height="42" rx="16" class="tone-a"/>
+            <rect x="204" y="50" width="124" height="42" rx="16" class="tone-b"/>
+            <rect x="372" y="50" width="124" height="42" rx="16" class="tone-c"/>
+            <rect x="540" y="50" width="144" height="42" rx="16" class="tone-d"/>
+            <path d="M160 71 H204" class="diagram-line"/>
+            <path d="M328 71 H372" class="diagram-line"/>
+            <path d="M496 71 H540" class="diagram-line"/>
+            <path d="M436 92 V124" class="diagram-line"/>
+            <path d="M436 124 H274" class="diagram-line"/>
+            <path d="M436 124 H602" class="diagram-line"/>
+            <text x="70" y="75" class="diagram-label">friction</text>
+            <text x="236" y="75" class="diagram-label">small tool</text>
+            <text x="396" y="75" class="diagram-label">real use</text>
+            <text x="574" y="75" class="diagram-label">taste check</text>
+            <text x="294" y="144" class="diagram-label">good experiments earn reuse</text>
+          </svg>
+        </section>
+        """,
+        "one-page-tools-beat-premature-decks": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 164" role="img" aria-label="One-page workflow diagram">
+            <rect x="28" y="56" width="118" height="40" rx="16" class="tone-a"/>
+            <rect x="186" y="56" width="128" height="40" rx="16" class="tone-b"/>
+            <rect x="354" y="56" width="128" height="40" rx="16" class="tone-c"/>
+            <rect x="522" y="56" width="134" height="40" rx="16" class="tone-d"/>
+            <path d="M146 76 H186" class="diagram-line"/>
+            <path d="M314 76 H354" class="diagram-line"/>
+            <path d="M482 76 H522" class="diagram-line"/>
+            <text x="61" y="80" class="diagram-label">notes</text>
+            <text x="223" y="80" class="diagram-label">one pager</text>
+            <text x="388" y="80" class="diagram-label">decision</text>
+            <text x="568" y="80" class="diagram-label">slides later</text>
+            <text x="222" y="132" class="diagram-label">structure first, presentation second</text>
+          </svg>
+        </section>
+        """,
     }
     return diagrams.get(kind, "")
 
@@ -642,13 +681,20 @@ def render_homepage(config, posts, projects, case_studies):
 
     body = f"""
     <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Work and Writing</p>
-        <h1>{html.escape(config["title"])}</h1>
-        <p class="lead">{html.escape(config["tagline"])}</p>
-        <div class="hero-links">
-          <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
-          <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Work and Writing</p>
+          <h1>{html.escape(config["title"])}</h1>
+          <p class="lead">{html.escape(config["tagline"])}</p>
+          <div class="hero-links">
+            <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
+            <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
+          </div>
+        </div>
+        <div class="hero-aside">
+          <figure class="hero-portrait">
+            <img src="{static_url('/', 'winston-headshot.jpg')}" alt="Portrait of Winston">
+          </figure>
         </div>
       </div>
     </section>
@@ -667,12 +713,12 @@ def render_homepage(config, posts, projects, case_studies):
 
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
-        <h2>Selected repositories</h2>
-        <p class="section-note">Mostly small Python tools and reusable patterns drawn from real work.</p>
+        <h2>Selected repositories and experiments</h2>
+        <p class="section-note">Small Python tools, reusable serverless patterns, and a few lighter workflow experiments.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
-        {''.join(project_cards[:3])}
+        {''.join(project_cards[:6])}
       </div>
     </section>
     """

@@ -16,5 +16,23 @@
     "name": "release-note-diff-cli",
     "url": "https://github.com/winnielinnie/release-note-diff-cli",
     "summary": "A small Python script for diffing release notes without reading every line twice."
+  },
+  {
+    "label": "Presentation tool",
+    "name": "tiny-deck-linter",
+    "url": "https://github.com/winnielinnie/tiny-deck-linter",
+    "summary": "Strict outline checks for slide decks before they turn into vague, crowded review material."
+  },
+  {
+    "label": "Workflow utility",
+    "name": "decision-journal-cli",
+    "url": "https://github.com/winnielinnie/decision-journal-cli",
+    "summary": "A compact CLI for keeping decisions, assumptions, and revisit dates visible over time."
+  },
+  {
+    "label": "Local-first experiment",
+    "name": "one-page-canvas",
+    "url": "https://github.com/winnielinnie/one-page-canvas",
+    "summary": "A lightweight browser canvas for shaping one-page strategy artifacts without a backend."
   }
 ]
