@@ -506,23 +506,15 @@ def render_homepage(config, posts, projects, case_studies):
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
     if case_studies:
-        featured_study = case_studies[0]
-        broader_study = next(
-            (study for study in case_studies if study["slug"] == "sitetracker-enterprise-delivery"),
+        featured_study = next(
+            (study for study in case_studies if study["slug"] == "oci-functions-product-direction"),
+            case_studies[0],
+        )
+        delivery_study = next(
+            (study for study in case_studies if study["slug"] == "service-installer"),
             case_studies[1] if len(case_studies) > 1 else None,
         )
-        showcase_items = [
-            {
-                "key": "functions",
-                "label": "Functions",
-                "meta": featured_study["period"],
-                "title": "OCI Functions Product Direction",
-                "summary": "Simpler onboarding, stronger trust, and clearer async execution.",
-                "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
-                "cta": "Read case study",
-                "tone": "showcase-tone-functions",
-            }
-        ]
+        showcase_items = []
         if current_note:
             showcase_items.append(
                 {
@@ -536,16 +528,28 @@ def render_homepage(config, posts, projects, case_studies):
                     "tone": "showcase-tone-workspace",
                 }
             )
-        if broader_study:
+        showcase_items.append(
+            {
+                "key": "functions",
+                "label": "Functions",
+                "meta": featured_study["period"],
+                "title": "OCI Functions Product Direction",
+                "summary": "Simpler onboarding, stronger trust, and clearer async execution.",
+                "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
+                "cta": "Read case study",
+                "tone": "showcase-tone-functions",
+            }
+        )
+        if delivery_study:
             showcase_items.append(
                 {
                     "key": "delivery",
                     "label": "Delivery",
-                    "meta": broader_study["period"],
-                    "title": "Enterprise Delivery Through Discovery",
-                    "summary": "Turning vague enterprise asks into workable solutions and cleaner operations.",
-                    "href": f"{relative_url('/', '/case-studies/')}#{broader_study['slug']}",
-                    "cta": "See broader work",
+                    "meta": delivery_study["period"],
+                    "title": "Regional Delivery Orchestration",
+                    "summary": "Making regional rollout planning, sequencing, and rollback far more deterministic.",
+                    "href": f"{relative_url('/', '/case-studies/')}#{delivery_study['slug']}",
+                    "cta": "See delivery work",
                     "tone": "showcase-tone-delivery",
                 }
             )
