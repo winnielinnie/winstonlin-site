@@ -1090,8 +1090,8 @@ nav a.active::after {
 
 .showcase-tone-workspace {
   background:
-    radial-gradient(circle at top right, rgba(146, 82, 55, 0.055), transparent 22%),
-    linear-gradient(180deg, rgba(251, 248, 244, 0.98), rgba(246, 242, 237, 0.95));
+    radial-gradient(circle at top right, rgba(125, 93, 110, 0.085), transparent 24%),
+    linear-gradient(180deg, rgba(249, 246, 247, 0.98), rgba(244, 240, 242, 0.95));
 }
 
 .showcase-tone-delivery {
@@ -1107,7 +1107,7 @@ nav a.active::after {
 
 .showcase-tone-workspace,
 .showcase-tab[data-showcase-target="workspace"].active {
-  border-color: rgba(216, 202, 194, 0.86);
+  border-color: rgba(203, 191, 198, 0.88);
 }
 
 .showcase-tone-delivery,
@@ -1331,7 +1331,7 @@ nav a.active::after {
 }
 
 .page-case-studies .timeline-item::before {
-  background: linear-gradient(90deg, rgba(115, 55, 90, 0.32), rgba(53, 95, 90, 0.24), rgba(154, 119, 65, 0.18));
+  background: linear-gradient(90deg, rgba(53, 95, 90, 0.34), rgba(53, 95, 90, 0.22), rgba(154, 119, 65, 0.18));
 }
 
 .page-writing .page-hero h1,
