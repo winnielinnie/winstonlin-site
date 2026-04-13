@@ -434,7 +434,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     body = f"""
     <section class="hero">
       <h1>{html.escape(config["title"])}</h1>
-      <p class="hero-kickerline">I build where workflow quality, migration, and operating leverage matter.</p>
+      <p class="hero-kickerline">Product leadership where workflow quality, migration, and operating leverage matter.</p>
       <div class="hero-links">
         <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
         <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
