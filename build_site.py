@@ -930,33 +930,35 @@ def render_about_page(config):
         <p class="lead">A simple page for the broader context behind the work.</p>
       </div>
     </section>
-    <section class="section about-intro-grid">
-      <div class="about-copy prose">
-        {intro}
-      </div>
-      <aside class="about-profile-card">
-        <div class="about-profile-text">
-          <p class="meta">Based in San Francisco</p>
-          <h2>Product, startups, and a few things outside of work.</h2>
-          <ul class="about-fact-list">
-            {fact_items}
-          </ul>
-        </div>
-      </aside>
+    <section class="section about-intro prose">
+      {intro}
     </section>
-    <section class="section about-personal-grid">
+    <section class="section about-facts-strip">
+      <ul class="about-fact-pills">
+        {fact_items}
+      </ul>
+    </section>
+    <section class="section about-story-grid">
       <div class="about-photo-card">
         <figure class="about-photo">
           <img src="{static_url('/about/', 'winston-trail.png')}" alt="Winston standing on a mountain trail">
         </figure>
       </div>
-      <div class="about-personal-copy prose">
-        <p class="eyebrow">Outside of work</p>
-        <h2>A few things I spend time on outside the day job.</h2>
-        {personal_paragraphs}
-        <ul class="about-interest-list">
-          {interest_items}
-        </ul>
+      <div class="about-story-copy">
+        <section class="about-copy-block prose">
+          <p class="eyebrow">Background</p>
+          <h2>Work, place, and a bit of context.</h2>
+          <p>I spend most of my time in product, especially around cloud, infrastructure, and developer tools. I like work that sits close to real use, where the challenge is not just building something capable, but making it understandable and usable for the people shipping with it.</p>
+          <p>Outside of my day job, I invest in and occasionally advise early-stage startups. A lot of that is simply an interest in how things get built, how good judgment compounds over time, and how ideas turn into something durable.</p>
+        </section>
+        <section class="about-copy-block prose">
+          <p class="eyebrow">Outside of work</p>
+          <h2>A few things I spend time on outside the day job.</h2>
+          {personal_paragraphs}
+          <ul class="about-interest-list">
+            {interest_items}
+          </ul>
+        </section>
       </div>
     </section>
     """

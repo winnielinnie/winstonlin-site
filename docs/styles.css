@@ -592,15 +592,6 @@ nav a.active::after {
   gap: 10px;
 }
 
-.about-intro-grid,
-.about-personal-grid {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.62fr) minmax(0, 1.38fr);
-  gap: 22px;
-  align-items: start;
-}
-
-.about-profile-card,
 .about-photo-card {
   background: linear-gradient(180deg, rgba(255, 251, 246, 0.96), rgba(249, 242, 234, 0.94));
   border: 1px solid rgba(217, 204, 191, 0.88);
@@ -609,16 +600,9 @@ nav a.active::after {
   overflow: hidden;
 }
 
-.about-profile-card {
-  padding: 18px;
-}
-
-.about-photo {
-  margin: 0;
-}
-
-.about-profile-text .meta {
-  margin-bottom: 8px;
+.about-intro {
+  max-width: 760px;
+  padding-top: 2px;
 }
 
 .about-photo img {
@@ -631,8 +615,43 @@ nav a.active::after {
   transform-origin: center center;
 }
 
-.about-profile-text h2,
-.about-personal-copy h2 {
+.about-facts-strip {
+  padding-top: 0;
+}
+
+.about-fact-pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.about-fact-pills li {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 201, 188, 0.76);
+  background: rgba(255, 252, 247, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.2;
+  color: #3a332e;
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1.45fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.about-story-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.about-copy-block h2 {
   margin: 0 0 10px;
   color: #35534f;
   font-size: clamp(1.08rem, 1.95vw, 1.3rem);
@@ -643,26 +662,20 @@ nav a.active::after {
   font-weight: 700;
 }
 
-.about-profile-text p:last-child {
-  margin-bottom: 0;
+.about-copy-block .eyebrow {
+  margin-bottom: 8px;
 }
 
-.about-fact-list {
-  margin: 12px 0 0;
-  padding-left: 18px;
-  display: grid;
-  gap: 8px;
-}
-
-.about-fact-list li {
+.about-photo {
   margin: 0;
-  color: #2d2723;
 }
 
 .about-photo-card {
   padding: 12px;
-  max-width: 280px;
+  max-width: 230px;
   justify-self: start;
+  position: sticky;
+  top: 22px;
 }
 
 .about-photo {
@@ -681,7 +694,7 @@ nav a.active::after {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px 18px;
   padding-left: 18px;
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .about-interest-list li {
@@ -1559,8 +1572,7 @@ nav a.active::after {
 
 .page-home .hero h1,
 .page-about .page-hero h1,
-.page-about .about-profile-text h2,
-.page-about .about-personal-copy h2,
+.page-about .about-copy-block h2,
 .page-case-studies .page-hero h1,
 .page-case-studies .section-head h2,
 .page-case-studies .timeline-item h2 {
@@ -1612,10 +1624,18 @@ code {
   .study-grid,
   .two-column,
   .intro-grid,
-  .about-intro-grid,
-  .about-personal-grid,
   .about-interest-list {
     grid-template-columns: 1fr;
+  }
+
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .about-photo-card {
+    position: static;
+    max-width: 220px;
   }
 
   .site-header,
