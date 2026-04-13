@@ -571,8 +571,8 @@ nav a.active::after {
   display: inline-flex;
   align-items: center;
   font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -619,8 +619,29 @@ nav a.active::after {
   line-height: 1.48;
 }
 
-.practice-section {
-  margin-top: 24px;
+.work-section {
+  margin-top: 28px;
+}
+
+.practice-panel {
+  margin-top: 14px;
+  padding: 16px 18px 8px;
+  background: rgba(255, 251, 246, 0.86);
+  border: 1px solid rgba(217, 204, 191, 0.78);
+  border-radius: 18px;
+  box-shadow: 0 14px 30px var(--shadow-soft);
+}
+
+.practice-head {
+  margin-bottom: 8px;
+}
+
+.practice-head h2 {
+  margin-bottom: 0;
+  font-size: 1.02rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 .practice-list {
@@ -639,7 +660,7 @@ nav a.active::after {
 
 .practice-item:first-child {
   border-top: 0;
-  padding-top: 0;
+  padding-top: 4px;
 }
 
 .practice-copy {
@@ -648,11 +669,11 @@ nav a.active::after {
 
 .practice-copy h3 {
   margin: 0 0 4px;
-  font-size: 1.02rem;
-  line-height: 1.2;
-  font-family: var(--sans);
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  font-size: 1.08rem;
+  line-height: 1.14;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .practice-copy p {
@@ -671,23 +692,29 @@ nav a.active::after {
   text-decoration: none;
   white-space: nowrap;
   font-family: var(--sans);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent-deep);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--muted);
 }
 
 .practice-link:hover {
   color: var(--ink);
 }
 
+.path-links {
+  gap: 12px;
+  margin-top: 8px;
+}
+
 .path-links a {
-  background: rgba(255, 255, 255, 0.56);
-  border: 1px solid rgba(217, 204, 191, 0.94);
+  color: var(--muted);
+  text-decoration-color: rgba(23, 20, 18, 0.18);
 }
 
 .path-links a:hover {
-  border-color: rgba(123, 49, 24, 0.32);
-  color: var(--accent-deep);
+  color: var(--ink);
+  text-decoration-color: rgba(23, 20, 18, 0.34);
 }
 
 .post-list-item,
@@ -911,6 +938,10 @@ code {
   .practice-item {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .practice-panel {
+    padding: 16px 16px 8px;
   }
 
   .practice-link {

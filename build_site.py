@@ -404,7 +404,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         {
             "label": "Business strategy",
             "title": "Apply the same lens to operating models",
-            "text": "Advise operators on growth, service design, and business systems across businesses in the US and Asia.",
+            "text": "Advise operators on growth, service design, and business systems.",
             "url": relative_url('/', '/blog/growth-breaks-in-the-operating-model/'),
             "link_label": "Read note",
         },
@@ -426,39 +426,32 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     body = f"""
     <section class="hero">
-      <p class="eyebrow">AI • product • strategy</p>
       <h1>{html.escape(config["title"])}</h1>
-      <p class="lead">{html.escape(config["tagline"])}</p>
+      <p class="hero-kickerline">I’ve led product across AI, serverless, Kubernetes, and CI/CD, and I bring the same product lens to migration quality, operating models, and business systems.</p>
       <div class="hero-links">
         <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
         <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
       </div>
-      <p class="hero-kickerline">I work across AI workflows, serverless, Kubernetes, and CI/CD, and I use the same product lens on migration quality, operating models, and business systems.</p>
-    </section>
-
-    <section class="bio-strip">
-      <p>I’ve led product across CI/CD, Kubernetes, and serverless, and I also work with operators on growth, service design, and business systems across the US and Asia, including businesses in areas like plastics and supplements.</p>
     </section>
 
     <section class="proof-grid">
       {''.join(proof_cards)}
     </section>
 
-    <section class="section">
+    <section class="section work-section">
       <div class="section-head">
         <h2>What I work on</h2>
       </div>
       <div class="card-grid path-grid">
         {''.join(path_cards)}
       </div>
-    </section>
-
-    <section class="section practice-section">
-      <div class="section-head">
-        <h2>In practice</h2>
-      </div>
-      <div class="practice-list">
-        {''.join(practice_html)}
+      <div class="practice-panel">
+        <div class="section-head practice-head">
+          <h2>In practice</h2>
+        </div>
+        <div class="practice-list">
+          {''.join(practice_html)}
+        </div>
       </div>
     </section>
 
