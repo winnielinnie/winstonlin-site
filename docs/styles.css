@@ -1272,6 +1272,8 @@ nav a.active::after {
   margin-top: 34px;
   padding-top: 18px;
   border-top: 1px solid rgba(217, 204, 191, 0.72);
+  background: none;
+  border-radius: 0;
 }
 
 .compact-links {
@@ -1289,12 +1291,6 @@ nav a.active::after {
 
 .compact-links a:hover {
   color: var(--ink);
-}
-
-.site-footer {
-  background:
-    linear-gradient(180deg, rgba(255, 251, 246, 0), rgba(255, 248, 241, 0.55));
-  border-radius: 18px 18px 0 0;
 }
 
 .prose p,
