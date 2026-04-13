@@ -619,6 +619,67 @@ nav a.active::after {
   line-height: 1.48;
 }
 
+.practice-section {
+  margin-top: 24px;
+}
+
+.practice-list {
+  display: grid;
+  gap: 10px;
+}
+
+.practice-item {
+  display: grid;
+  grid-template-columns: 124px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+  padding: 14px 0 15px;
+  border-top: 1px solid rgba(217, 204, 191, 0.78);
+}
+
+.practice-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.practice-copy {
+  min-width: 0;
+}
+
+.practice-copy h3 {
+  margin: 0 0 4px;
+  font-size: 1.02rem;
+  line-height: 1.2;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.practice-copy p {
+  margin: 0;
+  max-width: 620px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #302925;
+}
+
+.practice-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 100%;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+}
+
+.practice-link:hover {
+  color: var(--ink);
+}
+
 .path-links a {
   background: rgba(255, 255, 255, 0.56);
   border: 1px solid rgba(217, 204, 191, 0.94);
@@ -845,6 +906,16 @@ code {
 
   .spotlight-card {
     display: block;
+  }
+
+  .practice-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .practice-link {
+    justify-content: flex-start;
+    min-height: 0;
   }
 
   .spotlight-footer {

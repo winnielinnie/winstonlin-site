@@ -1,14 +1,14 @@
 [
   {
-    "label": "Platform",
-    "text": "CI/CD, Kubernetes, and serverless."
+    "label": "Platform product",
+    "text": "OCI Functions, Kubernetes, and CI/CD."
   },
   {
-    "label": "AI product",
-    "text": "Workflow quality and recovery."
+    "label": "AI workflow",
+    "text": "Notes, data, decks, docs, and follow-up."
   },
   {
     "label": "Business strategy",
-    "text": "Growth, service design, and business systems."
+    "text": "Growth, service design, and operating model."
   }
 ]

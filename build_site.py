@@ -357,9 +357,9 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     featured_work_cards.append(
         f"""
         <article class="feature-card">
-          <p class="meta">Writing</p>
-          <h3><a href="{relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/')}">How I use AI as a PM</a></h3>
-          <p>Keeping AI useful in real product work.</p>
+          <p class="meta">Platform note</p>
+          <h3><a href="{relative_url('/', '/blog/developer-platforms-mostly-fail-on-friction/')}">Developer Platforms Mostly Fail On Friction</a></h3>
+          <p>Why adoption is usually won or lost in the first hour.</p>
         </article>
         """
     )
@@ -374,28 +374,66 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             </article>
             """
         )
-    if projects:
-        project = projects[0]
+    if external_writing:
+        article = external_writing[0]
         featured_work_cards.append(
             f"""
             <article class="feature-card">
-              <p class="meta">Project</p>
-              <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
-              <p>Python pattern for bucket routing.</p>
+              <p class="meta">Oracle blog</p>
+              <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article['title'])}</a></h3>
+              <p>Patterns, migration shape, and practical design guidance for Functions.</p>
+            </article>
+            """
+        )
+
+    practice_items = [
+        {
+            "label": "AI-PM workspace",
+            "title": "Turn raw material into decisions and artifacts",
+            "text": "Use one working environment for customer notes, spreadsheets, screenshots, decks, follow-up, and publishable drafts.",
+            "url": relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/'),
+            "link_label": "Read note",
+        },
+        {
+            "label": "Platform product",
+            "title": "Work at the layer where adoption is won or lost",
+            "text": "Product work across OCI Functions, Kubernetes, and CI/CD, with an emphasis on migration quality, friction, and recovery.",
+            "url": relative_url('/', '/case-studies/'),
+            "link_label": "View work",
+        },
+        {
+            "label": "Business strategy",
+            "title": "Apply the same lens to operating models",
+            "text": "Advise operators on growth, service design, and business systems across businesses in the US and Asia.",
+            "url": relative_url('/', '/blog/growth-breaks-in-the-operating-model/'),
+            "link_label": "Read note",
+        },
+    ]
+    practice_html = []
+    for item in practice_items:
+        practice_html.append(
+            f"""
+            <article class="practice-item">
+              <p class="meta">{html.escape(item["label"])}</p>
+              <div class="practice-copy">
+                <h3>{html.escape(item["title"])}</h3>
+                <p>{html.escape(item["text"])}</p>
+              </div>
+              <a class="practice-link" href="{item["url"]}">{html.escape(item["link_label"])}</a>
             </article>
             """
         )
 
     body = f"""
     <section class="hero">
-      <p class="eyebrow">AI • product • ops</p>
+      <p class="eyebrow">AI • product • strategy</p>
       <h1>{html.escape(config["title"])}</h1>
       <p class="lead">{html.escape(config["tagline"])}</p>
       <div class="hero-links">
         <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
         <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
       </div>
-      <p class="hero-kickerline">Product leader across AI, serverless, Kubernetes, and CI/CD. Advisor, operator, and investor focused on growth and business systems.</p>
+      <p class="hero-kickerline">I work across AI workflows, serverless, Kubernetes, and CI/CD, and I use the same product lens on migration quality, operating models, and business systems.</p>
     </section>
 
     <section class="bio-strip">
@@ -408,10 +446,19 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     <section class="section">
       <div class="section-head">
-        <h2>Focus areas</h2>
+        <h2>What I work on</h2>
       </div>
       <div class="card-grid path-grid">
         {''.join(path_cards)}
+      </div>
+    </section>
+
+    <section class="section practice-section">
+      <div class="section-head">
+        <h2>In practice</h2>
+      </div>
+      <div class="practice-list">
+        {''.join(practice_html)}
       </div>
     </section>
 
