@@ -605,18 +605,18 @@ nav a.active::after {
 }
 
 .feature-card:nth-child(1) {
-  background: linear-gradient(180deg, rgba(251, 246, 241, 0.99), rgba(247, 240, 233, 0.95));
-  border-color: rgba(221, 203, 191, 0.9);
+  background: linear-gradient(180deg, rgba(250, 249, 245, 0.98), rgba(246, 242, 236, 0.94));
+  border-color: rgba(214, 208, 199, 0.88);
 }
 
 .feature-card:nth-child(2) {
-  background: linear-gradient(180deg, rgba(243, 248, 244, 0.99), rgba(238, 243, 238, 0.95));
-  border-color: rgba(198, 214, 206, 0.9);
+  background: linear-gradient(180deg, rgba(250, 249, 245, 0.98), rgba(246, 242, 236, 0.94));
+  border-color: rgba(214, 208, 199, 0.88);
 }
 
 .feature-card:nth-child(3) {
-  background: linear-gradient(180deg, rgba(249, 244, 232, 0.99), rgba(245, 239, 228, 0.95));
-  border-color: rgba(221, 212, 188, 0.9);
+  background: linear-gradient(180deg, rgba(250, 249, 245, 0.98), rgba(246, 242, 236, 0.94));
+  border-color: rgba(214, 208, 199, 0.88);
 }
 
 .feature-card h3 {
@@ -1155,17 +1155,17 @@ nav a.active::after {
 
 .post-list-item:nth-child(3n + 1),
 .timeline-item:nth-child(3n + 1) {
-  background: linear-gradient(180deg, rgba(252, 246, 241, 0.98), rgba(247, 240, 233, 0.96));
+  background: linear-gradient(180deg, rgba(251, 251, 249, 0.98), rgba(246, 247, 243, 0.96));
 }
 
 .post-list-item:nth-child(3n + 2),
 .timeline-item:nth-child(3n + 2) {
-  background: linear-gradient(180deg, rgba(244, 249, 245, 0.98), rgba(239, 244, 239, 0.96));
+  background: linear-gradient(180deg, rgba(251, 251, 249, 0.98), rgba(246, 247, 243, 0.96));
 }
 
 .post-list-item:nth-child(3n),
 .timeline-item:nth-child(3n) {
-  background: linear-gradient(180deg, rgba(250, 245, 234, 0.98), rgba(245, 239, 229, 0.96));
+  background: linear-gradient(180deg, rgba(251, 251, 249, 0.98), rgba(246, 247, 243, 0.96));
 }
 
 .timeline-item::before {
@@ -1207,23 +1207,8 @@ nav a.active::after {
 .study-signal {
   padding: 14px 15px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.56);
   border: 1px solid rgba(217, 204, 191, 0.72);
-}
-
-.study-signal:nth-child(1) {
-  background: linear-gradient(180deg, rgba(255, 247, 241, 0.88), rgba(255, 252, 248, 0.62));
-  border-color: rgba(221, 198, 185, 0.74);
-}
-
-.study-signal:nth-child(2) {
-  background: linear-gradient(180deg, rgba(243, 249, 245, 0.88), rgba(252, 255, 253, 0.64));
-  border-color: rgba(190, 214, 203, 0.78);
-}
-
-.study-signal:nth-child(3) {
-  background: linear-gradient(180deg, rgba(250, 244, 230, 0.9), rgba(255, 252, 246, 0.64));
-  border-color: rgba(221, 210, 182, 0.78);
 }
 
 .study-signal p:last-child {
