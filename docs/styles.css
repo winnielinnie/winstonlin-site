@@ -670,7 +670,7 @@ nav a.active::after {
   grid-template-columns: 180px minmax(0, 1fr);
   gap: 12px;
   align-items: start;
-  padding: 8px 0;
+  padding: 5px 0;
   border-bottom: 1px solid rgba(214, 201, 188, 0.66);
 }
 
@@ -691,32 +691,28 @@ nav a.active::after {
   text-decoration: none;
 }
 
-.jump-chip-list {
+.jump-inline-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 4px 8px;
+  align-items: baseline;
 }
 
-.jump-chip-list a {
+.jump-inline-list a {
   font-size: 0.86rem;
   color: var(--muted);
   text-decoration: none;
-  line-height: 1.2;
+  line-height: 1.35;
 }
 
-.jump-chip-list a {
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(214, 201, 188, 0.78);
-  background: rgba(255, 252, 247, 0.82);
-}
-
-.jump-chip-list a:hover {
+.jump-inline-list a:hover {
   color: var(--accent-deep);
 }
 
-.jump-chip-list a:hover {
-  border-color: rgba(146, 82, 55, 0.28);
+.jump-sep {
+  color: rgba(148, 136, 124, 0.72);
+  font-size: 0.78rem;
+  line-height: 1;
 }
 
 .case-study-groups {

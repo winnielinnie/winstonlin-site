@@ -866,8 +866,8 @@ def render_case_studies_page(config, case_studies):
             f"""
             <article class="jump-row">
               <h3><a href="#{html.escape(group_id)}">{html.escape(period)}</a></h3>
-              <div class="jump-chip-list">
-                {''.join(study_links)}
+              <div class="jump-inline-list">
+                {'<span class="jump-sep">•</span>'.join(study_links)}
               </div>
             </article>
             """
@@ -896,7 +896,7 @@ def render_case_studies_page(config, case_studies):
     <section class="section jump-section" id="case-jumps">
       <div class="section-head section-head-stack">
         <h2>Jump by area</h2>
-        <p class="section-note">Quick links into the main buckets of work.</p>
+        <p class="section-note">Quick links into the main work areas.</p>
       </div>
       <div class="jump-grid">
         {''.join(jump_links)}
