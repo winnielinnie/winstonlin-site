@@ -599,7 +599,7 @@ nav a.active::after {
 .about-main-column {
   display: grid;
   gap: 22px;
-  max-width: 920px;
+  max-width: 100%;
 }
 
 .about-photo-card {
@@ -612,12 +612,13 @@ nav a.active::after {
 
 .about-intro {
   padding-top: 2px;
+  max-width: 920px;
 }
 
 .about-story-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.05fr) 220px;
+  gap: 28px;
   align-items: start;
 }
 
@@ -628,7 +629,7 @@ nav a.active::after {
 }
 
 .about-story-copy-standalone {
-  max-width: 760px;
+  max-width: 920px;
 }
 
 .about-copy-block h2 {
@@ -673,6 +674,14 @@ nav a.active::after {
 .about-photo-card-side {
   padding: 10px;
   margin: 2px 0 0;
+}
+
+.page-about .page-hero-copy,
+.page-about .lead,
+.page-about .about-intro,
+.page-about .about-story-copy-standalone,
+.page-about .about-copy-block {
+  max-width: 920px;
 }
 
 .jump-scroller {
