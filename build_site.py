@@ -212,6 +212,14 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
   <meta name="twitter:card" content="summary">
 """.rstrip()
 
+    body_class = "page-home"
+    if current_path.startswith("/blog/") and current_path != "/blog/":
+        body_class = "page-post"
+    elif current_path == "/blog/":
+        body_class = "page-writing"
+    elif current_path == "/case-studies/":
+        body_class = "page-case-studies"
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -225,7 +233,7 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
   <link rel="alternate" type="application/rss+xml" title="{html.escape(config['name'])} RSS" href="{static_url(current_path, 'feed.xml')}">
   <link rel="stylesheet" href="{static_url(current_path, 'styles.css')}">{og_tags}
 </head>
-<body>
+<body class="{body_class}">
   <div class="page-shell">
     <header class="site-header">
       <div>
@@ -283,7 +291,7 @@ def render_diagram(kind):
         </div>
         """,
         "case-studies": """
-        <section class="diagram-band">
+        <div class="diagram-band">
           <article class="diagram-card mini-diagram-card">
             <p class="meta">Orchestration</p>
             <svg viewBox="0 0 520 120" role="img" aria-label="Deterministic delivery diagram">
@@ -317,7 +325,7 @@ def render_diagram(kind):
               <text x="420" y="65" class="diagram-label">owner</text>
             </svg>
           </article>
-        </section>
+        </div>
         """,
         "how-i-use-ai-as-a-pm-with-a-real-workspace": """
         <section class="post-diagram">
@@ -426,6 +434,44 @@ def render_diagram(kind):
           </svg>
         </section>
         """,
+        "growth-breaks-in-the-operating-model": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 172" role="img" aria-label="Operating model diagram">
+            <rect x="26" y="50" width="124" height="42" rx="16" class="tone-a"/>
+            <rect x="190" y="50" width="124" height="42" rx="16" class="tone-b"/>
+            <rect x="354" y="50" width="124" height="42" rx="16" class="tone-c"/>
+            <rect x="518" y="50" width="124" height="42" rx="16" class="tone-d"/>
+            <path d="M150 71 H190" class="diagram-line"/>
+            <path d="M314 71 H354" class="diagram-line"/>
+            <path d="M478 71 H518" class="diagram-line"/>
+            <path d="M354 92 V122" class="diagram-line"/>
+            <path d="M354 122 H246" class="diagram-line"/>
+            <path d="M354 122 H462" class="diagram-line"/>
+            <text x="58" y="75" class="diagram-label">demand</text>
+            <text x="224" y="75" class="diagram-label">handoffs</text>
+            <text x="394" y="75" class="diagram-label">service</text>
+            <text x="550" y="75" class="diagram-label">margin</text>
+            <text x="282" y="141" class="diagram-label">operating model decides what scales cleanly</text>
+          </svg>
+        </section>
+        """,
+        "why-i-still-like-small-python-tools": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 154" role="img" aria-label="Small Python tools diagram">
+            <rect x="42" y="52" width="136" height="40" rx="16" class="tone-a"/>
+            <rect x="222" y="52" width="136" height="40" rx="16" class="tone-b"/>
+            <rect x="402" y="52" width="136" height="40" rx="16" class="tone-c"/>
+            <rect x="582" y="52" width="96" height="40" rx="16" class="tone-e"/>
+            <path d="M178 72 H222" class="diagram-line"/>
+            <path d="M358 72 H402" class="diagram-line"/>
+            <path d="M538 72 H582" class="diagram-line"/>
+            <text x="72" y="76" class="diagram-label">rough task</text>
+            <text x="261" y="76" class="diagram-label">script</text>
+            <text x="437" y="76" class="diagram-label">clean output</text>
+            <text x="604" y="76" class="diagram-label">less drag</text>
+          </svg>
+        </section>
+        """,
     }
     return diagrams.get(kind, "")
 
@@ -499,7 +545,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
         {
             "label": "AI-PM workspace",
             "title": "AI workflows",
-            "text": "Recovery, workflow quality, and usable output from messy raw material.",
+            "text": "Use notes, files, and prompts as one working loop instead of separate tasks.",
             "url": relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/'),
             "link_label": "Read essay",
             "icon": "glyph-ai",
@@ -507,7 +553,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
         {
             "label": "Platform product",
             "title": "Platform product",
-            "text": "Migration, reliability, and developer experience at platform scale.",
+            "text": "Focus on the parts of platform work that decide adoption: migration, reliability, and first-run quality.",
             "url": relative_url('/', '/case-studies/'),
             "link_label": "View case studies",
             "icon": "glyph-platform",
@@ -515,7 +561,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
         {
             "label": "Business systems",
             "title": "Business systems",
-            "text": "Growth, service design, and operating models that hold up under scale.",
+            "text": "Apply the same product lens to growth, service design, and the operating model behind delivery.",
             "url": relative_url('/', '/blog/growth-breaks-in-the-operating-model/'),
             "link_label": "Read essay",
             "icon": "glyph-strategy",
@@ -611,11 +657,16 @@ def render_blog_index(config, posts):
             """
         )
     body = f"""
-    <section class="hero page-hero">
-      <div class="hero-copy page-hero-copy">
+    <section class="page-hero page-hero-writing">
+      <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
         <h1>Essays on platform, AI, and operations</h1>
-        <p class="lead">Short essays on workflow quality, migration, AI product design, and operating models.</p>
+        <p class="lead">Notes on product friction, migration, AI workflows, and how teams actually get work done.</p>
+      </div>
+      <div class="page-topic-strip" aria-label="Writing themes">
+        <span class="topic-pill topic-pill-ai">AI workflows</span>
+        <span class="topic-pill topic-pill-platform">Platform quality</span>
+        <span class="topic-pill topic-pill-strategy">Operating models</span>
       </div>
     </section>
     <section class="section">
@@ -684,12 +735,13 @@ def render_case_studies_page(config, case_studies):
         )
 
     body = f"""
-    <section class="hero page-hero">
-      <div class="hero-copy page-hero-copy">
+    <section class="page-hero page-hero-case">
+      <div class="page-hero-copy">
         <p class="eyebrow">Platform and AI work</p>
         <h1>Case studies</h1>
-        <p class="lead">Five examples across serverless, platform systems, and enterprise delivery.</p>
+        <p class="lead">A few pieces of work across Functions, platform systems, and enterprise delivery.</p>
       </div>
+      {render_diagram("case-studies")}
     </section>
     <section class="section timeline">
       {''.join(cards)}

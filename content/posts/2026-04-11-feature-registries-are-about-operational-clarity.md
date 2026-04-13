@@ -2,7 +2,7 @@
 title: Feature Registries Are About Operational Clarity
 date: 2026-03-24
 slug: feature-registries-are-about-operational-clarity
-summary: A good feature registry is less about cataloging and more about making dependency and health questions answerable under pressure.
+summary: A registry matters when it can answer what broke, who owns it, and what changed while something is already going wrong.
 ---
 
 Feature registries sound more abstract than they usually are.

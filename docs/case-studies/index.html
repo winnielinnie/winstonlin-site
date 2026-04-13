@@ -18,7 +18,7 @@
   <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/case-studies/">
   <meta name="twitter:card" content="summary">
 </head>
-<body>
+<body class="page-case-studies">
   <div class="page-shell">
     <header class="site-header">
       <div>
@@ -29,12 +29,49 @@
     </header>
     <main>
       
-    <section class="hero page-hero">
-      <div class="hero-copy page-hero-copy">
+    <section class="page-hero page-hero-case">
+      <div class="page-hero-copy">
         <p class="eyebrow">Platform and AI work</p>
         <h1>Case studies</h1>
-        <p class="lead">Five examples across serverless, platform systems, and enterprise delivery.</p>
+        <p class="lead">A few pieces of work across Functions, platform systems, and enterprise delivery.</p>
       </div>
+      
+        <div class="diagram-band">
+          <article class="diagram-card mini-diagram-card">
+            <p class="meta">Orchestration</p>
+            <svg viewBox="0 0 520 120" role="img" aria-label="Deterministic delivery diagram">
+              <rect x="12" y="34" width="116" height="44" rx="16" class="tone-a"/>
+              <rect x="202" y="34" width="116" height="44" rx="16" class="tone-b"/>
+              <rect x="392" y="34" width="116" height="44" rx="16" class="tone-c"/>
+              <path d="M128 56 H202" class="diagram-line"/>
+              <path d="M318 56 H392" class="diagram-line"/>
+              <text x="39" y="60" class="diagram-label">build specs</text>
+              <text x="234" y="60" class="diagram-label">plan + test</text>
+              <text x="425" y="60" class="diagram-label">ship region</text>
+            </svg>
+          </article>
+          <article class="diagram-card mini-diagram-card">
+            <p class="meta">Visibility</p>
+            <svg viewBox="0 0 520 120" role="img" aria-label="Dependency and health diagram">
+              <circle cx="82" cy="60" r="22" class="tone-a"/>
+              <circle cx="196" cy="36" r="20" class="tone-b"/>
+              <circle cx="196" cy="84" r="20" class="tone-b"/>
+              <circle cx="326" cy="60" r="22" class="tone-c"/>
+              <circle cx="442" cy="60" r="22" class="tone-d"/>
+              <path d="M104 54 L176 40" class="diagram-line"/>
+              <path d="M104 66 L176 80" class="diagram-line"/>
+              <path d="M216 36 L304 56" class="diagram-line"/>
+              <path d="M216 84 L304 64" class="diagram-line"/>
+              <path d="M348 60 L420 60" class="diagram-line"/>
+              <text x="55" y="65" class="diagram-label">service</text>
+              <text x="178" y="41" class="diagram-label">skills</text>
+              <text x="176" y="89" class="diagram-label">health</text>
+              <text x="304" y="65" class="diagram-label">graph</text>
+              <text x="420" y="65" class="diagram-label">owner</text>
+            </svg>
+          </article>
+        </div>
+        
     </section>
     <section class="section timeline">
       
@@ -43,7 +80,7 @@
               <div class="study-head">
                 <p class="meta">OCI Functions</p>
                 <h2>AI-Assisted OCI Functions Workflows</h2>
-                <p class="post-summary">Worked on AI-assisted setup and troubleshooting flows for OCI Functions, with emphasis on recovery and operationally useful output.</p>
+                <p class="post-summary">Worked on AI-assisted setup and troubleshooting for OCI Functions, especially around recovery and next-step guidance.</p>
               </div>
               <p class="study-problem-copy">Serverless adoption often breaks on the first-run experience: packaging, environment setup, troubleshooting, and the distance between docs and a working deployment.</p>
               <div class="study-signal-grid">
@@ -67,7 +104,7 @@
               <div class="study-head">
                 <p class="meta">OCI Containers</p>
                 <h2>Scaling OKE for AI and Platform Workloads</h2>
-                <p class="post-summary">Focused product investments that made OKE more viable for AI and production workloads, especially around host images, observability, and node lifecycle friction.</p>
+                <p class="post-summary">Prioritized product work that made OKE more usable for AI and other demanding workloads.</p>
               </div>
               <p class="study-problem-copy">The real blockers were operational: slow or brittle node bring-up, image availability issues, limited observability, and infrastructure rough edges that became painful at scale.</p>
               <div class="study-signal-grid">
@@ -91,7 +128,7 @@
               <div class="study-head">
                 <p class="meta">OCI Dev Platform</p>
                 <h2>Dependency and Health Registry</h2>
-                <p class="post-summary">Built a model for dependencies, health, and ownership that made root-cause analysis materially faster.</p>
+                <p class="post-summary">Built a dependency and health model that made incidents easier to reason about.</p>
               </div>
               <p class="study-problem-copy">When incidents or build failures happened, teams could usually see the symptom but not the real dependency path, ownership chain, or impact radius.</p>
               <div class="study-signal-grid">
@@ -115,7 +152,7 @@
               <div class="study-head">
                 <p class="meta">OCI Dev Platform</p>
                 <h2>Regional Delivery Orchestration</h2>
-                <p class="post-summary">Turned regional delivery from reactive coordination into an orchestration system with clearer sequencing, validation, and rollback paths.</p>
+                <p class="post-summary">Turned regional delivery from reactive coordination into a system with clearer sequencing, validation, and rollback paths.</p>
               </div>
               <p class="study-problem-copy">Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies.</p>
               <div class="study-signal-grid">
@@ -139,7 +176,7 @@
               <div class="study-head">
                 <p class="meta">Sitetracker</p>
                 <h2>Enterprise Delivery Through Better Discovery</h2>
-                <p class="post-summary">Led enterprise implementations by turning vague requests into working solutions, clearer processes, and software teams could actually adopt.</p>
+                <p class="post-summary">Led enterprise implementations by turning vague requests into working solutions and clearer operating processes.</p>
               </div>
               <p class="study-problem-copy">Customers often arrived with feature requests, but the real challenge was usually buried in broken handoffs, unclear ownership, inconsistent field operations, or reporting gaps.</p>
               <div class="study-signal-grid">

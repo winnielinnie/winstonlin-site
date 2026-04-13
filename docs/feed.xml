@@ -9,63 +9,63 @@
     <link>https://winnielinnie.github.io/winstonlin-site/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/</guid>
     <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
-    <description>The useful version of AI for product work is less about clever prompts and more about having a workspace where notes, data, drafts, and assets can compound.</description>
+    <description>The useful version of AI for product work is a real workspace that keeps notes, data, drafts, and assets in the same loop.</description>
   </item>
   <item>
     <title>Growth Breaks In The Operating Model</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/growth-breaks-in-the-operating-model/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/growth-breaks-in-the-operating-model/</guid>
     <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
-    <description>A lot of businesses think they have a growth problem when the real constraint is the operating model behind how they sell, serve, and deliver value.</description>
+    <description>A lot of growth problems are really handoff, pricing, and service-definition problems wearing a growth label.</description>
   </item>
   <item>
     <title>AI Support Is A Workflow Design Problem</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/ai-support-products-are-workflow-products/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/ai-support-products-are-workflow-products/</guid>
     <pubDate>Fri, 03 Apr 2026 00:00:00 GMT</pubDate>
-    <description>A lot of AI support tooling gets framed as a model problem when the harder and more durable work is really in workflow design.</description>
+    <description>The hardest part of AI support is usually not the model. It is deciding what the system can do, when it should stop, and how it fits the real workflow.</description>
   </item>
   <item>
     <title>Trustworthy AI Products Need Recovery Paths</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/trustworthy-ai-products-need-recovery-paths/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/trustworthy-ai-products-need-recovery-paths/</guid>
     <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
-    <description>The most important part of an AI product is often what happens after the model stops being confidently helpful.</description>
+    <description>Trust comes less from the best answer than from what the system does when it is unsure.</description>
   </item>
   <item>
     <title>Developer Platforms Mostly Fail On Friction</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/developer-platforms-mostly-fail-on-friction/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/developer-platforms-mostly-fail-on-friction/</guid>
     <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
-    <description>Missing features get attention, but most adoption problems start with friction that seems too small to matter.</description>
+    <description>Most platform products lose in the first hour, not in the roadmap review.</description>
   </item>
   <item>
     <title>Feature Registries Are About Operational Clarity</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/feature-registries-are-about-operational-clarity/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/feature-registries-are-about-operational-clarity/</guid>
     <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
-    <description>A good feature registry is less about cataloging and more about making dependency and health questions answerable under pressure.</description>
+    <description>A registry matters when it can answer what broke, who owns it, and what changed while something is already going wrong.</description>
   </item>
   <item>
     <title>Migration Readiness Is A Product Problem</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/</guid>
     <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
-    <description>Teams often talk about migration as field work or services work, but product choices shape how hard a migration feels long before a customer starts.</description>
+    <description>Migration pain is often designed into packaging, docs, and defaults long before a customer ever starts.</description>
   </item>
   <item>
     <title>What Building Internal Platforms Taught Me</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/what-building-internal-platforms-taught-me/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/what-building-internal-platforms-taught-me/</guid>
     <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
-    <description>Internal platforms expose product weaknesses quickly because the users are close enough to tell you exactly where the drag is.</description>
+    <description>Internal platforms teach product judgment quickly because the users are technical, close to the work, and too busy to tolerate fluff.</description>
   </item>
   <item>
     <title>Why I Still Like Small Python Tools</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/why-i-still-like-small-python-tools/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/why-i-still-like-small-python-tools/</guid>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-    <description>Small utilities do not get much attention, but they are still one of the best ways to reduce recurring operational drag.</description>
+    <description>Small scripts still earn their keep when they remove one repeated annoyance from the week.</description>
   </item>
 </channel>
 </rss>

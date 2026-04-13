@@ -3,7 +3,7 @@
     "slug": "ai-assisted-functions-workflows",
     "title": "AI-Assisted OCI Functions Workflows",
     "period": "OCI Functions",
-    "tagline": "Worked on AI-assisted setup and troubleshooting flows for OCI Functions, with emphasis on recovery and operationally useful output.",
+    "tagline": "Worked on AI-assisted setup and troubleshooting for OCI Functions, especially around recovery and next-step guidance.",
     "problem": "Serverless adoption often breaks on the first-run experience: packaging, environment setup, troubleshooting, and the distance between docs and a working deployment.",
     "what_i_did": [
       "Explored AI-assisted setup and troubleshooting flows using MCP-style integrations and reusable skills.",
@@ -23,7 +23,7 @@
     "slug": "oke-ai-ml-platform-improvements",
     "title": "Scaling OKE for AI and Platform Workloads",
     "period": "OCI Containers",
-    "tagline": "Focused product investments that made OKE more viable for AI and production workloads, especially around host images, observability, and node lifecycle friction.",
+    "tagline": "Prioritized product work that made OKE more usable for AI and other demanding workloads.",
     "problem": "The real blockers were operational: slow or brittle node bring-up, image availability issues, limited observability, and infrastructure rough edges that became painful at scale.",
     "what_i_did": [
       "Worked across customer signals, internal constraints, and roadmap tradeoffs to focus on the platform gaps that most directly blocked adoption.",
@@ -43,7 +43,7 @@
     "slug": "feature-registry",
     "title": "Dependency and Health Registry",
     "period": "OCI Dev Platform",
-    "tagline": "Built a model for dependencies, health, and ownership that made root-cause analysis materially faster.",
+    "tagline": "Built a dependency and health model that made incidents easier to reason about.",
     "problem": "When incidents or build failures happened, teams could usually see the symptom but not the real dependency path, ownership chain, or impact radius.",
     "what_i_did": [
       "Helped shape the service around operational questions rather than turning it into a passive inventory.",
@@ -63,7 +63,7 @@
     "slug": "service-installer",
     "title": "Regional Delivery Orchestration",
     "period": "OCI Dev Platform",
-    "tagline": "Turned regional delivery from reactive coordination into an orchestration system with clearer sequencing, validation, and rollback paths.",
+    "tagline": "Turned regional delivery from reactive coordination into a system with clearer sequencing, validation, and rollback paths.",
     "problem": "Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies.",
     "what_i_did": [
       "Helped frame the work as a product for orchestration rather than one more coordination layer on top of messy existing processes.",
@@ -83,7 +83,7 @@
     "slug": "sitetracker-enterprise-delivery",
     "title": "Enterprise Delivery Through Better Discovery",
     "period": "Sitetracker",
-    "tagline": "Led enterprise implementations by turning vague requests into working solutions, clearer processes, and software teams could actually adopt.",
+    "tagline": "Led enterprise implementations by turning vague requests into working solutions and clearer operating processes.",
     "problem": "Customers often arrived with feature requests, but the real challenge was usually buried in broken handoffs, unclear ownership, inconsistent field operations, or reporting gaps.",
     "what_i_did": [
       "Ran discovery with business and operational stakeholders to separate stated requests from the actual workflow and service problems underneath them.",

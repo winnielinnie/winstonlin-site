@@ -2,7 +2,7 @@
 title: AI Support Is A Workflow Design Problem
 date: 2026-04-03
 slug: ai-support-products-are-workflow-products
-summary: A lot of AI support tooling gets framed as a model problem when the harder and more durable work is really in workflow design.
+summary: The hardest part of AI support is usually not the model. It is deciding what the system can do, when it should stop, and how it fits the real workflow.
 ---
 
 I think a lot of AI support products are described from the wrong center of gravity.

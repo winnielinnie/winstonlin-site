@@ -2,7 +2,7 @@
 title: Growth Breaks In The Operating Model
 date: 2026-04-07
 slug: growth-breaks-in-the-operating-model
-summary: A lot of businesses think they have a growth problem when the real constraint is the operating model behind how they sell, serve, and deliver value.
+summary: A lot of growth problems are really handoff, pricing, and service-definition problems wearing a growth label.
 ---
 
 One pattern shows up over and over in growing businesses.

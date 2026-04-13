@@ -2,7 +2,7 @@
 title: Trustworthy AI Products Need Recovery Paths
 date: 2026-03-31
 slug: trustworthy-ai-products-need-recovery-paths
-summary: The most important part of an AI product is often what happens after the model stops being confidently helpful.
+summary: Trust comes less from the best answer than from what the system does when it is unsure.
 ---
 
 One of the easier ways to fool yourself in AI product work is to spend too much time on the best-case demo.
