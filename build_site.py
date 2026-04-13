@@ -918,9 +918,8 @@ def render_case_studies_page(config, case_studies):
 def render_about_page(config):
     about = config.get("about", {})
     intro = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("intro", []))
-    fact_items = "".join(f"<li>{html.escape(item)}</li>" for item in about.get("facts", []))
+    background_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("background", []))
     personal_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("personal", []))
-    interest_items = "".join(f"<li>{html.escape(item)}</li>" for item in about.get("interests", []))
 
     body = f"""
     <section class="page-hero page-hero-about">
@@ -933,11 +932,6 @@ def render_about_page(config):
     <section class="section about-intro prose">
       {intro}
     </section>
-    <section class="section about-facts-strip">
-      <ul class="about-fact-pills">
-        {fact_items}
-      </ul>
-    </section>
     <section class="section about-story-grid">
       <div class="about-photo-card">
         <figure class="about-photo">
@@ -947,17 +941,13 @@ def render_about_page(config):
       <div class="about-story-copy">
         <section class="about-copy-block prose">
           <p class="eyebrow">Background</p>
-          <h2>Work, place, and a bit of context.</h2>
-          <p>I spend most of my time in product, especially around cloud, infrastructure, and developer tools. I like work that sits close to real use, where the challenge is not just building something capable, but making it understandable and usable for the people shipping with it.</p>
-          <p>Outside of my day job, I invest in and occasionally advise early-stage startups. A lot of that is simply an interest in how things get built, how good judgment compounds over time, and how ideas turn into something durable.</p>
+          <h2>Where I come from.</h2>
+          {background_paragraphs}
         </section>
         <section class="about-copy-block prose">
           <p class="eyebrow">Outside of work</p>
           <h2>A few things I spend time on outside the day job.</h2>
           {personal_paragraphs}
-          <ul class="about-interest-list">
-            {interest_items}
-          </ul>
         </section>
       </div>
     </section>

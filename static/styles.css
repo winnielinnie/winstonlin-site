@@ -615,30 +615,6 @@ nav a.active::after {
   transform-origin: center center;
 }
 
-.about-facts-strip {
-  padding-top: 0;
-}
-
-.about-fact-pills {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.about-fact-pills li {
-  margin: 0;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(214, 201, 188, 0.76);
-  background: rgba(255, 252, 247, 0.78);
-  font-size: 0.88rem;
-  line-height: 1.2;
-  color: #3a332e;
-}
-
 .about-story-grid {
   display: grid;
   grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1.45fr);
@@ -687,18 +663,6 @@ nav a.active::after {
 
 .about-photo img {
   object-position: 52% 62%;
-}
-
-.about-interest-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 7px 18px;
-  padding-left: 18px;
-  margin-top: 12px;
-}
-
-.about-interest-list li {
-  margin: 0;
 }
 
 .jump-row {
@@ -1623,8 +1587,7 @@ code {
   .jump-grid,
   .study-grid,
   .two-column,
-  .intro-grid,
-  .about-interest-list {
+  .intro-grid {
     grid-template-columns: 1fr;
   }
 
