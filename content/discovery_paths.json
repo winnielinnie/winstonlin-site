@@ -1,6 +1,6 @@
 [
   {
-    "title": "AI in real work",
+    "title": "AI in practice",
     "who": "AI",
     "why": "Workflow quality, recovery, and usable output.",
     "links": [
@@ -9,13 +9,13 @@
         "url": "/blog/trustworthy-ai-products-need-recovery-paths/"
       },
       {
-        "label": "Workspace article",
+        "label": "Workspace essay",
         "url": "/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/"
       }
     ]
   },
   {
-    "title": "Platform product work",
+    "title": "Platform systems",
     "who": "Platform",
     "why": "Developer experience, migration, and reliability.",
     "links": [

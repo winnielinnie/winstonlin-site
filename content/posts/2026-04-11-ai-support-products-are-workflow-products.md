@@ -1,5 +1,5 @@
 ---
-title: AI Support Products Are Workflow Products
+title: AI Support Is A Workflow Design Problem
 date: 2026-04-11
 slug: ai-support-products-are-workflow-products
 summary: A lot of AI support tooling gets framed as a model problem when the harder and more durable work is really in workflow design.

@@ -454,10 +454,10 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         if current_note:
             note_card = f"""
             <article class="showcase-card">
-              <p class="meta">Featured note</p>
+              <p class="meta">From the essays</p>
               <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h3>
               <p>How I use a real workspace to turn notes, files, and raw material into shipping work.</p>
-              <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read note</a>
+              <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read essay</a>
             </article>
             """
         article_card = ""
@@ -465,7 +465,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
             article = external_writing[0]
             article_card = f"""
             <article class="showcase-card">
-              <p class="meta">Oracle blog</p>
+              <p class="meta">Published article</p>
               <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article['title'])}</a></h3>
               <p>Patterns, migration shape, and practical design guidance from recent Functions work.</p>
               <a class="spotlight-link" href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">Read article</a>
@@ -474,7 +474,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         showcase_html = f"""
         <section class="section showcase-section">
           <div class="section-head">
-            <h2>Selected work</h2>
+            <h2>Case study spotlight</h2>
             <a href="{relative_url('/', '/case-studies/')}">View case studies</a>
           </div>
           <div class="showcase-grid">
@@ -497,7 +497,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         project_cards.append(
             f"""
             <article class="feature-card">
-              <p class="meta">Open source</p>
+              <p class="meta">{html.escape(project['label'])}</p>
               <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
               <p>{html.escape(project['summary'])}</p>
             </article>
@@ -551,7 +551,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     body = f"""
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Selected work and writing</p>
+        <p class="eyebrow">Case studies, essays, and tools</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
@@ -568,7 +568,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     <section class="section work-section">
       <div class="section-head">
         <h2>Browse by area</h2>
-        <p class="section-note">Three paths through the site.</p>
+        <p class="section-note">Three ways to move through the work.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
@@ -579,7 +579,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     <section class="section">
       <div class="section-head">
-        <h2>Selected tools</h2>
+        <h2>Open source</h2>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -630,14 +630,14 @@ def render_blog_index(config, posts):
     <section class="section page-intro">
       <div class="panel prose page-intro-panel">
         <p class="eyebrow">Writing</p>
-        <h1>Notes on AI, platforms, and tools</h1>
-        <p>Product notes on workflow quality, migration, recovery, and the systems behind adoption.</p>
+        <h1>Essays on platform, AI, and operations</h1>
+        <p>Short product essays on workflow quality, migration, recovery, and the systems behind adoption.</p>
       </div>
     </section>
     <section class="section">
       <div class="section-head">
-        <h2>Featured notes</h2>
-        <p class="section-note">A compact place to start.</p>
+        <h2>Start here</h2>
+        <p class="section-note">Three essays to start with.</p>
       </div>
       <div class="feature-grid">
         {''.join(featured_cards)}
@@ -655,7 +655,7 @@ def render_blog_index(config, posts):
         "Writing",
         body,
         "/blog/",
-        meta_description="Notes on developer platforms, migration, AI workflow design, and small Python tools.",
+        meta_description="Essays on platform quality, migration, AI workflow design, and small Python tools.",
     )
 
 
@@ -715,9 +715,9 @@ def render_case_studies_page(config, case_studies):
     body = f"""
     <section class="section page-intro">
       <div class="panel prose page-intro-panel">
-        <p class="eyebrow">Case studies</p>
-        <h1>Selected product work</h1>
-        <p>Three product systems that improved delivery speed, operational clarity, and developer workflow quality.</p>
+        <p class="eyebrow">Platform and AI work</p>
+        <h1>Case studies</h1>
+        <p>Three examples of product systems that improved delivery speed, operational clarity, and workflow quality.</p>
       </div>
     </section>
     <section class="proof-grid case-proof-grid">
@@ -732,7 +732,7 @@ def render_case_studies_page(config, case_studies):
         "Case Studies",
         body,
         "/case-studies/",
-        meta_description="Selected product case studies spanning OCI Functions, Kubernetes, and CI/CD platform work.",
+        meta_description="Case studies spanning OCI Functions, Kubernetes, and CI/CD platform work.",
     )
 
 

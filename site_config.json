@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
   "title": "AI, infrastructure, and business systems",
-  "tagline": "I’m Winston Lin. I’ve led product across CI/CD, Kubernetes, and serverless. This site pulls together selected work and notes on AI in practice, platform quality, and business systems.",
+  "tagline": "I’m Winston Lin. I’ve led product across CI/CD, Kubernetes, and serverless. This site brings together case studies, essays, and small tools on AI in practice, platform quality, and business systems.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Winston Lin writes about AI workflows, software platforms, infrastructure, and business systems, with work spanning OCI Functions, Kubernetes, CI/CD, and operator-led growth.",
+  "meta_description": "Case studies, essays, and small tools on AI in practice, platform quality, and business systems, with work spanning OCI Functions, Kubernetes, and CI/CD.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
