@@ -1335,6 +1335,26 @@ nav a.active::after {
   background: linear-gradient(90deg, rgba(115, 55, 90, 0.32), rgba(53, 95, 90, 0.24), rgba(154, 119, 65, 0.18));
 }
 
+.page-writing .page-hero h1,
+.page-writing .section-head h2 {
+  color: #6d4638;
+}
+
+.page-writing .feature-card h3 a,
+.page-writing .post-list-item h2 a {
+  color: #2f2724;
+}
+
+.page-case-studies .page-hero h1,
+.page-case-studies .section-head h2,
+.page-case-studies .timeline-item h2 {
+  color: #35534f;
+}
+
+.page-case-studies .study-head .meta {
+  color: rgba(53, 95, 90, 0.8);
+}
+
 .page-case-studies .diagram-band {
   max-width: 920px;
 }
