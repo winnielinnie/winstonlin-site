@@ -45,28 +45,48 @@
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head showcase-head">
             <h2>Featured work</h2>
-            <p class="section-note">Representative work across product direction, delivery, and day-to-day practice.</p>
           </div>
-          <div class="showcase-grid">
+          <div class="showcase-tabs" role="tablist" aria-label="Featured work">
             
-            <article class="showcase-card">
-              <p class="meta">OCI Functions</p>
-              <h3><a href="case-studies/#oci-functions-product-direction">OCI Functions Product Direction</a></h3>
-              <p class="showcase-summary">Built OCI Functions direction around simpler onboarding, developer trust, and reliable async execution.</p>
-              <a class="spotlight-link" href="case-studies/#oci-functions-product-direction">Read case study</a>
-            </article>
+                <button class="showcase-tab active" type="button" data-showcase-target="functions" aria-pressed="true">
+                  <span>Functions</span>
+                </button>
+                
+                <button class="showcase-tab" type="button" data-showcase-target="workspace" aria-pressed="false">
+                  <span>Workspace</span>
+                </button>
+                
+                <button class="showcase-tab" type="button" data-showcase-target="delivery" aria-pressed="false">
+                  <span>Delivery</span>
+                </button>
+                
+          </div>
+          <div class="showcase-panels">
             
-            <article class="showcase-card">
-              <p class="meta">Essay</p>
-              <h3><a href="blog/how-i-use-ai-as-a-pm-with-a-real-workspace/">AI PM Workspace</a></h3>
-              <p>A practical workspace for turning raw material into shipping work.</p>
-              <a class="spotlight-link" href="blog/how-i-use-ai-as-a-pm-with-a-real-workspace/">Read essay</a>
-            </article>
-            
-                <article class="showcase-card">
-                  <p class="meta">Sitetracker</p>
-                  <h3><a href="case-studies/#sitetracker-enterprise-delivery">Enterprise Delivery Through Discovery</a></h3>
-                  <p>Led enterprise implementations by turning vague requests into working solutions and clearer operating processes.</p>
+                <article class="showcase-card showcase-tone-functions active" data-showcase-panel="functions">
+                  <div class="showcase-panel-copy">
+                    <p class="meta">OCI Functions</p>
+                    <h3><a href="case-studies/#oci-functions-product-direction">OCI Functions Product Direction</a></h3>
+                    <p class="showcase-summary">Simpler onboarding, stronger trust, and clearer async execution.</p>
+                  </div>
+                  <a class="spotlight-link" href="case-studies/#oci-functions-product-direction">Read case study</a>
+                </article>
+                
+                <article class="showcase-card showcase-tone-workspace" data-showcase-panel="workspace" hidden>
+                  <div class="showcase-panel-copy">
+                    <p class="meta">Essay</p>
+                    <h3><a href="blog/how-i-use-ai-as-a-pm-with-a-real-workspace/">AI PM Workspace</a></h3>
+                    <p class="showcase-summary">How I use one workspace to move from notes and files to shipping work.</p>
+                  </div>
+                  <a class="spotlight-link" href="blog/how-i-use-ai-as-a-pm-with-a-real-workspace/">Read essay</a>
+                </article>
+                
+                <article class="showcase-card showcase-tone-delivery" data-showcase-panel="delivery" hidden>
+                  <div class="showcase-panel-copy">
+                    <p class="meta">Sitetracker</p>
+                    <h3><a href="case-studies/#sitetracker-enterprise-delivery">Enterprise Delivery Through Discovery</a></h3>
+                    <p class="showcase-summary">Turning vague enterprise asks into workable solutions and cleaner operations.</p>
+                  </div>
                   <a class="spotlight-link" href="case-studies/#sitetracker-enterprise-delivery">See broader work</a>
                 </article>
                 
@@ -139,5 +159,31 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
+      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      function setActive(key) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.showcaseTarget === key;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        panels.forEach((panel) => {
+          const active = panel.dataset.showcasePanel === key;
+          panel.classList.toggle("active", active);
+          panel.hidden = !active;
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          setActive(tab.dataset.showcaseTarget);
+        });
+      });
+    });
+  </script>
 </body>
 </html>

@@ -249,6 +249,32 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
       <div class="compact-links">{''.join(footer_links)}</div>
     </footer>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {{
+      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
+      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      function setActive(key) {{
+        tabs.forEach((tab) => {{
+          const active = tab.dataset.showcaseTarget === key;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-pressed", active ? "true" : "false");
+        }});
+        panels.forEach((panel) => {{
+          const active = panel.dataset.showcasePanel === key;
+          panel.classList.toggle("active", active);
+          panel.hidden = !active;
+        }});
+      }}
+
+      tabs.forEach((tab) => {{
+        tab.addEventListener("click", function () {{
+          setActive(tab.dataset.showcaseTarget);
+        }});
+      }});
+    }});
+  </script>
 </body>
 </html>
 """
@@ -485,36 +511,66 @@ def render_homepage(config, posts, projects, case_studies):
             (study for study in case_studies if study["slug"] == "sitetracker-enterprise-delivery"),
             case_studies[1] if len(case_studies) > 1 else None,
         )
-        featured_summary = html.escape(featured_study.get("home_summary", featured_study["tagline"]))
-        showcase_cards = [
-            f"""
-            <article class="showcase-card">
-              <p class="meta">{html.escape(featured_study['period'])}</p>
-              <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(featured_study['slug'])}">OCI Functions Product Direction</a></h3>
-              <p class="showcase-summary">{featured_summary}</p>
-              <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}#{html.escape(featured_study['slug'])}">Read case study</a>
-            </article>
-            """
+        showcase_items = [
+            {
+                "key": "functions",
+                "label": "Functions",
+                "meta": featured_study["period"],
+                "title": "OCI Functions Product Direction",
+                "summary": "Simpler onboarding, stronger trust, and clearer async execution.",
+                "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
+                "cta": "Read case study",
+                "tone": "showcase-tone-functions",
+            }
         ]
         if current_note:
-            showcase_cards.append(
-                f"""
-            <article class="showcase-card">
-              <p class="meta">Essay</p>
-              <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">AI PM Workspace</a></h3>
-              <p>A practical workspace for turning raw material into shipping work.</p>
-              <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read essay</a>
-            </article>
-            """
+            showcase_items.append(
+                {
+                    "key": "workspace",
+                    "label": "Workspace",
+                    "meta": "Essay",
+                    "title": "AI PM Workspace",
+                    "summary": "How I use one workspace to move from notes and files to shipping work.",
+                    "href": relative_url('/', f'/blog/{current_note.slug}/'),
+                    "cta": "Read essay",
+                    "tone": "showcase-tone-workspace",
+                }
             )
         if broader_study:
-            showcase_cards.append(
+            showcase_items.append(
+                {
+                    "key": "delivery",
+                    "label": "Delivery",
+                    "meta": broader_study["period"],
+                    "title": "Enterprise Delivery Through Discovery",
+                    "summary": "Turning vague enterprise asks into workable solutions and cleaner operations.",
+                    "href": f"{relative_url('/', '/case-studies/')}#{broader_study['slug']}",
+                    "cta": "See broader work",
+                    "tone": "showcase-tone-delivery",
+                }
+            )
+        showcase_tabs = []
+        showcase_panels = []
+        for index, item in enumerate(showcase_items[:3]):
+            active_attr = "true" if index == 0 else "false"
+            active_class = " active" if index == 0 else ""
+            hidden_attr = "" if index == 0 else ' hidden'
+            showcase_tabs.append(
                 f"""
-                <article class="showcase-card">
-                  <p class="meta">{html.escape(broader_study['period'])}</p>
-                  <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(broader_study['slug'])}">Enterprise Delivery Through Discovery</a></h3>
-                  <p>{html.escape(broader_study['tagline'])}</p>
-                  <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}#{html.escape(broader_study['slug'])}">See broader work</a>
+                <button class="showcase-tab{active_class}" type="button" data-showcase-target="{html.escape(item['key'])}" aria-pressed="{active_attr}">
+                  <span>{html.escape(item['label'])}</span>
+                </button>
+                """
+            )
+            showcase_panels.append(
+                f"""
+                <article class="showcase-card {html.escape(item['tone'])}{active_class}" data-showcase-panel="{html.escape(item['key'])}"{hidden_attr}>
+                  <div class="showcase-panel-copy">
+                    <p class="meta">{html.escape(item['meta'])}</p>
+                    <h3><a href="{html.escape(item['href'])}">{html.escape(item['title'])}</a></h3>
+                    <p class="showcase-summary">{html.escape(item['summary'])}</p>
+                  </div>
+                  <a class="spotlight-link" href="{html.escape(item['href'])}">{html.escape(item['cta'])}</a>
                 </article>
                 """
             )
@@ -522,10 +578,12 @@ def render_homepage(config, posts, projects, case_studies):
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head showcase-head">
             <h2>Featured work</h2>
-            <p class="section-note">Representative work across product direction, delivery, and day-to-day practice.</p>
           </div>
-          <div class="showcase-grid">
-            {''.join(showcase_cards[:3])}
+          <div class="showcase-tabs" role="tablist" aria-label="Featured work">
+            {''.join(showcase_tabs)}
+          </div>
+          <div class="showcase-panels">
+            {''.join(showcase_panels)}
           </div>
         </section>
         """

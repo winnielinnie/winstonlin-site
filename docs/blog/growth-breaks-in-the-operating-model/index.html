@@ -79,5 +79,31 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
+      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      function setActive(key) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.showcaseTarget === key;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        panels.forEach((panel) => {
+          const active = panel.dataset.showcasePanel === key;
+          panel.classList.toggle("active", active);
+          panel.hidden = !active;
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          setActive(tab.dataset.showcaseTarget);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
