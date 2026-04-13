@@ -1,6 +1,6 @@
 ---
 title: Developer Platforms Mostly Fail On Friction
-date: 2026-04-11
+date: 2026-03-27
 slug: developer-platforms-mostly-fail-on-friction
 summary: Missing features get attention, but most adoption problems start with friction that seems too small to matter.
 ---

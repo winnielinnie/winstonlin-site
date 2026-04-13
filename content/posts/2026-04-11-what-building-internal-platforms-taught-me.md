@@ -1,6 +1,6 @@
 ---
 title: What Building Internal Platforms Taught Me
-date: 2026-04-11
+date: 2026-03-18
 slug: what-building-internal-platforms-taught-me
 summary: Internal platforms expose product weaknesses quickly because the users are close enough to tell you exactly where the drag is.
 ---

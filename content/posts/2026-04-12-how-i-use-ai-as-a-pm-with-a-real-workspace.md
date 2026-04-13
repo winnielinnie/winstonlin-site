@@ -1,6 +1,6 @@
 ---
 title: How I Use AI as a PM With a Real Workspace
-date: 2026-04-12
+date: 2026-04-10
 slug: how-i-use-ai-as-a-pm-with-a-real-workspace
 summary: The useful version of AI for product work is less about clever prompts and more about having a workspace where notes, data, drafts, and assets can compound.
 ---

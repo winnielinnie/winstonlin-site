@@ -1,6 +1,6 @@
 ---
 title: Migration Readiness Is A Product Problem
-date: 2026-04-11
+date: 2026-03-21
 slug: migration-readiness-is-a-product-problem
 summary: Teams often talk about migration as field work or services work, but product choices shape how hard a migration feels long before a customer starts.
 ---

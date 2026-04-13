@@ -1,6 +1,6 @@
 ---
 title: Why I Still Like Small Python Tools
-date: 2026-04-11
+date: 2026-03-14
 slug: why-i-still-like-small-python-tools
 summary: Small utilities do not get much attention, but they are still one of the best ways to reduce recurring operational drag.
 ---
