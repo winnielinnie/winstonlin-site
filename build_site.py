@@ -476,7 +476,7 @@ def render_diagram(kind):
     return diagrams.get(kind, "")
 
 
-def render_homepage(config, posts, projects, external_writing, case_studies, discovery_paths):
+def render_homepage(config, posts, projects, external_writing, case_studies):
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
     if case_studies:
@@ -486,7 +486,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
         if current_note:
             note_card = f"""
             <article class="showcase-card">
-              <span class="card-glyph glyph-ai" aria-hidden="true"></span>
               <p class="meta">From the essays</p>
               <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h3>
               <p>A practical workspace for turning raw material into shipping work.</p>
@@ -498,7 +497,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
             article = external_writing[0]
             article_card = f"""
             <article class="showcase-card">
-              <span class="card-glyph glyph-platform" aria-hidden="true"></span>
               <p class="meta">Published article</p>
               <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article.get('short_title', article['title']))}</a></h3>
               <p>Patterns and design guidance from recent Functions work.</p>
@@ -507,13 +505,12 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
             """
         showcase_html = f"""
         <section class="section showcase-section section-frame section-frame-spotlight">
-          <div class="section-head">
-            <h2>Current focus</h2>
-            <a href="{relative_url('/', '/case-studies/')}">All case studies</a>
+          <div class="section-head section-head-stack">
+            <h2>Featured work</h2>
+            <p class="section-note">A quick slice across recent case work, writing, and public material.</p>
           </div>
           <div class="showcase-grid">
             <article class="showcase-card showcase-primary">
-              <span class="card-glyph glyph-functions" aria-hidden="true"></span>
               <p class="meta">{html.escape(featured_study['period'])}</p>
               <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
               <p class="showcase-summary">{html.escape(featured_study['tagline'])}</p>
@@ -533,7 +530,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
         project_cards.append(
             f"""
             <article class="feature-card">
-              <span class="card-glyph glyph-code" aria-hidden="true"></span>
               <p class="meta">{html.escape(project['label'])}</p>
               <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
               <p>{html.escape(project['summary'])}</p>
@@ -543,37 +539,33 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
 
     practice_items = [
         {
-            "label": "AI-PM workspace",
-            "title": "AI workflows",
-            "text": "Use notes, files, and prompts as one working loop instead of separate tasks.",
-            "url": relative_url('/', '/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/'),
-            "link_label": "Read essay",
-            "icon": "glyph-ai",
-        },
-        {
-            "label": "Platform product",
-            "title": "Platform product",
-            "text": "Focus on the parts of platform work that decide adoption: migration, reliability, and first-run quality.",
+            "meta": "Longer read",
+            "title": "Case studies",
+            "text": "Deeper work on product decisions, migration, recovery, and platform strategy.",
             "url": relative_url('/', '/case-studies/'),
-            "link_label": "View case studies",
-            "icon": "glyph-platform",
+            "link_label": "Open case studies",
         },
         {
-            "label": "Business systems",
-            "title": "Business systems",
-            "text": "Apply the same product lens to growth, service design, and the operating model behind delivery.",
-            "url": relative_url('/', '/blog/growth-breaks-in-the-operating-model/'),
-            "link_label": "Read essay",
-            "icon": "glyph-strategy",
+            "meta": "Shorter notes",
+            "title": "Writing",
+            "text": "Compact essays on workflow quality, migration, AI as a working tool, and operating models.",
+            "url": relative_url('/', '/blog/'),
+            "link_label": "Browse writing",
+        },
+        {
+            "meta": "Practical",
+            "title": "Python tools",
+            "text": "Small utilities and reusable patterns drawn from real platform, docs, and workflow work.",
+            "url": html.escape(config['github_url']),
+            "link_label": "View GitHub",
         },
     ]
     focus_cards = []
-    for path, item in zip(discovery_paths, practice_items):
+    for item in practice_items:
         focus_cards.append(
             f"""
             <article class="focus-card">
-              <span class="card-glyph {item['icon']}" aria-hidden="true"></span>
-              <p class="meta">{html.escape(path["who"])}</p>
+              <p class="meta">{html.escape(item["meta"])}</p>
               <h3>{html.escape(item["title"])}</h3>
               <p class="focus-detail">{html.escape(item["text"])}</p>
               <div class="path-links"><a href="{item['url']}">{html.escape(item["link_label"])}</a></div>
@@ -584,22 +576,22 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
     body = f"""
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Selected work</p>
+        <p class="eyebrow">Work and writing</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
           <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
           <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
         </div>
-        <p class="hero-kickerline">Case studies go deep on the work, writing carries the shorter notes, and code keeps the practical patterns close.</p>
       </div>
     </section>
 
     {showcase_html}
 
     <section class="section work-section section-frame section-frame-explore">
-      <div class="section-head">
-        <h2>Ways I work</h2>
+      <div class="section-head section-head-stack">
+        <h2>Browse by format</h2>
+        <p class="section-note">The site is small: deeper case studies, shorter writing, and a few practical Python tools.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
@@ -607,8 +599,9 @@ def render_homepage(config, posts, projects, external_writing, case_studies, dis
     </section>
 
     <section class="section section-frame section-frame-open-source">
-      <div class="section-head">
-        <h2>Selected code</h2>
+      <div class="section-head section-head-stack">
+        <h2>Selected repos</h2>
+        <p class="section-note">Mostly small utilities and reusable patterns rather than big frameworks.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -635,7 +628,6 @@ def render_blog_index(config, posts):
         featured_cards.append(
             f"""
             <article class="feature-card">
-              <span class="card-glyph glyph-note" aria-hidden="true"></span>
               <p class="meta">{html.escape(post.date)}</p>
               <h3><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
               <p>{html.escape(post.summary)}</p>
@@ -650,7 +642,6 @@ def render_blog_index(config, posts):
         cards.append(
             f"""
             <article class="post-list-item">
-              <span class="card-glyph glyph-note" aria-hidden="true"></span>
               <p class="meta">{html.escape(post.date)}</p>
               <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
               <p>{html.escape(post.summary)}</p>
@@ -697,20 +688,12 @@ def render_blog_index(config, posts):
 def render_case_studies_page(config, case_studies):
     cards = []
     for study in case_studies:
-        glyph = "glyph-platform"
-        if "Functions" in study["period"]:
-            glyph = "glyph-functions"
-        elif "Sitetracker" in study["period"]:
-            glyph = "glyph-strategy"
-        elif "Dev Platform" in study["period"]:
-            glyph = "glyph-code"
         focus = html.escape(study["what_i_did"][0])
         constraint = html.escape(study["why_it_was_hard"][0])
         result = html.escape(study["outcome"][0])
         cards.append(
             f"""
             <article class="timeline-item">
-              <span class="card-glyph {glyph}" aria-hidden="true"></span>
               <div class="study-head">
                 <p class="meta">{html.escape(study['period'])}</p>
                 <h2>{html.escape(study['title'])}</h2>
@@ -851,7 +834,6 @@ def render_not_found_page(config):
 def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
-    discovery_paths = load_json(CONTENT_DIR / "discovery_paths.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
     posts = load_posts()
@@ -860,7 +842,7 @@ def build():
     shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies, discovery_paths))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
     write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
