@@ -599,7 +599,7 @@ nav a.active::after {
 .about-main-column {
   display: grid;
   gap: 22px;
-  max-width: 760px;
+  max-width: 920px;
 }
 
 .about-photo-card {
@@ -614,22 +614,9 @@ nav a.active::after {
   padding-top: 2px;
 }
 
-.about-photo-card-inline {
-  float: right;
-  width: min(220px, 42%);
-  margin: 4px 0 12px 22px;
-  padding: 10px;
-}
-
-.about-intro::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
 .about-story-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.55fr);
+  grid-template-columns: minmax(0, 1fr) 220px;
   gap: 24px;
   align-items: start;
 }
@@ -681,6 +668,11 @@ nav a.active::after {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.about-photo-card-side {
+  padding: 10px;
+  margin: 2px 0 0;
 }
 
 .jump-scroller {
@@ -1666,10 +1658,9 @@ code {
     gap: 18px;
   }
 
-  .about-photo-card-inline {
-    float: none;
-    width: min(220px, 100%);
-    margin: 4px 0 16px;
+  .about-photo-card-side {
+    max-width: 220px;
+    margin: 0;
   }
 
   .oracle-blogs-list a {
