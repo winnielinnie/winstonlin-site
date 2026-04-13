@@ -1338,9 +1338,10 @@ nav a.active::after {
 .page-writing .section-head h2,
 .page-writing .feature-card h3 a,
 .page-writing .post-list-item h2 a {
-  color: #6d4638;
+  color: #35534f;
 }
 
+.page-home .hero h1,
 .page-case-studies .page-hero h1,
 .page-case-studies .section-head h2,
 .page-case-studies .timeline-item h2 {
@@ -1353,7 +1354,7 @@ nav a.active::after {
 
 .page-post .prose h1,
 .page-post .prose h2 {
-  color: #6d4638;
+  color: #35534f;
 }
 
 .page-case-studies .diagram-band {
