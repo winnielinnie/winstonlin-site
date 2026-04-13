@@ -1090,8 +1090,8 @@ nav a.active::after {
 
 .showcase-tone-workspace {
   background:
-    radial-gradient(circle at top right, rgba(53, 95, 90, 0.065), transparent 24%),
-    linear-gradient(180deg, rgba(249, 250, 247, 0.98), rgba(244, 246, 241, 0.95));
+    radial-gradient(circle at top right, rgba(146, 82, 55, 0.055), transparent 22%),
+    linear-gradient(180deg, rgba(251, 248, 244, 0.98), rgba(246, 242, 237, 0.95));
 }
 
 .showcase-tone-delivery {
@@ -1107,7 +1107,7 @@ nav a.active::after {
 
 .showcase-tone-workspace,
 .showcase-tab[data-showcase-target="workspace"].active {
-  border-color: rgba(204, 213, 208, 0.86);
+  border-color: rgba(216, 202, 194, 0.86);
 }
 
 .showcase-tone-delivery,

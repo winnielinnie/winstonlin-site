@@ -1335,13 +1335,10 @@ nav a.active::after {
 }
 
 .page-writing .page-hero h1,
-.page-writing .section-head h2 {
-  color: #6d4638;
-}
-
+.page-writing .section-head h2,
 .page-writing .feature-card h3 a,
 .page-writing .post-list-item h2 a {
-  color: #2f2724;
+  color: #6d4638;
 }
 
 .page-case-studies .page-hero h1,
@@ -1352,6 +1349,11 @@ nav a.active::after {
 
 .page-case-studies .study-head .meta {
   color: rgba(53, 95, 90, 0.8);
+}
+
+.page-post .prose h1,
+.page-post .prose h2 {
+  color: #6d4638;
 }
 
 .page-case-studies .diagram-band {
