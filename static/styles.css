@@ -719,11 +719,7 @@ nav a.active::after {
 }
 
 .oracle-blogs-section {
-  margin-top: -4px;
-}
-
-.oracle-blogs-head .section-note {
-  max-width: 32rem;
+  margin-top: 16px;
 }
 
 .oracle-blogs-list {

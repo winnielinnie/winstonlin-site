@@ -787,7 +787,7 @@ def render_blog_index(config, posts):
             """
         )
 
-    oracle_blog_links = config.get("oracle_blog_links", [])[:4]
+    oracle_blog_links = config.get("oracle_blog_links", [])[:3]
     oracle_blog_items = []
     for item in oracle_blog_links:
         title = html.escape(item["title"])
@@ -811,13 +811,12 @@ def render_blog_index(config, posts):
         <section class="section oracle-blogs-section">
           <div class="section-head section-head-stack oracle-blogs-head">
             <h2>Also on Oracle Blogs</h2>
-            <p class="section-note">A short shortlist from the Oracle side of the work.</p>
           </div>
           <div class="oracle-blogs-list">
             <ul>
               {''.join(oracle_blog_items)}
             </ul>
-            <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">See all on Oracle Blogs</a>
+            <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">See author profile and all blogs on Oracle Blogs</a>
           </div>
         </section>
         """

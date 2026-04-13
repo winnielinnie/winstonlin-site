@@ -24,11 +24,6 @@
       "title": "Introducing Long-Running Functions and Response Destinations with OCI Functions",
       "url": "https://blogs.oracle.com/cloud-infrastructure/longrunning-functions-and-response-destinations",
       "meta": "October 2025"
-    },
-    {
-      "title": "Announcing support for larger memory functions in OCI Functions",
-      "url": "https://blogs.oracle.com/developers/support-for-3gb-memory-functions",
-      "meta": "December 2024"
     }
   ],
   "intro_paragraphs": [
