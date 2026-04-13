@@ -430,19 +430,7 @@ def render_diagram(kind):
     return diagrams.get(kind, "")
 
 
-def render_homepage(config, posts, projects, external_writing, case_studies, proof_points, discovery_paths):
-    proof_cards = []
-    for item in proof_points:
-        proof_cards.append(
-            f"""
-            <article class="proof-card">
-              <p class="proof-value">{html.escape(item["value"])}</p>
-              <p class="proof-label">{html.escape(item["label"])}</p>
-              <p>{html.escape(item["text"])}</p>
-            </article>
-            """
-        )
-
+def render_homepage(config, posts, projects, external_writing, case_studies, discovery_paths):
     current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
     if case_studies:
@@ -559,10 +547,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
           <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
         </div>
       </div>
-    </section>
-
-    <section class="proof-grid">
-      {''.join(proof_cards)}
     </section>
 
     <section class="section work-section">
@@ -830,7 +814,6 @@ def render_not_found_page(config):
 def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
-    proof_points = load_json(CONTENT_DIR / "proof_points.json")
     discovery_paths = load_json(CONTENT_DIR / "discovery_paths.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
@@ -840,7 +823,7 @@ def build():
     shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies, proof_points, discovery_paths))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, external_writing, case_studies, discovery_paths))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
     write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
