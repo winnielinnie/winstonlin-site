@@ -592,14 +592,16 @@ nav a.active::after {
   gap: 10px;
 }
 
-.about-intro-grid {
+.about-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.7fr);
   gap: 22px;
   align-items: start;
-  grid-template-areas:
-    "intro photo"
-    "story photo";
+}
+
+.about-main-column {
+  display: grid;
+  gap: 22px;
 }
 
 .about-photo-card {
@@ -611,7 +613,6 @@ nav a.active::after {
 }
 
 .about-intro {
-  grid-area: intro;
   max-width: 760px;
   padding-top: 2px;
 }
@@ -624,7 +625,6 @@ nav a.active::after {
 }
 
 .about-story-copy {
-  grid-area: story;
   display: grid;
   gap: 18px;
   order: 1;
@@ -654,10 +654,10 @@ nav a.active::after {
 }
 
 .about-photo-card {
-  grid-area: photo;
   padding: 10px;
   max-width: 220px;
   justify-self: end;
+  margin-top: 4px;
 }
 
 .about-photo {
@@ -1659,12 +1659,12 @@ code {
     gap: 18px;
   }
 
-  .about-intro-grid {
+  .about-layout {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "intro"
-      "photo"
-      "story";
+    gap: 18px;
+  }
+
+  .about-main-column {
     gap: 18px;
   }
 
