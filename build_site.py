@@ -966,18 +966,18 @@ def render_about_page(config):
           <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
         </figure>
       </div>
-    </section>
-    <section class="section about-story-copy about-story-copy-standalone">
-      <section class="about-copy-block prose">
-        <p class="eyebrow">Background</p>
-        <h2>Where I come from.</h2>
-        {background_paragraphs}
-      </section>
-      <section class="about-copy-block prose">
-        <p class="eyebrow">Outside of work</p>
-        <h2>A few things I spend time on outside the day job.</h2>
-        {personal_paragraphs}
-      </section>
+      <div class="about-story-copy about-story-copy-standalone">
+        <section class="about-copy-block prose">
+          <p class="eyebrow">Background</p>
+          <h2>Where I come from.</h2>
+          {background_paragraphs}
+        </section>
+        <section class="about-copy-block prose">
+          <p class="eyebrow">Outside of work</p>
+          <h2>A few things I spend time on outside the day job.</h2>
+          {personal_paragraphs}
+        </section>
+      </div>
     </section>
     """
     return page_layout(
