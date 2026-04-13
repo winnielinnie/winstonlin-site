@@ -1,14 +1,17 @@
 [
   {
-    "label": "Built at scale",
-    "text": "OCI Functions, Kubernetes, and CI/CD."
+    "value": "80%",
+    "label": "YoY growth",
+    "text": "OCI Functions growth after reducing friction and improving migration readiness."
   },
   {
-    "label": "Practical AI",
-    "text": "Notes, data, decks, docs, and follow-up."
+    "value": "30 days",
+    "label": "Regional delivery",
+    "text": "Build timelines compressed from about 3 months through deterministic orchestration."
   },
   {
-    "label": "Business systems",
-    "text": "Growth, service design, and operating model."
+    "value": "60%",
+    "label": "Faster RCA",
+    "text": "Dependency and health visibility made incident response materially faster."
   }
 ]

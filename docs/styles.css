@@ -140,6 +140,7 @@ nav a.active::after {
   font-size: 1.02rem;
   line-height: 1.5;
   color: var(--muted);
+  display: block;
 }
 
 .hero-links {
@@ -430,8 +431,7 @@ nav a.active::after {
 .feature-card p,
 .post-list-item p,
 .proof-card p,
-.path-card p,
-.lead {
+.path-card p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -444,10 +444,6 @@ nav a.active::after {
 }
 
 .proof-card p {
-  -webkit-line-clamp: 2;
-}
-
-.lead {
   -webkit-line-clamp: 2;
 }
 
@@ -557,7 +553,7 @@ nav a.active::after {
 .proof-card {
   position: relative;
   overflow: hidden;
-  padding: 15px 16px 16px;
+  padding: 18px 18px 16px;
   background: rgba(255, 253, 249, 0.84);
   box-shadow: 0 12px 24px var(--shadow-soft);
 }
@@ -586,8 +582,17 @@ nav a.active::after {
   background: rgba(151, 118, 51, 0.26);
 }
 
+.proof-value {
+  margin: 0 0 4px;
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  color: #1c1714;
+}
+
 .proof-label {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-family: var(--sans);
   font-size: 0.68rem;
   font-weight: 700;
@@ -601,6 +606,10 @@ nav a.active::after {
   font-size: 0.9rem;
   line-height: 1.42;
   color: #2f2a25;
+}
+
+.proof-card p:last-child {
+  -webkit-line-clamp: 3;
 }
 
 .spotlight-card {
@@ -775,6 +784,68 @@ nav a.active::after {
 .path-links a:hover {
   color: var(--ink);
   text-decoration-color: rgba(23, 20, 18, 0.34);
+}
+
+.showcase-section {
+  margin-top: 32px;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+  gap: 14px;
+}
+
+.showcase-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.showcase-card {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 16px 34px var(--shadow-soft);
+  padding: 20px;
+}
+
+.showcase-primary {
+  background: linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(247, 242, 233, 0.92));
+}
+
+.showcase-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.38rem;
+  line-height: 1.04;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.showcase-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.showcase-summary {
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.showcase-list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: #2e2823;
+}
+
+.showcase-list li + li {
+  margin-top: 8px;
+}
+
+.showcase-card .spotlight-link {
+  margin-top: 14px;
 }
 
 .post-list-item,
@@ -976,6 +1047,7 @@ code {
   .card-grid,
   .path-grid,
   .diagram-band,
+  .showcase-grid,
   .external-grid,
   .feature-grid,
   .study-grid,
@@ -1012,6 +1084,10 @@ code {
   }
 
   .focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-stack {
     grid-template-columns: 1fr;
   }
 

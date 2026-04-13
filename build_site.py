@@ -431,141 +431,75 @@ def render_diagram(kind):
 
 
 def render_homepage(config, posts, projects, external_writing, case_studies, proof_points, discovery_paths):
-    latest_posts = []
-    featured_posts = []
-    for slug in config.get("home_featured_post_slugs", []):
-        post = find_post(posts, slug)
-        if post:
-            featured_posts.append(post)
-    if not featured_posts:
-        featured_posts = posts[:3]
-
-    for post in featured_posts:
-        latest_posts.append(
-            f"""
-            <article class="post-card">
-              <p class="meta">{html.escape(post.date)}</p>
-              <h3><a href="{relative_url('/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
-              <p>{html.escape(post.summary)}</p>
-            </article>
-            """
-        )
-
-    project_cards = []
-    for project in projects:
-        link_start = f'<a href="{project["url"]}" target="_blank" rel="noreferrer">' if project["url"] else "<div>"
-        link_end = "</a>" if project["url"] else "</div>"
-        project_cards.append(
-            f"""
-            {link_start}
-              <article class="project-card">
-                <h3>{html.escape(project["name"])}</h3>
-                <p>{html.escape(project["summary"])}</p>
-              </article>
-            {link_end}
-            """
-        )
-
-    external_cards = []
-    for item in external_writing:
-        external_cards.append(
-            f"""
-            <article class="external-card">
-              <p class="meta">{html.escape(item['date'])} • {html.escape(item['publication'])}</p>
-              <h3><a href="{html.escape(item['url'])}" target="_blank" rel="noreferrer">{html.escape(item['title'])}</a></h3>
-            </article>
-            """
-        )
-
-    case_study_cards = []
-    for study in case_studies[:3]:
-        case_study_cards.append(
-            f"""
-            <article class="post-card">
-              <p class="meta">{html.escape(study['period'])}</p>
-              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(study['title'])}</a></h3>
-              <p>{html.escape(study['tagline'])}</p>
-            </article>
-            """
-        )
-
     proof_cards = []
     for item in proof_points:
         proof_cards.append(
             f"""
             <article class="proof-card">
+              <p class="proof-value">{html.escape(item["value"])}</p>
               <p class="proof-label">{html.escape(item["label"])}</p>
               <p>{html.escape(item["text"])}</p>
             </article>
             """
         )
 
-    path_cards = []
-    for path in discovery_paths:
-        links_html = []
-        for link in path["links"]:
-            links_html.append(
-                f'<a href="{relative_url("/", link["url"])}">{html.escape(link["label"])}</a>'
-            )
-        path_cards.append(
-            f"""
-            <article class="path-card">
-              <p class="meta">{html.escape(path["who"])}</p>
-              <h3>{html.escape(path["title"])}</h3>
-              <p>{html.escape(path["why"])}</p>
-              <div class="path-links">{''.join(links_html)}</div>
+    current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
+    showcase_html = ""
+    if case_studies:
+        featured_study = case_studies[0]
+        study_outcomes = "".join(
+            [f"<li>{html.escape(item)}</li>" for item in featured_study["outcome"][:2]]
+        )
+        note_card = ""
+        if current_note:
+            note_card = f"""
+            <article class="showcase-card">
+              <p class="meta">Featured note</p>
+              <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h3>
+              <p>How I use a real workspace to turn notes, files, and raw material into shipping work.</p>
+              <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read note</a>
             </article>
             """
-        )
-
-    current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
-    current_note_html = ""
-    if current_note:
-        current_note_html = f"""
-        <section class="spotlight-band">
-          <article class="spotlight-card">
-            <div class="spotlight-main">
-              <p class="eyebrow">One place to start</p>
-              <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
-              <p class="spotlight-summary">How I turn notes and files into a working PM system.</p>
+        article_card = ""
+        if external_writing:
+            article = external_writing[0]
+            article_card = f"""
+            <article class="showcase-card">
+              <p class="meta">Oracle blog</p>
+              <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article['title'])}</a></h3>
+              <p>Patterns, migration shape, and practical design guidance from recent Functions work.</p>
+              <a class="spotlight-link" href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">Read article</a>
+            </article>
+            """
+        showcase_html = f"""
+        <section class="section showcase-section">
+          <div class="section-head">
+            <h2>Selected work</h2>
+            <a href="{relative_url('/', '/case-studies/')}">View case studies</a>
+          </div>
+          <div class="showcase-grid">
+            <article class="showcase-card showcase-primary">
+              <p class="meta">{html.escape(featured_study['period'])}</p>
+              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
+              <p class="showcase-summary">{html.escape(featured_study['tagline'])}</p>
+              <ul class="showcase-list">{study_outcomes}</ul>
+            </article>
+            <div class="showcase-stack">
+              {note_card}
+              {article_card}
             </div>
-            <div class="spotlight-footer">
-              <p class="spotlight-meta">Real workspace • product workflow</p>
-              <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read note</a>
-            </div>
-          </article>
+          </div>
         </section>
         """
 
-    featured_work_cards = []
-    featured_work_cards.append(
-        f"""
-        <article class="feature-card">
-          <p class="meta">Platform note</p>
-          <h3><a href="{relative_url('/', '/blog/developer-platforms-mostly-fail-on-friction/')}">Developer Platforms Mostly Fail On Friction</a></h3>
-          <p>Why adoption is usually won or lost in the first hour.</p>
-        </article>
-        """
-    )
-    if case_studies:
-        study = case_studies[0]
-        featured_work_cards.append(
+    project_cards = []
+    for project in projects:
+        project_cards.append(
             f"""
             <article class="feature-card">
-              <p class="meta">Case study</p>
-              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(study['title'])}</a></h3>
-              <p>Regional delivery from about 3 months to 30 days.</p>
-            </article>
-            """
-        )
-    if external_writing:
-        article = external_writing[0]
-        featured_work_cards.append(
-            f"""
-            <article class="feature-card">
-              <p class="meta">Oracle blog</p>
-              <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article['title'])}</a></h3>
-              <p>Patterns, migration shape, and practical design guidance for Functions.</p>
+              <p class="meta">Open source</p>
+              <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
+              <p>{html.escape(project['summary'])}</p>
             </article>
             """
         )
@@ -617,6 +551,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
     body = f"""
     <section class="hero hero-layout">
       <div class="hero-copy">
+        <p class="eyebrow">Selected work and writing</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
@@ -633,22 +568,23 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     <section class="section work-section">
       <div class="section-head">
-        <h2>A few ways in</h2>
+        <h2>Where the work clusters</h2>
+        <p class="section-note">Three paths through the site.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
       </div>
     </section>
 
-    {current_note_html}
+    {showcase_html}
 
     <section class="section">
       <div class="section-head">
-        <h2>More to explore</h2>
-        <a href="{relative_url('/', '/blog/')}">More writing</a>
+        <h2>Selected tools</h2>
+        <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
-        {''.join(featured_work_cards)}
+        {''.join(project_cards[:3])}
       </div>
     </section>
     """

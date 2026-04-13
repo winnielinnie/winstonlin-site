@@ -31,6 +31,7 @@
       
     <section class="hero hero-layout">
       <div class="hero-copy">
+        <p class="eyebrow">Selected work and writing</p>
         <h1>AI, infrastructure, and business systems</h1>
         <p class="lead">I’m Winston Lin. I’ve led product across CI/CD, Kubernetes, and serverless. This site pulls together selected work and notes on AI in practice, platform quality, and business systems.</p>
         <div class="hero-links">
@@ -77,25 +78,29 @@
     <section class="proof-grid">
       
             <article class="proof-card">
-              <p class="proof-label">Built at scale</p>
-              <p>OCI Functions, Kubernetes, and CI/CD.</p>
+              <p class="proof-value">80%</p>
+              <p class="proof-label">YoY growth</p>
+              <p>OCI Functions growth after reducing friction and improving migration readiness.</p>
             </article>
             
             <article class="proof-card">
-              <p class="proof-label">Practical AI</p>
-              <p>Notes, data, decks, docs, and follow-up.</p>
+              <p class="proof-value">30 days</p>
+              <p class="proof-label">Regional delivery</p>
+              <p>Build timelines compressed from about 3 months through deterministic orchestration.</p>
             </article>
             
             <article class="proof-card">
-              <p class="proof-label">Business systems</p>
-              <p>Growth, service design, and operating model.</p>
+              <p class="proof-value">60%</p>
+              <p class="proof-label">Faster RCA</p>
+              <p>Dependency and health visibility made incident response materially faster.</p>
             </article>
             
     </section>
 
     <section class="section work-section">
       <div class="section-head">
-        <h2>A few ways in</h2>
+        <h2>Where the work clusters</h2>
+        <p class="section-note">Three paths through the site.</p>
       </div>
       <div class="card-grid focus-grid">
         
@@ -124,44 +129,63 @@
     </section>
 
     
-        <section class="spotlight-band">
-          <article class="spotlight-card">
-            <div class="spotlight-main">
-              <p class="eyebrow">One place to start</p>
-              <h2><a href="blog/how-i-use-ai-as-a-pm-with-a-real-workspace/">How I Use AI as a PM With a Real Workspace</a></h2>
-              <p class="spotlight-summary">How I turn notes and files into a working PM system.</p>
-            </div>
-            <div class="spotlight-footer">
-              <p class="spotlight-meta">Real workspace • product workflow</p>
+        <section class="section showcase-section">
+          <div class="section-head">
+            <h2>Selected work</h2>
+            <a href="case-studies/">View case studies</a>
+          </div>
+          <div class="showcase-grid">
+            <article class="showcase-card showcase-primary">
+              <p class="meta">OCI Platform Infrastructure</p>
+              <h3><a href="case-studies/">Deterministic Region Delivery</a></h3>
+              <p class="showcase-summary">Turned regional delivery from reactive coordination into a deterministic orchestration system, helping compress timelines from months to about 30 days.</p>
+              <ul class="showcase-list"><li>Regional delivery timelines dropped from about 3 months to roughly 30 days.</li><li>The work created a more predictable foundation for launch planning, earlier dependency validation, and far less real-time coordination during critical build windows.</li></ul>
+            </article>
+            <div class="showcase-stack">
+              
+            <article class="showcase-card">
+              <p class="meta">Featured note</p>
+              <h3><a href="blog/how-i-use-ai-as-a-pm-with-a-real-workspace/">How I Use AI as a PM With a Real Workspace</a></h3>
+              <p>How I use a real workspace to turn notes, files, and raw material into shipping work.</p>
               <a class="spotlight-link" href="blog/how-i-use-ai-as-a-pm-with-a-real-workspace/">Read note</a>
+            </article>
+            
+              
+            <article class="showcase-card">
+              <p class="meta">Oracle blog</p>
+              <h3><a href="https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns" target="_blank" rel="noreferrer">OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists</a></h3>
+              <p>Patterns, migration shape, and practical design guidance from recent Functions work.</p>
+              <a class="spotlight-link" href="https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns" target="_blank" rel="noreferrer">Read article</a>
+            </article>
+            
             </div>
-          </article>
+          </div>
         </section>
         
 
     <section class="section">
       <div class="section-head">
-        <h2>More to explore</h2>
-        <a href="blog/">More writing</a>
+        <h2>Selected tools</h2>
+        <a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
         
-        <article class="feature-card">
-          <p class="meta">Platform note</p>
-          <h3><a href="blog/developer-platforms-mostly-fail-on-friction/">Developer Platforms Mostly Fail On Friction</a></h3>
-          <p>Why adoption is usually won or lost in the first hour.</p>
-        </article>
-        
             <article class="feature-card">
-              <p class="meta">Case study</p>
-              <h3><a href="case-studies/">Deterministic Region Delivery</a></h3>
-              <p>Regional delivery from about 3 months to 30 days.</p>
+              <p class="meta">Open source</p>
+              <h3><a href="https://github.com/winnielinnie/oci-fn-object-storage-router" target="_blank" rel="noreferrer">Object Storage Router</a></h3>
+              <p>Python pattern for routing one bucket to several downstream systems.</p>
             </article>
             
             <article class="feature-card">
-              <p class="meta">Oracle blog</p>
-              <h3><a href="https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns" target="_blank" rel="noreferrer">OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists</a></h3>
-              <p>Patterns, migration shape, and practical design guidance for Functions.</p>
+              <p class="meta">Open source</p>
+              <h3><a href="https://github.com/winnielinnie/doc-ship-check" target="_blank" rel="noreferrer">doc-ship-check</a></h3>
+              <p>A Python script for the last mile of docs cleanup before publishing.</p>
+            </article>
+            
+            <article class="feature-card">
+              <p class="meta">Open source</p>
+              <h3><a href="https://github.com/winnielinnie/release-note-diff-cli" target="_blank" rel="noreferrer">release-note-diff-cli</a></h3>
+              <p>A small Python script for diffing release notes without reading every line twice.</p>
             </article>
             
       </div>
