@@ -430,6 +430,10 @@ nav a.active::after {
   max-width: 28rem;
 }
 
+.work-section .section-note {
+  max-width: none;
+}
+
 .section-head-stack a {
   display: inline-flex;
   margin-top: 8px;
@@ -1012,6 +1016,21 @@ nav a.active::after {
   letter-spacing: 0.01em;
   cursor: pointer;
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.showcase-tab[data-showcase-target="workspace"] {
+  background: linear-gradient(180deg, rgba(248, 244, 247, 0.94), rgba(243, 237, 241, 0.9));
+  border-color: rgba(203, 191, 198, 0.84);
+}
+
+.showcase-tab[data-showcase-target="functions"] {
+  background: linear-gradient(180deg, rgba(252, 246, 241, 0.94), rgba(247, 239, 232, 0.9));
+  border-color: rgba(218, 199, 188, 0.84);
+}
+
+.showcase-tab[data-showcase-target="delivery"] {
+  background: linear-gradient(180deg, rgba(251, 247, 240, 0.94), rgba(246, 240, 231, 0.9));
+  border-color: rgba(220, 209, 188, 0.84);
 }
 
 .showcase-tab:hover {

@@ -658,7 +658,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section work-section section-frame section-frame-explore">
       <div class="section-head section-head-stack">
         <h2>Browse by format</h2>
-        <p class="section-note">Case studies provide the fuller view, writing is shorter, and repositories show the practical edge.</p>
+        <p class="section-note">Case studies go deeper, writing stays concise, and repositories show the hands-on side.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
