@@ -607,14 +607,15 @@ nav a.active::after {
 
 .about-story-grid {
   display: grid;
-  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1.45fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.55fr);
+  gap: 24px;
   align-items: start;
 }
 
 .about-story-copy {
   display: grid;
   gap: 18px;
+  order: 1;
 }
 
 .about-copy-block h2 {
@@ -638,10 +639,11 @@ nav a.active::after {
 
 .about-photo-card {
   padding: 12px;
-  max-width: 250px;
-  justify-self: start;
+  max-width: 240px;
+  justify-self: end;
   position: sticky;
   top: 22px;
+  order: 2;
 }
 
 .about-photo {
@@ -1582,6 +1584,7 @@ code {
   .about-photo-card {
     position: static;
     max-width: 220px;
+    justify-self: start;
   }
 
   .site-header,
