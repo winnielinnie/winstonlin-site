@@ -685,6 +685,8 @@ nav a.active::after {
 }
 
 .about-photo-card-side {
+  align-self: start;
+  justify-self: end;
   padding: 10px;
   margin: 0;
   width: 212px;
@@ -1678,11 +1680,6 @@ code {
     gap: 18px;
   }
 
-  .about-photo-row {
-    justify-content: flex-start;
-    margin-top: -2px;
-  }
-
   .about-layout {
     gap: 18px;
   }
@@ -1694,6 +1691,7 @@ code {
   .about-photo-card-side {
     max-width: 220px;
     margin: 0;
+    justify-self: start;
   }
 
   .oracle-blogs-list a {
