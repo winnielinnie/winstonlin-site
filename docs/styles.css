@@ -720,8 +720,7 @@ nav a.active::after {
   gap: 8px;
 }
 
-.jump-chip-list a,
-.mini-link {
+.jump-chip-list a {
   font-size: 0.86rem;
   color: var(--muted);
   text-decoration: none;
@@ -735,8 +734,7 @@ nav a.active::after {
   background: rgba(255, 252, 247, 0.82);
 }
 
-.jump-chip-list a:hover,
-.mini-link:hover {
+.jump-chip-list a:hover {
   color: var(--accent-deep);
 }
 

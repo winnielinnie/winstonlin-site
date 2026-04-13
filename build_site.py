@@ -877,7 +877,6 @@ def render_case_studies_page(config, case_studies):
             <section class="case-group" id="{html.escape(group_id)}">
               <div class="section-head section-head-stack case-group-head">
                 <h2>{html.escape(period)}</h2>
-                <a class="mini-link" href="#case-jumps">Back to jump list</a>
               </div>
               <div class="timeline">
                 {''.join(cards)}
