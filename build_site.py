@@ -639,7 +639,7 @@ def render_homepage(config, posts, projects, case_studies):
     body = f"""
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Portfolio</p>
+        <p class="eyebrow">Work and Writing</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
