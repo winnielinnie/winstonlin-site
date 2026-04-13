@@ -490,7 +490,7 @@ def render_homepage(config, posts, projects, case_studies):
             f"""
             <article class="showcase-card">
               <p class="meta">{html.escape(featured_study['period'])}</p>
-              <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(featured_study['slug'])}">{html.escape(featured_study['title'])}</a></h3>
+              <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(featured_study['slug'])}">OCI Functions Product Direction</a></h3>
               <p class="showcase-summary">{featured_summary}</p>
               <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}#{html.escape(featured_study['slug'])}">Read case study</a>
             </article>
@@ -501,7 +501,7 @@ def render_homepage(config, posts, projects, case_studies):
                 f"""
             <article class="showcase-card">
               <p class="meta">Essay</p>
-              <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h3>
+              <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">AI PM Workspace</a></h3>
               <p>A practical workspace for turning raw material into shipping work.</p>
               <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read essay</a>
             </article>
@@ -512,7 +512,7 @@ def render_homepage(config, posts, projects, case_studies):
                 f"""
                 <article class="showcase-card">
                   <p class="meta">{html.escape(broader_study['period'])}</p>
-                  <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(broader_study['slug'])}">{html.escape(broader_study['title'])}</a></h3>
+                  <h3><a href="{relative_url('/', '/case-studies/')}#{html.escape(broader_study['slug'])}">Enterprise Delivery Through Discovery</a></h3>
                   <p>{html.escape(broader_study['tagline'])}</p>
                   <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}#{html.escape(broader_study['slug'])}">See broader work</a>
                 </article>
@@ -520,9 +520,9 @@ def render_homepage(config, posts, projects, case_studies):
             )
         showcase_html = f"""
         <section class="section showcase-section section-frame section-frame-spotlight">
-          <div class="section-head section-head-stack">
+          <div class="section-head showcase-head">
             <h2>Featured work</h2>
-            <p class="section-note">Three quick entry points into the work.</p>
+            <p class="section-note">Representative work across product direction, delivery, and day-to-day practice.</p>
           </div>
           <div class="showcase-grid">
             {''.join(showcase_cards[:3])}
