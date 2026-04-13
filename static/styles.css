@@ -614,21 +614,14 @@ nav a.active::after {
   padding: 18px;
 }
 
-.about-profile-image,
 .about-photo {
   margin: 0;
 }
 
-.about-profile-image {
-  width: 104px;
-  height: 104px;
-  border-radius: 24px;
-  overflow: hidden;
-  margin-bottom: 16px;
-  border: 1px solid rgba(214, 201, 188, 0.92);
+.about-profile-text .meta {
+  margin-bottom: 8px;
 }
 
-.about-profile-image img,
 .about-photo img {
   display: block;
   width: 100%;
@@ -636,16 +629,12 @@ nav a.active::after {
   object-fit: cover;
 }
 
-.about-profile-image img {
-  object-position: center 26%;
-}
-
 .about-profile-text h2,
 .about-personal-copy h2 {
   margin: 0 0 10px;
   color: #35534f;
-  font-size: clamp(1.28rem, 2.8vw, 1.85rem);
-  line-height: 1.1;
+  font-size: clamp(1.18rem, 2.4vw, 1.55rem);
+  line-height: 1.16;
   letter-spacing: -0.022em;
   text-wrap: balance;
 }
@@ -654,25 +643,37 @@ nav a.active::after {
   margin-bottom: 0;
 }
 
+.about-fact-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.about-fact-list li {
+  margin: 0;
+  color: #2d2723;
+}
+
 .about-photo-card {
-  padding: 14px;
+  padding: 12px;
 }
 
 .about-photo {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 6;
   border-radius: 16px;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255, 251, 246, 0.96), rgba(247, 242, 233, 0.94));
 }
 
 .about-photo img {
-  object-position: 50% 35%;
+  object-position: 34% 42%;
 }
 
 .about-interest-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 18px;
+  gap: 7px 18px;
   padding-left: 18px;
   margin-top: 14px;
 }
@@ -1533,7 +1534,6 @@ nav a.active::after {
 
 .page-home .hero h1,
 .page-about .page-hero h1,
-.page-about .section-head h2,
 .page-about .about-profile-text h2,
 .page-about .about-personal-copy h2,
 .page-case-studies .page-hero h1,

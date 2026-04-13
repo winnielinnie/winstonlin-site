@@ -919,16 +919,7 @@ def render_case_studies_page(config, case_studies):
 def render_about_page(config):
     about = config.get("about", {})
     intro = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("intro", []))
-    professional_cards = "".join(
-        f"""
-        <article class="feature-card">
-          <p class="meta">How I work</p>
-          <h3>{html.escape(item["title"])}</h3>
-          <p>{html.escape(item["text"])}</p>
-        </article>
-        """
-        for item in about.get("professional", [])
-    )
+    fact_items = "".join(f"<li>{html.escape(item)}</li>" for item in about.get("facts", []))
     personal_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("personal", []))
     interest_items = "".join(f"<li>{html.escape(item)}</li>" for item in about.get("interests", []))
 
@@ -936,8 +927,8 @@ def render_about_page(config):
     <section class="page-hero page-hero-about">
       <div class="page-hero-copy">
         <p class="eyebrow">About</p>
-        <h1>A little more about who I am and how I work.</h1>
-        <p class="lead">A quieter place for the broader context: product work, operator instincts, and the interests that shape how I think.</p>
+        <h1>A little about me.</h1>
+        <p class="lead">A simple page for the broader context behind the work.</p>
       </div>
     </section>
     <section class="section about-intro-grid">
@@ -945,24 +936,14 @@ def render_about_page(config):
         {intro}
       </div>
       <aside class="about-profile-card">
-        <figure class="about-profile-image">
-          <img src="{static_url('/about/', 'winston-headshot.jpg')}" alt="Portrait of Winston">
-        </figure>
         <div class="about-profile-text">
           <p class="meta">Based in San Francisco</p>
-          <h2>Product leader, builder, advisor.</h2>
-          <p>I like technical products that earn trust, clearer operating systems, and work that stays close to reality.</p>
+          <h2>Product, startups, and a few things outside of work.</h2>
+          <ul class="about-fact-list">
+            {fact_items}
+          </ul>
         </div>
       </aside>
-    </section>
-    <section class="section">
-      <div class="section-head section-head-stack">
-        <h2>How I work</h2>
-        <p class="section-note">The product side of the story in a little more detail.</p>
-      </div>
-      <div class="feature-grid">
-        {professional_cards}
-      </div>
     </section>
     <section class="section about-personal-grid">
       <div class="about-photo-card">
@@ -972,7 +953,7 @@ def render_about_page(config):
       </div>
       <div class="about-personal-copy prose">
         <p class="eyebrow">Outside of work</p>
-        <h2>What I stay curious about outside the core product role.</h2>
+        <h2>A few things I spend time on outside the day job.</h2>
         {personal_paragraphs}
         <ul class="about-interest-list">
           {interest_items}
