@@ -948,7 +948,7 @@ def render_about_page(config):
     <section class="section about-personal-grid">
       <div class="about-photo-card">
         <figure class="about-photo">
-          <img src="{static_url('/about/', 'winston-trail.jpg')}" alt="Winston standing on a mountain trail">
+          <img src="{static_url('/about/', 'winston-trail.png')}" alt="Winston standing on a mountain trail">
         </figure>
       </div>
       <div class="about-personal-copy prose">
