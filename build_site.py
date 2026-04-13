@@ -917,7 +917,7 @@ def render_about_page(config):
       <div class="page-hero-copy">
         <p class="eyebrow">About</p>
         <h1>A little about me.</h1>
-        <p class="lead">A simple page for the broader context behind the work.</p>
+        <p class="lead">A bit more on my background, what I work on, and what I spend time on outside of work.</p>
       </div>
     </section>
     <section class="section about-intro prose">
@@ -926,7 +926,7 @@ def render_about_page(config):
     <section class="section about-story-grid">
       <div class="about-photo-card">
         <figure class="about-photo">
-          <img src="{static_url('/about/', 'winston-trail.png')}" alt="Winston standing on a mountain trail">
+          <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
         </figure>
       </div>
       <div class="about-story-copy">
