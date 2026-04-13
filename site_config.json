@@ -9,6 +9,28 @@
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
   "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
+  "oracle_blog_links": [
+    {
+      "title": "OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists",
+      "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns",
+      "meta": "April 2026"
+    },
+    {
+      "title": "A Practical Guide to Cross-Region Recovery for OCI Functions",
+      "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-cross-region-recovery-guide",
+      "meta": "March 2026"
+    },
+    {
+      "title": "Introducing Long-Running Functions and Response Destinations with OCI Functions",
+      "url": "https://blogs.oracle.com/cloud-infrastructure/longrunning-functions-and-response-destinations",
+      "meta": "October 2025"
+    },
+    {
+      "title": "Announcing support for larger memory functions in OCI Functions",
+      "url": "https://blogs.oracle.com/developers/support-for-3gb-memory-functions",
+      "meta": "December 2024"
+    }
+  ],
   "intro_paragraphs": [
     "I’ve led product across serverless, CI/CD, and developer platforms, and I also work with operators and founders on growth, service design, and business systems."
   ],
@@ -32,9 +54,8 @@
   ],
   "about": {
     "intro": [
-      "I’m based in San Francisco and work in product, mostly around cloud and developer tools. Day to day, I spend a lot of time thinking about how to make things simpler and easier to use, especially for people building and shipping products.",
-      "Outside of that, I invest in and occasionally advise early-stage startups in both the U.S. and Asia. I like being around people building things from scratch and thinking through how something goes from an idea to something that actually works.",
-      "More broadly, I’m interested in how businesses create value, serve customers well, and grow in ways that actually hold up over time. A lot of what I like, in product and outside of it, comes back to understanding how things work and how to make them better."
+      "I’m based in San Francisco and work in product, mostly around cloud and developer tools. I spend a lot of time thinking about how to make products easier to use for the people building and shipping with them.",
+      "I also invest in and occasionally advise early-stage startups in the U.S. and Asia. More broadly, I’m interested in how businesses create value, grow well, and turn good ideas into something durable."
     ],
     "background": [
       "I grew up between Taiwan and Orange County, California, which gave me a mix of perspectives early on and made me comfortable moving between different environments.",

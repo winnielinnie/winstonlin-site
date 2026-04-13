@@ -592,6 +592,13 @@ nav a.active::after {
   gap: 10px;
 }
 
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.7fr);
+  gap: 22px;
+  align-items: start;
+}
+
 .about-photo-card {
   background: linear-gradient(180deg, rgba(255, 251, 246, 0.96), rgba(249, 242, 234, 0.94));
   border: 1px solid rgba(217, 204, 191, 0.88);
@@ -618,6 +625,10 @@ nav a.active::after {
   order: 1;
 }
 
+.about-story-copy-standalone {
+  max-width: 820px;
+}
+
 .about-copy-block h2 {
   margin: 0 0 10px;
   color: #35534f;
@@ -638,12 +649,9 @@ nav a.active::after {
 }
 
 .about-photo-card {
-  padding: 12px;
-  max-width: 240px;
+  padding: 10px;
+  max-width: 220px;
   justify-self: end;
-  position: sticky;
-  top: 22px;
-  order: 2;
 }
 
 .about-photo {
@@ -658,10 +666,10 @@ nav a.active::after {
 .about-photo-visual {
   width: 100%;
   display: block;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   height: 100%;
   object-fit: cover;
-  object-position: 72% 86%;
+  object-position: center 56%;
 }
 
 .about-photo-visual {
@@ -702,6 +710,70 @@ nav a.active::after {
 .jump-area-link:hover {
   color: var(--accent-deep);
   border-color: rgba(146, 82, 55, 0.28);
+}
+
+.oracle-blogs-section {
+  margin-top: -4px;
+}
+
+.oracle-blogs-head .section-note {
+  max-width: 32rem;
+}
+
+.oracle-blogs-list {
+  max-width: 760px;
+}
+
+.oracle-blogs-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(217, 204, 191, 0.72);
+}
+
+.oracle-blogs-list li {
+  border-bottom: 1px solid rgba(217, 204, 191, 0.72);
+}
+
+.oracle-blogs-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.oracle-blogs-list a span {
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.36;
+  letter-spacing: -0.012em;
+}
+
+.oracle-blogs-list a small {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.oracle-blogs-list a:hover span {
+  color: var(--accent-deep);
+}
+
+.oracle-blogs-link {
+  display: inline-flex;
+  margin-top: 14px;
+  font-size: 0.86rem;
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+
+.oracle-blogs-link:hover {
+  text-decoration: underline;
 }
 
 .case-study-groups {
@@ -1581,10 +1653,24 @@ code {
     gap: 18px;
   }
 
+  .about-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
   .about-photo-card {
     position: static;
     max-width: 220px;
     justify-self: start;
+  }
+
+  .oracle-blogs-list a {
+    display: block;
+  }
+
+  .oracle-blogs-list a small {
+    display: block;
+    margin-top: 5px;
   }
 
   .site-header,

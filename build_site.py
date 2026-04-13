@@ -786,6 +786,42 @@ def render_blog_index(config, posts):
             </article>
             """
         )
+
+    oracle_blog_links = config.get("oracle_blog_links", [])[:4]
+    oracle_blog_items = []
+    for item in oracle_blog_links:
+        title = html.escape(item["title"])
+        url = html.escape(item["url"])
+        meta = html.escape(item.get("meta", "Oracle Blogs"))
+        oracle_blog_items.append(
+            f"""
+            <li>
+              <a href="{url}" target="_blank" rel="noreferrer">
+                <span>{title}</span>
+                <small>{meta}</small>
+              </a>
+            </li>
+            """
+        )
+
+    oracle_blogs_section = ""
+    if oracle_blog_items:
+        oracle_author_url = html.escape(config.get("oracle_blogs_url", "https://blogs.oracle.com/"))
+        oracle_blogs_section = f"""
+        <section class="section oracle-blogs-section">
+          <div class="section-head section-head-stack oracle-blogs-head">
+            <h2>Also on Oracle Blogs</h2>
+            <p class="section-note">A short shortlist from the Oracle side of the work.</p>
+          </div>
+          <div class="oracle-blogs-list">
+            <ul>
+              {''.join(oracle_blog_items)}
+            </ul>
+            <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">See all on Oracle Blogs</a>
+          </div>
+        </section>
+        """
+
     body = f"""
     <section class="page-hero page-hero-writing">
       <div class="page-hero-copy">
@@ -802,6 +838,7 @@ def render_blog_index(config, posts):
         {''.join(featured_cards)}
       </div>
     </section>
+    {oracle_blogs_section}
     <section class="section post-list">
       <div class="section-head">
         <h2>All writing</h2>
@@ -920,27 +957,27 @@ def render_about_page(config):
         <p class="lead">A bit more on my background, what I work on, and what I spend time on outside of work.</p>
       </div>
     </section>
-    <section class="section about-intro prose">
-      {intro}
-    </section>
-    <section class="section about-story-grid">
+    <section class="section about-intro-grid">
+      <div class="about-intro prose">
+        {intro}
+      </div>
       <div class="about-photo-card">
         <figure class="about-photo">
           <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
         </figure>
       </div>
-      <div class="about-story-copy">
-        <section class="about-copy-block prose">
-          <p class="eyebrow">Background</p>
-          <h2>Where I come from.</h2>
-          {background_paragraphs}
-        </section>
-        <section class="about-copy-block prose">
-          <p class="eyebrow">Outside of work</p>
-          <h2>A few things I spend time on outside the day job.</h2>
-          {personal_paragraphs}
-        </section>
-      </div>
+    </section>
+    <section class="section about-story-copy about-story-copy-standalone">
+      <section class="about-copy-block prose">
+        <p class="eyebrow">Background</p>
+        <h2>Where I come from.</h2>
+        {background_paragraphs}
+      </section>
+      <section class="about-copy-block prose">
+        <p class="eyebrow">Outside of work</p>
+        <h2>A few things I spend time on outside the day job.</h2>
+        {personal_paragraphs}
+      </section>
     </section>
     """
     return page_layout(
