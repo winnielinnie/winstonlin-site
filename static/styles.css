@@ -520,10 +520,6 @@ nav a.active::after {
   gap: 16px;
 }
 
-.case-proof-grid {
-  margin-top: 14px;
-}
-
 .proof-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

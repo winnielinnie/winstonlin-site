@@ -644,23 +644,6 @@ def render_blog_index(config, posts):
 
 
 def render_case_studies_page(config, case_studies):
-    summary_cards = [
-        {"value": "30 days", "label": "Regional delivery", "text": "Build timelines compressed from about 3 months through deterministic orchestration."},
-        {"value": "60%", "label": "Faster RCA", "text": "Dependency and health visibility made incident response materially faster."},
-        {"value": "AI-assisted", "label": "Setup + triage", "text": "Workflow-driven deployment and troubleshooting with clearer recovery paths."},
-    ]
-    summary_html = []
-    for item in summary_cards:
-        summary_html.append(
-            f"""
-            <article class="proof-card">
-              <p class="proof-value">{html.escape(item['value'])}</p>
-              <p class="proof-label">{html.escape(item['label'])}</p>
-              <p>{html.escape(item['text'])}</p>
-            </article>
-            """
-        )
-
     cards = []
     for study in case_studies:
         what_i_did = "".join([f"<li>{html.escape(item)}</li>" for item in study["what_i_did"]])
@@ -703,9 +686,6 @@ def render_case_studies_page(config, case_studies):
         <h1>Case studies</h1>
         <p>Three examples of product systems that improved delivery speed, operational clarity, and workflow quality.</p>
       </div>
-    </section>
-    <section class="proof-grid case-proof-grid">
-      {''.join(summary_html)}
     </section>
     <section class="section timeline">
       {''.join(cards)}
