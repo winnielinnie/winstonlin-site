@@ -482,53 +482,59 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
     if case_studies:
         featured_study = case_studies[0]
         featured_summary = html.escape(featured_study.get("home_summary", featured_study["tagline"]))
-        featured_keyline = html.escape(featured_study.get("home_keyline", ""))
-        featured_focus = featured_study.get("home_focus", [])
-        featured_focus_html = ""
-        if featured_focus:
-            featured_focus_html = '<div class="showcase-chip-row">' + "".join(
-                f'<span class="showcase-chip">{html.escape(item)}</span>' for item in featured_focus[:4]
-            ) + "</div>"
+        showcase_cards = [
+            f"""
+            <article class="showcase-card showcase-primary">
+              <p class="meta">{html.escape(featured_study['period'])}</p>
+              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
+              <p class="showcase-summary">{featured_summary}</p>
+              <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}">View details</a>
+            </article>
+            """
+        ]
         note_card = ""
         if current_note:
             note_card = f"""
             <article class="showcase-card">
-              <p class="meta">From writing</p>
+              <p class="meta">Essay</p>
               <h3><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h3>
               <p>A practical workspace for turning raw material into shipping work.</p>
               <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read essay</a>
             </article>
             """
+            showcase_cards.append(note_card)
         article_card = ""
         if external_writing:
             article = external_writing[0]
             article_card = f"""
             <article class="showcase-card">
-              <p class="meta">Oracle blog</p>
+              <p class="meta">Published article</p>
               <h3><a href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">{html.escape(article.get('short_title', article['title']))}</a></h3>
               <p>Patterns and design guidance from recent Functions work.</p>
               <a class="spotlight-link" href="{html.escape(article['url'])}" target="_blank" rel="noreferrer">Read article</a>
             </article>
             """
+            showcase_cards.append(article_card)
+        if projects:
+            repo = projects[0]
+            showcase_cards.append(
+                f"""
+                <article class="showcase-card">
+                  <p class="meta">Repository</p>
+                  <h3><a href="{html.escape(repo['url'])}" target="_blank" rel="noreferrer">{html.escape(repo['name'])}</a></h3>
+                  <p>{html.escape(repo['summary'])}</p>
+                  <a class="spotlight-link" href="{html.escape(repo['url'])}" target="_blank" rel="noreferrer">View repository</a>
+                </article>
+                """
+            )
         showcase_html = f"""
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head section-head-stack">
             <h2>Featured work</h2>
-            <p class="section-note">A few things that show how I work.</p>
+            <p class="section-note">Selected examples of product, writing, and platform work.</p>
           </div>
           <div class="showcase-grid">
-            <article class="showcase-card showcase-primary">
-              <p class="meta">{html.escape(featured_study['period'])}</p>
-              <h3><a href="{relative_url('/', '/case-studies/')}">{html.escape(featured_study['title'])}</a></h3>
-              <p class="showcase-summary">{featured_summary}</p>
-              {f'<p class="showcase-keyline">{featured_keyline}</p>' if featured_keyline else ''}
-              {featured_focus_html}
-              <a class="spotlight-link" href="{relative_url('/', '/case-studies/')}">View details</a>
-            </article>
-            <div class="showcase-stack">
-              {note_card}
-              {article_card}
-            </div>
+            {''.join(showcase_cards[:4])}
           </div>
         </section>
         """
@@ -584,7 +590,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
     body = f"""
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Work and writing</p>
+        <p class="eyebrow">Portfolio</p>
         <h1>{html.escape(config["title"])}</h1>
         <p class="lead">{html.escape(config["tagline"])}</p>
         <div class="hero-links">
@@ -599,7 +605,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
     <section class="section work-section section-frame section-frame-explore">
       <div class="section-head section-head-stack">
         <h2>Browse by format</h2>
-        <p class="section-note">If you’re skimming: case studies go deeper, writing is quicker, repos are the practical bits.</p>
+        <p class="section-note">Case studies provide the fuller view, writing is shorter, and repositories show the practical edge.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
@@ -608,8 +614,8 @@ def render_homepage(config, posts, projects, external_writing, case_studies):
 
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
-        <h2>A few repos</h2>
-        <p class="section-note">Mostly small Python tools and reusable patterns I actually find useful.</p>
+        <h2>Selected repositories</h2>
+        <p class="section-note">Mostly small Python tools and reusable patterns drawn from real work.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -661,7 +667,7 @@ def render_blog_index(config, posts):
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
         <h1>Essays on platform, AI, and operations</h1>
-        <p class="lead">Short notes on product friction, migration, AI workflows, and how teams actually get work done.</p>
+        <p class="lead">Essays on product friction, migration, AI workflows, and how teams actually get work done.</p>
       </div>
       <div class="page-topic-strip" aria-label="Writing themes">
         <span class="topic-pill topic-pill-ai">AI workflows</span>
@@ -731,7 +737,7 @@ def render_case_studies_page(config, case_studies):
       <div class="page-hero-copy">
         <p class="eyebrow">Platform and AI work</p>
         <h1>Case studies</h1>
-        <p class="lead">A few projects that show how I think through product, platform, and delivery problems.</p>
+        <p class="lead">Selected projects spanning product, platform, and delivery work.</p>
       </div>
       {render_diagram("case-studies")}
     </section>

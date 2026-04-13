@@ -1027,15 +1027,9 @@ nav a.active::after {
 
 .showcase-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
-}
-
-.showcase-stack {
-  display: grid;
-  gap: 16px;
-  height: 100%;
 }
 
 .showcase-card {
@@ -1044,22 +1038,13 @@ nav a.active::after {
   border-radius: 18px;
   box-shadow: 0 14px 32px rgba(61, 43, 30, 0.055);
   padding: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .showcase-primary {
   background: linear-gradient(180deg, rgba(252, 249, 245, 0.99), rgba(247, 243, 237, 0.95));
   border-color: rgba(212, 200, 189, 0.92);
-  height: 100%;
-}
-
-.showcase-stack .showcase-card:first-child {
-  background: linear-gradient(180deg, rgba(251, 249, 245, 0.99), rgba(246, 242, 236, 0.95));
-  border-color: rgba(214, 208, 199, 0.88);
-}
-
-.showcase-stack .showcase-card:last-child {
-  background: linear-gradient(180deg, rgba(251, 249, 245, 0.99), rgba(246, 242, 236, 0.95));
-  border-color: rgba(214, 208, 199, 0.88);
 }
 
 .showcase-card h3 {
@@ -1088,54 +1073,9 @@ nav a.active::after {
   line-height: 1.56;
 }
 
-.showcase-keyline {
-  margin-top: 10px;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-  color: #776e68;
-}
-
-.showcase-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.showcase-chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 0.34rem 0.62rem;
-  border-radius: 999px;
-  border: 1px solid rgba(214, 206, 196, 0.88);
-  background: rgba(255, 252, 247, 0.72);
-  color: #5f5751;
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
 .showcase-card .spotlight-link {
   margin-top: 12px;
-}
-
-.showcase-primary,
-.showcase-stack .showcase-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.showcase-primary .spotlight-link,
-.showcase-stack .spotlight-link {
-  margin-top: auto;
-  padding-top: 14px;
-}
-
-.showcase-primary .spotlight-link {
-  margin-top: 12px;
-  padding-top: 0;
+  padding-top: 6px;
 }
 
 .post-list-item,
