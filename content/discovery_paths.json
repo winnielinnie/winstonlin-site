@@ -1,8 +1,8 @@
 [
   {
-    "title": "AI workflows",
+    "title": "AI in real work",
     "who": "AI",
-    "why": "Workflow quality, recovery, and adoption.",
+    "why": "Workflow quality, recovery, and usable output.",
     "links": [
       {
         "label": "Recovery paths",
@@ -15,9 +15,9 @@
     ]
   },
   {
-    "title": "Cloud platforms",
+    "title": "Platform product work",
     "who": "Platform",
-    "why": "Developer experience, migration, and scale.",
+    "why": "Developer experience, migration, and reliability.",
     "links": [
       {
         "label": "Region delivery",
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "title": "Business systems",
+    "title": "Operating model",
     "who": "Strategy",
     "why": "Growth, service design, and business systems.",
     "links": [

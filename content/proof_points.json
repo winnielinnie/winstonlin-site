@@ -1,14 +1,14 @@
 [
   {
-    "label": "Platform product",
+    "label": "Built at scale",
     "text": "OCI Functions, Kubernetes, and CI/CD."
   },
   {
-    "label": "AI workflow",
+    "label": "Practical AI",
     "text": "Notes, data, decks, docs, and follow-up."
   },
   {
-    "label": "Business strategy",
+    "label": "Business systems",
     "text": "Growth, service design, and operating model."
   }
 ]

@@ -525,12 +525,12 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         <section class="spotlight-band">
           <article class="spotlight-card">
             <div class="spotlight-main">
-              <p class="eyebrow">Featured note</p>
+              <p class="eyebrow">One place to start</p>
               <h2><a href="{relative_url('/', f'/blog/{current_note.slug}/')}">{html.escape(current_note.title)}</a></h2>
               <p class="spotlight-summary">How I turn notes and files into a working PM system.</p>
             </div>
             <div class="spotlight-footer">
-              <p class="spotlight-meta">Real workspace • PM workflow</p>
+              <p class="spotlight-meta">Real workspace • product workflow</p>
               <a class="spotlight-link" href="{relative_url('/', f'/blog/{current_note.slug}/')}">Read note</a>
             </div>
           </article>
@@ -633,7 +633,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     <section class="section work-section">
       <div class="section-head">
-        <h2>What I work on</h2>
+        <h2>A few ways in</h2>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
@@ -644,7 +644,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
 
     <section class="section">
       <div class="section-head">
-        <h2>Selected work</h2>
+        <h2>More to explore</h2>
         <a href="{relative_url('/', '/blog/')}">More writing</a>
       </div>
       <div class="feature-grid">
