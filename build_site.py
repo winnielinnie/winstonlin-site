@@ -528,11 +528,11 @@ def render_homepage(config, posts, projects, case_studies):
                 {
                     "key": "workspace",
                     "label": "Workspace",
-                    "meta": "Essay",
+                    "meta": "Writing",
                     "title": "AI PM Workspace",
                     "summary": "How I use one workspace to move from notes and files to shipping work.",
                     "href": relative_url('/', f'/blog/{current_note.slug}/'),
-                    "cta": "Read essay",
+                    "cta": "Read note",
                     "tone": "showcase-tone-workspace",
                 }
             )
@@ -611,7 +611,7 @@ def render_homepage(config, posts, projects, case_studies):
         {
             "meta": "Shorter notes",
             "title": "Writing",
-            "text": "Compact essays on workflow quality, migration, AI as a working tool, and operating models.",
+            "text": "Short notes on workflow quality, migration, AI as a working tool, and operating models.",
             "url": relative_url('/', '/blog/'),
             "link_label": "Browse writing",
         },
@@ -715,13 +715,13 @@ def render_blog_index(config, posts):
     <section class="page-hero page-hero-writing">
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
-        <h1>Essays on platform, AI, and operations</h1>
-        <p class="lead">Essays on product friction, migration, AI workflows, and how teams actually get work done.</p>
+        <h1>Writing on platform, AI, and operations</h1>
+        <p class="lead">Notes on product friction, migration, AI workflows, and how teams actually get work done.</p>
       </div>
     </section>
     <section class="section">
       <div class="section-head section-head-stack">
-        <h2>Featured essays</h2>
+        <h2>Featured writing</h2>
       </div>
       <div class="feature-grid">
         {''.join(featured_cards)}
@@ -739,7 +739,7 @@ def render_blog_index(config, posts):
         "Writing",
         body,
         "/blog/",
-        meta_description="Essays on platform quality, migration, AI workflow design, and small Python tools.",
+        meta_description="Writing on platform quality, migration, AI workflow design, and small Python tools.",
     )
 
 
