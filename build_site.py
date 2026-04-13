@@ -549,7 +549,7 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
         )
 
     body = f"""
-    <section class="hero hero-layout">
+    <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Selected work and writing</p>
         <h1>{html.escape(config["title"])}</h1>
@@ -559,7 +559,6 @@ def render_homepage(config, posts, projects, external_writing, case_studies, pro
           <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
         </div>
       </div>
-      {render_diagram("hero")}
     </section>
 
     <section class="proof-grid">
