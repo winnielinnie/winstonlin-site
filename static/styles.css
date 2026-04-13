@@ -615,10 +615,17 @@ nav a.active::after {
   max-width: 920px;
 }
 
+.about-photo-row {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 920px;
+  margin-top: -4px;
+}
+
 .about-story-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) 220px;
-  gap: 28px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
   align-items: start;
 }
 
@@ -673,7 +680,7 @@ nav a.active::after {
 
 .about-photo-card-side {
   padding: 10px;
-  margin: 2px 0 0;
+  margin: 0;
 }
 
 .page-about .page-hero-copy,
@@ -1653,6 +1660,11 @@ code {
   .about-story-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .about-photo-row {
+    justify-content: flex-start;
+    margin-top: -2px;
   }
 
   .about-layout {
