@@ -103,7 +103,7 @@
       "The challenge was balancing a strong formal model with an onboarding path that service teams would actually adopt and maintain."
     ],
     "outcome": [
-      "Helped cut root-cause analysis time by about 60%.",
+      "Helped make root-cause analysis materially faster and easier to reason about.",
       "The work made ownership, dependency, and impact questions far more answerable during incidents, rollout debugging, and regional build operations."
     ]
   },
