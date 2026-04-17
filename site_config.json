@@ -1,7 +1,7 @@
 {
   "name": "Winston Lin",
   "title": "Work across products, workflows, and systems",
-  "tagline": "I work across cloud products, developer platforms, AI workflows, and supporting tools and docs. What I care about most is whether something becomes clear, trusted, and genuinely useful in real use, especially once teams start depending on it. I also advise and invest in small businesses.",
+  "tagline": "I work across cloud products, developer platforms, AI workflows, and supporting tools and docs. I’m usually most useful where product judgment, technical detail, and operating reality all matter at once: platform decisions, workflow design, documentation, migration, and the seams between teams. I care about work that holds up once people start relying on it day to day. I also advise and invest in small businesses.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
   "meta_description": "Case studies, writing, and small tools from work across cloud products, developer platforms, AI workflows, and business systems.",
@@ -55,7 +55,7 @@
   ],
   "about": {
     "intro": [
-      "I'm based in San Francisco and work across cloud products, developer tools, and AI workflows. I care most about products that feel clear, trusted, and genuinely useful once people start relying on them.",
+      "I'm based in San Francisco and work across cloud products, developer tools, and AI workflows. I'm usually most useful where product judgment, technical detail, and operating reality all matter at once, especially around workflows, documentation, and the seams between teams.",
       "Lately I've been using AI in a more hands-on way, with real workspaces, files, scripts, docs, and review loops instead of one-off prompting. That has made me think even more about tools, documentation, and handoffs that hold up in real work.",
       "I'm comfortable working across engineers, operators, leadership, and business stakeholders. Outside of work, I also advise and invest in small businesses and startups in the U.S. and Asia."
     ],

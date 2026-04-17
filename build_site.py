@@ -791,7 +791,13 @@ def render_homepage(config, posts, projects, case_studies):
       </div>
     </section>
     """
-    return page_layout(config, config["name"], body, "/", meta_description=config["tagline"])
+    return page_layout(
+        config,
+        config["name"],
+        body,
+        "/",
+        meta_description=config.get("meta_description", config["tagline"]),
+    )
 
 
 def render_blog_index(config, posts):
@@ -866,22 +872,18 @@ def render_blog_index(config, posts):
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
         <h1>Writing on product, systems, and AI work</h1>
-        <p class="lead">Short notes on platform judgment, AI workflows, docs, migration, and the details that shape execution.</p>
+        <p class="lead">Short notes on AI workflows, platform judgment, docs, migration, and the small operating details that shape execution.</p>
       </div>
     </section>
     <section class="section">
-      <div class="section-head section-head-stack">
-        <h2>Featured writing</h2>
-      </div>
+      <h2 class="section-title">Featured writing</h2>
       <div class="feature-grid">
         {''.join(featured_cards)}
       </div>
     </section>
     {oracle_blogs_section}
     <section class="section post-list">
-      <div class="section-head">
-        <h2>All writing</h2>
-      </div>
+      <h2 class="section-title">All writing</h2>
       {''.join(cards)}
     </section>
     """
@@ -945,9 +947,7 @@ def render_case_studies_page(config, case_studies):
         group_sections.append(
             f"""
             <section class="case-group" id="{html.escape(group_id)}">
-              <div class="section-head section-head-stack case-group-head">
-                <h2>{html.escape(period)}</h2>
-              </div>
+              <h2 class="section-title case-group-title">{html.escape(period)}</h2>
               <div class="timeline">
                 {''.join(cards)}
               </div>
