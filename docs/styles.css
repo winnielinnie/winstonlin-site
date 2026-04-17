@@ -484,6 +484,10 @@ nav a.active::after {
   max-width: none;
 }
 
+.section-frame-open-source .section-note {
+  max-width: none;
+}
+
 .section-head-stack a {
   display: inline-flex;
   margin-top: 8px;
