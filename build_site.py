@@ -294,77 +294,6 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
 
 def render_diagram(kind):
     diagrams = {
-        "hero": """
-        <div class="diagram-card hero-diagram" aria-hidden="true">
-          <svg viewBox="0 0 420 300" role="img">
-            <defs>
-              <linearGradient id="heroPanel" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="rgba(255,252,247,0.98)"/>
-                <stop offset="100%" stop-color="rgba(247,242,233,0.94)"/>
-              </linearGradient>
-            </defs>
-            <rect x="12" y="12" width="396" height="276" rx="26" fill="url(#heroPanel)" stroke="rgba(219,207,194,0.92)"/>
-            <rect x="38" y="52" width="102" height="40" rx="14" fill="rgba(243,248,246,0.96)" stroke="rgba(46,90,84,0.20)"/>
-            <rect x="38" y="130" width="102" height="40" rx="14" fill="rgba(252,245,239,0.96)" stroke="rgba(155,73,44,0.18)"/>
-            <rect x="38" y="208" width="102" height="40" rx="14" fill="rgba(247,243,232,0.96)" stroke="rgba(151,118,51,0.18)"/>
-            <rect x="160" y="90" width="104" height="78" rx="18" fill="rgba(255,253,249,0.98)" stroke="rgba(23,20,18,0.10)"/>
-            <rect x="286" y="40" width="98" height="40" rx="14" fill="rgba(255,253,249,0.96)" stroke="rgba(23,20,18,0.10)"/>
-            <rect x="286" y="130" width="98" height="40" rx="14" fill="rgba(255,253,249,0.96)" stroke="rgba(23,20,18,0.10)"/>
-            <rect x="286" y="220" width="98" height="40" rx="14" fill="rgba(255,253,249,0.96)" stroke="rgba(23,20,18,0.10)"/>
-            <path d="M140 72 C155 72 150 115 160 120" fill="none" stroke="rgba(46,90,84,0.55)" stroke-width="2.2"/>
-            <path d="M140 150 C155 150 150 130 160 129" fill="none" stroke="rgba(155,73,44,0.50)" stroke-width="2.2"/>
-            <path d="M140 228 C155 228 150 145 160 140" fill="none" stroke="rgba(151,118,51,0.46)" stroke-width="2.2"/>
-            <path d="M264 128 C276 128 274 60 286 60" fill="none" stroke="rgba(23,20,18,0.36)" stroke-width="2.2"/>
-            <path d="M264 128 C276 128 274 150 286 150" fill="none" stroke="rgba(23,20,18,0.36)" stroke-width="2.2"/>
-            <path d="M264 128 C276 128 274 240 286 240" fill="none" stroke="rgba(23,20,18,0.36)" stroke-width="2.2"/>
-            <text x="59" y="77" class="diagram-label">notes</text>
-            <text x="58" y="155" class="diagram-label">systems</text>
-            <text x="59" y="233" class="diagram-label">signals</text>
-            <text x="181" y="121" class="diagram-title">product</text>
-            <text x="184" y="143" class="diagram-title">judgment</text>
-            <text x="305" y="65" class="diagram-label">decisions</text>
-            <text x="316" y="155" class="diagram-label">docs</text>
-            <text x="312" y="245" class="diagram-label">delivery</text>
-          </svg>
-        </div>
-        """,
-        "case-studies": """
-        <div class="diagram-band">
-          <article class="diagram-card mini-diagram-card">
-            <p class="meta">Orchestration</p>
-            <svg viewBox="0 0 520 120" role="img" aria-label="Deterministic delivery diagram">
-              <rect x="12" y="34" width="116" height="44" rx="16" class="tone-a"/>
-              <rect x="202" y="34" width="116" height="44" rx="16" class="tone-b"/>
-              <rect x="392" y="34" width="116" height="44" rx="16" class="tone-c"/>
-              <path d="M128 56 H202" class="diagram-line"/>
-              <path d="M318 56 H392" class="diagram-line"/>
-              <text x="39" y="60" class="diagram-label">build specs</text>
-              <text x="234" y="60" class="diagram-label">plan + test</text>
-              <text x="425" y="60" class="diagram-label">rollout</text>
-            </svg>
-          </article>
-          <article class="diagram-card mini-diagram-card">
-            <p class="meta">Visibility</p>
-            <svg viewBox="0 0 520 120" role="img" aria-label="Dependency and health diagram">
-              <circle cx="82" cy="60" r="22" class="tone-a"/>
-              <circle cx="196" cy="36" r="20" class="tone-b"/>
-              <circle cx="196" cy="84" r="20" class="tone-b"/>
-              <circle cx="326" cy="60" r="22" class="tone-c"/>
-              <circle cx="442" cy="60" r="22" class="tone-d"/>
-              <path d="M104 54 L176 40" class="diagram-line"/>
-              <path d="M104 66 L176 80" class="diagram-line"/>
-              <path d="M216 36 L304 56" class="diagram-line"/>
-              <path d="M216 84 L304 64" class="diagram-line"/>
-              <path d="M348 60 L420 60" class="diagram-line"/>
-              <text x="55" y="65" class="diagram-label">service</text>
-              <text x="178" y="41" class="diagram-label">skills</text>
-              <text x="176" y="89" class="diagram-label">health</text>
-              <text x="304" y="65" class="diagram-label">graph</text>
-              <text x="420" y="65" class="diagram-label">owner</text>
-            </svg>
-          </article>
-        </div>
-        """,
         "how-i-use-ai-as-a-pm-with-a-real-workspace": """
         <section class="post-diagram">
           <svg viewBox="0 0 720 140" role="img" aria-label="Workspace flow diagram">
@@ -397,11 +326,12 @@ def render_diagram(kind):
             <path d="M486 73 H530" class="diagram-line"/>
             <path d="M424 94 V126" class="diagram-line"/>
             <path d="M424 126 H256" class="diagram-line"/>
+            <rect x="190" y="126" width="340" height="28" rx="12" class="tone-e"/>
             <text x="62" y="77" class="diagram-label">files</text>
             <text x="230" y="77" class="diagram-label">tools</text>
             <text x="390" y="77" class="diagram-label">change</text>
             <text x="566" y="77" class="diagram-label">review</text>
-            <text x="298" y="145" class="diagram-label">good AI work stays inside a real loop</text>
+            <text x="360" y="144" class="diagram-label" text-anchor="middle">good AI work stays inside a real loop</text>
           </svg>
         </section>
         """,
@@ -459,12 +389,12 @@ def render_diagram(kind):
             <path d="M154 76 H198" class="diagram-line"/>
             <path d="M318 76 H362" class="diagram-line"/>
             <path d="M482 76 H526" class="diagram-line"/>
-            <path d="M94 116 C182 136 498 136 586 116" class="diagram-line"/>
+            <rect x="178" y="114" width="364" height="28" rx="12" class="tone-e"/>
             <text x="66" y="79" class="diagram-label">dev loop</text>
             <text x="223" y="79" class="diagram-label">packaging</text>
             <text x="396" y="79" class="diagram-label">docs</text>
             <text x="558" y="79" class="diagram-label">cutover</text>
-            <text x="282" y="132" class="diagram-label">confidence is built before migration starts</text>
+            <text x="360" y="132" class="diagram-label" text-anchor="middle">confidence is built before migration starts</text>
           </svg>
         </section>
         """,
@@ -505,11 +435,12 @@ def render_diagram(kind):
             <path d="M354 92 V122" class="diagram-line"/>
             <path d="M354 122 H246" class="diagram-line"/>
             <path d="M354 122 H462" class="diagram-line"/>
+            <rect x="176" y="124" width="368" height="28" rx="12" class="tone-e"/>
             <text x="58" y="75" class="diagram-label">demand</text>
             <text x="224" y="75" class="diagram-label">handoffs</text>
             <text x="394" y="75" class="diagram-label">service</text>
             <text x="550" y="75" class="diagram-label">margin</text>
-            <text x="282" y="141" class="diagram-label">operating model decides what scales cleanly</text>
+            <text x="360" y="142" class="diagram-label" text-anchor="middle">operating model decides what scales cleanly</text>
           </svg>
         </section>
         """,
@@ -543,11 +474,12 @@ def render_diagram(kind):
             <path d="M436 92 V124" class="diagram-line"/>
             <path d="M436 124 H274" class="diagram-line"/>
             <path d="M436 124 H602" class="diagram-line"/>
+            <rect x="234" y="126" width="252" height="28" rx="12" class="tone-e"/>
             <text x="70" y="75" class="diagram-label">friction</text>
             <text x="236" y="75" class="diagram-label">small tool</text>
             <text x="396" y="75" class="diagram-label">real use</text>
             <text x="574" y="75" class="diagram-label">taste check</text>
-            <text x="294" y="144" class="diagram-label">good experiments earn reuse</text>
+            <text x="360" y="144" class="diagram-label" text-anchor="middle">good experiments earn reuse</text>
           </svg>
         </section>
         """,
@@ -561,11 +493,12 @@ def render_diagram(kind):
             <path d="M146 76 H186" class="diagram-line"/>
             <path d="M314 76 H354" class="diagram-line"/>
             <path d="M482 76 H522" class="diagram-line"/>
+            <rect x="202" y="114" width="316" height="28" rx="12" class="tone-e"/>
             <text x="61" y="80" class="diagram-label">notes</text>
             <text x="223" y="80" class="diagram-label">one pager</text>
             <text x="388" y="80" class="diagram-label">decision</text>
             <text x="568" y="80" class="diagram-label">slides later</text>
-            <text x="222" y="132" class="diagram-label">structure first, presentation second</text>
+            <text x="360" y="132" class="diagram-label" text-anchor="middle">structure first, presentation second</text>
           </svg>
         </section>
         """,
@@ -581,11 +514,12 @@ def render_diagram(kind):
             <path d="M514 71 H560" class="diagram-line"/>
             <path d="M270 92 V124" class="diagram-line"/>
             <path d="M270 124 H622" class="diagram-line"/>
+            <rect x="164" y="126" width="392" height="28" rx="12" class="tone-e"/>
             <text x="70" y="75" class="diagram-label">profile</text>
             <text x="238" y="75" class="diagram-label">site</text>
             <text x="418" y="75" class="diagram-label">repo</text>
             <text x="587" y="75" class="diagram-label">deeper proof</text>
-            <text x="352" y="144" class="diagram-label">good surfaces route to the next useful depth</text>
+            <text x="360" y="144" class="diagram-label" text-anchor="middle">good surfaces route to the next useful depth</text>
           </svg>
         </section>
         """,
@@ -599,11 +533,12 @@ def render_diagram(kind):
             <path d="M148 72 H192" class="diagram-line"/>
             <path d="M324 72 H368" class="diagram-line"/>
             <path d="M500 72 H544" class="diagram-line"/>
+            <rect x="176" y="118" width="368" height="28" rx="12" class="tone-e"/>
             <text x="67" y="76" class="diagram-label">repo</text>
             <text x="225" y="76" class="diagram-label">example</text>
             <text x="405" y="76" class="diagram-label">run it</text>
             <text x="576" y="76" class="diagram-label">useful output</text>
-            <text x="212" y="132" class="diagram-label">good repos shorten the distance to proof</text>
+            <text x="360" y="136" class="diagram-label" text-anchor="middle">good repos shorten the distance to proof</text>
           </svg>
         </section>
         """,
@@ -619,11 +554,12 @@ def render_diagram(kind):
             <path d="M522 75 H568" class="diagram-line"/>
             <path d="M278 96 V126" class="diagram-line"/>
             <path d="M278 126 H620" class="diagram-line"/>
+            <rect x="180" y="126" width="360" height="28" rx="12" class="tone-e"/>
             <text x="75" y="79" class="diagram-label">milestone</text>
             <text x="245" y="79" class="diagram-label">owner</text>
             <text x="427" y="79" class="diagram-label">blocker</text>
             <text x="601" y="79" class="diagram-label">impact</text>
-            <text x="316" y="145" class="diagram-label">good plans make hidden risk visible early</text>
+            <text x="360" y="144" class="diagram-label" text-anchor="middle">good plans make hidden risk visible early</text>
           </svg>
         </section>
         """,
@@ -635,10 +571,11 @@ def render_diagram(kind):
             <rect x="526" y="54" width="138" height="40" rx="16" class="tone-c"/>
             <path d="M192 74 H290" class="diagram-line"/>
             <path d="M428 74 H526" class="diagram-line"/>
+            <rect x="176" y="126" width="368" height="28" rx="12" class="tone-e"/>
             <text x="96" y="78" class="diagram-label">input</text>
             <text x="333" y="78" class="diagram-label">command</text>
             <text x="572" y="78" class="diagram-label">output</text>
-            <text x="194" y="140" class="diagram-label">good examples turn curiosity into proof quickly</text>
+            <text x="360" y="144" class="diagram-label" text-anchor="middle">good examples turn curiosity into proof quickly</text>
           </svg>
         </section>
         """,
@@ -654,14 +591,12 @@ def render_diagram(kind):
             <path d="M514 75 H556" class="diagram-line"/>
             <path d="M276 96 V126" class="diagram-line"/>
             <path d="M276 126 H618" class="diagram-line"/>
-            <circle cx="170" cy="75" r="6" class="tone-e"/>
-            <circle cx="342" cy="75" r="6" class="tone-e"/>
-            <circle cx="514" cy="75" r="6" class="tone-e"/>
+            <rect x="156" y="126" width="408" height="28" rx="12" class="tone-e"/>
             <text x="71" y="79" class="diagram-label">signal</text>
             <text x="247" y="79" class="diagram-label">handoff</text>
             <text x="416" y="79" class="diagram-label">diagnosis</text>
             <text x="584" y="79" class="diagram-label">mitigation</text>
-            <text x="388" y="145" class="diagram-label">stable sequence makes the review easier to trust</text>
+            <text x="360" y="144" class="diagram-label" text-anchor="middle">stable sequence makes the review easier to trust</text>
           </svg>
         </section>
         """,
@@ -674,7 +609,6 @@ def render_homepage(config, posts, projects, case_studies):
     current_note = find_post(posts, showcase_note_slug) or find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
     bio_strip = ""
-    hero_diagram = render_diagram("hero")
     if config.get("home_bio_strip"):
         bio_strip = f"""
         <div class="bio-strip">
@@ -829,9 +763,6 @@ def render_homepage(config, posts, projects, case_studies):
             <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
             <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
           </div>
-        </div>
-        <div class="hero-visual">
-          {hero_diagram}
         </div>
       </div>
       {bio_strip}
@@ -1031,13 +962,6 @@ def render_case_studies_page(config, case_studies):
         <h1>Case studies</h1>
         <p class="lead">A small set of product and platform projects, with the operational constraints and outcomes called out directly.</p>
       </div>
-    </section>
-    <section class="section">
-      <div class="section-head section-head-stack">
-        <h2>Visual snapshots</h2>
-        <p class="section-note">Two recurring patterns in the work: making delivery more deterministic and making dependencies easier to see.</p>
-      </div>
-      {render_diagram("case-studies")}
     </section>
     <section class="section jump-section" id="case-jumps">
       <div class="section-head section-head-stack">
