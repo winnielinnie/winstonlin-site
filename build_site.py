@@ -720,21 +720,21 @@ def render_homepage(config, posts, projects, case_studies):
         {
             "meta": "Deep dive",
             "title": "Case studies",
-            "text": "Product direction, migration, rollout planning, recovery, and platform decisions in context.",
+            "text": "Product direction, rollout planning, recovery, and platform decisions in context.",
             "url": relative_url('/', '/case-studies/'),
             "link_label": "Open case studies",
         },
         {
             "meta": "Short notes",
             "title": "Writing",
-            "text": "Short notes on AI workflows, platform quality, docs, migration, and operating judgment.",
+            "text": "Short notes on AI workflows, platform quality, tooling, and operating judgment.",
             "url": relative_url('/', '/blog/'),
             "link_label": "Browse writing",
         },
         {
             "meta": "Hands-on",
             "title": "Tools",
-            "text": "Small tools for docs, incidents, workflow automation, and platform operations.",
+            "text": "Small tools for incidents, workflow automation, and platform operations.",
             "url": html.escape(config['github_url']),
             "link_label": "View GitHub",
         },
@@ -783,7 +783,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories</h2>
-        <p class="section-note">Tools from docs work, incidents, workflow automation, and platform operations.</p>
+        <p class="section-note">Tools from incidents, workflow automation, and platform operations.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
