@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
-  "title": "Making complex systems easier to use",
-  "tagline": "I work across cloud products, developer platforms, and AI workflows, with a lot of time spent on OKE releases, Ubuntu images, observability, and add-ons. I also advise and invest in small businesses. Most of what I share here comes from helping teams make clearer decisions and run complex systems with less friction.",
+  "title": "Building technical products and the systems behind them",
+  "tagline": "I work across cloud products, developer platforms, AI workflows, and practical tooling. I also advise and invest in small businesses. Most of what I share here comes from making technical systems clearer, easier to use, and easier to ship.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Case studies, writing, and practical tools from work across cloud products, developer platforms, AI workflows, and business systems.",
+  "meta_description": "Case studies, writing, and practical tools from work across cloud products, developer platforms, and business systems.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
@@ -28,7 +28,7 @@
     }
   ],
   "intro_paragraphs": [
-    "I’ve led product across serverless, OKE, CI/CD, observability, and developer platforms, and I also work with operators and founders on growth, service design, and business systems."
+    "I’ve led product across serverless, CI/CD, and developer platforms, and I also work with operators and founders on growth, service design, and business systems."
   ],
   "focus_areas": [
     "Developer platforms",
@@ -55,7 +55,7 @@
   ],
   "about": {
     "intro": [
-      "I'm based in San Francisco and work in product across cloud systems, developer tools, and AI-enabled workflows. A lot of that has included OKE version releases, Ubuntu images, observability, and add-ons. The part I enjoy most is making complex systems easier to understand, easier to adopt, and more useful for the people who actually have to use them.",
+      "I'm based in San Francisco and work in product, mostly around cloud, developer tools, and AI-enabled workflows. The part I enjoy most is making complex systems easier to understand, easier to adopt, and more useful for the people who actually have to ship with them.",
       "Over the last few months I've been using AI in a more hands-on way, with real workspaces, files, scripts, docs, and review loops rather than one-off prompting. That has only reinforced something I already believed: the best product and platform work happens when good judgment stays close to the actual system.",
       "I tend to be most useful where the work crosses boundaries. I'm comfortable moving between engineers, operators, leadership, and business stakeholders, and I care a lot about clear collaboration, clean handoffs, and outputs that are actually usable.",
       "Outside of work, I invest in and advise small businesses and startups at different stages in the U.S. and Asia. I like being around people building things from scratch and figuring out how something goes from an idea to something that actually works."
