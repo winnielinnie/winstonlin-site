@@ -860,12 +860,10 @@ def render_blog_index(config, posts):
         meta = html.escape(item.get("meta", "Oracle Blogs"))
         oracle_blog_items.append(
             f"""
-            <li>
-              <a href="{url}" target="_blank" rel="noreferrer">
-                <span>{title}</span>
-                <small>{meta}</small>
-              </a>
-            </li>
+            <article class="feature-card oracle-blog-card">
+              <p class="meta">{meta}</p>
+              <h3><a href="{url}" target="_blank" rel="noreferrer">{title}</a></h3>
+            </article>
             """
         )
 
@@ -875,13 +873,12 @@ def render_blog_index(config, posts):
         oracle_blogs_section = f"""
         <section class="section oracle-blogs-section">
           <div class="section-head section-head-stack oracle-blogs-head">
-            <h2>Also on Oracle Blogs</h2>
-            <a class="oracle-blogs-link oracle-blogs-link-head" href="{oracle_author_url}" target="_blank" rel="noreferrer">View author profile and all Oracle Blogs posts</a>
+            <h2>Oracle writing</h2>
+            <p class="section-note">Selected Oracle posts plus my author profile.</p>
+            <a class="oracle-blogs-link oracle-blogs-link-head" href="{oracle_author_url}" target="_blank" rel="noreferrer">Author profile</a>
           </div>
-          <div class="oracle-blogs-list">
-            <ul>
-              {''.join(oracle_blog_items)}
-            </ul>
+          <div class="feature-grid oracle-blogs-grid">
+            {''.join(oracle_blog_items)}
           </div>
         </section>
         """
