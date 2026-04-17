@@ -874,8 +874,7 @@ def render_blog_index(config, posts):
         <section class="section oracle-blogs-section">
           <div class="section-head section-head-stack oracle-blogs-head">
             <h2>Oracle writing</h2>
-            <p class="section-note">Selected Oracle posts plus my author profile.</p>
-            <a class="oracle-blogs-link oracle-blogs-link-head" href="{oracle_author_url}" target="_blank" rel="noreferrer">Author profile</a>
+            <p class="section-note oracle-blogs-note">Selected Oracle posts and <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">author profile</a>.</p>
           </div>
           <div class="feature-grid oracle-blogs-grid">
             {''.join(oracle_blog_items)}
