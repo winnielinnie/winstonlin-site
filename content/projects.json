@@ -12,16 +12,46 @@
     "summary": "Python pattern for routing one bucket to several downstream systems."
   },
   {
+    "label": "Repo utility",
+    "name": "repo-onramp-check",
+    "url": "https://github.com/winnielinnie/repo-onramp-check",
+    "summary": "A Python CLI for checking whether a repo gives a newcomer a short path to first useful success."
+  },
+  {
+    "label": "Operations utility",
+    "name": "incident-timeline-formatter",
+    "url": "https://github.com/winnielinnie/incident-timeline-formatter",
+    "summary": "A Python CLI for turning messy incident notes into a stable Markdown timeline with clearer handoffs and impact changes."
+  },
+  {
+    "label": "Planning utility",
+    "name": "dependency-risk-check",
+    "url": "https://github.com/winnielinnie/dependency-risk-check",
+    "summary": "A Python CLI for flagging overdue, unowned, and dependency-blocked work in lightweight plans."
+  },
+  {
+    "label": "Workflow utility",
+    "name": "decision-journal-cli",
+    "url": "https://github.com/winnielinnie/decision-journal-cli",
+    "summary": "A compact CLI for keeping decisions, assumptions, and revisit dates visible as work evolves."
+  },
+  {
+    "label": "Workflow canvas",
+    "name": "one-page-canvas",
+    "url": "https://github.com/winnielinnie/one-page-canvas",
+    "summary": "A lightweight browser canvas for shaping one-page strategy artifacts before they turn into heavier decks."
+  },
+  {
     "label": "Docs utility",
     "name": "doc-ship-check",
     "url": "https://github.com/winnielinnie/doc-ship-check",
-    "summary": "A Python script for the last mile of docs cleanup before publishing."
+    "summary": "A Python script for the last mile of docs cleanup before publishing or handoff."
   },
   {
-    "label": "CLI utility",
-    "name": "release-note-diff-cli",
-    "url": "https://github.com/winnielinnie/release-note-diff-cli",
-    "summary": "A small Python script for diffing release notes without reading every line twice."
+    "label": "Functions pattern",
+    "name": "File Manifest Writer",
+    "url": "https://github.com/winnielinnie/oci-fn-file-manifest-writer",
+    "summary": "A Python OCI Function for turning batches of inbound file names into a compact manifest artifact."
   },
   {
     "label": "Presentation tool",
@@ -30,15 +60,9 @@
     "summary": "Strict outline checks for slide decks before they turn into vague, crowded review material."
   },
   {
-    "label": "Workflow utility",
-    "name": "decision-journal-cli",
-    "url": "https://github.com/winnielinnie/decision-journal-cli",
-    "summary": "A compact CLI for keeping decisions, assumptions, and revisit dates visible over time."
-  },
-  {
-    "label": "Local-first experiment",
-    "name": "one-page-canvas",
-    "url": "https://github.com/winnielinnie/one-page-canvas",
-    "summary": "A lightweight browser canvas for shaping one-page strategy artifacts without a backend."
+    "label": "CLI utility",
+    "name": "release-note-diff-cli",
+    "url": "https://github.com/winnielinnie/release-note-diff-cli",
+    "summary": "A small Python script for diffing release notes without reading every line twice."
   }
 ]

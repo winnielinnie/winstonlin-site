@@ -3,7 +3,42 @@
 <channel>
   <title>Winston Lin</title>
   <link>https://winnielinnie.github.io/winstonlin-site/</link>
-  <description>Selected case studies, writing, and Python tools across serverless, platform products, business systems, and operator work.</description>
+  <description>Case studies, writing, and practical tools from work across AI workflows, serverless, developer platforms, and business systems.</description>
+  <item>
+    <title>Incident Timelines Need A Stable Shape</title>
+    <link>https://winnielinnie.github.io/winstonlin-site/blog/incident-timelines-need-a-stable-shape/</link>
+    <guid>https://winnielinnie.github.io/winstonlin-site/blog/incident-timelines-need-a-stable-shape/</guid>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Incident reviews get more useful when the timeline is consistent enough to reduce debates about sequence, handoffs, and impact changes.</description>
+  </item>
+  <item>
+    <title>What Working With Codex Taught Me About AI Work</title>
+    <link>https://winnielinnie.github.io/winstonlin-site/blog/what-working-with-codex-taught-me-about-ai-work/</link>
+    <guid>https://winnielinnie.github.io/winstonlin-site/blog/what-working-with-codex-taught-me-about-ai-work/</guid>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Months of hands-on use reinforced that useful AI work is not clever prompting. It is tools, files, review loops, and recovery paths around the model.</description>
+  </item>
+  <item>
+    <title>Examples Are the Interface for Small Tools</title>
+    <link>https://winnielinnie.github.io/winstonlin-site/blog/examples-are-the-interface-for-small-tools/</link>
+    <guid>https://winnielinnie.github.io/winstonlin-site/blog/examples-are-the-interface-for-small-tools/</guid>
+    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+    <description>For small public tools, a good example usually teaches faster than architecture talk because it shortens the gap between curiosity and proof.</description>
+  </item>
+  <item>
+    <title>Dependencies Need Owners Before They Need Slides</title>
+    <link>https://winnielinnie.github.io/winstonlin-site/blog/dependencies-need-owners-before-they-need-slides/</link>
+    <guid>https://winnielinnie.github.io/winstonlin-site/blog/dependencies-need-owners-before-they-need-slides/</guid>
+    <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Planning artifacts become more useful when they expose overdue, unowned, and blocked work instead of just presenting milestones cleanly.</description>
+  </item>
+  <item>
+    <title>Public Repos Need a Short Path to First Useful Success</title>
+    <link>https://winnielinnie.github.io/winstonlin-site/blog/public-repos-need-a-short-path-to-first-useful-success/</link>
+    <guid>https://winnielinnie.github.io/winstonlin-site/blog/public-repos-need-a-short-path-to-first-useful-success/</guid>
+    <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Public technical repos land better when they make the first useful success obvious with concrete examples, usable output, and honest limits.</description>
+  </item>
   <item>
     <title>Fun Projects Are How I Test Workflow Ideas</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/fun-projects-are-how-i-test-workflow-ideas/</link>

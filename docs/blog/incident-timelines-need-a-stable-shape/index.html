@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incident Timelines Need A Stable Shape | Winston Lin</title>
+  <meta name="description" content="Incident reviews get more useful when the timeline is consistent enough to reduce debates about sequence, handoffs, and impact changes.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/incident-timelines-need-a-stable-shape/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="Incident Timelines Need A Stable Shape | Winston Lin">
+  <meta property="og:description" content="Incident reviews get more useful when the timeline is consistent enough to reduce debates about sequence, handoffs, and impact changes.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/incident-timelines-need-a-stable-shape/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-post">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-04-17</p>
+      <h1>Incident Timelines Need A Stable Shape</h1>
+      <p class="post-summary">Incident reviews get more useful when the timeline is consistent enough to reduce debates about sequence, handoffs, and impact changes.</p>
+      
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 176" role="img" aria-label="Incident timeline diagram">
+            <rect x="40" y="54" width="130" height="42" rx="16" class="tone-a"/>
+            <rect x="212" y="54" width="130" height="42" rx="16" class="tone-b"/>
+            <rect x="384" y="54" width="130" height="42" rx="16" class="tone-c"/>
+            <rect x="556" y="54" width="124" height="42" rx="16" class="tone-d"/>
+            <path d="M170 75 H212" class="diagram-line"/>
+            <path d="M342 75 H384" class="diagram-line"/>
+            <path d="M514 75 H556" class="diagram-line"/>
+            <path d="M276 96 V126" class="diagram-line"/>
+            <path d="M276 126 H618" class="diagram-line"/>
+            <circle cx="170" cy="75" r="6" class="tone-e"/>
+            <circle cx="342" cy="75" r="6" class="tone-e"/>
+            <circle cx="514" cy="75" r="6" class="tone-e"/>
+            <text x="71" y="79" class="diagram-label">signal</text>
+            <text x="247" y="79" class="diagram-label">handoff</text>
+            <text x="416" y="79" class="diagram-label">diagnosis</text>
+            <text x="584" y="79" class="diagram-label">mitigation</text>
+            <text x="388" y="145" class="diagram-label">stable sequence makes the review easier to trust</text>
+          </svg>
+        </section>
+        
+      <p>Incident reviews often get noisier than they need to be.</p>
+<p>The facts are technically present, but they are scattered across chat, dashboards, and half-remembered updates from different people.</p>
+<p>That creates a predictable problem.</p>
+<p>Before anyone can learn from the incident, they are still reconstructing the order of events.</p>
+<h2>What I want from the timeline first</h2>
+<p>I do not need the first pass to be fancy.</p>
+<p>I want a stable shape that answers a few basic questions:</p>
+<ul>
+<li>what changed first</li>
+<li>who picked the issue up next</li>
+<li>when customer impact got worse or better</li>
+<li>when the incident actually moved from signal to diagnosis to mitigation</li>
+</ul>
+<p>That structure does not solve the incident.</p>
+<p>It just removes one layer of avoidable ambiguity.</p>
+<h2>Why sequence matters so much</h2>
+<p>A lot of post-incident debate is really sequence debate in disguise.</p>
+<p>Did the alert show up before the customer report. Did the mitigation happen before the backlog started clearing. Did the handoff add clarity or just add latency.</p>
+<p>If the timeline is weak, the discussion gets dragged sideways.</p>
+<p>People end up arguing from memory instead of from the work.</p>
+<h2>Why a small formatter is often enough</h2>
+<p>This is exactly the kind of problem where I still like a tiny utility.</p>
+<p>Not because a script replaces incident judgment.</p>
+<p>Because a script can force the notes into one repeatable shape:</p>
+<ul>
+<li>timestamp</li>
+<li>actor</li>
+<li>event</li>
+<li>impact or status change</li>
+</ul>
+<p>That is usually enough to make the next conversation better.</p>
+<h2>The bar I actually care about</h2>
+<p>I do not need a huge incident platform to feel better about review quality.</p>
+<p>I want the sequence to be legible.</p>
+<p>Once that is true, the deeper questions get easier:</p>
+<ul>
+<li>where detection lagged</li>
+<li>where the handoff got fuzzy</li>
+<li>where the system recovered cleanly</li>
+<li>where the process still depends on heroics</li>
+</ul>
+<p>That is the useful version for me.</p>
+<p>A stable timeline first. Interpretation after.</p>
+      <p class="back-link"><a href="../">Back to writing</a></p>
+    </article>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
+      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      function setActive(key) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.showcaseTarget === key;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        panels.forEach((panel) => {
+          const active = panel.dataset.showcasePanel === key;
+          panel.classList.toggle("active", active);
+          panel.hidden = !active;
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          setActive(tab.dataset.showcaseTarget);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

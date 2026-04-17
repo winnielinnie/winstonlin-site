@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples Are the Interface for Small Tools | Winston Lin</title>
+  <meta name="description" content="For small public tools, a good example usually teaches faster than architecture talk because it shortens the gap between curiosity and proof.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/examples-are-the-interface-for-small-tools/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="Examples Are the Interface for Small Tools | Winston Lin">
+  <meta property="og:description" content="For small public tools, a good example usually teaches faster than architecture talk because it shortens the gap between curiosity and proof.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/examples-are-the-interface-for-small-tools/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-post">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-04-16</p>
+      <h1>Examples Are the Interface for Small Tools</h1>
+      <p class="post-summary">For small public tools, a good example usually teaches faster than architecture talk because it shortens the gap between curiosity and proof.</p>
+      
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 178" role="img" aria-label="Examples as interface diagram">
+            <rect x="54" y="54" width="138" height="40" rx="16" class="tone-a"/>
+            <rect x="290" y="54" width="138" height="40" rx="16" class="tone-b"/>
+            <rect x="526" y="54" width="138" height="40" rx="16" class="tone-c"/>
+            <path d="M192 74 H290" class="diagram-line"/>
+            <path d="M428 74 H526" class="diagram-line"/>
+            <text x="96" y="78" class="diagram-label">input</text>
+            <text x="333" y="78" class="diagram-label">command</text>
+            <text x="572" y="78" class="diagram-label">output</text>
+            <text x="194" y="140" class="diagram-label">good examples turn curiosity into proof quickly</text>
+          </svg>
+        </section>
+        
+      <p>Small tools do not usually get a long sales cycle.</p>
+<p>Someone lands on the repo, scans for about thirty seconds, and decides whether the thing feels usable.</p>
+<p>That decision is often driven less by the code than by the example.</p>
+<p>Can I see the input. Can I see the command. Can I see the output.</p>
+<p>If those three things are obvious, the tool already feels more real.</p>
+<h2>Examples do the trust-building work</h2>
+<p>A lot of tiny repos describe themselves well enough.</p>
+<p>What they fail to do is prove themselves quickly.</p>
+<p>That is the job of the example.</p>
+<p>A good example answers the questions people have right away:</p>
+<ul>
+<li>what shape does the input need to be in</li>
+<li>what exact command am I supposed to run</li>
+<li>what kind of output should I expect back</li>
+</ul>
+<p>That is not garnish. That is the interface.</p>
+<h2>Why this matters more for small repos</h2>
+<p>Bigger products can survive some ambiguity because they have more context around them.</p>
+<p>A small public repo usually cannot.</p>
+<p>It has to earn the next five minutes.</p>
+<p>If the example is weak, the repo starts feeling like homework.</p>
+<p>If the example is clear, the repo starts feeling usable before someone has read the entire codebase.</p>
+<h2>The pattern I keep wanting to see</h2>
+<p>For compact tools, I keep coming back to the same structure:</p>
+<ul>
+<li>one short problem statement</li>
+<li>one realistic sample input</li>
+<li>one exact command</li>
+<li>one believable output snippet</li>
+</ul>
+<p>That path is often enough.</p>
+<p>Once somebody has seen the proof, they can decide whether they care about the implementation details.</p>
+<p>Before that, architecture notes are usually too early.</p>
+<h2>What I optimize for now</h2>
+<p>When I publish a small tool, I try to make the example do most of the onboarding work.</p>
+<p>That usually means the README should let someone move from &quot;I think I get it&quot; to &quot;I ran it and saw the point&quot; with as little friction as possible.</p>
+<p>That is the threshold I care about.</p>
+<p>Not whether the repo looks impressive. Whether it gets to proof quickly enough to be worth reopening.</p>
+      <p class="back-link"><a href="../">Back to writing</a></p>
+    </article>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
+      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      function setActive(key) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.showcaseTarget === key;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        panels.forEach((panel) => {
+          const active = panel.dataset.showcasePanel === key;
+          panel.classList.toggle("active", active);
+          panel.hidden = !active;
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          setActive(tab.dataset.showcaseTarget);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

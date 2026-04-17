@@ -569,13 +569,77 @@ def render_diagram(kind):
           </svg>
         </section>
         """,
+        "public-repos-need-a-short-path-to-first-useful-success": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 168" role="img" aria-label="Repository onboarding diagram">
+            <rect x="32" y="52" width="116" height="40" rx="16" class="tone-a"/>
+            <rect x="192" y="52" width="132" height="40" rx="16" class="tone-b"/>
+            <rect x="368" y="52" width="132" height="40" rx="16" class="tone-c"/>
+            <rect x="544" y="52" width="144" height="40" rx="16" class="tone-d"/>
+            <path d="M148 72 H192" class="diagram-line"/>
+            <path d="M324 72 H368" class="diagram-line"/>
+            <path d="M500 72 H544" class="diagram-line"/>
+            <text x="67" y="76" class="diagram-label">repo</text>
+            <text x="225" y="76" class="diagram-label">example</text>
+            <text x="405" y="76" class="diagram-label">run it</text>
+            <text x="576" y="76" class="diagram-label">useful output</text>
+            <text x="212" y="132" class="diagram-label">good repos shorten the distance to proof</text>
+          </svg>
+        </section>
+        """,
+        "examples-are-the-interface-for-small-tools": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 178" role="img" aria-label="Examples as interface diagram">
+            <rect x="54" y="54" width="138" height="40" rx="16" class="tone-a"/>
+            <rect x="290" y="54" width="138" height="40" rx="16" class="tone-b"/>
+            <rect x="526" y="54" width="138" height="40" rx="16" class="tone-c"/>
+            <path d="M192 74 H290" class="diagram-line"/>
+            <path d="M428 74 H526" class="diagram-line"/>
+            <text x="96" y="78" class="diagram-label">input</text>
+            <text x="333" y="78" class="diagram-label">command</text>
+            <text x="572" y="78" class="diagram-label">output</text>
+            <text x="194" y="140" class="diagram-label">good examples turn curiosity into proof quickly</text>
+          </svg>
+        </section>
+        """,
+        "incident-timelines-need-a-stable-shape": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 176" role="img" aria-label="Incident timeline diagram">
+            <rect x="40" y="54" width="130" height="42" rx="16" class="tone-a"/>
+            <rect x="212" y="54" width="130" height="42" rx="16" class="tone-b"/>
+            <rect x="384" y="54" width="130" height="42" rx="16" class="tone-c"/>
+            <rect x="556" y="54" width="124" height="42" rx="16" class="tone-d"/>
+            <path d="M170 75 H212" class="diagram-line"/>
+            <path d="M342 75 H384" class="diagram-line"/>
+            <path d="M514 75 H556" class="diagram-line"/>
+            <path d="M276 96 V126" class="diagram-line"/>
+            <path d="M276 126 H618" class="diagram-line"/>
+            <circle cx="170" cy="75" r="6" class="tone-e"/>
+            <circle cx="342" cy="75" r="6" class="tone-e"/>
+            <circle cx="514" cy="75" r="6" class="tone-e"/>
+            <text x="71" y="79" class="diagram-label">signal</text>
+            <text x="247" y="79" class="diagram-label">handoff</text>
+            <text x="416" y="79" class="diagram-label">diagnosis</text>
+            <text x="584" y="79" class="diagram-label">mitigation</text>
+            <text x="388" y="145" class="diagram-label">stable sequence makes the review easier to trust</text>
+          </svg>
+        </section>
+        """,
     }
     return diagrams.get(kind, "")
 
 
 def render_homepage(config, posts, projects, case_studies):
-    current_note = find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
+    showcase_note_slug = config.get("home_showcase_note_slug", "how-i-use-ai-as-a-pm-with-a-real-workspace")
+    current_note = find_post(posts, showcase_note_slug) or find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
+    bio_strip = ""
+    if config.get("home_bio_strip"):
+        bio_strip = f"""
+        <div class="bio-strip">
+          <p>{html.escape(config["home_bio_strip"])}</p>
+        </div>
+        """
     if case_studies:
         featured_study = next(
             (study for study in case_studies if study["slug"] == "oci-functions-product-direction"),
@@ -590,10 +654,10 @@ def render_homepage(config, posts, projects, case_studies):
             showcase_items.append(
                 {
                     "key": "workspace",
-                    "label": "Workspace",
+                    "label": "AI Workflow",
                     "meta": "Writing",
-                    "title": "AI PM Workspace",
-                    "summary": "How I use one workspace to move from notes and files to shipping work.",
+                    "title": current_note.title,
+                    "summary": current_note.summary,
                     "href": relative_url('/', f'/blog/{current_note.slug}/'),
                     "cta": "Read note",
                     "tone": "showcase-tone-workspace",
@@ -663,7 +727,7 @@ def render_homepage(config, posts, projects, case_studies):
         </section>
         """
 
-    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:6]
+    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:8]
 
     project_cards = []
     for project in selected_projects:
@@ -694,8 +758,8 @@ def render_homepage(config, posts, projects, case_studies):
         },
         {
             "meta": "Practical",
-            "title": "Python tools",
-            "text": "Small utilities and reusable patterns drawn from real platform, docs, and workflow work.",
+            "title": "Practical tools",
+            "text": "Small utilities and workflow helpers drawn from real platform, docs, and AI-assisted operating work.",
             "url": html.escape(config['github_url']),
             "link_label": "View GitHub",
         },
@@ -722,6 +786,7 @@ def render_homepage(config, posts, projects, case_studies):
         <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
         <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
       </div>
+      {bio_strip}
     </section>
 
     {showcase_html}
@@ -729,7 +794,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section work-section section-frame section-frame-explore">
       <div class="section-head section-head-stack">
         <h2>Browse by format</h2>
-        <p class="section-note">Case studies go deeper, writing is faster to scan, and repositories show the hands-on side.</p>
+        <p class="section-note">Case studies go deeper, writing is faster to scan, and repositories show the hands-on side of how I work.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
@@ -739,7 +804,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories</h2>
-        <p class="section-note">A smaller set of Python tools drawn from real workflow pain, docs work, and platform operations.</p>
+        <p class="section-note">A smaller set of practical tools shaped by workflow pain, docs work, platform operations, and AI-era handoffs.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -953,7 +1018,7 @@ def render_about_page(config):
       <div class="page-hero-copy">
         <p class="eyebrow">About</p>
         <h1>A little about me.</h1>
-        <p class="lead">A bit more on my background, what I work on, and what I spend time on outside of work.</p>
+        <p class="lead">A bit more on my background, how I like to work, and the kinds of technical and AI workflow problems I like helping teams solve.</p>
       </div>
     </section>
     <section class="section about-layout">

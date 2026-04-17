@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dependencies Need Owners Before They Need Slides | Winston Lin</title>
+  <meta name="description" content="Planning artifacts become more useful when they expose overdue, unowned, and blocked work instead of just presenting milestones cleanly.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/dependencies-need-owners-before-they-need-slides/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="Dependencies Need Owners Before They Need Slides | Winston Lin">
+  <meta property="og:description" content="Planning artifacts become more useful when they expose overdue, unowned, and blocked work instead of just presenting milestones cleanly.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/dependencies-need-owners-before-they-need-slides/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-post">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-04-15</p>
+      <h1>Dependencies Need Owners Before They Need Slides</h1>
+      <p class="post-summary">Planning artifacts become more useful when they expose overdue, unowned, and blocked work instead of just presenting milestones cleanly.</p>
+      
+      <p>Plans often look healthier than the work underneath them.</p>
+<p>The milestones are there. The dates are there. The swimlanes are there.</p>
+<p>But the risky middle is still invisible.</p>
+<p>That usually means the plan is missing the things that decide whether it will actually move:</p>
+<ul>
+<li>who owns the dependency</li>
+<li>whether the dependency is already late</li>
+<li>what is blocked downstream</li>
+<li>which blocker is missing entirely from the plan</li>
+</ul>
+<h2>The failure mode is usually in the middle</h2>
+<p>Most teams can see the top line.</p>
+<p>They know the launch date. They know the headline milestones.</p>
+<p>What gets fuzzy is the chain between them.</p>
+<p>That is where plans start failing quietly.</p>
+<p>A dependency gets mentioned but not owned. An item slips but still looks present on the slide. A blocked team keeps showing &quot;in progress&quot; because there is no better bucket for &quot;waiting on someone else.&quot;</p>
+<h2>What I want a planning artifact to do</h2>
+<p>I do not need every planning tool to be sophisticated.</p>
+<p>I mostly want it to answer a few practical questions quickly:</p>
+<ul>
+<li>what is overdue right now</li>
+<li>what is unowned right now</li>
+<li>what is blocked by an open dependency</li>
+<li>what is blocked by something that is not even tracked cleanly yet</li>
+</ul>
+<p>That is a much better operating view than another polished timeline.</p>
+<h2>Why I still like tiny utilities for this</h2>
+<p>This is exactly the kind of problem I like using a small script for.</p>
+<p>Not because a script replaces planning.</p>
+<p>Because it forces the plan into a shape where the risks become legible.</p>
+<p>That is often the real value of a tiny tool.</p>
+<p>It does not make the work disappear. It just removes one more place for the ambiguity to hide.</p>
+      <p class="back-link"><a href="../">Back to writing</a></p>
+    </article>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
+      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      function setActive(key) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.showcaseTarget === key;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        panels.forEach((panel) => {
+          const active = panel.dataset.showcasePanel === key;
+          panel.classList.toggle("active", active);
+          panel.hidden = !active;
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          setActive(tab.dataset.showcaseTarget);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

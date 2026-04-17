@@ -1,14 +1,16 @@
 {
   "name": "Winston Lin",
-  "title": "Building products, platforms, and business systems",
-  "tagline": "I'm Winston. I work across serverless, platform products, and business systems. I’m increasingly using AI as part of how I think, build, and operate. I also advise and invest in smaller businesses and startups. This site brings together case studies, writing, and Python tools from that work.",
+  "title": "Product leadership across AI workflows, developer platforms, and business systems",
+  "tagline": "I work where product judgment, technical systems, and messy real-world execution meet. Recent work spans serverless, AI-assisted workflows, practical tooling, and the operating systems teams need to move from rough inputs to usable output.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Selected case studies, writing, and Python tools across serverless, platform products, business systems, and operator work.",
+  "meta_description": "Case studies, writing, and practical tools from work across AI workflows, serverless, developer platforms, and business systems.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
   "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
+  "home_bio_strip": "The through-line is making complex work clearer and more trustworthy. I tend to be most useful when a team needs someone who can move between strategy, technical detail, and the day-to-day reality of getting things shipped.",
+  "home_showcase_note_slug": "what-working-with-codex-taught-me-about-ai-work",
   "oracle_blog_links": [
     {
       "title": "OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists",
@@ -37,6 +39,11 @@
     "Cross-border businesses"
   ],
   "home_featured_post_slugs": [
+    "what-working-with-codex-taught-me-about-ai-work",
+    "incident-timelines-need-a-stable-shape",
+    "dependencies-need-owners-before-they-need-slides",
+    "examples-are-the-interface-for-small-tools",
+    "public-repos-need-a-short-path-to-first-useful-success",
     "how-i-use-ai-as-a-pm-with-a-real-workspace",
     "public-surfaces-should-route-not-recite",
     "fun-projects-are-how-i-test-workflow-ideas",
@@ -49,9 +56,10 @@
   ],
   "about": {
     "intro": [
-      "I’m based in San Francisco and work in product, mostly around cloud and developer tools. I spend a lot of time thinking about how to make products simpler and easier to use for the people building and shipping with them.",
-      "Outside of work, I invest in and advise small businesses and startups at different stages in the U.S. and Asia. I like being around people building things from scratch and figuring out how something goes from an idea to something that actually works.",
-      "A lot of what I like, in product and outside of it, comes back to first-principles thinking: understanding how things work, where the real constraints are, and how businesses create value, serve customers well, and grow in ways that hold up over time."
+      "I'm based in San Francisco and work in product, mostly around cloud, developer tools, and AI-enabled workflows. The part I enjoy most is making complex systems easier to understand, easier to adopt, and more useful for the people who actually have to ship with them.",
+      "Over the last few months I've been using AI in a more hands-on way, with real workspaces, files, scripts, docs, and review loops rather than one-off prompting. That has only reinforced something I already believed: the best product and platform work happens when good judgment stays close to the actual system.",
+      "I tend to be most useful where the work crosses boundaries. I'm comfortable moving between engineers, operators, leadership, and business stakeholders, and I care a lot about clear collaboration, clean handoffs, and outputs that are actually usable.",
+      "Outside of work, I invest in and advise small businesses and startups at different stages in the U.S. and Asia. I like being around people building things from scratch and figuring out how something goes from an idea to something that actually works."
     ],
     "background": [
       "I grew up between Taipei and Orange County, which gave me a mix of perspectives early on and made me comfortable moving between different environments.",
@@ -60,7 +68,7 @@
     ],
     "personal": [
       "Outside of work, I try to stay active and get outdoors when I can, whether that means hiking around the Bay Area, exploring new places, or just getting out of the city for a bit. I also shoot photography, mostly on Fujifilm, as a way to slow down and capture things that feel real in the moment.",
-      "I grew up playing sports and still play basketball and volleyball when I can. More recently I’ve also gotten into running and Barry’s. I like anime, especially Frieren and Your Lie in April. Lately I’ve been spending more time thinking about investing, real estate, and how people make long-term bets on places, assets, and businesses."
+      "I grew up playing sports and still play basketball and volleyball when I can. More recently I’ve also gotten into running and Barry's Classes. I also like anime (Big Fan of Frieren and Your Lie in April). Lately I’ve been spending more time thinking about investing, real estate, and how people make long-term bets on assets and businesses."
     ]
   }
 }
