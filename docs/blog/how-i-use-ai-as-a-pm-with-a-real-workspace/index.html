@@ -38,26 +38,7 @@
       <p class="meta">2026-04-10</p>
       <h1>How I Use AI as a PM With a Real Workspace</h1>
       <p class="post-summary">The useful version of AI for product work is a real workspace that keeps notes, data, drafts, and assets in the same loop.</p>
-      
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 140" role="img" aria-label="Workspace flow diagram">
-            <rect x="18" y="44" width="120" height="46" rx="16" class="tone-a"/>
-            <rect x="168" y="44" width="120" height="46" rx="16" class="tone-b"/>
-            <rect x="318" y="44" width="120" height="46" rx="16" class="tone-c"/>
-            <rect x="468" y="44" width="120" height="46" rx="16" class="tone-d"/>
-            <rect x="618" y="44" width="84" height="46" rx="16" class="tone-e"/>
-            <path d="M138 67 H168" class="diagram-line"/>
-            <path d="M288 67 H318" class="diagram-line"/>
-            <path d="M438 67 H468" class="diagram-line"/>
-            <path d="M588 67 H618" class="diagram-line"/>
-            <text x="46" y="71" class="diagram-label">notes</text>
-            <text x="201" y="71" class="diagram-label">data</text>
-            <text x="355" y="71" class="diagram-label">deck</text>
-            <text x="489" y="71" class="diagram-label">follow-up</text>
-            <text x="642" y="71" class="diagram-label">docs</text>
-          </svg>
-        </section>
-        
+      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../public-surfaces-should-route-not-recite/">Newer note</a><a href="../growth-breaks-in-the-operating-model/">Older note</a></nav>
       <p>I do not find the most interesting version of AI product work to be &quot;ask a chatbot a question.&quot; The more useful version, at least for how I work, is closer to having a real workspace around the model. By that I mean a place where rough notes, customer context, spreadsheets, deck drafts, images, source files, and half-finished thoughts can all sit close enough together that the assistant can help turn one form of work into another.</p>
 <p>That matters because product work is rarely one clean artifact. It is usually some messy chain like:</p>
 <ul>
@@ -88,6 +69,53 @@
 <li>reducing the dead time between &quot;I know what I want to say&quot; and &quot;I have something usable&quot;</li>
 </ul>
 <p>That is also why I do not think the best AI workflows feel magical. They feel practical. You spend less time hunting, reformatting, rewriting from scratch, or rebuilding the same thing in a different medium.</p>
+
+
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 246" role="img" aria-label="Workspace diagram showing source material moving through one shared AI workspace into multiple outputs">
+            <text x="28" y="28" class="diagram-kicker">WORKSPACE VIEW</text>
+            <text x="28" y="54" class="diagram-title">The leverage comes from keeping the artifacts in one loop.</text>
+            <rect x="28" y="74" width="126" height="28" rx="14" class="tone-d"/>
+            <rect x="164" y="74" width="142" height="28" rx="14" class="tone-a"/>
+            <rect x="316" y="74" width="162" height="28" rx="14" class="tone-b"/>
+            <text x="91" y="92" class="diagram-chip-text" text-anchor="middle">same sources</text>
+            <text x="235" y="92" class="diagram-chip-text" text-anchor="middle">same thread</text>
+            <text x="397" y="92" class="diagram-chip-text" text-anchor="middle">same working state</text>
+
+            <rect x="38" y="124" width="162" height="86" rx="18" class="tone-a"/>
+            <rect x="38" y="124" width="162" height="10" class="diagram-bar-green"/>
+            <text x="54" y="151" class="diagram-label">Source material</text>
+            <text x="54" y="171" class="diagram-body">customer notes</text>
+            <text x="54" y="187" class="diagram-body">usage data</text>
+            <text x="54" y="203" class="diagram-body">draft decks and docs</text>
+
+            <rect x="254" y="112" width="208" height="106" rx="18" class="tone-d"/>
+            <rect x="254" y="112" width="208" height="10" class="diagram-bar-navy"/>
+            <text x="270" y="139" class="diagram-label">Shared workspace</text>
+            <text x="270" y="159" class="diagram-body">inspect the source</text>
+            <text x="270" y="175" class="diagram-body">restructure the story</text>
+            <text x="270" y="191" class="diagram-body">convert across formats</text>
+            <text x="270" y="207" class="diagram-body">keep the context attached</text>
+
+            <rect x="516" y="118" width="166" height="42" rx="15" class="tone-b"/>
+            <rect x="516" y="118" width="166" height="8" class="diagram-bar-blue"/>
+            <text x="532" y="143" class="diagram-label">Presentation</text>
+            <text x="532" y="158" class="diagram-note">editable deck</text>
+
+            <rect x="516" y="168" width="166" height="42" rx="15" class="tone-c"/>
+            <rect x="516" y="168" width="166" height="8" class="diagram-bar-rust"/>
+            <text x="532" y="193" class="diagram-label">Follow-through</text>
+            <text x="532" y="208" class="diagram-note">recap, doc, outline</text>
+
+            <path d="M200 166 H254" class="diagram-line-strong"/>
+            <path d="M462 144 H516" class="diagram-line"/>
+            <path d="M462 189 H516" class="diagram-line"/>
+            <circle cx="227" cy="166" r="4.5" class="diagram-dot"/>
+            <circle cx="489" cy="144" r="4.5" class="diagram-dot-soft"/>
+            <circle cx="489" cy="189" r="4.5" class="diagram-dot-soft"/>
+          </svg>
+        </section>
+        
 <h2>Where it helps me most</h2>
 <p>The best use cases for me have been pretty grounded:</p>
 <ul>
@@ -97,7 +125,7 @@
 <li>quick technical artifacts tied to a real problem</li>
 </ul>
 <p>That is not as glamorous as &quot;AI replaces the PM.&quot; It is more like AI helps compress the distance between raw material and a good output. I think that is a more honest and more useful frame. The job is still judgment. The workspace just gives that judgment more leverage with less drag.</p>
-      <p class="back-link"><a href="../">Back to writing</a></p>
+      <nav class="post-nav post-nav-bottom" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../public-surfaces-should-route-not-recite/">Newer note</a><a href="../growth-breaks-in-the-operating-model/">Older note</a></nav>
     </article>
     
     </main>

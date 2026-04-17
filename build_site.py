@@ -131,6 +131,21 @@ def markdown_to_html(markdown_text):
     return "\n".join(parts)
 
 
+def insert_after_section(article_html, heading_text, snippet):
+    if not snippet:
+        return article_html
+
+    heading_html = f"<h2>{inline_markup(heading_text)}</h2>"
+    heading_index = article_html.find(heading_html)
+    if heading_index == -1:
+        return article_html
+
+    section_start = heading_index + len(heading_html)
+    next_heading_index = article_html.find("<h2>", section_start)
+    insert_at = next_heading_index if next_heading_index != -1 else len(article_html)
+    return f"{article_html[:insert_at]}\n{snippet}\n{article_html[insert_at:]}"
+
+
 def normalize_path(path):
     if not path.startswith("/"):
         path = f"/{path}"
@@ -296,312 +311,257 @@ def render_diagram(kind):
     diagrams = {
         "how-i-use-ai-as-a-pm-with-a-real-workspace": """
         <section class="post-diagram">
-          <svg viewBox="0 0 720 140" role="img" aria-label="Workspace flow diagram">
-            <rect x="18" y="44" width="120" height="46" rx="16" class="tone-a"/>
-            <rect x="168" y="44" width="120" height="46" rx="16" class="tone-b"/>
-            <rect x="318" y="44" width="120" height="46" rx="16" class="tone-c"/>
-            <rect x="468" y="44" width="120" height="46" rx="16" class="tone-d"/>
-            <rect x="618" y="44" width="84" height="46" rx="16" class="tone-e"/>
-            <path d="M138 67 H168" class="diagram-line"/>
-            <path d="M288 67 H318" class="diagram-line"/>
-            <path d="M438 67 H468" class="diagram-line"/>
-            <path d="M588 67 H618" class="diagram-line"/>
-            <text x="46" y="71" class="diagram-label">notes</text>
-            <text x="201" y="71" class="diagram-label">data</text>
-            <text x="355" y="71" class="diagram-label">deck</text>
-            <text x="489" y="71" class="diagram-label">follow-up</text>
-            <text x="642" y="71" class="diagram-label">docs</text>
+          <svg viewBox="0 0 720 246" role="img" aria-label="Workspace diagram showing source material moving through one shared AI workspace into multiple outputs">
+            <text x="28" y="28" class="diagram-kicker">WORKSPACE VIEW</text>
+            <text x="28" y="54" class="diagram-title">The leverage comes from keeping the artifacts in one loop.</text>
+            <rect x="28" y="74" width="126" height="28" rx="14" class="tone-d"/>
+            <rect x="164" y="74" width="142" height="28" rx="14" class="tone-a"/>
+            <rect x="316" y="74" width="162" height="28" rx="14" class="tone-b"/>
+            <text x="91" y="92" class="diagram-chip-text" text-anchor="middle">same sources</text>
+            <text x="235" y="92" class="diagram-chip-text" text-anchor="middle">same thread</text>
+            <text x="397" y="92" class="diagram-chip-text" text-anchor="middle">same working state</text>
+
+            <rect x="38" y="124" width="162" height="86" rx="18" class="tone-a"/>
+            <rect x="38" y="124" width="162" height="10" class="diagram-bar-green"/>
+            <text x="54" y="151" class="diagram-label">Source material</text>
+            <text x="54" y="171" class="diagram-body">customer notes</text>
+            <text x="54" y="187" class="diagram-body">usage data</text>
+            <text x="54" y="203" class="diagram-body">draft decks and docs</text>
+
+            <rect x="254" y="112" width="208" height="106" rx="18" class="tone-d"/>
+            <rect x="254" y="112" width="208" height="10" class="diagram-bar-navy"/>
+            <text x="270" y="139" class="diagram-label">Shared workspace</text>
+            <text x="270" y="159" class="diagram-body">inspect the source</text>
+            <text x="270" y="175" class="diagram-body">restructure the story</text>
+            <text x="270" y="191" class="diagram-body">convert across formats</text>
+            <text x="270" y="207" class="diagram-body">keep the context attached</text>
+
+            <rect x="516" y="118" width="166" height="42" rx="15" class="tone-b"/>
+            <rect x="516" y="118" width="166" height="8" class="diagram-bar-blue"/>
+            <text x="532" y="143" class="diagram-label">Presentation</text>
+            <text x="532" y="158" class="diagram-note">editable deck</text>
+
+            <rect x="516" y="168" width="166" height="42" rx="15" class="tone-c"/>
+            <rect x="516" y="168" width="166" height="8" class="diagram-bar-rust"/>
+            <text x="532" y="193" class="diagram-label">Follow-through</text>
+            <text x="532" y="208" class="diagram-note">recap, doc, outline</text>
+
+            <path d="M200 166 H254" class="diagram-line-strong"/>
+            <path d="M462 144 H516" class="diagram-line"/>
+            <path d="M462 189 H516" class="diagram-line"/>
+            <circle cx="227" cy="166" r="4.5" class="diagram-dot"/>
+            <circle cx="489" cy="144" r="4.5" class="diagram-dot-soft"/>
+            <circle cx="489" cy="189" r="4.5" class="diagram-dot-soft"/>
           </svg>
         </section>
         """,
         "what-working-with-codex-taught-me-about-ai-work": """
         <section class="post-diagram">
-          <svg viewBox="0 0 720 168" role="img" aria-label="AI work loop diagram">
-            <rect x="26" y="52" width="124" height="42" rx="16" class="tone-a"/>
-            <rect x="194" y="52" width="124" height="42" rx="16" class="tone-b"/>
-            <rect x="362" y="52" width="124" height="42" rx="16" class="tone-c"/>
-            <rect x="530" y="52" width="124" height="42" rx="16" class="tone-d"/>
-            <path d="M150 73 H194" class="diagram-line"/>
-            <path d="M318 73 H362" class="diagram-line"/>
-            <path d="M486 73 H530" class="diagram-line"/>
-            <path d="M424 94 V126" class="diagram-line"/>
-            <path d="M424 126 H256" class="diagram-line"/>
-            <rect x="190" y="126" width="340" height="28" rx="12" class="tone-e"/>
-            <text x="62" y="77" class="diagram-label">files</text>
-            <text x="230" y="77" class="diagram-label">tools</text>
-            <text x="390" y="77" class="diagram-label">change</text>
-            <text x="566" y="77" class="diagram-label">review</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">good AI work stays inside a real loop</text>
-          </svg>
-        </section>
-        """,
-        "feature-registries-are-about-operational-clarity": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 170" role="img" aria-label="Dependency clarity diagram">
-            <circle cx="112" cy="86" r="24" class="tone-a"/>
-            <circle cx="264" cy="52" r="22" class="tone-b"/>
-            <circle cx="264" cy="120" r="22" class="tone-b"/>
-            <circle cx="430" cy="86" r="26" class="tone-c"/>
-            <circle cx="596" cy="86" r="24" class="tone-d"/>
-            <path d="M136 78 L242 57" class="diagram-line"/>
-            <path d="M136 94 L242 115" class="diagram-line"/>
-            <path d="M286 52 L404 80" class="diagram-line"/>
-            <path d="M286 120 L404 92" class="diagram-line"/>
-            <path d="M456 86 L572 86" class="diagram-line"/>
-            <text x="80" y="91" class="diagram-label">service</text>
-            <text x="242" y="57" class="diagram-label">owners</text>
-            <text x="244" y="125" class="diagram-label">health</text>
-            <text x="396" y="91" class="diagram-label">dependencies</text>
-            <text x="561" y="91" class="diagram-label">impact</text>
-          </svg>
-        </section>
-        """,
-        "developer-platforms-mostly-fail-on-friction": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 150" role="img" aria-label="Platform adoption flow diagram">
-            <rect x="28" y="56" width="130" height="40" rx="16" class="tone-a"/>
-            <rect x="202" y="56" width="130" height="40" rx="16" class="tone-b"/>
-            <rect x="376" y="56" width="130" height="40" rx="16" class="tone-c"/>
-            <rect x="550" y="56" width="130" height="40" rx="16" class="tone-d"/>
-            <path d="M158 76 H202" class="diagram-line"/>
-            <path d="M332 76 H376" class="diagram-line"/>
-            <path d="M506 76 H550" class="diagram-line"/>
-            <circle cx="180" cy="44" r="5" class="tone-e"/>
-            <circle cx="354" cy="44" r="5" class="tone-e"/>
-            <circle cx="528" cy="44" r="5" class="tone-e"/>
-            <text x="66" y="80" class="diagram-label">setup</text>
-            <text x="232" y="80" class="diagram-label">first run</text>
-            <text x="419" y="80" class="diagram-label">repeatable</text>
-            <text x="591" y="80" class="diagram-label">team use</text>
-            <text x="163" y="37" class="diagram-label">friction</text>
-            <text x="337" y="37" class="diagram-label">friction</text>
-            <text x="511" y="37" class="diagram-label">friction</text>
-          </svg>
-        </section>
-        """,
-        "migration-readiness-is-a-product-problem": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 160" role="img" aria-label="Migration readiness diagram">
-            <rect x="34" y="54" width="120" height="44" rx="16" class="tone-a"/>
-            <rect x="198" y="54" width="120" height="44" rx="16" class="tone-b"/>
-            <rect x="362" y="54" width="120" height="44" rx="16" class="tone-c"/>
-            <rect x="526" y="54" width="120" height="44" rx="16" class="tone-d"/>
-            <path d="M154 76 H198" class="diagram-line"/>
-            <path d="M318 76 H362" class="diagram-line"/>
-            <path d="M482 76 H526" class="diagram-line"/>
-            <rect x="178" y="114" width="364" height="28" rx="12" class="tone-e"/>
-            <text x="66" y="79" class="diagram-label">dev loop</text>
-            <text x="223" y="79" class="diagram-label">packaging</text>
-            <text x="396" y="79" class="diagram-label">docs</text>
-            <text x="558" y="79" class="diagram-label">cutover</text>
-            <text x="360" y="132" class="diagram-label" text-anchor="middle">confidence is built before migration starts</text>
-          </svg>
-        </section>
-        """,
-        "trustworthy-ai-products-need-recovery-paths": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 186" role="img" aria-label="AI recovery path diagram">
-            <rect x="26" y="42" width="118" height="42" rx="16" class="tone-a"/>
-            <rect x="194" y="42" width="118" height="42" rx="16" class="tone-b"/>
-            <rect x="362" y="42" width="118" height="42" rx="16" class="tone-c"/>
-            <rect x="530" y="42" width="118" height="42" rx="16" class="tone-d"/>
-            <path d="M144 63 H194" class="diagram-line"/>
-            <path d="M312 63 H362" class="diagram-line"/>
-            <path d="M480 63 H530" class="diagram-line"/>
-            <path d="M421 84 V122" class="diagram-line"/>
-            <path d="M421 122 H290" class="diagram-line"/>
-            <path d="M421 122 H552" class="diagram-line"/>
-            <rect x="224" y="122" width="132" height="36" rx="14" class="tone-e"/>
-            <rect x="486" y="122" width="132" height="36" rx="14" class="tone-e"/>
-            <text x="63" y="67" class="diagram-label">request</text>
-            <text x="232" y="67" class="diagram-label">model</text>
-            <text x="384" y="67" class="diagram-label">check</text>
-            <text x="563" y="67" class="diagram-label">answer</text>
-            <text x="252" y="145" class="diagram-label">fallback</text>
-            <text x="525" y="145" class="diagram-label">human review</text>
-          </svg>
-        </section>
-        """,
-        "growth-breaks-in-the-operating-model": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 172" role="img" aria-label="Operating model diagram">
-            <rect x="26" y="50" width="124" height="42" rx="16" class="tone-a"/>
-            <rect x="190" y="50" width="124" height="42" rx="16" class="tone-b"/>
-            <rect x="354" y="50" width="124" height="42" rx="16" class="tone-c"/>
-            <rect x="518" y="50" width="124" height="42" rx="16" class="tone-d"/>
-            <path d="M150 71 H190" class="diagram-line"/>
-            <path d="M314 71 H354" class="diagram-line"/>
-            <path d="M478 71 H518" class="diagram-line"/>
-            <path d="M354 92 V122" class="diagram-line"/>
-            <path d="M354 122 H246" class="diagram-line"/>
-            <path d="M354 122 H462" class="diagram-line"/>
-            <rect x="176" y="124" width="368" height="28" rx="12" class="tone-e"/>
-            <text x="58" y="75" class="diagram-label">demand</text>
-            <text x="224" y="75" class="diagram-label">handoffs</text>
-            <text x="394" y="75" class="diagram-label">service</text>
-            <text x="550" y="75" class="diagram-label">margin</text>
-            <text x="360" y="142" class="diagram-label" text-anchor="middle">operating model decides what scales cleanly</text>
-          </svg>
-        </section>
-        """,
-        "why-i-still-like-small-python-tools": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 154" role="img" aria-label="Small Python tools diagram">
-            <rect x="42" y="52" width="136" height="40" rx="16" class="tone-a"/>
-            <rect x="222" y="52" width="136" height="40" rx="16" class="tone-b"/>
-            <rect x="402" y="52" width="136" height="40" rx="16" class="tone-c"/>
-            <rect x="582" y="52" width="96" height="40" rx="16" class="tone-e"/>
-            <path d="M178 72 H222" class="diagram-line"/>
-            <path d="M358 72 H402" class="diagram-line"/>
-            <path d="M538 72 H582" class="diagram-line"/>
-            <text x="72" y="76" class="diagram-label">rough task</text>
-            <text x="261" y="76" class="diagram-label">script</text>
-            <text x="437" y="76" class="diagram-label">clean output</text>
-            <text x="604" y="76" class="diagram-label">less drag</text>
-          </svg>
-        </section>
-        """,
-        "fun-projects-are-how-i-test-workflow-ideas": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 170" role="img" aria-label="Fun projects workflow diagram">
-            <rect x="36" y="50" width="124" height="42" rx="16" class="tone-a"/>
-            <rect x="204" y="50" width="124" height="42" rx="16" class="tone-b"/>
-            <rect x="372" y="50" width="124" height="42" rx="16" class="tone-c"/>
-            <rect x="540" y="50" width="144" height="42" rx="16" class="tone-d"/>
-            <path d="M160 71 H204" class="diagram-line"/>
-            <path d="M328 71 H372" class="diagram-line"/>
-            <path d="M496 71 H540" class="diagram-line"/>
-            <path d="M436 92 V124" class="diagram-line"/>
-            <path d="M436 124 H274" class="diagram-line"/>
-            <path d="M436 124 H602" class="diagram-line"/>
-            <rect x="234" y="126" width="252" height="28" rx="12" class="tone-e"/>
-            <text x="70" y="75" class="diagram-label">friction</text>
-            <text x="236" y="75" class="diagram-label">small tool</text>
-            <text x="396" y="75" class="diagram-label">real use</text>
-            <text x="574" y="75" class="diagram-label">taste check</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">good experiments earn reuse</text>
-          </svg>
-        </section>
-        """,
-        "one-page-tools-beat-premature-decks": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 164" role="img" aria-label="One-page workflow diagram">
-            <rect x="28" y="56" width="118" height="40" rx="16" class="tone-a"/>
-            <rect x="186" y="56" width="128" height="40" rx="16" class="tone-b"/>
-            <rect x="354" y="56" width="128" height="40" rx="16" class="tone-c"/>
-            <rect x="522" y="56" width="134" height="40" rx="16" class="tone-d"/>
-            <path d="M146 76 H186" class="diagram-line"/>
-            <path d="M314 76 H354" class="diagram-line"/>
-            <path d="M482 76 H522" class="diagram-line"/>
-            <rect x="202" y="114" width="316" height="28" rx="12" class="tone-e"/>
-            <text x="61" y="80" class="diagram-label">notes</text>
-            <text x="223" y="80" class="diagram-label">one pager</text>
-            <text x="388" y="80" class="diagram-label">decision</text>
-            <text x="568" y="80" class="diagram-label">slides later</text>
-            <text x="360" y="132" class="diagram-label" text-anchor="middle">structure first, presentation second</text>
-          </svg>
-        </section>
-        """,
-        "public-surfaces-should-route-not-recite": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 170" role="img" aria-label="Public surfaces routing diagram">
-            <rect x="38" y="50" width="120" height="42" rx="16" class="tone-a"/>
-            <rect x="204" y="50" width="132" height="42" rx="16" class="tone-b"/>
-            <rect x="382" y="50" width="132" height="42" rx="16" class="tone-c"/>
-            <rect x="560" y="50" width="122" height="42" rx="16" class="tone-d"/>
-            <path d="M158 71 H204" class="diagram-line"/>
-            <path d="M336 71 H382" class="diagram-line"/>
-            <path d="M514 71 H560" class="diagram-line"/>
-            <path d="M270 92 V124" class="diagram-line"/>
-            <path d="M270 124 H622" class="diagram-line"/>
-            <rect x="164" y="126" width="392" height="28" rx="12" class="tone-e"/>
-            <text x="70" y="75" class="diagram-label">profile</text>
-            <text x="238" y="75" class="diagram-label">site</text>
-            <text x="418" y="75" class="diagram-label">repo</text>
-            <text x="587" y="75" class="diagram-label">deeper proof</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">good surfaces route to the next useful depth</text>
+          <svg viewBox="0 0 720 256" role="img" aria-label="AI work diagram showing files, tools, review points, and outputs inside one working loop">
+            <text x="28" y="28" class="diagram-kicker">REAL AI LOOP</text>
+            <text x="28" y="54" class="diagram-title">Useful AI work looks more like a teammate loop than a chat box.</text>
+
+            <rect x="28" y="74" width="112" height="28" rx="14" class="tone-d"/>
+            <rect x="150" y="74" width="124" height="28" rx="14" class="tone-a"/>
+            <rect x="284" y="74" width="120" height="28" rx="14" class="tone-b"/>
+            <rect x="414" y="74" width="132" height="28" rx="14" class="tone-c"/>
+            <text x="84" y="92" class="diagram-chip-text" text-anchor="middle">files</text>
+            <text x="212" y="92" class="diagram-chip-text" text-anchor="middle">tool use</text>
+            <text x="344" y="92" class="diagram-chip-text" text-anchor="middle">review</text>
+            <text x="480" y="92" class="diagram-chip-text" text-anchor="middle">rebuild</text>
+
+            <rect x="40" y="124" width="176" height="84" rx="18" class="tone-a"/>
+            <rect x="40" y="124" width="176" height="10" class="diagram-bar-rust"/>
+            <text x="56" y="151" class="diagram-label">Winston</text>
+            <text x="56" y="171" class="diagram-body">frame the task</text>
+            <text x="56" y="187" class="diagram-body">steer the tradeoff</text>
+            <text x="56" y="203" class="diagram-body">review the result</text>
+
+            <rect x="272" y="110" width="208" height="98" rx="18" class="tone-d"/>
+            <rect x="272" y="110" width="208" height="10" class="diagram-bar-navy"/>
+            <text x="288" y="137" class="diagram-label">Workspace + Codex</text>
+            <text x="288" y="157" class="diagram-body">inspect the repo and source files</text>
+            <text x="288" y="173" class="diagram-body">make the change and rebuild</text>
+            <text x="288" y="189" class="diagram-body">show what happened</text>
+
+            <rect x="538" y="122" width="144" height="42" rx="15" class="tone-b"/>
+            <rect x="538" y="122" width="144" height="8" class="diagram-bar-blue"/>
+            <text x="554" y="147" class="diagram-label">Proof</text>
+            <text x="554" y="162" class="diagram-note">files, diff, artifact</text>
+
+            <rect x="538" y="172" width="144" height="42" rx="15" class="tone-c"/>
+            <rect x="538" y="172" width="144" height="8" class="diagram-bar-green"/>
+            <text x="554" y="197" class="diagram-label">Output</text>
+            <text x="554" y="212" class="diagram-note">site, doc, deck, tool</text>
+
+            <path d="M216 166 H272" class="diagram-line-strong"/>
+            <path d="M480 143 H538" class="diagram-line"/>
+            <path d="M480 193 H538" class="diagram-line"/>
+            <path d="M376 208 V232 H128 V208" class="diagram-line-soft"/>
+            <text x="252" y="247" class="diagram-note" text-anchor="middle">the loop stays grounded because the work can be checked</text>
+            <circle cx="244" cy="166" r="4.5" class="diagram-dot"/>
+            <circle cx="509" cy="143" r="4.5" class="diagram-dot-soft"/>
+            <circle cx="509" cy="193" r="4.5" class="diagram-dot-soft"/>
           </svg>
         </section>
         """,
         "public-repos-need-a-short-path-to-first-useful-success": """
         <section class="post-diagram">
-          <svg viewBox="0 0 720 168" role="img" aria-label="Repository onboarding diagram">
-            <rect x="32" y="52" width="116" height="40" rx="16" class="tone-a"/>
-            <rect x="192" y="52" width="132" height="40" rx="16" class="tone-b"/>
-            <rect x="368" y="52" width="132" height="40" rx="16" class="tone-c"/>
-            <rect x="544" y="52" width="144" height="40" rx="16" class="tone-d"/>
-            <path d="M148 72 H192" class="diagram-line"/>
-            <path d="M324 72 H368" class="diagram-line"/>
-            <path d="M500 72 H544" class="diagram-line"/>
-            <rect x="176" y="118" width="368" height="28" rx="12" class="tone-e"/>
-            <text x="67" y="76" class="diagram-label">repo</text>
-            <text x="225" y="76" class="diagram-label">example</text>
-            <text x="405" y="76" class="diagram-label">run it</text>
-            <text x="576" y="76" class="diagram-label">useful output</text>
-            <text x="360" y="136" class="diagram-label" text-anchor="middle">good repos shorten the distance to proof</text>
+          <svg viewBox="0 0 720 250" role="img" aria-label="Repository onboarding diagram showing a realistic input, an exact command, and a useful output">
+            <text x="28" y="28" class="diagram-kicker">FIRST USEFUL SUCCESS</text>
+            <text x="28" y="54" class="diagram-title">A public repo should get someone from curiosity to proof quickly.</text>
+
+            <rect x="28" y="74" width="118" height="28" rx="14" class="tone-d"/>
+            <rect x="156" y="74" width="126" height="28" rx="14" class="tone-a"/>
+            <rect x="292" y="74" width="148" height="28" rx="14" class="tone-b"/>
+            <text x="87" y="92" class="diagram-chip-text" text-anchor="middle">problem</text>
+            <text x="219" y="92" class="diagram-chip-text" text-anchor="middle">exact run</text>
+            <text x="366" y="92" class="diagram-chip-text" text-anchor="middle">believable output</text>
+
+            <rect x="38" y="122" width="188" height="92" rx="18" class="tone-a"/>
+            <rect x="38" y="122" width="188" height="10" class="diagram-bar-green"/>
+            <text x="54" y="149" class="diagram-label">Sample input</text>
+            <text x="54" y="170" class="diagram-code">release_notes.md</text>
+            <text x="54" y="188" class="diagram-code">- region us-phoenix-1</text>
+            <text x="54" y="204" class="diagram-code">- status deprecated</text>
+
+            <rect x="266" y="122" width="188" height="92" rx="18" class="tone-d"/>
+            <rect x="266" y="122" width="188" height="10" class="diagram-bar-navy"/>
+            <text x="282" y="149" class="diagram-label">Exact command</text>
+            <text x="282" y="170" class="diagram-code">$ repo-tool scan release_notes.md</text>
+            <text x="282" y="188" class="diagram-code">--format summary</text>
+            <text x="282" y="204" class="diagram-code">--output findings.txt</text>
+
+            <rect x="494" y="122" width="188" height="92" rx="18" class="tone-b"/>
+            <rect x="494" y="122" width="188" height="10" class="diagram-bar-rust"/>
+            <text x="510" y="149" class="diagram-label">Useful output</text>
+            <text x="510" y="170" class="diagram-code">1 deprecated region found</text>
+            <text x="510" y="188" class="diagram-code">next step: update rollout doc</text>
+            <text x="510" y="204" class="diagram-code">see example/output.txt</text>
+
+            <path d="M226 168 H266" class="diagram-line-strong"/>
+            <path d="M454 168 H494" class="diagram-line-strong"/>
+            <circle cx="246" cy="168" r="4.5" class="diagram-dot"/>
+            <circle cx="474" cy="168" r="4.5" class="diagram-dot"/>
           </svg>
         </section>
         """,
         "dependencies-need-owners-before-they-need-slides": """
         <section class="post-diagram">
-          <svg viewBox="0 0 720 176" role="img" aria-label="Dependency planning diagram">
-            <rect x="34" y="54" width="132" height="42" rx="16" class="tone-a"/>
-            <rect x="212" y="54" width="132" height="42" rx="16" class="tone-b"/>
-            <rect x="390" y="54" width="132" height="42" rx="16" class="tone-c"/>
-            <rect x="568" y="54" width="118" height="42" rx="16" class="tone-d"/>
-            <path d="M166 75 H212" class="diagram-line"/>
-            <path d="M344 75 H390" class="diagram-line"/>
-            <path d="M522 75 H568" class="diagram-line"/>
-            <path d="M278 96 V126" class="diagram-line"/>
-            <path d="M278 126 H620" class="diagram-line"/>
-            <rect x="180" y="126" width="360" height="28" rx="12" class="tone-e"/>
-            <text x="75" y="79" class="diagram-label">milestone</text>
-            <text x="245" y="79" class="diagram-label">owner</text>
-            <text x="427" y="79" class="diagram-label">blocker</text>
-            <text x="601" y="79" class="diagram-label">impact</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">good plans make hidden risk visible early</text>
-          </svg>
-        </section>
-        """,
-        "examples-are-the-interface-for-small-tools": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 178" role="img" aria-label="Examples as interface diagram">
-            <rect x="54" y="54" width="138" height="40" rx="16" class="tone-a"/>
-            <rect x="290" y="54" width="138" height="40" rx="16" class="tone-b"/>
-            <rect x="526" y="54" width="138" height="40" rx="16" class="tone-c"/>
-            <path d="M192 74 H290" class="diagram-line"/>
-            <path d="M428 74 H526" class="diagram-line"/>
-            <rect x="176" y="126" width="368" height="28" rx="12" class="tone-e"/>
-            <text x="96" y="78" class="diagram-label">input</text>
-            <text x="333" y="78" class="diagram-label">command</text>
-            <text x="572" y="78" class="diagram-label">output</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">good examples turn curiosity into proof quickly</text>
+          <svg viewBox="0 0 720 262" role="img" aria-label="Dependency board diagram showing that planning becomes useful when owner, risk, and downstream impact are visible together">
+            <text x="28" y="28" class="diagram-kicker">DEPENDENCY BOARD</text>
+            <text x="28" y="54" class="diagram-title">The useful plan is the one that makes missing ownership and blocked work visible.</text>
+
+            <rect x="28" y="74" width="122" height="28" rx="14" class="tone-d"/>
+            <rect x="160" y="74" width="118" height="28" rx="14" class="tone-a"/>
+            <rect x="288" y="74" width="136" height="28" rx="14" class="tone-b"/>
+            <text x="89" y="92" class="diagram-chip-text" text-anchor="middle">owners</text>
+            <text x="219" y="92" class="diagram-chip-text" text-anchor="middle">lateness</text>
+            <text x="356" y="92" class="diagram-chip-text" text-anchor="middle">downstream risk</text>
+
+            <rect x="36" y="122" width="204" height="110" rx="18" class="tone-a"/>
+            <rect x="36" y="122" width="204" height="10" class="diagram-bar-green"/>
+            <text x="52" y="149" class="diagram-label">Needs owner</text>
+            <rect x="52" y="163" width="172" height="26" rx="13" class="tone-d"/>
+            <rect x="52" y="196" width="172" height="26" rx="13" class="tone-d"/>
+            <text x="66" y="180" class="diagram-note">IAM policy review</text>
+            <text x="66" y="213" class="diagram-note">region allowlist check</text>
+            <text x="168" y="180" class="diagram-chip-text">none</text>
+            <text x="168" y="213" class="diagram-chip-text">none</text>
+
+            <rect x="258" y="122" width="204" height="110" rx="18" class="tone-b"/>
+            <rect x="258" y="122" width="204" height="10" class="diagram-bar-rust"/>
+            <text x="274" y="149" class="diagram-label">Late or at risk</text>
+            <rect x="274" y="163" width="172" height="26" rx="13" class="tone-d"/>
+            <rect x="274" y="196" width="172" height="26" rx="13" class="tone-d"/>
+            <text x="288" y="180" class="diagram-note">customer cutover date slipped</text>
+            <text x="288" y="213" class="diagram-note">observability validation open</text>
+            <text x="392" y="180" class="diagram-chip-text">+5d</text>
+            <text x="392" y="213" class="diagram-chip-text">open</text>
+
+            <rect x="480" y="122" width="204" height="110" rx="18" class="tone-c"/>
+            <rect x="480" y="122" width="204" height="10" class="diagram-bar-blue"/>
+            <text x="496" y="149" class="diagram-label">Downstream impact</text>
+            <rect x="496" y="163" width="172" height="26" rx="13" class="tone-d"/>
+            <rect x="496" y="196" width="172" height="26" rx="13" class="tone-d"/>
+            <text x="510" y="180" class="diagram-note">launch review cannot lock scope</text>
+            <text x="510" y="213" class="diagram-note">field enablement stays blocked</text>
+            <text x="612" y="180" class="diagram-chip-text">milestone</text>
+            <text x="616" y="213" class="diagram-chip-text">training</text>
           </svg>
         </section>
         """,
         "incident-timelines-need-a-stable-shape": """
         <section class="post-diagram">
-          <svg viewBox="0 0 720 176" role="img" aria-label="Incident timeline diagram">
-            <rect x="40" y="54" width="130" height="42" rx="16" class="tone-a"/>
-            <rect x="212" y="54" width="130" height="42" rx="16" class="tone-b"/>
-            <rect x="384" y="54" width="130" height="42" rx="16" class="tone-c"/>
-            <rect x="556" y="54" width="124" height="42" rx="16" class="tone-d"/>
-            <path d="M170 75 H212" class="diagram-line"/>
-            <path d="M342 75 H384" class="diagram-line"/>
-            <path d="M514 75 H556" class="diagram-line"/>
-            <path d="M276 96 V126" class="diagram-line"/>
-            <path d="M276 126 H618" class="diagram-line"/>
-            <rect x="156" y="126" width="408" height="28" rx="12" class="tone-e"/>
-            <text x="71" y="79" class="diagram-label">signal</text>
-            <text x="247" y="79" class="diagram-label">handoff</text>
-            <text x="416" y="79" class="diagram-label">diagnosis</text>
-            <text x="584" y="79" class="diagram-label">mitigation</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">stable sequence makes the review easier to trust</text>
+          <svg viewBox="0 0 720 252" role="img" aria-label="Incident timeline diagram with a stable sequence from signal to mitigation and a customer impact band underneath">
+            <text x="28" y="28" class="diagram-kicker">TIMELINE SHAPE</text>
+            <text x="28" y="54" class="diagram-title">The timeline gets better once sequence, handoff, and impact sit in one consistent frame.</text>
+
+            <line x1="70" y1="142" x2="650" y2="142" class="diagram-divider"/>
+            <circle cx="112" cy="142" r="7" class="diagram-dot"/>
+            <circle cx="272" cy="142" r="7" class="diagram-dot"/>
+            <circle cx="434" cy="142" r="7" class="diagram-dot"/>
+            <circle cx="596" cy="142" r="7" class="diagram-dot"/>
+
+            <rect x="56" y="84" width="114" height="44" rx="16" class="tone-a"/>
+            <rect x="216" y="84" width="114" height="44" rx="16" class="tone-b"/>
+            <rect x="378" y="84" width="114" height="44" rx="16" class="tone-c"/>
+            <rect x="540" y="84" width="114" height="44" rx="16" class="tone-d"/>
+            <text x="72" y="102" class="diagram-small">08:12</text>
+            <text x="232" y="102" class="diagram-small">08:29</text>
+            <text x="394" y="102" class="diagram-small">09:04</text>
+            <text x="556" y="102" class="diagram-small">09:22</text>
+            <text x="72" y="119" class="diagram-label">signal</text>
+            <text x="232" y="119" class="diagram-label">handoff</text>
+            <text x="394" y="119" class="diagram-label">diagnosis</text>
+            <text x="556" y="119" class="diagram-label">mitigation</text>
+
+            <line x1="112" y1="128" x2="112" y2="178" class="diagram-line"/>
+            <line x1="272" y1="128" x2="272" y2="178" class="diagram-line"/>
+            <line x1="434" y1="128" x2="434" y2="178" class="diagram-line"/>
+            <line x1="596" y1="128" x2="596" y2="178" class="diagram-line"/>
+
+            <rect x="70" y="188" width="530" height="24" rx="12" class="tone-e"/>
+            <rect x="70" y="188" width="176" height="24" rx="12" class="diagram-bar-rust"/>
+            <rect x="246" y="188" width="206" height="24" rx="12" class="diagram-bar-blue"/>
+            <rect x="452" y="188" width="148" height="24" rx="12" class="diagram-bar-green"/>
+            <text x="88" y="204" class="diagram-chip-text">impact rising</text>
+            <text x="296" y="204" class="diagram-chip-text">customer pain steady</text>
+            <text x="489" y="204" class="diagram-chip-text">recovery visible</text>
           </svg>
         </section>
         """,
     }
-    return diagrams.get(kind, "")
+    diagram_positions = {
+        "how-i-use-ai-as-a-pm-with-a-real-workspace": "Why I prefer a workspace over one-off prompting",
+        "what-working-with-codex-taught-me-about-ai-work": "Good AI work still depends on structure",
+        "public-repos-need-a-short-path-to-first-useful-success": "Examples usually beat adjectives",
+        "dependencies-need-owners-before-they-need-slides": "What I want a planning artifact to do",
+        "incident-timelines-need-a-stable-shape": "Why a small formatter is often enough",
+    }
+    return diagrams.get(kind, ""), diagram_positions.get(kind)
+
+
+def render_post_nav(post, posts, nav_class="post-nav-top"):
+    current_index = next((index for index, item in enumerate(posts) if item.slug == post.slug), 0)
+    newer_post = posts[current_index - 1] if current_index > 0 else None
+    older_post = posts[current_index + 1] if current_index + 1 < len(posts) else None
+    current_path = f"/blog/{post.slug}/"
+
+    links = [
+        '<span class="post-nav-label">Writing</span>',
+        f'<a href="{relative_url(current_path, "/blog/")}">All writing</a>',
+    ]
+    if newer_post:
+        links.append(
+            f'<a href="{relative_url(current_path, f"/blog/{newer_post.slug}/")}">Newer note</a>'
+        )
+    if older_post:
+        links.append(
+            f'<a href="{relative_url(current_path, f"/blog/{older_post.slug}/")}">Older note</a>'
+        )
+
+    return f'<nav class="post-nav {nav_class}" aria-label="Writing navigation">{"".join(links)}</nav>'
 
 
 def render_homepage(config, posts, projects, case_studies):
@@ -1035,16 +995,20 @@ def render_about_page(config):
     )
 
 
-def render_post_page(config, post):
-    post_diagram = render_diagram(post.slug)
+def render_post_page(config, post, posts):
+    post_diagram, diagram_heading = render_diagram(post.slug)
+    article_body = markdown_to_html(post.body_markdown)
+    if post_diagram and diagram_heading:
+        article_body = insert_after_section(article_body, diagram_heading, post_diagram)
+
     article = f"""
     <article class="post-page prose">
       <p class="meta">{html.escape(post.date)}</p>
       <h1>{html.escape(post.title)}</h1>
       <p class="post-summary">{html.escape(post.summary)}</p>
-      {post_diagram}
-      {markdown_to_html(post.body_markdown)}
-      <p class="back-link"><a href="{relative_url(f'/blog/{post.slug}/', '/blog/')}">Back to writing</a></p>
+      {render_post_nav(post, posts, "post-nav-top")}
+      {article_body}
+      {render_post_nav(post, posts, "post-nav-bottom")}
     </article>
     """
     return page_layout(
@@ -1143,7 +1107,7 @@ def build():
     write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
 
     for post in posts:
-        write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post))
+        write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post, posts))
 
     write_support_files(config, posts)
 

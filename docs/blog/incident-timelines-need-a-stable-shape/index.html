@@ -38,27 +38,7 @@
       <p class="meta">2026-04-17</p>
       <h1>Incident Timelines Need A Stable Shape</h1>
       <p class="post-summary">Incident reviews get more useful when the timeline is consistent enough to reduce debates about sequence, handoffs, and impact changes.</p>
-      
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 176" role="img" aria-label="Incident timeline diagram">
-            <rect x="40" y="54" width="130" height="42" rx="16" class="tone-a"/>
-            <rect x="212" y="54" width="130" height="42" rx="16" class="tone-b"/>
-            <rect x="384" y="54" width="130" height="42" rx="16" class="tone-c"/>
-            <rect x="556" y="54" width="124" height="42" rx="16" class="tone-d"/>
-            <path d="M170 75 H212" class="diagram-line"/>
-            <path d="M342 75 H384" class="diagram-line"/>
-            <path d="M514 75 H556" class="diagram-line"/>
-            <path d="M276 96 V126" class="diagram-line"/>
-            <path d="M276 126 H618" class="diagram-line"/>
-            <rect x="156" y="126" width="408" height="28" rx="12" class="tone-e"/>
-            <text x="71" y="79" class="diagram-label">signal</text>
-            <text x="247" y="79" class="diagram-label">handoff</text>
-            <text x="416" y="79" class="diagram-label">diagnosis</text>
-            <text x="584" y="79" class="diagram-label">mitigation</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">stable sequence makes the review easier to trust</text>
-          </svg>
-        </section>
-        
+      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../what-working-with-codex-taught-me-about-ai-work/">Older note</a></nav>
       <p>Incident reviews often get noisier than they need to be. The facts are technically present, but they are scattered across chat, dashboards, and half-remembered updates from different people. Before anyone can learn from the incident, they are still reconstructing the order of events.</p>
 <h2>What I want from the timeline first</h2>
 <p>I do not need the first pass to be fancy. I want a stable shape that answers a few basic questions:</p>
@@ -80,6 +60,47 @@
 <li>impact or status change</li>
 </ul>
 <p>That is usually enough to make the next conversation better.</p>
+
+
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 252" role="img" aria-label="Incident timeline diagram with a stable sequence from signal to mitigation and a customer impact band underneath">
+            <text x="28" y="28" class="diagram-kicker">TIMELINE SHAPE</text>
+            <text x="28" y="54" class="diagram-title">The timeline gets better once sequence, handoff, and impact sit in one consistent frame.</text>
+
+            <line x1="70" y1="142" x2="650" y2="142" class="diagram-divider"/>
+            <circle cx="112" cy="142" r="7" class="diagram-dot"/>
+            <circle cx="272" cy="142" r="7" class="diagram-dot"/>
+            <circle cx="434" cy="142" r="7" class="diagram-dot"/>
+            <circle cx="596" cy="142" r="7" class="diagram-dot"/>
+
+            <rect x="56" y="84" width="114" height="44" rx="16" class="tone-a"/>
+            <rect x="216" y="84" width="114" height="44" rx="16" class="tone-b"/>
+            <rect x="378" y="84" width="114" height="44" rx="16" class="tone-c"/>
+            <rect x="540" y="84" width="114" height="44" rx="16" class="tone-d"/>
+            <text x="72" y="102" class="diagram-small">08:12</text>
+            <text x="232" y="102" class="diagram-small">08:29</text>
+            <text x="394" y="102" class="diagram-small">09:04</text>
+            <text x="556" y="102" class="diagram-small">09:22</text>
+            <text x="72" y="119" class="diagram-label">signal</text>
+            <text x="232" y="119" class="diagram-label">handoff</text>
+            <text x="394" y="119" class="diagram-label">diagnosis</text>
+            <text x="556" y="119" class="diagram-label">mitigation</text>
+
+            <line x1="112" y1="128" x2="112" y2="178" class="diagram-line"/>
+            <line x1="272" y1="128" x2="272" y2="178" class="diagram-line"/>
+            <line x1="434" y1="128" x2="434" y2="178" class="diagram-line"/>
+            <line x1="596" y1="128" x2="596" y2="178" class="diagram-line"/>
+
+            <rect x="70" y="188" width="530" height="24" rx="12" class="tone-e"/>
+            <rect x="70" y="188" width="176" height="24" rx="12" class="diagram-bar-rust"/>
+            <rect x="246" y="188" width="206" height="24" rx="12" class="diagram-bar-blue"/>
+            <rect x="452" y="188" width="148" height="24" rx="12" class="diagram-bar-green"/>
+            <text x="88" y="204" class="diagram-chip-text">impact rising</text>
+            <text x="296" y="204" class="diagram-chip-text">customer pain steady</text>
+            <text x="489" y="204" class="diagram-chip-text">recovery visible</text>
+          </svg>
+        </section>
+        
 <h2>The bar I actually care about</h2>
 <p>I do not need a huge incident platform to feel better about review quality. I want the sequence to be legible. Once that is true, the deeper questions get easier:</p>
 <ul>
@@ -89,7 +110,7 @@
 <li>where the process still depends on heroics</li>
 </ul>
 <p>That is the useful version for me: a stable timeline first, interpretation after.</p>
-      <p class="back-link"><a href="../">Back to writing</a></p>
+      <nav class="post-nav post-nav-bottom" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../what-working-with-codex-taught-me-about-ai-work/">Older note</a></nav>
     </article>
     
     </main>

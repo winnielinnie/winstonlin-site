@@ -38,27 +38,7 @@
       <p class="meta">2026-04-15</p>
       <h1>Dependencies Need Owners Before They Need Slides</h1>
       <p class="post-summary">Planning artifacts become more useful when they expose overdue, unowned, and blocked work instead of just presenting milestones cleanly.</p>
-      
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 176" role="img" aria-label="Dependency planning diagram">
-            <rect x="34" y="54" width="132" height="42" rx="16" class="tone-a"/>
-            <rect x="212" y="54" width="132" height="42" rx="16" class="tone-b"/>
-            <rect x="390" y="54" width="132" height="42" rx="16" class="tone-c"/>
-            <rect x="568" y="54" width="118" height="42" rx="16" class="tone-d"/>
-            <path d="M166 75 H212" class="diagram-line"/>
-            <path d="M344 75 H390" class="diagram-line"/>
-            <path d="M522 75 H568" class="diagram-line"/>
-            <path d="M278 96 V126" class="diagram-line"/>
-            <path d="M278 126 H620" class="diagram-line"/>
-            <rect x="180" y="126" width="360" height="28" rx="12" class="tone-e"/>
-            <text x="75" y="79" class="diagram-label">milestone</text>
-            <text x="245" y="79" class="diagram-label">owner</text>
-            <text x="427" y="79" class="diagram-label">blocker</text>
-            <text x="601" y="79" class="diagram-label">impact</text>
-            <text x="360" y="144" class="diagram-label" text-anchor="middle">good plans make hidden risk visible early</text>
-          </svg>
-        </section>
-        
+      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../examples-are-the-interface-for-small-tools/">Newer note</a><a href="../public-repos-need-a-short-path-to-first-useful-success/">Older note</a></nav>
       <p>Plans often look healthier than the work underneath them. The milestones are there, the dates are there, and the swimlanes are there, but the risky middle is still invisible. That usually means the plan is missing the things that decide whether it will actually move:</p>
 <ul>
 <li>who owns the dependency</li>
@@ -77,9 +57,55 @@
 <li>what is blocked by something that is not even tracked cleanly yet</li>
 </ul>
 <p>That is a much better operating view than another polished timeline.</p>
+
+
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 262" role="img" aria-label="Dependency board diagram showing that planning becomes useful when owner, risk, and downstream impact are visible together">
+            <text x="28" y="28" class="diagram-kicker">DEPENDENCY BOARD</text>
+            <text x="28" y="54" class="diagram-title">The useful plan is the one that makes missing ownership and blocked work visible.</text>
+
+            <rect x="28" y="74" width="122" height="28" rx="14" class="tone-d"/>
+            <rect x="160" y="74" width="118" height="28" rx="14" class="tone-a"/>
+            <rect x="288" y="74" width="136" height="28" rx="14" class="tone-b"/>
+            <text x="89" y="92" class="diagram-chip-text" text-anchor="middle">owners</text>
+            <text x="219" y="92" class="diagram-chip-text" text-anchor="middle">lateness</text>
+            <text x="356" y="92" class="diagram-chip-text" text-anchor="middle">downstream risk</text>
+
+            <rect x="36" y="122" width="204" height="110" rx="18" class="tone-a"/>
+            <rect x="36" y="122" width="204" height="10" class="diagram-bar-green"/>
+            <text x="52" y="149" class="diagram-label">Needs owner</text>
+            <rect x="52" y="163" width="172" height="26" rx="13" class="tone-d"/>
+            <rect x="52" y="196" width="172" height="26" rx="13" class="tone-d"/>
+            <text x="66" y="180" class="diagram-note">IAM policy review</text>
+            <text x="66" y="213" class="diagram-note">region allowlist check</text>
+            <text x="168" y="180" class="diagram-chip-text">none</text>
+            <text x="168" y="213" class="diagram-chip-text">none</text>
+
+            <rect x="258" y="122" width="204" height="110" rx="18" class="tone-b"/>
+            <rect x="258" y="122" width="204" height="10" class="diagram-bar-rust"/>
+            <text x="274" y="149" class="diagram-label">Late or at risk</text>
+            <rect x="274" y="163" width="172" height="26" rx="13" class="tone-d"/>
+            <rect x="274" y="196" width="172" height="26" rx="13" class="tone-d"/>
+            <text x="288" y="180" class="diagram-note">customer cutover date slipped</text>
+            <text x="288" y="213" class="diagram-note">observability validation open</text>
+            <text x="392" y="180" class="diagram-chip-text">+5d</text>
+            <text x="392" y="213" class="diagram-chip-text">open</text>
+
+            <rect x="480" y="122" width="204" height="110" rx="18" class="tone-c"/>
+            <rect x="480" y="122" width="204" height="10" class="diagram-bar-blue"/>
+            <text x="496" y="149" class="diagram-label">Downstream impact</text>
+            <rect x="496" y="163" width="172" height="26" rx="13" class="tone-d"/>
+            <rect x="496" y="196" width="172" height="26" rx="13" class="tone-d"/>
+            <text x="510" y="180" class="diagram-note">launch review cannot lock scope</text>
+            <text x="510" y="213" class="diagram-note">field enablement stays blocked</text>
+            <text x="612" y="180" class="diagram-chip-text">milestone</text>
+            <text x="616" y="213" class="diagram-chip-text">training</text>
+          </svg>
+        </section>
+        
 <h2>Why I still like tiny utilities for this</h2>
 <p>This is exactly the kind of problem I like using a small script for. Not because a script replaces planning, but because it forces the plan into a shape where the risks become legible. That is often the real value of a tiny tool. It does not make the work disappear. It just removes one more place for the ambiguity to hide.</p>
-      <p class="back-link"><a href="../">Back to writing</a></p>
+      <nav class="post-nav post-nav-bottom" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../examples-are-the-interface-for-small-tools/">Newer note</a><a href="../public-repos-need-a-short-path-to-first-useful-success/">Older note</a></nav>
     </article>
     
     </main>

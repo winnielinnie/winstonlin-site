@@ -233,23 +233,91 @@ nav a.active::after {
 
 .diagram-line {
   fill: none;
-  stroke: rgba(59, 52, 47, 0.34);
-  stroke-width: 1.9;
+  stroke: rgba(59, 52, 47, 0.28);
+  stroke-width: 1.7;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
+.diagram-line-strong {
+  fill: none;
+  stroke: rgba(39, 34, 30, 0.42);
+  stroke-width: 2.05;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diagram-line-soft {
+  fill: none;
+  stroke: rgba(85, 75, 67, 0.26);
+  stroke-width: 1.55;
+  stroke-dasharray: 5 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diagram-divider {
+  stroke: rgba(72, 64, 58, 0.26);
+  stroke-width: 1.4;
+}
+
 .diagram-label {
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 11.8px;
   font-weight: 600;
-  fill: #5a544f;
+  fill: #332d29;
   letter-spacing: 0.01em;
+}
+
+.diagram-body,
+.diagram-note,
+.diagram-small,
+.diagram-chip-text,
+.diagram-code,
+.diagram-kicker {
+  font-family: var(--sans);
+  letter-spacing: 0.01em;
+}
+
+.diagram-body {
+  font-size: 10.7px;
+  fill: #605953;
+}
+
+.diagram-note {
+  font-size: 10.2px;
+  fill: #6a625c;
+}
+
+.diagram-small {
+  font-size: 9.6px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  fill: rgba(91, 84, 78, 0.76);
+}
+
+.diagram-chip-text {
+  font-size: 10.1px;
+  font-weight: 700;
+  fill: #3f3934;
+}
+
+.diagram-code {
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9.9px;
+  fill: #3e3732;
+}
+
+.diagram-kicker {
+  font-size: 9.7px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  fill: rgba(89, 79, 72, 0.78);
 }
 
 .diagram-title {
   font-family: var(--display);
-  font-size: 20px;
+  font-size: 18.5px;
   fill: #211b17;
 }
 
@@ -285,6 +353,30 @@ nav a.active::after {
 .tone-e {
   stroke-width: 1.1;
   vector-effect: non-scaling-stroke;
+}
+
+.diagram-bar-navy {
+  fill: #1f405d;
+}
+
+.diagram-bar-green {
+  fill: #2f6d64;
+}
+
+.diagram-bar-blue {
+  fill: #4d7ac6;
+}
+
+.diagram-bar-rust {
+  fill: #a85b3a;
+}
+
+.diagram-dot {
+  fill: #355f5a;
+}
+
+.diagram-dot-soft {
+  fill: #8d6147;
 }
 
 .hero-kickerline {
@@ -1604,10 +1696,6 @@ nav a.active::after {
   letter-spacing: -0.02em;
 }
 
-.back-link {
-  margin-top: 28px;
-}
-
 .post-page {
   max-width: 760px;
   margin: 0 auto;
@@ -1617,14 +1705,64 @@ nav a.active::after {
     linear-gradient(180deg, rgba(255, 251, 246, 0.99), rgba(249, 242, 234, 0.97));
 }
 
+.post-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 18px 0 28px;
+  padding: 12px 14px;
+  border: 1px solid rgba(214, 201, 188, 0.82);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(247, 242, 235, 0.92));
+  box-shadow: 0 10px 22px rgba(58, 44, 32, 0.04);
+}
+
+.post-nav-bottom {
+  margin-top: 34px;
+  margin-bottom: 0;
+}
+
+.post-nav-label {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 2px;
+}
+
+.post-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 35px;
+  padding: 0.52rem 0.86rem;
+  border: 1px solid rgba(219, 207, 194, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 251, 246, 0.86);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #2d2723;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.post-nav a:hover {
+  transform: translateY(-1px);
+  border-color: rgba(113, 50, 31, 0.35);
+  background: rgba(255, 252, 248, 0.96);
+  box-shadow: 0 8px 16px rgba(58, 44, 32, 0.05);
+}
+
 .post-diagram {
   max-width: 680px;
-  margin: 18px auto 24px;
-  padding: 12px 14px;
-  border: 1px solid rgba(214, 201, 188, 0.88);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(248, 243, 236, 0.96));
-  box-shadow: 0 8px 18px rgba(58, 44, 32, 0.05);
+  margin: 28px auto 30px;
+  padding: 14px 16px;
+  border: 1px solid rgba(214, 201, 188, 0.84);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(247, 241, 234, 0.95));
+  box-shadow: 0 10px 24px rgba(58, 44, 32, 0.05);
 }
 
 .page-writing .post-list-item::before {
