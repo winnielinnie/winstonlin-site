@@ -39,10 +39,26 @@
       <h1>Dependencies Need Owners Before They Need Slides</h1>
       <p class="post-summary">Planning artifacts become more useful when they expose overdue, unowned, and blocked work instead of just presenting milestones cleanly.</p>
       
-      <p>Plans often look healthier than the work underneath them.</p>
-<p>The milestones are there. The dates are there. The swimlanes are there.</p>
-<p>But the risky middle is still invisible.</p>
-<p>That usually means the plan is missing the things that decide whether it will actually move:</p>
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 176" role="img" aria-label="Dependency planning diagram">
+            <rect x="34" y="54" width="132" height="42" rx="16" class="tone-a"/>
+            <rect x="212" y="54" width="132" height="42" rx="16" class="tone-b"/>
+            <rect x="390" y="54" width="132" height="42" rx="16" class="tone-c"/>
+            <rect x="568" y="54" width="118" height="42" rx="16" class="tone-d"/>
+            <path d="M166 75 H212" class="diagram-line"/>
+            <path d="M344 75 H390" class="diagram-line"/>
+            <path d="M522 75 H568" class="diagram-line"/>
+            <path d="M278 96 V126" class="diagram-line"/>
+            <path d="M278 126 H620" class="diagram-line"/>
+            <text x="75" y="79" class="diagram-label">milestone</text>
+            <text x="245" y="79" class="diagram-label">owner</text>
+            <text x="427" y="79" class="diagram-label">blocker</text>
+            <text x="601" y="79" class="diagram-label">impact</text>
+            <text x="316" y="145" class="diagram-label">good plans make hidden risk visible early</text>
+          </svg>
+        </section>
+        
+      <p>Plans often look healthier than the work underneath them. The milestones are there, the dates are there, and the swimlanes are there, but the risky middle is still invisible. That usually means the plan is missing the things that decide whether it will actually move:</p>
 <ul>
 <li>who owns the dependency</li>
 <li>whether the dependency is already late</li>
@@ -50,14 +66,9 @@
 <li>which blocker is missing entirely from the plan</li>
 </ul>
 <h2>The failure mode is usually in the middle</h2>
-<p>Most teams can see the top line.</p>
-<p>They know the launch date. They know the headline milestones.</p>
-<p>What gets fuzzy is the chain between them.</p>
-<p>That is where plans start failing quietly.</p>
-<p>A dependency gets mentioned but not owned. An item slips but still looks present on the slide. A blocked team keeps showing &quot;in progress&quot; because there is no better bucket for &quot;waiting on someone else.&quot;</p>
+<p>Most teams can see the top line. They know the launch date and the headline milestones. What gets fuzzy is the chain between them, and that is where plans start failing quietly. A dependency gets mentioned but not owned. An item slips but still looks present on the slide. A blocked team keeps showing &quot;in progress&quot; because there is no better bucket for &quot;waiting on someone else.&quot;</p>
 <h2>What I want a planning artifact to do</h2>
-<p>I do not need every planning tool to be sophisticated.</p>
-<p>I mostly want it to answer a few practical questions quickly:</p>
+<p>I do not need every planning tool to be sophisticated. I mostly want it to answer a few practical questions quickly:</p>
 <ul>
 <li>what is overdue right now</li>
 <li>what is unowned right now</li>
@@ -66,11 +77,7 @@
 </ul>
 <p>That is a much better operating view than another polished timeline.</p>
 <h2>Why I still like tiny utilities for this</h2>
-<p>This is exactly the kind of problem I like using a small script for.</p>
-<p>Not because a script replaces planning.</p>
-<p>Because it forces the plan into a shape where the risks become legible.</p>
-<p>That is often the real value of a tiny tool.</p>
-<p>It does not make the work disappear. It just removes one more place for the ambiguity to hide.</p>
+<p>This is exactly the kind of problem I like using a small script for. Not because a script replaces planning, but because it forces the plan into a shape where the risks become legible. That is often the real value of a tiny tool. It does not make the work disappear. It just removes one more place for the ambiguity to hide.</p>
       <p class="back-link"><a href="../">Back to writing</a></p>
     </article>
     

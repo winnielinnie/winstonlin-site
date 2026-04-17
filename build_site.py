@@ -324,7 +324,7 @@ def render_diagram(kind):
             <text x="184" y="143" class="diagram-title">judgment</text>
             <text x="305" y="65" class="diagram-label">decisions</text>
             <text x="316" y="155" class="diagram-label">docs</text>
-            <text x="316" y="245" class="diagram-label">shipping</text>
+            <text x="312" y="245" class="diagram-label">delivery</text>
           </svg>
         </div>
         """,
@@ -340,7 +340,7 @@ def render_diagram(kind):
               <path d="M318 56 H392" class="diagram-line"/>
               <text x="39" y="60" class="diagram-label">build specs</text>
               <text x="234" y="60" class="diagram-label">plan + test</text>
-              <text x="425" y="60" class="diagram-label">ship region</text>
+              <text x="425" y="60" class="diagram-label">rollout</text>
             </svg>
           </article>
           <article class="diagram-card mini-diagram-card">
@@ -382,6 +382,26 @@ def render_diagram(kind):
             <text x="355" y="71" class="diagram-label">deck</text>
             <text x="489" y="71" class="diagram-label">follow-up</text>
             <text x="642" y="71" class="diagram-label">docs</text>
+          </svg>
+        </section>
+        """,
+        "what-working-with-codex-taught-me-about-ai-work": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 168" role="img" aria-label="AI work loop diagram">
+            <rect x="26" y="52" width="124" height="42" rx="16" class="tone-a"/>
+            <rect x="194" y="52" width="124" height="42" rx="16" class="tone-b"/>
+            <rect x="362" y="52" width="124" height="42" rx="16" class="tone-c"/>
+            <rect x="530" y="52" width="124" height="42" rx="16" class="tone-d"/>
+            <path d="M150 73 H194" class="diagram-line"/>
+            <path d="M318 73 H362" class="diagram-line"/>
+            <path d="M486 73 H530" class="diagram-line"/>
+            <path d="M424 94 V126" class="diagram-line"/>
+            <path d="M424 126 H256" class="diagram-line"/>
+            <text x="62" y="77" class="diagram-label">files</text>
+            <text x="230" y="77" class="diagram-label">tools</text>
+            <text x="390" y="77" class="diagram-label">change</text>
+            <text x="566" y="77" class="diagram-label">review</text>
+            <text x="298" y="145" class="diagram-label">good AI work stays inside a real loop</text>
           </svg>
         </section>
         """,
@@ -587,6 +607,26 @@ def render_diagram(kind):
           </svg>
         </section>
         """,
+        "dependencies-need-owners-before-they-need-slides": """
+        <section class="post-diagram">
+          <svg viewBox="0 0 720 176" role="img" aria-label="Dependency planning diagram">
+            <rect x="34" y="54" width="132" height="42" rx="16" class="tone-a"/>
+            <rect x="212" y="54" width="132" height="42" rx="16" class="tone-b"/>
+            <rect x="390" y="54" width="132" height="42" rx="16" class="tone-c"/>
+            <rect x="568" y="54" width="118" height="42" rx="16" class="tone-d"/>
+            <path d="M166 75 H212" class="diagram-line"/>
+            <path d="M344 75 H390" class="diagram-line"/>
+            <path d="M522 75 H568" class="diagram-line"/>
+            <path d="M278 96 V126" class="diagram-line"/>
+            <path d="M278 126 H620" class="diagram-line"/>
+            <text x="75" y="79" class="diagram-label">milestone</text>
+            <text x="245" y="79" class="diagram-label">owner</text>
+            <text x="427" y="79" class="diagram-label">blocker</text>
+            <text x="601" y="79" class="diagram-label">impact</text>
+            <text x="316" y="145" class="diagram-label">good plans make hidden risk visible early</text>
+          </svg>
+        </section>
+        """,
         "examples-are-the-interface-for-small-tools": """
         <section class="post-diagram">
           <svg viewBox="0 0 720 178" role="img" aria-label="Examples as interface diagram">
@@ -634,6 +674,7 @@ def render_homepage(config, posts, projects, case_studies):
     current_note = find_post(posts, showcase_note_slug) or find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
     bio_strip = ""
+    hero_diagram = render_diagram("hero")
     if config.get("home_bio_strip"):
         bio_strip = f"""
         <div class="bio-strip">
@@ -779,12 +820,19 @@ def render_homepage(config, posts, projects, case_studies):
 
     body = f"""
     <section class="hero">
-      <p class="eyebrow">Work and Writing</p>
-      <h1>{html.escape(config["title"])}</h1>
-      <p class="lead">{html.escape(config["tagline"])}</p>
-      <div class="hero-links">
-        <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
-        <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Work and Writing</p>
+          <h1>{html.escape(config["title"])}</h1>
+          <p class="lead">{html.escape(config["tagline"])}</p>
+          <div class="hero-links">
+            <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
+            <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          {hero_diagram}
+        </div>
       </div>
       {bio_strip}
     </section>
@@ -916,6 +964,9 @@ def render_blog_index(config, posts):
 
 
 def render_case_studies_page(config, case_studies):
+    def render_signal_list(items):
+        return f"<ul>{''.join(f'<li>{html.escape(item)}</li>' for item in items)}</ul>"
+
     grouped = {}
     for study in case_studies:
         grouped.setdefault(study["period"], []).append(study)
@@ -926,9 +977,9 @@ def render_case_studies_page(config, case_studies):
         group_id = slugify(period)
         cards = []
         for study in studies:
-            focus = html.escape(study["what_i_did"][0])
-            constraint = html.escape(study["why_it_was_hard"][0])
-            result = html.escape(study["outcome"][0])
+            focus = render_signal_list(study["what_i_did"])
+            constraint = render_signal_list(study["why_it_was_hard"])
+            result = render_signal_list(study["outcome"])
             cards.append(
                 f"""
                 <article class="timeline-item" id="{html.escape(study['slug'])}">
@@ -941,15 +992,15 @@ def render_case_studies_page(config, case_studies):
                   <div class="study-signal-grid">
                     <section class="study-signal">
                       <p class="meta">Focus</p>
-                      <p>{focus}</p>
+                      {focus}
                     </section>
                     <section class="study-signal">
                       <p class="meta">Constraint</p>
-                      <p>{constraint}</p>
+                      {constraint}
                     </section>
                     <section class="study-signal">
                       <p class="meta">Result</p>
-                      <p>{result}</p>
+                      {result}
                     </section>
                   </div>
                 </article>
@@ -978,8 +1029,15 @@ def render_case_studies_page(config, case_studies):
       <div class="page-hero-copy">
         <p class="eyebrow">Product, platform, and delivery</p>
         <h1>Case studies</h1>
-        <p class="lead">A small set of projects across product direction, platform quality, and delivery.</p>
+        <p class="lead">A small set of product and platform projects, with the operational constraints and outcomes called out directly.</p>
       </div>
+    </section>
+    <section class="section">
+      <div class="section-head section-head-stack">
+        <h2>Visual snapshots</h2>
+        <p class="section-note">Two recurring patterns in the work: making delivery more deterministic and making dependencies easier to see.</p>
+      </div>
+      {render_diagram("case-studies")}
     </section>
     <section class="section jump-section" id="case-jumps">
       <div class="section-head section-head-stack">
