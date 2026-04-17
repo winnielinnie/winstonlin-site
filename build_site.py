@@ -666,10 +666,10 @@ def render_homepage(config, posts, projects, case_studies):
         showcase_items.append(
             {
                 "key": "functions",
-                "label": "Functions",
+                "label": "Product Direction",
                 "meta": featured_study["period"],
                 "title": "OCI Functions Product Direction",
-                "summary": "Simpler onboarding, stronger trust, and clearer async execution.",
+                "summary": "Product direction around onboarding, trust, and async execution.",
                 "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
                 "cta": "Read case study",
                 "tone": "showcase-tone-functions",
@@ -679,10 +679,10 @@ def render_homepage(config, posts, projects, case_studies):
             showcase_items.append(
                 {
                     "key": "delivery",
-                    "label": "Delivery",
+                    "label": "Delivery Systems",
                     "meta": delivery_study["period"],
                     "title": "Regional Delivery Orchestration",
-                    "summary": "Making regional rollout planning, sequencing, and rollback far more deterministic.",
+                    "summary": "Regional rollout planning, sequencing, and rollback across teams and dependencies.",
                     "href": f"{relative_url('/', '/case-studies/')}#{delivery_study['slug']}",
                     "cta": "See delivery work",
                     "tone": "showcase-tone-delivery",
@@ -716,9 +716,9 @@ def render_homepage(config, posts, projects, case_studies):
         showcase_html = f"""
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head showcase-head">
-            <h2>Featured work</h2>
+            <h2>Start here</h2>
           </div>
-          <div class="showcase-tabs" role="tablist" aria-label="Featured work">
+          <div class="showcase-tabs" role="tablist" aria-label="Start here">
             {''.join(showcase_tabs)}
           </div>
           <div class="showcase-panels">
@@ -727,7 +727,7 @@ def render_homepage(config, posts, projects, case_studies):
         </section>
         """
 
-    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:8]
+    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:6]
 
     project_cards = []
     for project in selected_projects:
@@ -743,23 +743,23 @@ def render_homepage(config, posts, projects, case_studies):
 
     practice_items = [
         {
-            "meta": "Longer read",
+            "meta": "Deep dive",
             "title": "Case studies",
-            "text": "Deeper work on product decisions, migration, recovery, and platform strategy.",
+            "text": "Product direction, migration, rollout planning, recovery, and platform decisions in context.",
             "url": relative_url('/', '/case-studies/'),
             "link_label": "Open case studies",
         },
         {
-            "meta": "Shorter notes",
+            "meta": "Short notes",
             "title": "Writing",
-            "text": "Short notes on workflow quality, migration, AI as a working tool, and operating models.",
+            "text": "Short notes on AI workflows, platform quality, docs, migration, and operating judgment.",
             "url": relative_url('/', '/blog/'),
             "link_label": "Browse writing",
         },
         {
-            "meta": "Practical",
-            "title": "Practical tools",
-            "text": "Small utilities and workflow helpers drawn from real platform, docs, and AI-assisted operating work.",
+            "meta": "Hands-on",
+            "title": "Tools",
+            "text": "Small tools for docs, incidents, workflow automation, and platform operations.",
             "url": html.escape(config['github_url']),
             "link_label": "View GitHub",
         },
@@ -793,8 +793,8 @@ def render_homepage(config, posts, projects, case_studies):
 
     <section class="section work-section section-frame section-frame-explore">
       <div class="section-head section-head-stack">
-        <h2>Browse by format</h2>
-        <p class="section-note">Case studies go deeper, writing is faster to scan, and repositories show the hands-on side of how I work.</p>
+        <h2>Quick paths</h2>
+        <p class="section-note">Case studies show product and operational work in context, writing is faster to scan, and repositories show the hands-on side.</p>
       </div>
       <div class="card-grid focus-grid">
         {''.join(focus_cards)}
@@ -804,7 +804,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories</h2>
-        <p class="section-note">Practical tools shaped by workflow pain, docs work, and platform operations.</p>
+        <p class="section-note">Tools from docs work, incidents, workflow automation, and platform operations.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -886,8 +886,8 @@ def render_blog_index(config, posts):
     <section class="page-hero page-hero-writing">
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
-        <h1>Writing on platform, AI, and operations</h1>
-        <p class="lead">Short notes on platform judgment, migration, AI workflows, and the systems behind adoption.</p>
+        <h1>Writing on product, systems, and AI work</h1>
+        <p class="lead">Short notes on platform judgment, AI workflows, docs, migration, and the details that shape execution.</p>
       </div>
     </section>
     <section class="section">
@@ -911,7 +911,7 @@ def render_blog_index(config, posts):
         "Writing",
         body,
         "/blog/",
-        meta_description="Writing on platform quality, migration, AI workflow design, and small Python tools.",
+        meta_description="Writing on product judgment, AI workflows, migration, docs, and small Python tools.",
     )
 
 
@@ -1049,7 +1049,7 @@ def render_about_page(config):
         "About",
         body,
         "/about/",
-        meta_description="About Winston Lin: product leadership across AI workflows, developer platforms, business systems, and broader operating interests.",
+        meta_description="About Winston Lin: background, work, and interests across cloud products, developer tools, AI workflows, and small businesses.",
     )
 
 
