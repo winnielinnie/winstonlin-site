@@ -804,7 +804,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories</h2>
-        <p class="section-note">A smaller set of practical tools shaped by workflow pain, docs work, platform operations, and AI-era handoffs.</p>
+        <p class="section-note">Practical tools shaped by workflow pain, docs work, and platform operations.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid">
@@ -1018,7 +1018,7 @@ def render_about_page(config):
       <div class="page-hero-copy">
         <p class="eyebrow">About</p>
         <h1>A little about me.</h1>
-        <p class="lead">A bit more on my background, how I like to work, and the kinds of technical and AI workflow problems I like helping teams solve.</p>
+        <p class="lead">A bit more on my background and how I like to work:</p>
       </div>
     </section>
     <section class="section about-layout">

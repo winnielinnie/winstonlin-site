@@ -70,7 +70,7 @@
   {
     "slug": "oke-ai-ml-platform-improvements",
     "title": "Scaling OKE for AI and Platform Workloads",
-    "period": "OCI Containers",
+    "period": "OKE (OCI Kubernetes Engine)",
     "tagline": "Prioritized product work that made OKE more usable for AI and other demanding workloads.",
     "problem": "The real blockers were operational: slow or brittle node bring-up, image availability issues, limited observability, and infrastructure rough edges that became painful at scale.",
     "what_i_did": [

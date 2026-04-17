@@ -1,5 +1,5 @@
 ---
-title: What Working With Codex Taught Me About AI Work
+title: AI Work Needs Real Tools
 date: 2026-04-17
 slug: what-working-with-codex-taught-me-about-ai-work
 summary: Months of hands-on use reinforced that useful AI work is not clever prompting. It is tools, files, review loops, and recovery paths around the model.
