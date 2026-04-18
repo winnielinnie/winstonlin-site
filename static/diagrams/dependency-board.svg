@@ -20,10 +20,10 @@
       .row-alt { fill: #f4ede3; }
       .section { font-size: 18px; font-weight: 700; letter-spacing: 0.06em; }
       .metric-num { font-size: 34px; font-weight: 700; }
-      .metric-copy { font-size: 15px; }
-      .cell { font-size: 18px; font-weight: 700; }
-      .small { font-size: 15px; line-height: 1.42; }
-      .pill-text { font-size: 14px; font-weight: 700; text-anchor: middle; }
+      .metric-copy { font-size: 14px; }
+      .cell { font-size: 17px; font-weight: 700; }
+      .small { font-size: 14px; line-height: 1.38; }
+      .pill-text { font-size: 13px; font-weight: 700; text-anchor: middle; }
       .line { stroke: #ddd1c3; stroke-width: 1.4; }
       .line-strong { stroke: #cabaa8; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
       .white { fill: #ffffff; }
@@ -60,8 +60,8 @@
   <text x="930" y="176" class="ink metric-num">1</text>
   <text x="1040" y="176" class="ink metric-num">2</text>
   <text x="820" y="202" class="muted metric-copy">need owners</text>
-  <text x="930" y="202" class="muted metric-copy">already slipping</text>
-  <text x="1040" y="202" class="muted metric-copy">downstream waits</text>
+  <text x="930" y="202" class="muted metric-copy">slipping now</text>
+  <text x="1040" y="202" class="muted metric-copy">teams waiting</text>
 
   <rect x="72" y="352" width="1056" height="300" rx="22" class="panel" />
   <rect x="72" y="352" width="1056" height="56" rx="22" class="table-head" />
@@ -86,14 +86,14 @@
   <text x="414" y="446" class="ink cell">Unassigned</text>
   <rect x="592" y="425" width="124" height="28" rx="14" fill="#f9ece4" stroke="#d8b39f" stroke-width="1.2" />
   <text x="654" y="444" fill="#9c5338" class="pill-text">NEEDS OWNER</text>
-  <text x="782" y="446" class="ink cell">Launch checklist cannot lock</text>
+  <text x="782" y="446" class="ink cell">Launch lock stays open</text>
 
   <text x="104" y="498" class="ink cell">Observability validation</text>
   <text x="104" y="518" class="muted small">one region still has open checks</text>
   <text x="414" y="506" class="ink cell">Platform</text>
   <rect x="592" y="485" width="86" height="28" rx="14" fill="#faeee7" stroke="#d5b1a3" stroke-width="1.2" />
   <text x="635" y="504" fill="#9c5338" class="pill-text">LATE</text>
-  <text x="782" y="506" class="ink cell">Field training and signoff wait</text>
+  <text x="782" y="506" class="ink cell">Training and signoff wait</text>
 
   <text x="104" y="558" class="ink cell">Cutover runbook</text>
   <text x="104" y="578" class="muted small">draft exists, escalation path still open</text>
@@ -105,18 +105,18 @@
   <text x="104" y="618" class="ink cell">Pricing approval</text>
   <text x="104" y="638" class="muted small">commercial signoff still pending</text>
   <text x="414" y="626" class="ink cell">Finance</text>
-  <rect x="592" y="605" width="118" height="28" rx="14" fill="#eef2fa" stroke="#c7d3e9" stroke-width="1.2" />
-  <text x="651" y="624" fill="#5572a1" class="pill-text">AT RISK +5D</text>
-  <text x="782" y="626" class="ink cell">Offer timing and paperwork slip</text>
+  <rect x="592" y="605" width="92" height="28" rx="14" fill="#eef2fa" stroke="#c7d3e9" stroke-width="1.2" />
+  <text x="638" y="624" fill="#5572a1" class="pill-text">AT RISK</text>
+  <text x="782" y="626" class="ink cell">Offer timing slips</text>
 
   <rect x="72" y="674" width="1056" height="44" rx="14" class="dark" />
   <text x="102" y="702" class="white section">CHAIN UNDER THE SLIDE</text>
-  <rect x="292" y="685" width="208" height="22" rx="11" fill="#edf5ef" />
-  <rect x="532" y="685" width="170" height="22" rx="11" fill="#f8efe6" />
-  <rect x="734" y="685" width="260" height="22" rx="11" fill="#eef2fa" />
-  <text x="396" y="700" fill="#3f6f60" class="pill-text">observability validation</text>
-  <text x="617" y="700" fill="#9c5338" class="pill-text">cutover runbook</text>
-  <text x="864" y="700" fill="#5572a1" class="pill-text">field training + launch lock</text>
-  <path d="M500 696 H532" class="line-strong" />
-  <path d="M702 696 H734" class="line-strong" />
+  <rect x="292" y="685" width="188" height="22" rx="11" fill="#edf5ef" />
+  <rect x="504" y="685" width="158" height="22" rx="11" fill="#f8efe6" />
+  <rect x="686" y="685" width="228" height="22" rx="11" fill="#eef2fa" />
+  <text x="386" y="700" fill="#3f6f60" class="pill-text">observability</text>
+  <text x="583" y="700" fill="#9c5338" class="pill-text">runbook</text>
+  <text x="800" y="700" fill="#5572a1" class="pill-text">training + launch lock</text>
+  <path d="M480 696 H504" class="line-strong" />
+  <path d="M662 696 H686" class="line-strong" />
 </svg>

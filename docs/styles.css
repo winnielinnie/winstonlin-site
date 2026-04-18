@@ -1524,16 +1524,27 @@ nav a.active::after {
   color: #29231f;
 }
 
+.prose p {
+  margin: 0 0 0.98rem;
+}
+
 .prose ul,
 .panel ul,
 .timeline-item ul {
   padding-left: 22px;
-  margin: 0;
+  margin: 0 0 1rem;
+}
+
+.prose li + li {
+  margin-top: 0.24rem;
 }
 
 .post-summary {
-  font-size: 0.91rem;
-  line-height: 1.58;
+  margin: 0 0 1rem;
+  max-width: 42rem;
+  font-family: var(--sans);
+  font-size: 0.93rem;
+  line-height: 1.6;
   color: var(--muted);
 }
 
@@ -1553,6 +1564,7 @@ nav a.active::after {
 .post-page {
   max-width: 760px;
   margin: 0 auto;
+  font-family: var(--sans);
   background:
     radial-gradient(circle at top right, rgba(146, 82, 55, 0.06), transparent 26%),
     radial-gradient(circle at top left, rgba(53, 95, 90, 0.05), transparent 22%),
@@ -1570,11 +1582,6 @@ nav a.active::after {
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(247, 242, 235, 0.92));
   box-shadow: 0 10px 22px rgba(58, 44, 32, 0.04);
-}
-
-.post-nav-bottom {
-  margin-top: 34px;
-  margin-bottom: 0;
 }
 
 .post-nav-label {
@@ -1624,6 +1631,29 @@ nav a.active::after {
   width: 100%;
   height: auto;
   border-radius: 12px;
+}
+
+.post-page > .meta {
+  margin-bottom: 0.4rem;
+}
+
+.post-page > h1 {
+  text-wrap: balance;
+}
+
+.post-page > h1 {
+  font-family: var(--display);
+}
+
+.post-page > h2,
+.post-page > h3 {
+  font-family: var(--sans);
+  font-weight: 700;
+}
+
+.post-page h2 {
+  margin-top: 2rem;
+  text-wrap: pretty;
 }
 
 .page-writing .post-list-item::before {

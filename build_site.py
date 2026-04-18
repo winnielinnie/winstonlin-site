@@ -715,7 +715,6 @@ def render_post_page(config, post, posts):
       <p class="post-summary">{html.escape(post.summary)}</p>
       {render_post_nav(post, posts, "post-nav-top")}
       {article_body}
-      {render_post_nav(post, posts, "post-nav-bottom")}
     </article>
     """
     return page_layout(

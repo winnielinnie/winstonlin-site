@@ -20,8 +20,8 @@
       .time { font-size: 16px; font-weight: 700; letter-spacing: 0.08em; }
       .owner { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; }
       .body { font-size: 18px; font-weight: 700; }
-      .small { font-size: 15px; line-height: 1.42; }
-      .pill-text { font-size: 14px; font-weight: 700; text-anchor: middle; }
+      .small { font-size: 14px; line-height: 1.38; }
+      .pill-text { font-size: 13px; font-weight: 700; text-anchor: middle; }
       .rail { fill: none; stroke: #baa795; stroke-width: 3.2; stroke-linecap: round; }
       .soft-rail { fill: none; stroke: #d3c1af; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 8 10; }
       .blue { fill: #6d86b3; }
@@ -51,8 +51,8 @@
   <rect x="808" y="98" width="312" height="118" rx="18" class="panel-soft" />
   <text x="838" y="134" class="ink section">FIRST PASS BAR</text>
   <text x="838" y="164" class="muted small">
-    <tspan x="838" dy="0">Lock the order of events before the room</tspan>
-    <tspan x="838" dy="22">starts debating judgment, blame, or theory.</tspan>
+    <tspan x="838" dy="0">Lock the event order before the room</tspan>
+    <tspan x="838" dy="20">drifts into blame or theory.</tspan>
   </text>
 
   <path d="M144 430 H1056" class="rail" />
@@ -75,11 +75,11 @@
 
   <text x="144" y="372" class="muted owner">ON-CALL</text>
   <text x="144" y="390" class="ink body">Alert lands</text>
-  <text x="144" y="410" class="muted small">error spike on ingest path</text>
+  <text x="144" y="410" class="muted small">error spike on ingest</text>
 
   <text x="370" y="522" class="muted owner">SUPPORT + SRE</text>
   <text x="370" y="540" class="ink body">Impact confirmed</text>
-  <text x="370" y="560" class="muted small">handoff becomes explicit</text>
+  <text x="370" y="560" class="muted small">handoff becomes clear</text>
 
   <text x="628" y="372" class="muted owner">SERVICE TEAM</text>
   <text x="628" y="390" class="ink body">Mitigation starts</text>
@@ -87,7 +87,7 @@
 
   <text x="890" y="522" class="muted owner">INCIDENT LEAD</text>
   <text x="890" y="540" class="ink body">Recovery visible</text>
-  <text x="890" y="560" class="muted small">backlog begins to clear</text>
+  <text x="890" y="560" class="muted small">backlog starts to clear</text>
 
   <path d="M210 418 V406" class="rail" />
   <path d="M436 442 V470" class="rail" />
@@ -96,15 +96,15 @@
 
   <rect x="72" y="614" width="1056" height="72" rx="18" class="panel" />
   <text x="104" y="648" class="ink section">CUSTOMER IMPACT BAND</text>
-  <rect x="286" y="636" width="170" height="22" rx="11" fill="#eef2fa" />
-  <rect x="466" y="636" width="230" height="22" rx="11" fill="#f7efe1" />
-  <rect x="706" y="636" width="180" height="22" rx="11" fill="#f8e8e0" />
-  <rect x="896" y="636" width="170" height="22" rx="11" fill="#edf5ef" />
-  <text x="371" y="651" fill="#5572a1" class="pill-text">signal found</text>
-  <text x="581" y="651" fill="#8d6a22" class="pill-text">impact rising</text>
-  <text x="796" y="651" fill="#9c5338" class="pill-text">customer pain steady</text>
-  <text x="981" y="651" fill="#3f6f60" class="pill-text">recovery visible</text>
+  <rect x="286" y="636" width="156" height="22" rx="11" fill="#eef2fa" />
+  <rect x="454" y="636" width="188" height="22" rx="11" fill="#f7efe1" />
+  <rect x="654" y="636" width="176" height="22" rx="11" fill="#f8e8e0" />
+  <rect x="842" y="636" width="156" height="22" rx="11" fill="#edf5ef" />
+  <text x="364" y="651" fill="#5572a1" class="pill-text">signal found</text>
+  <text x="548" y="651" fill="#8d6a22" class="pill-text">impact rising</text>
+  <text x="742" y="651" fill="#9c5338" class="pill-text">pain steady</text>
+  <text x="920" y="651" fill="#3f6f60" class="pill-text">recovery visible</text>
 
   <rect x="72" y="694" width="1056" height="32" rx="12" class="dark" />
-  <text x="600" y="716" class="white small" text-anchor="middle">Once the sequence is stable, the review can argue about decisions instead of arguing about memory.</text>
+  <text x="600" y="716" class="white small" text-anchor="middle">Once the sequence is stable, the review can focus on decisions instead of memory.</text>
 </svg>

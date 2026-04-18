@@ -10,7 +10,7 @@
       .muted { fill: #5f574f; font-family: "Manrope", "Aptos", sans-serif; }
       .display { fill: #241c17; font-family: "Newsreader", Georgia, serif; }
       .kicker { font-size: 15px; font-weight: 700; letter-spacing: 0.16em; }
-      .micro { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; }
+      .micro { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
       .title { font-size: 56px; font-weight: 500; }
       .subtitle { font-size: 21px; line-height: 1.45; }
       .panel { fill: #fbf8f3; stroke: #d8ccbf; stroke-width: 1.8; }
@@ -21,7 +21,7 @@
       .chip-text { font-size: 15px; font-weight: 700; }
       .section { font-size: 18px; font-weight: 700; letter-spacing: 0.06em; }
       .body { font-size: 22px; font-weight: 700; }
-      .small { font-size: 16px; line-height: 1.45; }
+      .small { font-size: 15px; line-height: 1.42; }
       .code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: 16px; font-weight: 700; fill: #2a2521; }
       .card-title { font-size: 18px; font-weight: 700; }
       .accent-bar { fill: #413631; }
@@ -40,7 +40,7 @@
   <line x1="60" y1="58" x2="1140" y2="58" class="rule" />
 
   <text x="72" y="38" class="ink kicker">WORKSPACE LOOP</text>
-  <text x="1048" y="38" class="ink micro" text-anchor="end">sources • edits • outputs</text>
+  <text x="1048" y="38" class="ink micro" text-anchor="end">source • session • output</text>
 
   <rect x="72" y="86" width="154" height="34" rx="17" class="chip-green" />
   <rect x="242" y="86" width="166" height="34" rx="17" class="chip-blue" />
@@ -64,13 +64,13 @@
   <circle cx="824" cy="198" r="4" class="green" />
   <circle cx="824" cy="228" r="4" class="gold" />
   <text x="842" y="168" class="muted small">
-    <tspan x="842" dy="0">Less re-explaining</tspan>
-    <tspan x="842" dy="20">between artifacts</tspan>
+    <tspan x="842" dy="0">Less rework</tspan>
+    <tspan x="842" dy="19">between outputs</tspan>
   </text>
-  <text x="842" y="208" class="muted small">Easier review against the source</text>
+  <text x="842" y="208" class="muted small">Easier review against source</text>
   <text x="842" y="232" class="muted small">
-    <tspan x="842" dy="0">Faster move to the next</tspan>
-    <tspan x="842" dy="20">useful output</tspan>
+    <tspan x="842" dy="0">Shorter path to the next</tspan>
+    <tspan x="842" dy="19">useful output</tspan>
   </text>
 
   <rect x="72" y="344" width="252" height="310" rx="22" class="panel" />
@@ -109,14 +109,14 @@
   <text x="604" y="472" class="ink card-title">Pull signal</text>
   <text x="604" y="500" class="muted small">
     <tspan x="604" dy="0">compare changes</tspan>
-    <tspan x="604" dy="22">tighten the point</tspan>
+    <tspan x="604" dy="20">tighten the point</tspan>
   </text>
 
   <path d="M546 490 H582" class="line-soft" />
 
   <rect x="400" y="566" width="328" height="90" rx="18" fill="#fdfaf5" stroke="#d7cabd" stroke-width="1.6" />
   <text x="422" y="598" class="ink card-title">Draft, check, write back</text>
-  <text x="422" y="624" class="muted small">same files • same thread • same working state</text>
+  <text x="422" y="624" class="muted small">same files • same thread • same state</text>
   <rect x="422" y="634" width="86" height="10" rx="5" class="navy" />
   <rect x="518" y="634" width="62" height="10" rx="5" class="green" />
   <rect x="590" y="634" width="48" height="10" rx="5" class="gold" />
@@ -138,25 +138,25 @@
   <text x="908" y="436" class="ink card-title">Editable deck</text>
   <text x="908" y="502" class="ink card-title">Write-up or recap</text>
   <text x="908" y="568" class="ink card-title">Decision memo</text>
-  <text x="908" y="634" class="ink card-title">Repo or site update</text>
+  <text x="908" y="634" class="ink card-title">Repo or site edit</text>
 
   <text x="908" y="450" class="muted small">
-    <tspan x="908" dy="0">something reviewable,</tspan>
-    <tspan x="908" dy="20">not a restart</tspan>
+    <tspan x="908" dy="0">reviewable output,</tspan>
+    <tspan x="908" dy="19">not a restart</tspan>
   </text>
   <text x="908" y="516" class="muted small">
     <tspan x="908" dy="0">a shorter pass from</tspan>
-    <tspan x="908" dy="20">the same context</tspan>
+    <tspan x="908" dy="19">the same context</tspan>
   </text>
   <text x="908" y="582" class="muted small">
     <tspan x="908" dy="0">turn the thread into</tspan>
-    <tspan x="908" dy="20">a usable call</tspan>
+    <tspan x="908" dy="19">a usable call</tspan>
   </text>
   <text x="908" y="648" class="muted small">
     <tspan x="908" dy="0">make the change and</tspan>
-    <tspan x="908" dy="20">show the diff</tspan>
+    <tspan x="908" dy="19">show the diff</tspan>
   </text>
 
   <rect x="72" y="694" width="1056" height="32" rx="12" class="accent-bar" />
-  <text x="600" y="716" class="white chip-text" text-anchor="middle">The win is not a better paragraph. It is a tighter loop from source material to usable output.</text>
+  <text x="600" y="716" class="white chip-text" text-anchor="middle">The win is a tighter loop from source material to usable output.</text>
 </svg>
