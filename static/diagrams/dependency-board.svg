@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Dependency board diagram</title>
+  <desc id="desc">A planning board that shows dependency owner, status, and downstream impact in a single view.</desc>
+  <defs>
+    <style>
+      .frame { fill: #fcfbf8; stroke: #ddd6cb; stroke-width: 2; }
+      .panel { fill: #ffffff; stroke: #d8d3c6; stroke-width: 2; }
+      .row-alt { fill: #faf7f2; }
+      .ink { fill: #172033; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
+      .muted { fill: #5b6475; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
+      .display { fill: #172033; font-family: "Newsreader", Georgia, serif; }
+      .kicker { font-size: 17px; font-weight: 800; letter-spacing: 0.18em; }
+      .title { font-size: 40px; font-weight: 600; }
+      .subtitle { font-size: 20px; }
+      .label { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; }
+      .metric { font-size: 30px; font-weight: 800; }
+      .metric-note { font-size: 15px; font-weight: 700; }
+      .cell { font-size: 18px; font-weight: 600; }
+      .cell-note { font-size: 16px; }
+      .pill-text { font-size: 15px; font-weight: 800; text-anchor: middle; }
+      .line { stroke: #ddd6cb; stroke-width: 2; }
+      .line-soft { stroke: #e7e0d7; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect x="18" y="18" width="1164" height="724" rx="30" class="frame" />
+
+  <text x="64" y="74" class="ink kicker">DEPENDENCY BOARD</text>
+  <text x="64" y="118" class="display title">
+    <tspan x="64" dy="0">A planning view gets useful</tspan>
+    <tspan x="64" dy="48">when ownership and risk are visible</tspan>
+  </text>
+  <text x="64" y="186" class="muted subtitle">Milestones matter, but the day-to-day operating view is usually owner, status, and what is blocked next.</text>
+
+  <rect x="64" y="208" width="160" height="92" rx="18" fill="#fff1e6" stroke="#ecd7c4" stroke-width="2" />
+  <text x="92" y="242" class="muted label">UNOWNED</text>
+  <text x="92" y="278" class="ink metric">2</text>
+  <text x="92" y="300" class="muted metric-note">items need an owner now</text>
+
+  <rect x="244" y="208" width="160" height="92" rx="18" fill="#f9ece7" stroke="#e6d0c4" stroke-width="2" />
+  <text x="272" y="242" class="muted label">LATE</text>
+  <text x="272" y="278" class="ink metric">1</text>
+  <text x="272" y="300" class="muted metric-note">item is already slipping</text>
+
+  <rect x="424" y="208" width="188" height="92" rx="18" fill="#eaf1ff" stroke="#c9d7f4" stroke-width="2" />
+  <text x="452" y="242" class="muted label">DOWNSTREAM BLOCKS</text>
+  <text x="452" y="278" class="ink metric">2</text>
+  <text x="452" y="300" class="muted metric-note">workstreams are waiting on this board</text>
+
+  <rect x="648" y="208" width="488" height="92" rx="18" class="panel" />
+  <text x="680" y="242" class="ink label">WHAT THIS VIEW ANSWERS</text>
+  <text x="680" y="272" class="muted cell-note">Who owns the dependency, what status it is in, and what gets stuck if it slips.</text>
+
+  <rect x="64" y="334" width="1072" height="338" rx="22" class="panel" />
+  <rect x="64" y="334" width="1072" height="58" rx="22" fill="#1e293b" />
+  <text x="96" y="370" fill="#ffffff" class="label">DEPENDENCY</text>
+  <text x="412" y="370" fill="#ffffff" class="label">OWNER</text>
+  <text x="590" y="370" fill="#ffffff" class="label">STATUS</text>
+  <text x="792" y="370" fill="#ffffff" class="label">DOWNSTREAM IMPACT</text>
+
+  <rect x="66" y="394" width="1068" height="70" class="row-alt" />
+  <rect x="66" y="534" width="1068" height="70" class="row-alt" />
+
+  <line x1="384" y1="392" x2="384" y2="672" class="line-soft" />
+  <line x1="562" y1="392" x2="562" y2="672" class="line-soft" />
+  <line x1="764" y1="392" x2="764" y2="672" class="line-soft" />
+  <line x1="64" y1="464" x2="1136" y2="464" class="line-soft" />
+  <line x1="64" y1="534" x2="1136" y2="534" class="line-soft" />
+  <line x1="64" y1="604" x2="1136" y2="604" class="line-soft" />
+
+  <text x="96" y="430" class="ink cell">IAM policy review</text>
+  <text x="96" y="450" class="muted cell-note">Needed before rollout approval can close.</text>
+  <text x="412" y="430" class="ink cell">Unassigned</text>
+  <rect x="590" y="410" width="118" height="28" rx="14" fill="#fff1e6" />
+  <text x="649" y="429" fill="#b85b10" class="pill-text">NEEDS OWNER</text>
+  <text x="792" y="430" class="ink cell">Launch checklist cannot lock scope.</text>
+
+  <text x="96" y="500" class="ink cell">Observability validation</text>
+  <text x="96" y="520" class="muted cell-note">Service checks still open for one region.</text>
+  <text x="412" y="500" class="ink cell">Platform team</text>
+  <rect x="590" y="480" width="90" height="28" rx="14" fill="#f9ece7" />
+  <text x="635" y="499" fill="#a93f36" class="pill-text">LATE</text>
+  <text x="792" y="500" class="ink cell">Rollout signoff and field training wait.</text>
+
+  <text x="96" y="570" class="ink cell">Cutover runbook</text>
+  <text x="96" y="590" class="muted cell-note">Draft exists, but escalation path is not final.</text>
+  <text x="412" y="570" class="ink cell">Field + Eng</text>
+  <rect x="590" y="550" width="110" height="28" rx="14" fill="#eaf7ef" />
+  <text x="645" y="569" fill="#18794e" class="pill-text">IN REVIEW</text>
+  <text x="792" y="570" class="ink cell">Customer cutover prep stays tentative.</text>
+
+  <text x="96" y="640" class="ink cell">Pricing approval</text>
+  <text x="96" y="660" class="muted cell-note">Commercial signoff is still pending.</text>
+  <text x="412" y="640" class="ink cell">Finance</text>
+  <rect x="590" y="620" width="128" height="28" rx="14" fill="#eaf1ff" />
+  <text x="654" y="639" fill="#2e5bff" class="pill-text">AT RISK +5D</text>
+  <text x="792" y="640" class="ink cell">Offer timing and paperwork slip with it.</text>
+
+  <rect x="64" y="690" width="1072" height="28" rx="14" fill="#1e293b" />
+  <text x="600" y="709" fill="#ffffff" class="pill-text">A clean milestone slide can hide this. A working board should not.</text>
+</svg>

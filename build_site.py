@@ -276,270 +276,39 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
       <div class="compact-links">{''.join(footer_links)}</div>
     </footer>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {{
-      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
-      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      function setActive(key) {{
-        tabs.forEach((tab) => {{
-          const active = tab.dataset.showcaseTarget === key;
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-pressed", active ? "true" : "false");
-        }});
-        panels.forEach((panel) => {{
-          const active = panel.dataset.showcasePanel === key;
-          panel.classList.toggle("active", active);
-          panel.hidden = !active;
-        }});
-      }}
-
-      tabs.forEach((tab) => {{
-        tab.addEventListener("click", function () {{
-          setActive(tab.dataset.showcaseTarget);
-        }});
-      }});
-    }});
-  </script>
 </body>
 </html>
 """
 
 
-def render_diagram(kind):
+def render_diagram(kind, current_path):
     diagrams = {
-        "how-i-use-ai-as-a-pm-with-a-real-workspace": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 246" role="img" aria-label="Workspace diagram showing source material moving through one shared AI workspace into multiple outputs">
-            <text x="28" y="28" class="diagram-kicker">WORKSPACE VIEW</text>
-            <text x="28" y="54" class="diagram-title">The leverage comes from keeping the artifacts in one loop.</text>
-            <rect x="28" y="74" width="126" height="28" rx="14" class="tone-d"/>
-            <rect x="164" y="74" width="142" height="28" rx="14" class="tone-a"/>
-            <rect x="316" y="74" width="162" height="28" rx="14" class="tone-b"/>
-            <text x="91" y="92" class="diagram-chip-text" text-anchor="middle">same sources</text>
-            <text x="235" y="92" class="diagram-chip-text" text-anchor="middle">same thread</text>
-            <text x="397" y="92" class="diagram-chip-text" text-anchor="middle">same working state</text>
-
-            <rect x="38" y="124" width="162" height="86" rx="18" class="tone-a"/>
-            <rect x="38" y="124" width="162" height="10" class="diagram-bar-green"/>
-            <text x="54" y="151" class="diagram-label">Source material</text>
-            <text x="54" y="171" class="diagram-body">customer notes</text>
-            <text x="54" y="187" class="diagram-body">usage data</text>
-            <text x="54" y="203" class="diagram-body">draft decks and docs</text>
-
-            <rect x="254" y="112" width="208" height="106" rx="18" class="tone-d"/>
-            <rect x="254" y="112" width="208" height="10" class="diagram-bar-navy"/>
-            <text x="270" y="139" class="diagram-label">Shared workspace</text>
-            <text x="270" y="159" class="diagram-body">inspect the source</text>
-            <text x="270" y="175" class="diagram-body">restructure the story</text>
-            <text x="270" y="191" class="diagram-body">convert across formats</text>
-            <text x="270" y="207" class="diagram-body">keep the context attached</text>
-
-            <rect x="516" y="118" width="166" height="42" rx="15" class="tone-b"/>
-            <rect x="516" y="118" width="166" height="8" class="diagram-bar-blue"/>
-            <text x="532" y="143" class="diagram-label">Presentation</text>
-            <text x="532" y="158" class="diagram-note">editable deck</text>
-
-            <rect x="516" y="168" width="166" height="42" rx="15" class="tone-c"/>
-            <rect x="516" y="168" width="166" height="8" class="diagram-bar-rust"/>
-            <text x="532" y="193" class="diagram-label">Follow-through</text>
-            <text x="532" y="208" class="diagram-note">recap, doc, outline</text>
-
-            <path d="M200 166 H254" class="diagram-line-strong"/>
-            <path d="M462 144 H516" class="diagram-line"/>
-            <path d="M462 189 H516" class="diagram-line"/>
-            <circle cx="227" cy="166" r="4.5" class="diagram-dot"/>
-            <circle cx="489" cy="144" r="4.5" class="diagram-dot-soft"/>
-            <circle cx="489" cy="189" r="4.5" class="diagram-dot-soft"/>
-          </svg>
-        </section>
-        """,
-        "what-working-with-codex-taught-me-about-ai-work": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 256" role="img" aria-label="AI work diagram showing files, tools, review points, and outputs inside one working loop">
-            <text x="28" y="28" class="diagram-kicker">REAL AI LOOP</text>
-            <text x="28" y="54" class="diagram-title">Useful AI work looks more like a teammate loop than a chat box.</text>
-
-            <rect x="28" y="74" width="112" height="28" rx="14" class="tone-d"/>
-            <rect x="150" y="74" width="124" height="28" rx="14" class="tone-a"/>
-            <rect x="284" y="74" width="120" height="28" rx="14" class="tone-b"/>
-            <rect x="414" y="74" width="132" height="28" rx="14" class="tone-c"/>
-            <text x="84" y="92" class="diagram-chip-text" text-anchor="middle">files</text>
-            <text x="212" y="92" class="diagram-chip-text" text-anchor="middle">tool use</text>
-            <text x="344" y="92" class="diagram-chip-text" text-anchor="middle">review</text>
-            <text x="480" y="92" class="diagram-chip-text" text-anchor="middle">rebuild</text>
-
-            <rect x="40" y="124" width="176" height="84" rx="18" class="tone-a"/>
-            <rect x="40" y="124" width="176" height="10" class="diagram-bar-rust"/>
-            <text x="56" y="151" class="diagram-label">Winston</text>
-            <text x="56" y="171" class="diagram-body">frame the task</text>
-            <text x="56" y="187" class="diagram-body">steer the tradeoff</text>
-            <text x="56" y="203" class="diagram-body">review the result</text>
-
-            <rect x="272" y="110" width="208" height="98" rx="18" class="tone-d"/>
-            <rect x="272" y="110" width="208" height="10" class="diagram-bar-navy"/>
-            <text x="288" y="137" class="diagram-label">Workspace + Codex</text>
-            <text x="288" y="157" class="diagram-body">inspect the repo and source files</text>
-            <text x="288" y="173" class="diagram-body">make the change and rebuild</text>
-            <text x="288" y="189" class="diagram-body">show what happened</text>
-
-            <rect x="538" y="122" width="144" height="42" rx="15" class="tone-b"/>
-            <rect x="538" y="122" width="144" height="8" class="diagram-bar-blue"/>
-            <text x="554" y="147" class="diagram-label">Proof</text>
-            <text x="554" y="162" class="diagram-note">files, diff, artifact</text>
-
-            <rect x="538" y="172" width="144" height="42" rx="15" class="tone-c"/>
-            <rect x="538" y="172" width="144" height="8" class="diagram-bar-green"/>
-            <text x="554" y="197" class="diagram-label">Output</text>
-            <text x="554" y="212" class="diagram-note">site, doc, deck, tool</text>
-
-            <path d="M216 166 H272" class="diagram-line-strong"/>
-            <path d="M480 143 H538" class="diagram-line"/>
-            <path d="M480 193 H538" class="diagram-line"/>
-            <path d="M376 208 V232 H128 V208" class="diagram-line-soft"/>
-            <text x="252" y="247" class="diagram-note" text-anchor="middle">the loop stays grounded because the work can be checked</text>
-            <circle cx="244" cy="166" r="4.5" class="diagram-dot"/>
-            <circle cx="509" cy="143" r="4.5" class="diagram-dot-soft"/>
-            <circle cx="509" cy="193" r="4.5" class="diagram-dot-soft"/>
-          </svg>
-        </section>
-        """,
-        "public-repos-need-a-short-path-to-first-useful-success": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 250" role="img" aria-label="Repository onboarding diagram showing a realistic input, an exact command, and a useful output">
-            <text x="28" y="28" class="diagram-kicker">FIRST USEFUL SUCCESS</text>
-            <text x="28" y="54" class="diagram-title">A public repo should get someone from curiosity to proof quickly.</text>
-
-            <rect x="28" y="74" width="118" height="28" rx="14" class="tone-d"/>
-            <rect x="156" y="74" width="126" height="28" rx="14" class="tone-a"/>
-            <rect x="292" y="74" width="148" height="28" rx="14" class="tone-b"/>
-            <text x="87" y="92" class="diagram-chip-text" text-anchor="middle">problem</text>
-            <text x="219" y="92" class="diagram-chip-text" text-anchor="middle">exact run</text>
-            <text x="366" y="92" class="diagram-chip-text" text-anchor="middle">believable output</text>
-
-            <rect x="38" y="122" width="188" height="92" rx="18" class="tone-a"/>
-            <rect x="38" y="122" width="188" height="10" class="diagram-bar-green"/>
-            <text x="54" y="149" class="diagram-label">Sample input</text>
-            <text x="54" y="170" class="diagram-code">release_notes.md</text>
-            <text x="54" y="188" class="diagram-code">- region us-phoenix-1</text>
-            <text x="54" y="204" class="diagram-code">- status deprecated</text>
-
-            <rect x="266" y="122" width="188" height="92" rx="18" class="tone-d"/>
-            <rect x="266" y="122" width="188" height="10" class="diagram-bar-navy"/>
-            <text x="282" y="149" class="diagram-label">Exact command</text>
-            <text x="282" y="170" class="diagram-code">$ repo-tool scan release_notes.md</text>
-            <text x="282" y="188" class="diagram-code">--format summary</text>
-            <text x="282" y="204" class="diagram-code">--output findings.txt</text>
-
-            <rect x="494" y="122" width="188" height="92" rx="18" class="tone-b"/>
-            <rect x="494" y="122" width="188" height="10" class="diagram-bar-rust"/>
-            <text x="510" y="149" class="diagram-label">Useful output</text>
-            <text x="510" y="170" class="diagram-code">1 deprecated region found</text>
-            <text x="510" y="188" class="diagram-code">next step: update rollout doc</text>
-            <text x="510" y="204" class="diagram-code">see example/output.txt</text>
-
-            <path d="M226 168 H266" class="diagram-line-strong"/>
-            <path d="M454 168 H494" class="diagram-line-strong"/>
-            <circle cx="246" cy="168" r="4.5" class="diagram-dot"/>
-            <circle cx="474" cy="168" r="4.5" class="diagram-dot"/>
-          </svg>
-        </section>
-        """,
-        "dependencies-need-owners-before-they-need-slides": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 262" role="img" aria-label="Dependency board diagram showing that planning becomes useful when owner, risk, and downstream impact are visible together">
-            <text x="28" y="28" class="diagram-kicker">DEPENDENCY BOARD</text>
-            <text x="28" y="54" class="diagram-title">The useful plan is the one that makes missing ownership and blocked work visible.</text>
-
-            <rect x="28" y="74" width="122" height="28" rx="14" class="tone-d"/>
-            <rect x="160" y="74" width="118" height="28" rx="14" class="tone-a"/>
-            <rect x="288" y="74" width="136" height="28" rx="14" class="tone-b"/>
-            <text x="89" y="92" class="diagram-chip-text" text-anchor="middle">owners</text>
-            <text x="219" y="92" class="diagram-chip-text" text-anchor="middle">lateness</text>
-            <text x="356" y="92" class="diagram-chip-text" text-anchor="middle">downstream risk</text>
-
-            <rect x="36" y="122" width="204" height="110" rx="18" class="tone-a"/>
-            <rect x="36" y="122" width="204" height="10" class="diagram-bar-green"/>
-            <text x="52" y="149" class="diagram-label">Needs owner</text>
-            <rect x="52" y="163" width="172" height="26" rx="13" class="tone-d"/>
-            <rect x="52" y="196" width="172" height="26" rx="13" class="tone-d"/>
-            <text x="66" y="180" class="diagram-note">IAM policy review</text>
-            <text x="66" y="213" class="diagram-note">region allowlist check</text>
-            <text x="168" y="180" class="diagram-chip-text">none</text>
-            <text x="168" y="213" class="diagram-chip-text">none</text>
-
-            <rect x="258" y="122" width="204" height="110" rx="18" class="tone-b"/>
-            <rect x="258" y="122" width="204" height="10" class="diagram-bar-rust"/>
-            <text x="274" y="149" class="diagram-label">Late or at risk</text>
-            <rect x="274" y="163" width="172" height="26" rx="13" class="tone-d"/>
-            <rect x="274" y="196" width="172" height="26" rx="13" class="tone-d"/>
-            <text x="288" y="180" class="diagram-note">customer cutover date slipped</text>
-            <text x="288" y="213" class="diagram-note">observability validation open</text>
-            <text x="392" y="180" class="diagram-chip-text">+5d</text>
-            <text x="392" y="213" class="diagram-chip-text">open</text>
-
-            <rect x="480" y="122" width="204" height="110" rx="18" class="tone-c"/>
-            <rect x="480" y="122" width="204" height="10" class="diagram-bar-blue"/>
-            <text x="496" y="149" class="diagram-label">Downstream impact</text>
-            <rect x="496" y="163" width="172" height="26" rx="13" class="tone-d"/>
-            <rect x="496" y="196" width="172" height="26" rx="13" class="tone-d"/>
-            <text x="510" y="180" class="diagram-note">launch review cannot lock scope</text>
-            <text x="510" y="213" class="diagram-note">field enablement stays blocked</text>
-            <text x="612" y="180" class="diagram-chip-text">milestone</text>
-            <text x="616" y="213" class="diagram-chip-text">training</text>
-          </svg>
-        </section>
-        """,
-        "incident-timelines-need-a-stable-shape": """
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 252" role="img" aria-label="Incident timeline diagram with a stable sequence from signal to mitigation and a customer impact band underneath">
-            <text x="28" y="28" class="diagram-kicker">TIMELINE SHAPE</text>
-            <text x="28" y="54" class="diagram-title">The timeline gets better once sequence, handoff, and impact sit in one consistent frame.</text>
-
-            <line x1="70" y1="142" x2="650" y2="142" class="diagram-divider"/>
-            <circle cx="112" cy="142" r="7" class="diagram-dot"/>
-            <circle cx="272" cy="142" r="7" class="diagram-dot"/>
-            <circle cx="434" cy="142" r="7" class="diagram-dot"/>
-            <circle cx="596" cy="142" r="7" class="diagram-dot"/>
-
-            <rect x="56" y="84" width="114" height="44" rx="16" class="tone-a"/>
-            <rect x="216" y="84" width="114" height="44" rx="16" class="tone-b"/>
-            <rect x="378" y="84" width="114" height="44" rx="16" class="tone-c"/>
-            <rect x="540" y="84" width="114" height="44" rx="16" class="tone-d"/>
-            <text x="72" y="102" class="diagram-small">08:12</text>
-            <text x="232" y="102" class="diagram-small">08:29</text>
-            <text x="394" y="102" class="diagram-small">09:04</text>
-            <text x="556" y="102" class="diagram-small">09:22</text>
-            <text x="72" y="119" class="diagram-label">signal</text>
-            <text x="232" y="119" class="diagram-label">handoff</text>
-            <text x="394" y="119" class="diagram-label">diagnosis</text>
-            <text x="556" y="119" class="diagram-label">mitigation</text>
-
-            <line x1="112" y1="128" x2="112" y2="178" class="diagram-line"/>
-            <line x1="272" y1="128" x2="272" y2="178" class="diagram-line"/>
-            <line x1="434" y1="128" x2="434" y2="178" class="diagram-line"/>
-            <line x1="596" y1="128" x2="596" y2="178" class="diagram-line"/>
-
-            <rect x="70" y="188" width="530" height="24" rx="12" class="tone-e"/>
-            <rect x="70" y="188" width="176" height="24" rx="12" class="diagram-bar-rust"/>
-            <rect x="246" y="188" width="206" height="24" rx="12" class="diagram-bar-blue"/>
-            <rect x="452" y="188" width="148" height="24" rx="12" class="diagram-bar-green"/>
-            <text x="88" y="204" class="diagram-chip-text">impact rising</text>
-            <text x="296" y="204" class="diagram-chip-text">customer pain steady</text>
-            <text x="489" y="204" class="diagram-chip-text">recovery visible</text>
-          </svg>
-        </section>
-        """,
+        "how-i-use-ai-as-a-pm-with-a-real-workspace": {
+            "asset": "diagrams/workspace-loop.svg",
+            "alt": "Diagram showing source material feeding one shared workspace and then several reusable outputs.",
+            "heading": "Why I prefer a workspace over one-off prompting",
+        },
+        "dependencies-need-owners-before-they-need-slides": {
+            "asset": "diagrams/dependency-board.svg",
+            "alt": "Diagram showing a dependency board with owner, status, and downstream impact visible in one view.",
+            "heading": "What I want a planning artifact to do",
+        },
+        "incident-timelines-need-a-stable-shape": {
+            "asset": "diagrams/incident-timeline.svg",
+            "alt": "Diagram showing a stable incident timeline with owner, event, and impact progression.",
+            "heading": "Why a small formatter is often enough",
+        },
     }
-    diagram_positions = {
-        "how-i-use-ai-as-a-pm-with-a-real-workspace": "Why I prefer a workspace over one-off prompting",
-        "what-working-with-codex-taught-me-about-ai-work": "Good AI work still depends on structure",
-        "public-repos-need-a-short-path-to-first-useful-success": "Examples usually beat adjectives",
-        "dependencies-need-owners-before-they-need-slides": "What I want a planning artifact to do",
-        "incident-timelines-need-a-stable-shape": "Why a small formatter is often enough",
-    }
-    return diagrams.get(kind, ""), diagram_positions.get(kind)
+    diagram = diagrams.get(kind)
+    if not diagram:
+        return "", None
+
+    diagram_html = f"""
+    <figure class="post-diagram">
+      <img src="{static_url(current_path, diagram['asset'])}" alt="{html.escape(diagram['alt'])}">
+    </figure>
+    """
+    return diagram_html, diagram["heading"]
 
 
 def render_post_nav(post, posts, nav_class="post-nav-top"):
@@ -580,89 +349,73 @@ def render_homepage(config, posts, projects, case_studies):
             (study for study in case_studies if study["slug"] == "oci-functions-product-direction"),
             case_studies[0],
         )
-        delivery_study = next(
-            (study for study in case_studies if study["slug"] == "service-installer"),
-            case_studies[1] if len(case_studies) > 1 else None,
-        )
         showcase_items = []
         if current_note:
             showcase_items.append(
                 {
-                    "key": "workspace",
-                    "label": "AI Workflow",
+                    "label": "AI workflow",
                     "meta": "Writing",
                     "title": current_note.title,
                     "summary": current_note.summary,
                     "href": relative_url('/', f'/blog/{current_note.slug}/'),
                     "cta": "Read note",
                     "tone": "showcase-tone-workspace",
+                    "external": False,
                 }
             )
         showcase_items.append(
             {
-                "key": "functions",
-                "label": "Product Direction",
+                "label": "Case study",
                 "meta": featured_study["period"],
-                "title": "OCI Functions Product Direction",
-                "summary": "Product direction around onboarding, trust, and async execution.",
+                "title": featured_study["title"],
+                "summary": featured_study["home_summary"],
                 "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
                 "cta": "Read case study",
                 "tone": "showcase-tone-functions",
+                "external": False,
             }
         )
-        if delivery_study:
-            showcase_items.append(
-                {
-                    "key": "delivery",
-                    "label": "Delivery Systems",
-                    "meta": delivery_study["period"],
-                    "title": "Regional Delivery Orchestration",
-                    "summary": "Regional rollout planning, sequencing, and rollback across teams and dependencies.",
-                    "href": f"{relative_url('/', '/case-studies/')}#{delivery_study['slug']}",
-                    "cta": "See delivery work",
-                    "tone": "showcase-tone-delivery",
-                }
-            )
-        showcase_tabs = []
-        showcase_panels = []
-        for index, item in enumerate(showcase_items[:3]):
-            active_attr = "true" if index == 0 else "false"
-            active_class = " active" if index == 0 else ""
-            hidden_attr = "" if index == 0 else ' hidden'
-            showcase_tabs.append(
+        showcase_items.append(
+            {
+                "label": "Oracle writing",
+                "meta": "Oracle Blogs",
+                "title": "Author profile and selected posts",
+                "summary": "Public writing on OCI Functions patterns, recovery, and async execution.",
+                "href": config.get("oracle_blogs_url", "https://blogs.oracle.com/"),
+                "cta": "Open Oracle profile",
+                "tone": "showcase-tone-oracle",
+                "external": True,
+            }
+        )
+
+        showcase_cards = []
+        for item in showcase_items[:3]:
+            target = ' target="_blank" rel="noreferrer"' if item["external"] else ""
+            showcase_cards.append(
                 f"""
-                <button class="showcase-tab{active_class}" type="button" data-showcase-target="{html.escape(item['key'])}" aria-pressed="{active_attr}">
-                  <span>{html.escape(item['label'])}</span>
-                </button>
-                """
-            )
-            showcase_panels.append(
-                f"""
-                <article class="showcase-card {html.escape(item['tone'])}{active_class}" data-showcase-panel="{html.escape(item['key'])}"{hidden_attr}>
+                <article class="showcase-card {html.escape(item['tone'])}">
                   <div class="showcase-panel-copy">
-                    <p class="meta">{html.escape(item['meta'])}</p>
-                    <h3><a href="{html.escape(item['href'])}">{html.escape(item['title'])}</a></h3>
+                    <p class="meta">{html.escape(item['label'])} · {html.escape(item['meta'])}</p>
+                    <h3><a href="{html.escape(item['href'])}"{target}>{html.escape(item['title'])}</a></h3>
                     <p class="showcase-summary">{html.escape(item['summary'])}</p>
                   </div>
-                  <a class="spotlight-link" href="{html.escape(item['href'])}">{html.escape(item['cta'])}</a>
+                  <a class="spotlight-link" href="{html.escape(item['href'])}"{target}>{html.escape(item['cta'])}</a>
                 </article>
                 """
             )
         showcase_html = f"""
         <section class="section showcase-section section-frame section-frame-spotlight">
-          <div class="section-head showcase-head">
+          <div class="section-head section-head-stack showcase-head">
             <h2>Start here</h2>
+            <p class="section-note">A few good entry points if you want the short version first.</p>
           </div>
-          <div class="showcase-tabs" role="tablist" aria-label="Start here">
-            {''.join(showcase_tabs)}
-          </div>
-          <div class="showcase-panels">
-            {''.join(showcase_panels)}
+          <div class="showcase-grid">
+            {''.join(showcase_cards)}
           </div>
         </section>
         """
 
-    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:6]
+    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:4]
 
     project_cards = []
     for project in selected_projects:
@@ -672,42 +425,6 @@ def render_homepage(config, posts, projects, case_studies):
               <p class="meta">{html.escape(project['label'])}</p>
               <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
               <p>{html.escape(project['summary'])}</p>
-            </article>
-            """
-        )
-
-    practice_items = [
-        {
-            "meta": "Deep dive",
-            "title": "Case studies",
-            "text": "Product direction, rollout planning, recovery, and platform decisions in context.",
-            "url": relative_url('/', '/case-studies/'),
-            "link_label": "Open case studies",
-        },
-        {
-            "meta": "Short notes",
-            "title": "Writing",
-            "text": "Short notes on AI workflows, platform quality, tooling, and operating judgment.",
-            "url": relative_url('/', '/blog/'),
-            "link_label": "Browse writing",
-        },
-        {
-            "meta": "Hands-on",
-            "title": "Tools",
-            "text": "Small tools for incidents, workflow automation, and platform operations.",
-            "url": html.escape(config['github_url']),
-            "link_label": "View GitHub",
-        },
-    ]
-    focus_cards = []
-    for item in practice_items:
-        focus_cards.append(
-            f"""
-            <article class="focus-card">
-              <p class="meta">{html.escape(item["meta"])}</p>
-              <h3>{html.escape(item["title"])}</h3>
-              <p class="focus-detail">{html.escape(item["text"])}</p>
-              <div class="path-links"><a href="{item['url']}">{html.escape(item["link_label"])}</a></div>
             </article>
             """
         )
@@ -730,23 +447,13 @@ def render_homepage(config, posts, projects, case_studies):
 
     {showcase_html}
 
-    <section class="section work-section section-frame section-frame-explore">
-      <div class="section-head section-head-stack">
-        <h2>Quick paths</h2>
-        <p class="section-note">Case studies show product and operational work in context, writing is faster to scan, and repositories show the hands-on side.</p>
-      </div>
-      <div class="card-grid focus-grid">
-        {''.join(focus_cards)}
-      </div>
-    </section>
-
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories</h2>
-        <p class="section-note">Tools from incidents, workflow automation, and platform operations.</p>
+        <p class="section-note">Small Python and OCI Function tools from docs work, release-note review, and platform operations.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
-      <div class="feature-grid">
+      <div class="feature-grid repo-grid">
         {''.join(project_cards)}
       </div>
     </section>
@@ -831,8 +538,8 @@ def render_blog_index(config, posts):
     <section class="page-hero page-hero-writing">
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
-        <h1>Writing on product, systems, and AI work</h1>
-        <p class="lead">Short notes on AI workflows, platform judgment, docs, migration, and the small operating details that shape execution.</p>
+        <h1>Writing on product, platform, and AI work</h1>
+        <p class="lead">Short notes on AI workflows, platform work, incidents, small tools, and the operating details that usually decide whether something works.</p>
       </div>
     </section>
     <section class="section">
@@ -852,7 +559,7 @@ def render_blog_index(config, posts):
         "Writing",
         body,
         "/blog/",
-        meta_description="Writing on product judgment, AI workflows, migration, docs, and small Python tools.",
+        meta_description="Writing on AI workflows, platform work, incidents, small tools, and the operating details around them.",
     )
 
 
@@ -884,15 +591,15 @@ def render_case_studies_page(config, case_studies):
                   <p class="study-problem-copy">{html.escape(study['problem'])}</p>
                   <div class="study-signal-grid">
                     <section class="study-signal">
-                      <p class="meta">Focus</p>
+                      <p class="meta">What I did</p>
                       {focus}
                     </section>
                     <section class="study-signal">
-                      <p class="meta">Constraint</p>
+                      <p class="meta">What made it hard</p>
                       {constraint}
                     </section>
                     <section class="study-signal">
-                      <p class="meta">Result</p>
+                      <p class="meta">What changed</p>
                       {result}
                     </section>
                   </div>
@@ -920,7 +627,7 @@ def render_case_studies_page(config, case_studies):
       <div class="page-hero-copy">
         <p class="eyebrow">Product, platform, and delivery</p>
         <h1>Case studies</h1>
-        <p class="lead">A small set of product and platform projects, with the operational constraints and outcomes called out directly.</p>
+        <p class="lead">A small set of product and platform projects, with the constraints and outcomes called out directly.</p>
       </div>
     </section>
     <section class="section jump-section" id="case-jumps">
@@ -955,7 +662,7 @@ def render_about_page(config):
     <section class="page-hero page-hero-about">
       <div class="page-hero-copy">
         <p class="eyebrow">About</p>
-        <h1>A little about me.</h1>
+        <h1>About me.</h1>
         <p class="lead">A bit more on my background and how I like to work:</p>
       </div>
     </section>
@@ -979,7 +686,7 @@ def render_about_page(config):
         <div class="about-story-copy about-story-copy-standalone">
           <section class="about-copy-block prose">
             <p class="eyebrow">Outside of work</p>
-            <h2>A few things I spend time on outside the day job.</h2>
+            <h2>Outside of work.</h2>
             {personal_paragraphs}
           </section>
         </div>
@@ -996,7 +703,8 @@ def render_about_page(config):
 
 
 def render_post_page(config, post, posts):
-    post_diagram, diagram_heading = render_diagram(post.slug)
+    current_path = f"/blog/{post.slug}/"
+    post_diagram, diagram_heading = render_diagram(post.slug, current_path)
     article_body = markdown_to_html(post.body_markdown)
     if post_diagram and diagram_heading:
         article_body = insert_after_section(article_body, diagram_heading, post_diagram)
@@ -1015,7 +723,7 @@ def render_post_page(config, post, posts):
         config,
         post.title,
         article,
-        f"/blog/{post.slug}/",
+        current_path,
         meta_description=post.summary,
         og_type="article",
     )

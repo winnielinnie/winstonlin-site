@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
-  "title": "Products, workflows, and systems in practice",
-  "tagline": "I work across cloud products, developer platforms, AI workflows, and supporting tools. I’m usually most useful where product judgment, technical detail, and operating reality all matter at once: platform decisions, workflow design, operating clarity, and the seams between teams. I also advise and invest in small businesses.",
+  "title": "Product, platform, and operating work in practice",
+  "tagline": "I work across cloud products, developer platforms, AI workflows, and business systems. Most of my work has been where product judgment, technical detail, and day-to-day execution all matter at once: platform decisions, workflow design, rollout work, and the tools around them. I also advise and invest in a small set of businesses.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Case studies, writing, and small tools from cloud products, developer platforms, AI workflows, and business systems.",
+  "meta_description": "Case studies, writing, and practical tools from cloud products, developer platforms, AI workflows, and business systems.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
@@ -55,18 +55,18 @@
   ],
   "about": {
     "intro": [
-      "I'm based in San Francisco and work across cloud products, developer tools, and AI workflows. I'm usually most useful where product judgment, technical detail, and operating reality all matter at once, especially around workflows, documentation, and the seams between teams.",
-      "Lately I've been using AI in a more hands-on way, with real workspaces, files, scripts, docs, and review loops instead of one-off prompting. That has made me think even more about tools, documentation, and handoffs that hold up in real work.",
-      "I'm comfortable working across engineers, operators, leadership, and business stakeholders. Outside of work, I also advise and invest in small businesses and startups in the U.S. and Asia."
+      "I'm based in San Francisco and work across cloud products, developer tools, and AI workflows. Most of my work has been in the part of the job where product decisions, technical detail, and day-to-day execution all matter at once.",
+      "I like work that gets concrete quickly: shaping product direction, tightening workflows, improving docs and handoffs, and building small tools when they help. I use AI pretty hands-on as part of that, usually with real files, scripts, and review loops instead of one-off prompting.",
+      "I'm comfortable working across engineers, operators, leadership, and business stakeholders. Outside the day job, I also advise and invest in small businesses and startups in the U.S. and Asia."
     ],
     "background": [
-      "I grew up between Taipei and Orange County, which gave me a mix of perspectives early on and made me comfortable moving between different environments.",
-      "I later earned a B.S. from UC Berkeley Haas, where I got more interested in the overlap between business and technology. I also spent a lot of time in tutoring, mentorship, and lab assistant roles, and stayed involved after college as a mentor in the undergraduate program through 2025.",
-      "In school, I was deeply into competitive math and community volunteering. That mix of analytical work and helping other people still shapes how I think about problems and how I like to work."
+      "I grew up between Taipei and Orange County, which made me comfortable moving between different environments early.",
+      "I later earned a B.S. from UC Berkeley Haas and got more interested in the overlap between business and technology. I also spent a lot of time tutoring, mentoring, and working in lab assistant roles, and stayed involved after college as a mentor in the undergraduate program through 2025.",
+      "I was also deeply into competitive math and community volunteering. That mix of analytical work and helping people still shapes how I think and how I like to work."
     ],
     "personal": [
-      "Outside of work, I try to stay active and get outdoors when I can, whether that means hiking around the Bay Area, exploring new places, or just getting out of the city for a bit. I also shoot photography, mostly on Fujifilm, as a way to slow down and capture things that feel real in the moment.",
-      "I grew up playing sports and still play basketball and volleyball when I can. More recently I’ve also gotten into running and Barry's classes. I also like anime (Big Fan of Frieren and Your Lie in April). Lately I’ve been spending more time thinking about investing, real estate, and how people make long-term bets on assets and businesses."
+      "Outside of work, I like being outdoors, hiking around the Bay Area, and shooting photography, mostly on Fujifilm.",
+      "I grew up playing sports and still play basketball and volleyball when I can. More recently I’ve gotten into running and Barry's classes. I also like anime, especially Frieren and Your Lie in April, and spend time thinking about investing, real estate, and long-term bets on businesses."
     ]
   }
 }

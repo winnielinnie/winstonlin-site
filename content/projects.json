@@ -3,66 +3,30 @@
     "label": "Public surface",
     "name": "winstonlin-site",
     "url": "https://github.com/winnielinnie/winstonlin-site",
-    "summary": "A lightweight Python-built portfolio site that routes case studies, notes, and project links without a framework."
-  },
-  {
-    "label": "Functions pattern",
-    "name": "Object Storage Router",
-    "url": "https://github.com/winnielinnie/oci-fn-object-storage-router",
-    "summary": "Python pattern for routing one bucket to several downstream systems."
+    "summary": "The portfolio site itself, built as a lightweight static Python site."
   },
   {
     "label": "Repo utility",
-    "name": "repo-onramp-check",
-    "url": "https://github.com/winnielinnie/repo-onramp-check",
-    "summary": "A Python CLI for checking whether a repo gives a newcomer a short path to first useful success."
-  },
-  {
-    "label": "Operations utility",
-    "name": "incident-timeline-formatter",
-    "url": "https://github.com/winnielinnie/incident-timeline-formatter",
-    "summary": "A Python CLI for turning messy incident notes into a stable Markdown timeline with clearer handoffs and impact changes."
-  },
-  {
-    "label": "Planning utility",
-    "name": "dependency-risk-check",
-    "url": "https://github.com/winnielinnie/dependency-risk-check",
-    "summary": "A Python CLI for flagging overdue, unowned, and dependency-blocked work in lightweight plans."
-  },
-  {
-    "label": "Workflow utility",
-    "name": "decision-journal-cli",
-    "url": "https://github.com/winnielinnie/decision-journal-cli",
-    "summary": "A compact CLI for keeping decisions, assumptions, and revisit dates visible as work evolves."
-  },
-  {
-    "label": "Workflow canvas",
-    "name": "one-page-canvas",
-    "url": "https://github.com/winnielinnie/one-page-canvas",
-    "summary": "A lightweight browser canvas for shaping one-page strategy artifacts before they turn into heavier decks."
-  },
-  {
-    "label": "Docs utility",
     "name": "doc-ship-check",
     "url": "https://github.com/winnielinnie/doc-ship-check",
-    "summary": "A Python script for the last mile of docs cleanup before publishing or handoff."
-  },
-  {
-    "label": "Functions pattern",
-    "name": "File Manifest Writer",
-    "url": "https://github.com/winnielinnie/oci-fn-file-manifest-writer",
-    "summary": "A Python OCI Function for turning batches of inbound file names into a compact manifest artifact."
-  },
-  {
-    "label": "Presentation tool",
-    "name": "tiny-deck-linter",
-    "url": "https://github.com/winnielinnie/tiny-deck-linter",
-    "summary": "Strict outline checks for slide decks before they turn into vague, crowded review material."
+    "summary": "Final-pass Markdown checker for placeholders, broken links, and duplicate headings."
   },
   {
     "label": "CLI utility",
     "name": "release-note-diff-cli",
     "url": "https://github.com/winnielinnie/release-note-diff-cli",
-    "summary": "A small Python script for diffing release notes without reading every line twice."
+    "summary": "CLI that diffs release notes and highlights additions likely to matter."
+  },
+  {
+    "label": "Functions pattern",
+    "name": "oci-fn-object-storage-router",
+    "url": "https://github.com/winnielinnie/oci-fn-object-storage-router",
+    "summary": "OCI Function pattern for routing Object Storage events to the right downstream system."
+  },
+  {
+    "label": "Functions pattern",
+    "name": "oci-fn-csv-quality-gate",
+    "url": "https://github.com/winnielinnie/oci-fn-csv-quality-gate",
+    "summary": "OCI Function pattern for validating inbound CSVs against a required schema."
   }
 ]

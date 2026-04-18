@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Writing | Winston Lin</title>
-  <meta name="description" content="Writing on product judgment, AI workflows, migration, docs, and small Python tools.">
+  <meta name="description" content="Writing on AI workflows, platform work, incidents, small tools, and the operating details around them.">
   <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
   <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../feed.xml">
   <link rel="stylesheet" href="../styles.css">
   <meta property="og:title" content="Writing | Winston Lin">
-  <meta property="og:description" content="Writing on product judgment, AI workflows, migration, docs, and small Python tools.">
+  <meta property="og:description" content="Writing on AI workflows, platform work, incidents, small tools, and the operating details around them.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/">
   <meta name="twitter:card" content="summary">
@@ -37,8 +37,8 @@
     <section class="page-hero page-hero-writing">
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
-        <h1>Writing on product, systems, and AI work</h1>
-        <p class="lead">Short notes on AI workflows, platform judgment, docs, migration, and the small operating details that shape execution.</p>
+        <h1>Writing on product, platform, and AI work</h1>
+        <p class="lead">Short notes on AI workflows, platform work, incidents, small tools, and the operating details that usually decide whether something works.</p>
       </div>
     </section>
     <section class="section">
@@ -185,31 +185,5 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
-      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      function setActive(key) {
-        tabs.forEach((tab) => {
-          const active = tab.dataset.showcaseTarget === key;
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        panels.forEach((panel) => {
-          const active = panel.dataset.showcasePanel === key;
-          panel.classList.toggle("active", active);
-          panel.hidden = !active;
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          setActive(tab.dataset.showcaseTarget);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

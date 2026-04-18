@@ -59,50 +59,10 @@
 <p>That is a much better operating view than another polished timeline.</p>
 
 
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 262" role="img" aria-label="Dependency board diagram showing that planning becomes useful when owner, risk, and downstream impact are visible together">
-            <text x="28" y="28" class="diagram-kicker">DEPENDENCY BOARD</text>
-            <text x="28" y="54" class="diagram-title">The useful plan is the one that makes missing ownership and blocked work visible.</text>
-
-            <rect x="28" y="74" width="122" height="28" rx="14" class="tone-d"/>
-            <rect x="160" y="74" width="118" height="28" rx="14" class="tone-a"/>
-            <rect x="288" y="74" width="136" height="28" rx="14" class="tone-b"/>
-            <text x="89" y="92" class="diagram-chip-text" text-anchor="middle">owners</text>
-            <text x="219" y="92" class="diagram-chip-text" text-anchor="middle">lateness</text>
-            <text x="356" y="92" class="diagram-chip-text" text-anchor="middle">downstream risk</text>
-
-            <rect x="36" y="122" width="204" height="110" rx="18" class="tone-a"/>
-            <rect x="36" y="122" width="204" height="10" class="diagram-bar-green"/>
-            <text x="52" y="149" class="diagram-label">Needs owner</text>
-            <rect x="52" y="163" width="172" height="26" rx="13" class="tone-d"/>
-            <rect x="52" y="196" width="172" height="26" rx="13" class="tone-d"/>
-            <text x="66" y="180" class="diagram-note">IAM policy review</text>
-            <text x="66" y="213" class="diagram-note">region allowlist check</text>
-            <text x="168" y="180" class="diagram-chip-text">none</text>
-            <text x="168" y="213" class="diagram-chip-text">none</text>
-
-            <rect x="258" y="122" width="204" height="110" rx="18" class="tone-b"/>
-            <rect x="258" y="122" width="204" height="10" class="diagram-bar-rust"/>
-            <text x="274" y="149" class="diagram-label">Late or at risk</text>
-            <rect x="274" y="163" width="172" height="26" rx="13" class="tone-d"/>
-            <rect x="274" y="196" width="172" height="26" rx="13" class="tone-d"/>
-            <text x="288" y="180" class="diagram-note">customer cutover date slipped</text>
-            <text x="288" y="213" class="diagram-note">observability validation open</text>
-            <text x="392" y="180" class="diagram-chip-text">+5d</text>
-            <text x="392" y="213" class="diagram-chip-text">open</text>
-
-            <rect x="480" y="122" width="204" height="110" rx="18" class="tone-c"/>
-            <rect x="480" y="122" width="204" height="10" class="diagram-bar-blue"/>
-            <text x="496" y="149" class="diagram-label">Downstream impact</text>
-            <rect x="496" y="163" width="172" height="26" rx="13" class="tone-d"/>
-            <rect x="496" y="196" width="172" height="26" rx="13" class="tone-d"/>
-            <text x="510" y="180" class="diagram-note">launch review cannot lock scope</text>
-            <text x="510" y="213" class="diagram-note">field enablement stays blocked</text>
-            <text x="612" y="180" class="diagram-chip-text">milestone</text>
-            <text x="616" y="213" class="diagram-chip-text">training</text>
-          </svg>
-        </section>
-        
+    <figure class="post-diagram">
+      <img src="../../diagrams/dependency-board.svg" alt="Diagram showing a dependency board with owner, status, and downstream impact visible in one view.">
+    </figure>
+    
 <h2>Why I still like tiny utilities for this</h2>
 <p>This is exactly the kind of problem I like using a small script for. Not because a script replaces planning, but because it forces the plan into a shape where the risks become legible. That is often the real value of a tiny tool. It does not make the work disappear. It just removes one more place for the ambiguity to hide.</p>
       <nav class="post-nav post-nav-bottom" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../examples-are-the-interface-for-small-tools/">Newer note</a><a href="../public-repos-need-a-short-path-to-first-useful-success/">Older note</a></nav>
@@ -113,31 +73,5 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
-      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      function setActive(key) {
-        tabs.forEach((tab) => {
-          const active = tab.dataset.showcaseTarget === key;
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        panels.forEach((panel) => {
-          const active = panel.dataset.showcasePanel === key;
-          panel.classList.toggle("active", active);
-          panel.hidden = !active;
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          setActive(tab.dataset.showcaseTarget);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

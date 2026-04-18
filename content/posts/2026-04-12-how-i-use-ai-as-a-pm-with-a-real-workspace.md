@@ -5,7 +5,7 @@ slug: how-i-use-ai-as-a-pm-with-a-real-workspace
 summary: The useful version of AI for product work is a real workspace that keeps notes, data, drafts, and assets in the same loop.
 ---
 
-I do not find the most interesting version of AI product work to be "ask a chatbot a question." The more useful version, at least for how I work, is closer to having a real workspace around the model. By that I mean a place where rough notes, customer context, spreadsheets, deck drafts, images, source files, and half-finished thoughts can all sit close enough together that the assistant can help turn one form of work into another.
+I do not find the most interesting version of AI product work to be "ask a chatbot a question." For me the more useful version is a real workspace around the model: a place where rough notes, customer context, spreadsheets, deck drafts, images, source files, and half-finished thoughts can stay close enough together that the assistant can help turn one form of work into another.
 
 That matters because product work is rarely one clean artifact. It is usually some messy chain like:
 

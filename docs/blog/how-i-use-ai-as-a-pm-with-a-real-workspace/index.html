@@ -39,7 +39,7 @@
       <h1>How I Use AI as a PM With a Real Workspace</h1>
       <p class="post-summary">The useful version of AI for product work is a real workspace that keeps notes, data, drafts, and assets in the same loop.</p>
       <nav class="post-nav post-nav-top" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../public-surfaces-should-route-not-recite/">Newer note</a><a href="../growth-breaks-in-the-operating-model/">Older note</a></nav>
-      <p>I do not find the most interesting version of AI product work to be &quot;ask a chatbot a question.&quot; The more useful version, at least for how I work, is closer to having a real workspace around the model. By that I mean a place where rough notes, customer context, spreadsheets, deck drafts, images, source files, and half-finished thoughts can all sit close enough together that the assistant can help turn one form of work into another.</p>
+      <p>I do not find the most interesting version of AI product work to be &quot;ask a chatbot a question.&quot; For me the more useful version is a real workspace around the model: a place where rough notes, customer context, spreadsheets, deck drafts, images, source files, and half-finished thoughts can stay close enough together that the assistant can help turn one form of work into another.</p>
 <p>That matters because product work is rarely one clean artifact. It is usually some messy chain like:</p>
 <ul>
 <li>customer notes</li>
@@ -71,51 +71,10 @@
 <p>That is also why I do not think the best AI workflows feel magical. They feel practical. You spend less time hunting, reformatting, rewriting from scratch, or rebuilding the same thing in a different medium.</p>
 
 
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 246" role="img" aria-label="Workspace diagram showing source material moving through one shared AI workspace into multiple outputs">
-            <text x="28" y="28" class="diagram-kicker">WORKSPACE VIEW</text>
-            <text x="28" y="54" class="diagram-title">The leverage comes from keeping the artifacts in one loop.</text>
-            <rect x="28" y="74" width="126" height="28" rx="14" class="tone-d"/>
-            <rect x="164" y="74" width="142" height="28" rx="14" class="tone-a"/>
-            <rect x="316" y="74" width="162" height="28" rx="14" class="tone-b"/>
-            <text x="91" y="92" class="diagram-chip-text" text-anchor="middle">same sources</text>
-            <text x="235" y="92" class="diagram-chip-text" text-anchor="middle">same thread</text>
-            <text x="397" y="92" class="diagram-chip-text" text-anchor="middle">same working state</text>
-
-            <rect x="38" y="124" width="162" height="86" rx="18" class="tone-a"/>
-            <rect x="38" y="124" width="162" height="10" class="diagram-bar-green"/>
-            <text x="54" y="151" class="diagram-label">Source material</text>
-            <text x="54" y="171" class="diagram-body">customer notes</text>
-            <text x="54" y="187" class="diagram-body">usage data</text>
-            <text x="54" y="203" class="diagram-body">draft decks and docs</text>
-
-            <rect x="254" y="112" width="208" height="106" rx="18" class="tone-d"/>
-            <rect x="254" y="112" width="208" height="10" class="diagram-bar-navy"/>
-            <text x="270" y="139" class="diagram-label">Shared workspace</text>
-            <text x="270" y="159" class="diagram-body">inspect the source</text>
-            <text x="270" y="175" class="diagram-body">restructure the story</text>
-            <text x="270" y="191" class="diagram-body">convert across formats</text>
-            <text x="270" y="207" class="diagram-body">keep the context attached</text>
-
-            <rect x="516" y="118" width="166" height="42" rx="15" class="tone-b"/>
-            <rect x="516" y="118" width="166" height="8" class="diagram-bar-blue"/>
-            <text x="532" y="143" class="diagram-label">Presentation</text>
-            <text x="532" y="158" class="diagram-note">editable deck</text>
-
-            <rect x="516" y="168" width="166" height="42" rx="15" class="tone-c"/>
-            <rect x="516" y="168" width="166" height="8" class="diagram-bar-rust"/>
-            <text x="532" y="193" class="diagram-label">Follow-through</text>
-            <text x="532" y="208" class="diagram-note">recap, doc, outline</text>
-
-            <path d="M200 166 H254" class="diagram-line-strong"/>
-            <path d="M462 144 H516" class="diagram-line"/>
-            <path d="M462 189 H516" class="diagram-line"/>
-            <circle cx="227" cy="166" r="4.5" class="diagram-dot"/>
-            <circle cx="489" cy="144" r="4.5" class="diagram-dot-soft"/>
-            <circle cx="489" cy="189" r="4.5" class="diagram-dot-soft"/>
-          </svg>
-        </section>
-        
+    <figure class="post-diagram">
+      <img src="../../diagrams/workspace-loop.svg" alt="Diagram showing source material feeding one shared workspace and then several reusable outputs.">
+    </figure>
+    
 <h2>Where it helps me most</h2>
 <p>The best use cases for me have been pretty grounded:</p>
 <ul>
@@ -133,31 +92,5 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
-      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      function setActive(key) {
-        tabs.forEach((tab) => {
-          const active = tab.dataset.showcaseTarget === key;
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        panels.forEach((panel) => {
-          const active = panel.dataset.showcasePanel === key;
-          panel.classList.toggle("active", active);
-          panel.hidden = !active;
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          setActive(tab.dataset.showcaseTarget);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

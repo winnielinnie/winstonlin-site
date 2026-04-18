@@ -39,9 +39,9 @@
       <h1>AI Work Needs Real Tools</h1>
       <p class="post-summary">Months of hands-on use reinforced that useful AI work is not clever prompting. It is tools, files, review loops, and recovery paths around the model.</p>
       <nav class="post-nav post-nav-top" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../incident-timelines-need-a-stable-shape/">Newer note</a><a href="../examples-are-the-interface-for-small-tools/">Older note</a></nav>
-      <p>Over the last few months I have spent a lot of time using Codex on real work rather than toy prompts. The biggest thing it clarified for me is that the useful part of AI work is not the single response. It is the working system around the model. When the workspace is good, the model can read the right files, run the right tools, make the change, rebuild the artifact, and show what happened. When the workspace is thin, you mostly get fluent guesswork.</p>
+      <p>Over the last few months I have used Codex on real work more than demos. The main lesson has been simple: the useful part is not the single response. It is the setup around the model. When the workspace is good, the model can read the right files, run the right tools, make the change, rebuild the artifact, and show what happened. When the setup is thin, you mostly get fluent guesswork.</p>
 <h2>It feels closer to working with a technical teammate</h2>
-<p>The best sessions do not feel like &quot;generate some text.&quot; They feel closer to sitting next to someone who can inspect the repo, trace the problem, make the edit, and explain the tradeoff. That does not remove judgment. It raises the bar for it, because you still need to know what good looks like, what not to automate, and what should be verified before something goes live.</p>
+<p>The best sessions do not feel like &quot;generate some text.&quot; They feel more like sitting next to someone who can inspect the repo, trace the problem, make the edit, and explain the tradeoff. That does not remove judgment. It just means the judgment moves up a level: what should be automated, what should be checked, and what is good enough to keep.</p>
 <h2>The real leverage comes from tool use</h2>
 <p>What has mattered most in practice has been the ability to move across different kinds of work without resetting context:</p>
 <ul>
@@ -51,7 +51,7 @@
 <li>check output against the underlying files</li>
 <li>trace a broken step and recover cleanly</li>
 </ul>
-<p>That is a much more interesting capability than &quot;write me a paragraph.&quot; It is also why I think AI fluency is increasingly operational fluency. The question is not whether someone can prompt. The question is whether they can build a workflow where the model has the right tools, boundaries, and review steps.</p>
+<p>That is a much more interesting capability than &quot;write me a paragraph.&quot; It is also why I care less about prompting in the abstract and more about whether the workflow has the right tools, boundaries, and review steps.</p>
 <h2>Good AI work still depends on structure</h2>
 <p>The sessions that go well usually have a few things in common:</p>
 <ul>
@@ -62,57 +62,6 @@
 <li>explicit places to stop, confirm, or retry</li>
 </ul>
 <p>That sounds obvious, but it points to a broader lesson: a lot of AI quality is downstream of product quality and system quality. If the inputs are scattered, the tooling is brittle, and the recovery path is vague, the model will mostly amplify that mess.</p>
-
-
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 256" role="img" aria-label="AI work diagram showing files, tools, review points, and outputs inside one working loop">
-            <text x="28" y="28" class="diagram-kicker">REAL AI LOOP</text>
-            <text x="28" y="54" class="diagram-title">Useful AI work looks more like a teammate loop than a chat box.</text>
-
-            <rect x="28" y="74" width="112" height="28" rx="14" class="tone-d"/>
-            <rect x="150" y="74" width="124" height="28" rx="14" class="tone-a"/>
-            <rect x="284" y="74" width="120" height="28" rx="14" class="tone-b"/>
-            <rect x="414" y="74" width="132" height="28" rx="14" class="tone-c"/>
-            <text x="84" y="92" class="diagram-chip-text" text-anchor="middle">files</text>
-            <text x="212" y="92" class="diagram-chip-text" text-anchor="middle">tool use</text>
-            <text x="344" y="92" class="diagram-chip-text" text-anchor="middle">review</text>
-            <text x="480" y="92" class="diagram-chip-text" text-anchor="middle">rebuild</text>
-
-            <rect x="40" y="124" width="176" height="84" rx="18" class="tone-a"/>
-            <rect x="40" y="124" width="176" height="10" class="diagram-bar-rust"/>
-            <text x="56" y="151" class="diagram-label">Winston</text>
-            <text x="56" y="171" class="diagram-body">frame the task</text>
-            <text x="56" y="187" class="diagram-body">steer the tradeoff</text>
-            <text x="56" y="203" class="diagram-body">review the result</text>
-
-            <rect x="272" y="110" width="208" height="98" rx="18" class="tone-d"/>
-            <rect x="272" y="110" width="208" height="10" class="diagram-bar-navy"/>
-            <text x="288" y="137" class="diagram-label">Workspace + Codex</text>
-            <text x="288" y="157" class="diagram-body">inspect the repo and source files</text>
-            <text x="288" y="173" class="diagram-body">make the change and rebuild</text>
-            <text x="288" y="189" class="diagram-body">show what happened</text>
-
-            <rect x="538" y="122" width="144" height="42" rx="15" class="tone-b"/>
-            <rect x="538" y="122" width="144" height="8" class="diagram-bar-blue"/>
-            <text x="554" y="147" class="diagram-label">Proof</text>
-            <text x="554" y="162" class="diagram-note">files, diff, artifact</text>
-
-            <rect x="538" y="172" width="144" height="42" rx="15" class="tone-c"/>
-            <rect x="538" y="172" width="144" height="8" class="diagram-bar-green"/>
-            <text x="554" y="197" class="diagram-label">Output</text>
-            <text x="554" y="212" class="diagram-note">site, doc, deck, tool</text>
-
-            <path d="M216 166 H272" class="diagram-line-strong"/>
-            <path d="M480 143 H538" class="diagram-line"/>
-            <path d="M480 193 H538" class="diagram-line"/>
-            <path d="M376 208 V232 H128 V208" class="diagram-line-soft"/>
-            <text x="252" y="247" class="diagram-note" text-anchor="middle">the loop stays grounded because the work can be checked</text>
-            <circle cx="244" cy="166" r="4.5" class="diagram-dot"/>
-            <circle cx="509" cy="143" r="4.5" class="diagram-dot-soft"/>
-            <circle cx="509" cy="193" r="4.5" class="diagram-dot-soft"/>
-          </svg>
-        </section>
-        
 <h2>What this changed in how I think about teams</h2>
 <p>Using Codex this way has made me value a few things even more:</p>
 <ul>
@@ -130,31 +79,5 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
-      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      function setActive(key) {
-        tabs.forEach((tab) => {
-          const active = tab.dataset.showcaseTarget === key;
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        panels.forEach((panel) => {
-          const active = panel.dataset.showcasePanel === key;
-          panel.classList.toggle("active", active);
-          panel.hidden = !active;
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          setActive(tab.dataset.showcaseTarget);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

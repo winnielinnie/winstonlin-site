@@ -52,48 +52,6 @@
 <p>Without that, even decent code can feel ambiguous. The repo might still be good. It just does not feel reusable yet.</p>
 <h2>Examples usually beat adjectives</h2>
 <p>I trust a sample command and a small input-output example more than I trust a bunch of claims about flexibility or power. Examples do two jobs at once: they show the happy path, and they reveal the shape of the workflow opinion underneath the tool. That matters even more for small utilities. A narrow tool should tell you pretty quickly what it wants you to do and what kind of mess it is designed to clean up.</p>
-
-
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 250" role="img" aria-label="Repository onboarding diagram showing a realistic input, an exact command, and a useful output">
-            <text x="28" y="28" class="diagram-kicker">FIRST USEFUL SUCCESS</text>
-            <text x="28" y="54" class="diagram-title">A public repo should get someone from curiosity to proof quickly.</text>
-
-            <rect x="28" y="74" width="118" height="28" rx="14" class="tone-d"/>
-            <rect x="156" y="74" width="126" height="28" rx="14" class="tone-a"/>
-            <rect x="292" y="74" width="148" height="28" rx="14" class="tone-b"/>
-            <text x="87" y="92" class="diagram-chip-text" text-anchor="middle">problem</text>
-            <text x="219" y="92" class="diagram-chip-text" text-anchor="middle">exact run</text>
-            <text x="366" y="92" class="diagram-chip-text" text-anchor="middle">believable output</text>
-
-            <rect x="38" y="122" width="188" height="92" rx="18" class="tone-a"/>
-            <rect x="38" y="122" width="188" height="10" class="diagram-bar-green"/>
-            <text x="54" y="149" class="diagram-label">Sample input</text>
-            <text x="54" y="170" class="diagram-code">release_notes.md</text>
-            <text x="54" y="188" class="diagram-code">- region us-phoenix-1</text>
-            <text x="54" y="204" class="diagram-code">- status deprecated</text>
-
-            <rect x="266" y="122" width="188" height="92" rx="18" class="tone-d"/>
-            <rect x="266" y="122" width="188" height="10" class="diagram-bar-navy"/>
-            <text x="282" y="149" class="diagram-label">Exact command</text>
-            <text x="282" y="170" class="diagram-code">$ repo-tool scan release_notes.md</text>
-            <text x="282" y="188" class="diagram-code">--format summary</text>
-            <text x="282" y="204" class="diagram-code">--output findings.txt</text>
-
-            <rect x="494" y="122" width="188" height="92" rx="18" class="tone-b"/>
-            <rect x="494" y="122" width="188" height="10" class="diagram-bar-rust"/>
-            <text x="510" y="149" class="diagram-label">Useful output</text>
-            <text x="510" y="170" class="diagram-code">1 deprecated region found</text>
-            <text x="510" y="188" class="diagram-code">next step: update rollout doc</text>
-            <text x="510" y="204" class="diagram-code">see example/output.txt</text>
-
-            <path d="M226 168 H266" class="diagram-line-strong"/>
-            <path d="M454 168 H494" class="diagram-line-strong"/>
-            <circle cx="246" cy="168" r="4.5" class="diagram-dot"/>
-            <circle cx="474" cy="168" r="4.5" class="diagram-dot"/>
-          </svg>
-        </section>
-        
 <h2>Why this matters on public surfaces</h2>
 <p>Public repos are not separate from the rest of the portfolio. They are part of the proof layer. If the site says I care about workflow quality, the repo should make the workflow legible. If the profile says I build practical tools, the repo should make the first useful success easy to reach. That is the bar I care about: not maximum polish, just a short, honest path from landing on the repo to understanding whether it will help.</p>
       <nav class="post-nav post-nav-bottom" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../dependencies-need-owners-before-they-need-slides/">Newer note</a><a href="../fun-projects-are-how-i-test-workflow-ideas/">Older note</a></nav>
@@ -104,31 +62,5 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
-      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      function setActive(key) {
-        tabs.forEach((tab) => {
-          const active = tab.dataset.showcaseTarget === key;
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        panels.forEach((panel) => {
-          const active = panel.dataset.showcasePanel === key;
-          panel.classList.toggle("active", active);
-          panel.hidden = !active;
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          setActive(tab.dataset.showcaseTarget);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

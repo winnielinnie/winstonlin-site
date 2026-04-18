@@ -62,45 +62,10 @@
 <p>That is usually enough to make the next conversation better.</p>
 
 
-        <section class="post-diagram">
-          <svg viewBox="0 0 720 252" role="img" aria-label="Incident timeline diagram with a stable sequence from signal to mitigation and a customer impact band underneath">
-            <text x="28" y="28" class="diagram-kicker">TIMELINE SHAPE</text>
-            <text x="28" y="54" class="diagram-title">The timeline gets better once sequence, handoff, and impact sit in one consistent frame.</text>
-
-            <line x1="70" y1="142" x2="650" y2="142" class="diagram-divider"/>
-            <circle cx="112" cy="142" r="7" class="diagram-dot"/>
-            <circle cx="272" cy="142" r="7" class="diagram-dot"/>
-            <circle cx="434" cy="142" r="7" class="diagram-dot"/>
-            <circle cx="596" cy="142" r="7" class="diagram-dot"/>
-
-            <rect x="56" y="84" width="114" height="44" rx="16" class="tone-a"/>
-            <rect x="216" y="84" width="114" height="44" rx="16" class="tone-b"/>
-            <rect x="378" y="84" width="114" height="44" rx="16" class="tone-c"/>
-            <rect x="540" y="84" width="114" height="44" rx="16" class="tone-d"/>
-            <text x="72" y="102" class="diagram-small">08:12</text>
-            <text x="232" y="102" class="diagram-small">08:29</text>
-            <text x="394" y="102" class="diagram-small">09:04</text>
-            <text x="556" y="102" class="diagram-small">09:22</text>
-            <text x="72" y="119" class="diagram-label">signal</text>
-            <text x="232" y="119" class="diagram-label">handoff</text>
-            <text x="394" y="119" class="diagram-label">diagnosis</text>
-            <text x="556" y="119" class="diagram-label">mitigation</text>
-
-            <line x1="112" y1="128" x2="112" y2="178" class="diagram-line"/>
-            <line x1="272" y1="128" x2="272" y2="178" class="diagram-line"/>
-            <line x1="434" y1="128" x2="434" y2="178" class="diagram-line"/>
-            <line x1="596" y1="128" x2="596" y2="178" class="diagram-line"/>
-
-            <rect x="70" y="188" width="530" height="24" rx="12" class="tone-e"/>
-            <rect x="70" y="188" width="176" height="24" rx="12" class="diagram-bar-rust"/>
-            <rect x="246" y="188" width="206" height="24" rx="12" class="diagram-bar-blue"/>
-            <rect x="452" y="188" width="148" height="24" rx="12" class="diagram-bar-green"/>
-            <text x="88" y="204" class="diagram-chip-text">impact rising</text>
-            <text x="296" y="204" class="diagram-chip-text">customer pain steady</text>
-            <text x="489" y="204" class="diagram-chip-text">recovery visible</text>
-          </svg>
-        </section>
-        
+    <figure class="post-diagram">
+      <img src="../../diagrams/incident-timeline.svg" alt="Diagram showing a stable incident timeline with owner, event, and impact progression.">
+    </figure>
+    
 <h2>The bar I actually care about</h2>
 <p>I do not need a huge incident platform to feel better about review quality. I want the sequence to be legible. Once that is true, the deeper questions get easier:</p>
 <ul>
@@ -118,31 +83,5 @@
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
     </footer>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tabs = Array.from(document.querySelectorAll("[data-showcase-target]"));
-      const panels = Array.from(document.querySelectorAll("[data-showcase-panel]"));
-      if (!tabs.length || !panels.length) return;
-
-      function setActive(key) {
-        tabs.forEach((tab) => {
-          const active = tab.dataset.showcaseTarget === key;
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        panels.forEach((panel) => {
-          const active = panel.dataset.showcasePanel === key;
-          panel.classList.toggle("active", active);
-          panel.hidden = !active;
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          setActive(tab.dataset.showcaseTarget);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

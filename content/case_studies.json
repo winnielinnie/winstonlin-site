@@ -11,27 +11,27 @@
       "Async",
       "Migration"
     ],
-    "tagline": "Shaped product direction for OCI Functions around code-only deploy, developer trust, async clarity, migration readiness, and AI-era execution.",
-    "problem": "OCI Functions had real platform strengths, but the first-run path still felt heavier than the market leaders and the broader story around reliable async work, migration, and agent-style execution was too fragmented.",
+    "tagline": "Shaped OCI Functions direction around onboarding, trust, async work, and migration readiness.",
+    "problem": "OCI Functions had strong platform pieces, but the first-run path still felt heavier than the market leaders and the broader story around async work and migration was too scattered.",
     "what_i_did": [
-      "Built the product thesis and priority order around code-only onboarding, debugging and trust, async clarity, OCI-native automation, and selective expansion into long-running and agent workflows.",
-      "Synthesized customer pain, market shifts, and backlog reality into a clearer roadmap story instead of treating each request as an isolated feature ask.",
-      "Turned detached invocation, delivery destinations, provisioned concurrency, and OCI service adjacency into a more coherent narrative about reliable completion and secure enterprise automation."
+      "Built the product thesis and priority order around code-only onboarding, debugging, trust, async clarity, and OCI-native automation.",
+      "Turned customer pain, market shifts, and backlog reality into a clearer roadmap story instead of treating each request as a separate feature ask.",
+      "Used detached invocation, delivery destinations, and provisioned concurrency as part of a more coherent story about reliable completion and enterprise automation."
     ],
     "why_it_was_hard": [
-      "The hard part was sequencing the work honestly: simplify first, earn trust second, then expand into workflow and AI-native execution without turning the product into a grab bag.",
-      "Functions sat in a market where AWS, Azure, Cloudflare, and Vercel were each shaping expectations in different ways, so the product story had to be both credible and differentiated."
+      "The sequencing had to be honest: simplify first, earn trust second, then expand into longer-running workflows without turning the product into a grab bag.",
+      "Functions sat in a market where AWS, Azure, Cloudflare, and Vercel were shaping expectations in different ways, so the story had to be both credible and differentiated."
     ],
     "outcome": [
-      "Created a clearer strategic frame for OCI Functions as the OCI execution layer for automation, integrations, and emerging agent actions.",
+      "Created a clearer strategic frame for OCI Functions as the OCI execution layer for automation and integrations.",
       "Grounded the roadmap in a small set of adoption and trust bets instead of chasing feature parity."
     ]
   },
   {
     "slug": "ai-assisted-functions-workflows",
-    "title": "AI-Assisted OCI Functions Workflows",
+    "title": "AI-Assisted Functions Setup and Troubleshooting",
     "period": "OCI Functions",
-    "tagline": "Explored AI-assisted setup and troubleshooting for OCI Functions, especially around recovery and next-step guidance.",
+    "tagline": "Explored AI-assisted setup and troubleshooting flows for OCI Functions, with emphasis on recovery and next steps.",
     "problem": "Serverless adoption often breaks on the first-run experience: packaging, environment setup, troubleshooting, and the distance between docs and a working deployment.",
     "what_i_did": [
       "Explored AI-assisted setup and troubleshooting flows using MCP-style integrations and reusable skills.",
@@ -51,7 +51,7 @@
     "slug": "oci-functions-migration-and-docs",
     "title": "Functions Migration and DX Storytelling",
     "period": "OCI Functions",
-    "tagline": "Built migration, patterns, and docs narratives that made OCI Functions easier to understand for real workloads, not just hello-world demos.",
+    "tagline": "Built migration, patterns, and docs narratives that made OCI Functions easier to understand for real workloads.",
     "problem": "A lot of the OCI Functions value was buried in scattered docs and product surfaces. Migration from Lambda, async behavior, and common design patterns were all understandable, but not yet packaged in the way users actually needed.",
     "what_i_did": [
       "Developed a migration story for moving AWS Lambda workloads to OCI Functions by preserving business logic and replacing cloud-specific integration code.",
@@ -69,21 +69,21 @@
   },
   {
     "slug": "oke-ai-ml-platform-improvements",
-    "title": "Scaling OKE for AI and Platform Workloads",
+    "title": "Making OKE Easier to Run at Scale",
     "period": "OKE (OCI Kubernetes Engine)",
-    "tagline": "Prioritized product work that made OKE more usable for AI and other demanding workloads.",
-    "problem": "The real blockers were operational: slow or brittle node bring-up, image availability issues, limited observability, and infrastructure rough edges that became painful at scale.",
+    "tagline": "Focused on the platform gaps that made OKE harder to run in production.",
+    "problem": "The real blockers were operational: slow or brittle node bring-up, image availability issues, limited observability, and rough edges that became painful at scale.",
     "what_i_did": [
       "Worked across customer signals, internal constraints, and roadmap tradeoffs to focus on the platform gaps that most directly blocked adoption.",
-      "Helped drive investments around Ubuntu support, GPU-related platform needs, and observability improvements so OKE better matched how modern infrastructure teams actually run demanding workloads.",
-      "Treated the work as platform product design, not just feature intake, by pushing on migration readiness, operational clarity, and the day-two experience."
+      "Helped drive investments around Ubuntu images, observability, and other platform improvements so OKE better matched how infrastructure teams actually run demanding workloads.",
+      "Treated the work as platform product design, not just feature intake, by pushing on operational clarity and the day-two experience."
     ],
     "why_it_was_hard": [
       "A lot of the pain sat at the seams between imaging, capacity, and adjacent infrastructure teams, so progress required alignment across multiple systems rather than one isolated feature.",
       "The challenge was deciding which platform issues were true product blockers versus one-off edge cases, then prioritizing the ones that would materially improve production confidence."
     ],
     "outcome": [
-      "Helped move OKE toward a stronger fit for AI and other demanding production workloads.",
+      "Helped move OKE toward a stronger fit for demanding production workloads.",
       "Reinforced my approach to infrastructure product work: adoption is often won by reducing operational drag, not just adding surface area."
     ]
   },

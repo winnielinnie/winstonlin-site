@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Incident timeline diagram</title>
+  <desc id="desc">A stable incident timeline showing time, owner, event, and customer impact progression.</desc>
+  <defs>
+    <style>
+      .frame { fill: #fcfbf8; stroke: #ddd6cb; stroke-width: 2; }
+      .panel { fill: #ffffff; stroke: #d8d3c6; stroke-width: 2; }
+      .sky { fill: #eaf1ff; stroke: #c9d7f4; stroke-width: 2; }
+      .mint { fill: #eaf7ef; stroke: #c7dfcf; stroke-width: 2; }
+      .peach { fill: #fff1e6; stroke: #ecd7c4; stroke-width: 2; }
+      .rose { fill: #f9ece7; stroke: #e6d0c4; stroke-width: 2; }
+      .sand { fill: #f4efe6; stroke: #ddd3c2; stroke-width: 2; }
+      .ink { fill: #172033; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
+      .muted { fill: #5b6475; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
+      .display { fill: #172033; font-family: "Newsreader", Georgia, serif; }
+      .kicker { font-size: 17px; font-weight: 800; letter-spacing: 0.18em; }
+      .title { font-size: 40px; font-weight: 600; }
+      .subtitle { font-size: 20px; }
+      .label { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; }
+      .time { font-size: 20px; font-weight: 800; }
+      .owner { font-size: 16px; font-weight: 800; letter-spacing: 0.08em; }
+      .body { font-size: 22px; font-weight: 700; }
+      .small { font-size: 16px; }
+      .pill-text { font-size: 15px; font-weight: 800; text-anchor: middle; }
+      .rail { fill: none; stroke: #c7ccd6; stroke-width: 4; stroke-linecap: round; }
+      .dot { fill: #2e5bff; }
+    </style>
+  </defs>
+
+  <rect x="18" y="18" width="1164" height="724" rx="30" class="frame" />
+
+  <text x="64" y="74" class="ink kicker">TIMELINE SHAPE</text>
+  <text x="64" y="118" class="display title">
+    <tspan x="64" dy="0">A stable timeline makes</tspan>
+    <tspan x="64" dy="48">the review easier to talk through</tspan>
+  </text>
+  <text x="64" y="186" class="muted subtitle">The point is not a fancy incident artifact. It is a repeatable view of sequence, owner, event, and impact.</text>
+
+  <rect x="876" y="58" width="250" height="88" rx="18" class="panel" />
+  <text x="904" y="92" class="ink label">KEEP IT SIMPLE</text>
+  <text x="904" y="122" class="muted small">Time, owner, event, impact.</text>
+  <text x="904" y="144" class="muted small">That is usually enough for a first pass.</text>
+
+  <path d="M150 220 V596" class="rail" />
+  <circle cx="150" cy="246" r="10" class="dot" />
+  <circle cx="150" cy="340" r="10" class="dot" />
+  <circle cx="150" cy="434" r="10" class="dot" />
+  <circle cx="150" cy="528" r="10" class="dot" />
+
+  <text x="70" y="252" class="ink time">08:12</text>
+  <text x="70" y="346" class="ink time">08:29</text>
+  <text x="70" y="440" class="ink time">09:04</text>
+  <text x="70" y="534" class="ink time">09:22</text>
+
+  <rect x="220" y="210" width="860" height="72" rx="18" class="sky" />
+  <text x="252" y="238" class="muted owner">ON-CALL</text>
+  <text x="252" y="264" class="ink body">Alert triggers for error spike in the ingest path</text>
+  <text x="252" y="290" class="muted small">First signal is logged before anyone debates root cause.</text>
+
+  <rect x="220" y="304" width="860" height="72" rx="18" class="mint" />
+  <text x="252" y="332" class="muted owner">SUPPORT + SRE</text>
+  <text x="252" y="358" class="ink body">Customer impact is confirmed and handoff becomes explicit</text>
+  <text x="252" y="384" class="muted small">The timeline records who picked it up next instead of leaving that to memory.</text>
+
+  <rect x="220" y="398" width="860" height="72" rx="18" class="peach" />
+  <text x="252" y="426" class="muted owner">SERVICE TEAM</text>
+  <text x="252" y="452" class="ink body">Mitigation starts and traffic is shifted away from the bad path</text>
+  <text x="252" y="478" class="muted small">Sequence matters here because diagnosis and action often get conflated later.</text>
+
+  <rect x="220" y="492" width="860" height="72" rx="18" class="rose" />
+  <text x="252" y="520" class="muted owner">INCIDENT LEAD</text>
+  <text x="252" y="546" class="ink body">Recovery is visible and backlog starts clearing</text>
+  <text x="252" y="572" class="muted small">The review can now separate recovery from full closeout.</text>
+
+  <rect x="220" y="624" width="860" height="70" rx="22" class="panel" />
+  <text x="252" y="652" class="ink label">CUSTOMER IMPACT BAND</text>
+  <rect x="252" y="666" width="152" height="18" rx="9" fill="#eaf1ff" />
+  <rect x="408" y="666" width="214" height="18" rx="9" fill="#fff1e6" />
+  <rect x="626" y="666" width="170" height="18" rx="9" fill="#f9ece7" />
+  <rect x="800" y="666" width="214" height="18" rx="9" fill="#eaf7ef" />
+  <text x="328" y="680" fill="#2e5bff" class="pill-text">signal found</text>
+  <text x="515" y="680" fill="#c76a10" class="pill-text">impact rising</text>
+  <text x="711" y="680" fill="#b14d3a" class="pill-text">customer pain steady</text>
+  <text x="907" y="680" fill="#18794e" class="pill-text">recovery visible</text>
+</svg>
