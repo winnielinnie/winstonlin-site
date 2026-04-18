@@ -111,12 +111,12 @@
 
   <rect x="72" y="674" width="1056" height="44" rx="14" class="dark" />
   <text x="102" y="702" class="white section">CHAIN UNDER THE SLIDE</text>
-  <rect x="330" y="685" width="176" height="22" rx="11" fill="#edf5ef" />
-  <rect x="556" y="685" width="164" height="22" rx="11" fill="#f8efe6" />
-  <rect x="770" y="685" width="176" height="22" rx="11" fill="#eef2fa" />
-  <text x="418" y="700" fill="#3f6f60" class="pill-text">observability validation</text>
-  <text x="638" y="700" fill="#9c5338" class="pill-text">cutover runbook</text>
-  <text x="858" y="700" fill="#5572a1" class="pill-text">field training + launch lock</text>
-  <path d="M506 696 H556" class="line-strong" />
-  <path d="M720 696 H770" class="line-strong" />
+  <rect x="292" y="685" width="208" height="22" rx="11" fill="#edf5ef" />
+  <rect x="532" y="685" width="170" height="22" rx="11" fill="#f8efe6" />
+  <rect x="734" y="685" width="260" height="22" rx="11" fill="#eef2fa" />
+  <text x="396" y="700" fill="#3f6f60" class="pill-text">observability validation</text>
+  <text x="617" y="700" fill="#9c5338" class="pill-text">cutover runbook</text>
+  <text x="864" y="700" fill="#5572a1" class="pill-text">field training + launch lock</text>
+  <path d="M500 696 H532" class="line-strong" />
+  <path d="M702 696 H734" class="line-strong" />
 </svg>

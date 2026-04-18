@@ -50,7 +50,7 @@
 
   <rect x="808" y="98" width="312" height="118" rx="18" class="panel-soft" />
   <text x="838" y="134" class="ink section">FIRST PASS BAR</text>
-  <text x="838" y="168" class="muted small">
+  <text x="838" y="164" class="muted small">
     <tspan x="838" dy="0">Lock the order of events before the room</tspan>
     <tspan x="838" dy="22">starts debating judgment, blame, or theory.</tspan>
   </text>

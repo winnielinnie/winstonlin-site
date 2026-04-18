@@ -63,9 +63,15 @@
   <circle cx="824" cy="168" r="4" class="navy" />
   <circle cx="824" cy="198" r="4" class="green" />
   <circle cx="824" cy="228" r="4" class="gold" />
-  <text x="842" y="173" class="muted small">Less re-explaining between artifacts</text>
-  <text x="842" y="203" class="muted small">Easier review against the source</text>
-  <text x="842" y="233" class="muted small">Faster move to the next useful output</text>
+  <text x="842" y="168" class="muted small">
+    <tspan x="842" dy="0">Less re-explaining</tspan>
+    <tspan x="842" dy="20">between artifacts</tspan>
+  </text>
+  <text x="842" y="208" class="muted small">Easier review against the source</text>
+  <text x="842" y="232" class="muted small">
+    <tspan x="842" dy="0">Faster move to the next</tspan>
+    <tspan x="842" dy="20">useful output</tspan>
+  </text>
 
   <rect x="72" y="344" width="252" height="310" rx="22" class="panel" />
   <text x="100" y="382" class="ink section">RAW INPUTS</text>
@@ -134,10 +140,22 @@
   <text x="908" y="568" class="ink card-title">Decision memo</text>
   <text x="908" y="634" class="ink card-title">Repo or site update</text>
 
-  <text x="908" y="456" class="muted small">something reviewable, not a restart</text>
-  <text x="908" y="522" class="muted small">a shorter pass from the same context</text>
-  <text x="908" y="588" class="muted small">turn the thread into a usable call</text>
-  <text x="908" y="654" class="muted small">make the change and show the diff</text>
+  <text x="908" y="450" class="muted small">
+    <tspan x="908" dy="0">something reviewable,</tspan>
+    <tspan x="908" dy="20">not a restart</tspan>
+  </text>
+  <text x="908" y="516" class="muted small">
+    <tspan x="908" dy="0">a shorter pass from</tspan>
+    <tspan x="908" dy="20">the same context</tspan>
+  </text>
+  <text x="908" y="582" class="muted small">
+    <tspan x="908" dy="0">turn the thread into</tspan>
+    <tspan x="908" dy="20">a usable call</tspan>
+  </text>
+  <text x="908" y="648" class="muted small">
+    <tspan x="908" dy="0">make the change and</tspan>
+    <tspan x="908" dy="20">show the diff</tspan>
+  </text>
 
   <rect x="72" y="694" width="1056" height="32" rx="12" class="accent-bar" />
   <text x="600" y="716" class="white chip-text" text-anchor="middle">The win is not a better paragraph. It is a tighter loop from source material to usable output.</text>

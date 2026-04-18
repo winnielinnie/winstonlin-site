@@ -286,17 +286,17 @@ def render_diagram(kind, current_path):
         "how-i-use-ai-as-a-pm-with-a-real-workspace": {
             "asset": "diagrams/workspace-loop.svg",
             "alt": "Diagram showing source material feeding one shared workspace and then several reusable outputs.",
-            "heading": "Why I prefer a workspace over one-off prompting",
+            "heading": "What the workflow actually looks like",
         },
         "dependencies-need-owners-before-they-need-slides": {
             "asset": "diagrams/dependency-board.svg",
             "alt": "Diagram showing a dependency board with owner, status, and downstream impact visible in one view.",
-            "heading": "What I want a planning artifact to do",
+            "heading": "The failure mode is usually in the middle",
         },
         "incident-timelines-need-a-stable-shape": {
             "asset": "diagrams/incident-timeline.svg",
             "alt": "Diagram showing a stable incident timeline with owner, event, and impact progression.",
-            "heading": "Why a small formatter is often enough",
+            "heading": "What I want from the timeline first",
         },
     }
     diagram = diagrams.get(kind)
@@ -318,16 +318,15 @@ def render_post_nav(post, posts, nav_class="post-nav-top"):
     current_path = f"/blog/{post.slug}/"
 
     links = [
-        '<span class="post-nav-label">Writing</span>',
-        f'<a href="{relative_url(current_path, "/blog/")}">All writing</a>',
+        f'<a href="{relative_url(current_path, "/blog/")}">Back to all writing</a>',
     ]
     if newer_post:
         links.append(
-            f'<a href="{relative_url(current_path, f"/blog/{newer_post.slug}/")}">Newer note</a>'
+            f'<a href="{relative_url(current_path, f"/blog/{newer_post.slug}/")}">Previous note</a>'
         )
     if older_post:
         links.append(
-            f'<a href="{relative_url(current_path, f"/blog/{older_post.slug}/")}">Older note</a>'
+            f'<a href="{relative_url(current_path, f"/blog/{older_post.slug}/")}">Next note</a>'
         )
 
     return f'<nav class="post-nav {nav_class}" aria-label="Writing navigation">{"".join(links)}</nav>'
