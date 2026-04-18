@@ -444,7 +444,7 @@ nav a.active::after {
 
 .page-hero {
   position: relative;
-  max-width: 860px;
+  max-width: 100%;
   margin: 10px 0 26px;
   padding: 6px 0 0;
 }
@@ -456,7 +456,7 @@ nav a.active::after {
 
 .page-hero-copy {
   position: relative;
-  max-width: 760px;
+  max-width: 920px;
   padding-bottom: 12px;
 }
 
@@ -473,7 +473,7 @@ nav a.active::after {
 
 .page-hero h1 {
   margin: 0 0 10px;
-  max-width: 740px;
+  max-width: 880px;
   font-size: clamp(2rem, 4vw, 2.9rem);
   line-height: 0.98;
   letter-spacing: -0.034em;
@@ -483,7 +483,7 @@ nav a.active::after {
 }
 
 .page-hero .lead {
-  max-width: 44rem;
+  max-width: 58rem;
   margin: 0;
 }
 
@@ -557,21 +557,23 @@ nav a.active::after {
 .section-head {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .section-head-stack {
   display: block;
+  width: 100%;
 }
 
 .section-head-stack h2 {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .section-head-stack .section-note {
-  max-width: 28rem;
+  max-width: 52rem;
+  margin: 0;
 }
 
 .work-section .section-note {
@@ -662,19 +664,19 @@ nav a.active::after {
 
 .page-hero + .section,
 .page-intro + .section {
-  margin-top: 18px;
+  margin-top: 22px;
 }
 
 .page-about .page-hero + .section {
-  margin-top: 8px;
+  margin-top: 22px;
 }
 
 .page-about .page-hero {
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .page-about .page-hero-copy {
-  padding-bottom: 8px;
+  padding-bottom: 12px;
 }
 
 .panel,
@@ -862,7 +864,7 @@ nav a.active::after {
 }
 
 .oracle-blogs-section {
-  margin-top: 16px;
+  margin-top: 30px;
 }
 
 .oracle-blogs-head {
@@ -1203,7 +1205,7 @@ nav a.active::after {
 
 .spotlight-summary {
   margin: 0;
-  max-width: 560px;
+  max-width: 640px;
   color: #3b332d;
 }
 
@@ -1282,7 +1284,7 @@ nav a.active::after {
 }
 
 .work-section {
-  margin-top: 28px;
+  margin-top: 34px;
 }
 
 .focus-grid {
@@ -1554,7 +1556,7 @@ nav a.active::after {
 }
 
 .timeline-item h2 {
-  max-width: 34rem;
+  max-width: 44rem;
 }
 
 .post-list-item h2 a,
@@ -1575,7 +1577,7 @@ nav a.active::after {
 
 .study-problem-copy {
   margin: 0 0 14px;
-  max-width: 40rem;
+  max-width: 48rem;
   color: #3d3530;
 }
 
