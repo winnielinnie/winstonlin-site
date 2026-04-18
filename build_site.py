@@ -77,57 +77,111 @@ def inline_markup(text):
     return escaped
 
 
-def markdown_to_html(markdown_text):
-    lines = markdown_text.splitlines()
-    parts = []
-    in_list = False
+def sentence_count(text):
+    matches = re.findall(r"[.!?](?:['\"])?(?=\s|$)", text)
+    return len(matches) or 1
 
-    def close_list():
-        nonlocal in_list
-        if in_list:
-            parts.append("</ul>")
-            in_list = False
 
-    paragraph = []
+def parse_markdown_blocks(markdown_text):
+    blocks = []
+    current = []
 
-    def flush_paragraph():
-        if paragraph:
-            parts.append(f"<p>{inline_markup(' '.join(paragraph))}</p>")
-            paragraph.clear()
+    def flush_block():
+        nonlocal current
+        if not current:
+            return
+        stripped_lines = [line.strip() for line in current if line.strip()]
+        if not stripped_lines:
+            current = []
+            return
 
-    for raw_line in lines:
+        first = stripped_lines[0]
+        if first.startswith("## "):
+            blocks.append({"type": "h2", "text": first[3:]})
+        elif first.startswith("# "):
+            blocks.append({"type": "h1", "text": first[2:]})
+        elif all(line.startswith("- ") for line in stripped_lines):
+            blocks.append({"type": "list", "items": [line[2:] for line in stripped_lines]})
+        else:
+            blocks.append({"type": "paragraph", "text": " ".join(stripped_lines)})
+        current = []
+
+    for raw_line in markdown_text.splitlines():
         line = raw_line.rstrip()
-        stripped = line.strip()
+        if not line.strip():
+            flush_block()
+            continue
+        current.append(line)
 
-        if not stripped:
-            flush_paragraph()
-            close_list()
+    flush_block()
+    return blocks
+
+
+def merge_paragraph_blocks(blocks):
+    merged = []
+    paragraph_buffer = []
+    buffered_sentences = 0
+    buffered_chars = 0
+
+    def flush_paragraph_buffer():
+        nonlocal paragraph_buffer, buffered_sentences, buffered_chars
+        if paragraph_buffer:
+            merged.append({"type": "paragraph", "text": " ".join(paragraph_buffer)})
+            paragraph_buffer = []
+            buffered_sentences = 0
+            buffered_chars = 0
+
+    for block in blocks:
+        if block["type"] != "paragraph":
+            flush_paragraph_buffer()
+            merged.append(block)
             continue
 
-        if stripped.startswith("## "):
-            flush_paragraph()
-            close_list()
-            parts.append(f"<h2>{inline_markup(stripped[3:])}</h2>")
+        text = block["text"]
+        text_sentences = sentence_count(text)
+        text_chars = len(text)
+
+        if not paragraph_buffer:
+            paragraph_buffer = [text]
+            buffered_sentences = text_sentences
+            buffered_chars = text_chars
             continue
 
-        if stripped.startswith("# "):
-            flush_paragraph()
-            close_list()
-            parts.append(f"<h1>{inline_markup(stripped[2:])}</h1>")
-            continue
+        should_merge = buffered_sentences < 3 and buffered_chars < 320
+        if text_chars > 260 and buffered_chars > 180:
+            should_merge = False
 
-        if stripped.startswith("- "):
-            flush_paragraph()
-            if not in_list:
-                parts.append("<ul>")
-                in_list = True
-            parts.append(f"<li>{inline_markup(stripped[2:])}</li>")
-            continue
+        if should_merge:
+            paragraph_buffer.append(text)
+            buffered_sentences += text_sentences
+            buffered_chars += 1 + text_chars
+        else:
+            flush_paragraph_buffer()
+            paragraph_buffer = [text]
+            buffered_sentences = text_sentences
+            buffered_chars = text_chars
 
-        paragraph.append(stripped)
+    flush_paragraph_buffer()
+    return merged
 
-    flush_paragraph()
-    close_list()
+
+def markdown_to_html(markdown_text):
+    parts = []
+    blocks = merge_paragraph_blocks(parse_markdown_blocks(markdown_text))
+
+    for block in blocks:
+        if block["type"] == "paragraph":
+            parts.append(f"<p>{inline_markup(block['text'])}</p>")
+        elif block["type"] == "h2":
+            parts.append(f"<h2>{inline_markup(block['text'])}</h2>")
+        elif block["type"] == "h1":
+            parts.append(f"<h1>{inline_markup(block['text'])}</h1>")
+        elif block["type"] == "list":
+            parts.append("<ul>")
+            for item in block["items"]:
+                parts.append(f"<li>{inline_markup(item)}</li>")
+            parts.append("</ul>")
+
     return "\n".join(parts)
 
 
