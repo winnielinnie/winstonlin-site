@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Work Needs Real Tools | Winston Lin</title>
-  <meta name="description" content="Months of hands-on use reinforced that useful AI work is not clever prompting. It is tools, files, review loops, and recovery paths around the model.">
+  <meta name="description" content="Months of hands-on use reinforced that useful AI work depends on tools, files, review loops, and recovery paths around the model.">
   <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/what-working-with-codex-taught-me-about-ai-work/">
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
   <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
   <link rel="stylesheet" href="../../styles.css">
   <meta property="og:title" content="AI Work Needs Real Tools | Winston Lin">
-  <meta property="og:description" content="Months of hands-on use reinforced that useful AI work is not clever prompting. It is tools, files, review loops, and recovery paths around the model.">
+  <meta property="og:description" content="Months of hands-on use reinforced that useful AI work depends on tools, files, review loops, and recovery paths around the model.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/what-working-with-codex-taught-me-about-ai-work/">
   <meta name="twitter:card" content="summary">
@@ -37,12 +37,12 @@
     <article class="post-page prose">
       <p class="meta">2026-04-17</p>
       <h1>AI Work Needs Real Tools</h1>
-      <p class="post-summary">Months of hands-on use reinforced that useful AI work is not clever prompting. It is tools, files, review loops, and recovery paths around the model.</p>
+      <p class="post-summary">Months of hands-on use reinforced that useful AI work depends on tools, files, review loops, and recovery paths around the model.</p>
       <nav class="post-nav post-nav-top" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../incident-timelines-need-a-stable-shape/">Newer note</a><a href="../examples-are-the-interface-for-small-tools/">Older note</a></nav>
-      <p>Over the last few months I have used Codex on real work more than demos. The main lesson has been simple: the useful part is not the single response. It is the setup around the model. When the workspace is good, the model can read the right files, run the right tools, make the change, rebuild the artifact, and show what happened. When the setup is thin, you mostly get fluent guesswork.</p>
-<h2>It feels closer to working with a technical teammate</h2>
-<p>The best sessions do not feel like &quot;generate some text.&quot; They feel more like sitting next to someone who can inspect the repo, trace the problem, make the edit, and explain the tradeoff. That does not remove judgment. It just means the judgment moves up a level: what should be automated, what should be checked, and what is good enough to keep.</p>
-<h2>The real leverage comes from tool use</h2>
+      <p>Over the last few months I have used Codex on real work more than demos. The main lesson has been simple: the useful part is not one response. It is the setup around the model. When the workspace is good, the model can inspect the right files, run the right tools, make the change, rebuild the artifact, and show what happened. When the setup is weak, you mostly get fluent guesswork.</p>
+<h2>It works best when it can actually work the repo</h2>
+<p>At its best, this feels less like &quot;generate some text&quot; and more like working with someone who can inspect the repo, trace the problem, try a fix, and explain the tradeoff. That does not remove judgment. It just means the human judgment shifts up a level: what should be automated, what should be checked, and where the bar should be.</p>
+<h2>What actually matters</h2>
 <p>What has mattered most in practice has been the ability to move across different kinds of work without resetting context:</p>
 <ul>
 <li>inspect source files</li>
@@ -51,8 +51,8 @@
 <li>check output against the underlying files</li>
 <li>trace a broken step and recover cleanly</li>
 </ul>
-<p>That is a much more interesting capability than &quot;write me a paragraph.&quot; It is also why I care less about prompting in the abstract and more about whether the workflow has the right tools, boundaries, and review steps.</p>
-<h2>Good AI work still depends on structure</h2>
+<p>That is a much more useful capability than &quot;write me a paragraph.&quot; It is also why I care less about prompting in the abstract and more about whether the workflow has the right tools, boundaries, and review steps.</p>
+<h2>Structure still wins</h2>
 <p>The sessions that go well usually have a few things in common:</p>
 <ul>
 <li>clear files and source material</li>
@@ -61,16 +61,16 @@
 <li>outputs that can be checked instead of just admired</li>
 <li>explicit places to stop, confirm, or retry</li>
 </ul>
-<p>That sounds obvious, but it points to a broader lesson: a lot of AI quality is downstream of product quality and system quality. If the inputs are scattered, the tooling is brittle, and the recovery path is vague, the model will mostly amplify that mess.</p>
-<h2>What this changed in how I think about teams</h2>
+<p>That sounds obvious, but it points to a broader lesson: a lot of AI quality is downstream of product and system quality. If the inputs are scattered, the tooling is brittle, and the recovery path is vague, the model mostly makes that mess harder to trust.</p>
+<h2>What changed in how I think about teams</h2>
 <p>Using Codex this way has made me value a few things even more:</p>
 <ul>
 <li>teams that keep work legible</li>
 <li>tools that shorten the path from rough input to usable output</li>
 <li>people who can move between strategy, systems, and execution without losing the thread</li>
-<li>AI products that behave more like good workflow software and less like stage magic</li>
+<li>AI products that behave more like good workflow software and less like demos</li>
 </ul>
-<p>That is also the kind of work I like being around. I like the problems where product thinking, technical detail, and operating reality all matter at the same time, because those are usually the problems worth solving. The best version of AI work still feels collaborative. It is not the model replacing the team. It is a tighter loop between people, judgment, and tools.</p>
+<p>That is also the kind of work I like being around. I like the problems where product judgment, operating reality, and detail all matter at the same time, because those are usually the problems worth solving. The best version of AI work still feels collaborative. It is not the model replacing the team. It is a tighter loop between people, judgment, and tools.</p>
       <nav class="post-nav post-nav-bottom" aria-label="Writing navigation"><span class="post-nav-label">Writing</span><a href="../">All writing</a><a href="../incident-timelines-need-a-stable-shape/">Newer note</a><a href="../examples-are-the-interface-for-small-tools/">Older note</a></nav>
     </article>
     

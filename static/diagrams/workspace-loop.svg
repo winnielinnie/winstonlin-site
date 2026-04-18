@@ -1,130 +1,144 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
   <title id="title">Workspace loop diagram</title>
-  <desc id="desc">Source material feeds a shared workspace, which then produces reusable outputs such as decks, write-ups, specs, and repo updates.</desc>
+  <desc id="desc">A slide-style diagram showing raw inputs flowing into one active working session and then into reusable outputs such as decks, notes, and repo updates.</desc>
   <defs>
     <style>
-      .frame { fill: #fcfbf8; stroke: #ddd6cb; stroke-width: 2; }
-      .panel { fill: #ffffff; stroke: #d8d3c6; stroke-width: 2; }
-      .sky { fill: #eaf1ff; stroke: #c9d7f4; stroke-width: 2; }
-      .mint { fill: #eaf7ef; stroke: #c7dfcf; stroke-width: 2; }
-      .peach { fill: #fff1e6; stroke: #ecd7c4; stroke-width: 2; }
-      .rose { fill: #f9ece7; stroke: #e6d0c4; stroke-width: 2; }
-      .sand { fill: #f4efe6; stroke: #ddd3c2; stroke-width: 2; }
-      .navy { fill: #1e293b; }
-      .ink { fill: #172033; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
-      .muted { fill: #5b6475; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
-      .display { fill: #172033; font-family: "Newsreader", Georgia, serif; }
-      .kicker { font-size: 17px; font-weight: 800; letter-spacing: 0.18em; }
-      .title { font-size: 40px; font-weight: 600; }
-      .subtitle { font-size: 20px; }
-      .label { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; }
-      .body { font-size: 20px; font-weight: 600; }
-      .small { font-size: 16px; }
-      .code { font-size: 18px; font-weight: 700; }
-      .stepno { fill: #ffffff; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; font-weight: 800; text-anchor: middle; }
-      .line { fill: none; stroke: #8aa0bf; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-      .line-soft { fill: none; stroke: #b9c3d3; stroke-width: 2.5; stroke-dasharray: 8 10; stroke-linecap: round; }
+      .bg { fill: #efe6da; }
+      .canvas { fill: #f7f1e8; stroke: #dbcfc1; stroke-width: 1.8; }
+      .rule { stroke: #d7cab8; stroke-width: 1.8; }
+      .ink { fill: #241c17; font-family: "Manrope", "Aptos", sans-serif; }
+      .muted { fill: #5f574f; font-family: "Manrope", "Aptos", sans-serif; }
+      .display { fill: #241c17; font-family: "Newsreader", Georgia, serif; }
+      .kicker { font-size: 15px; font-weight: 700; letter-spacing: 0.16em; }
+      .micro { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; }
+      .title { font-size: 56px; font-weight: 500; }
+      .subtitle { font-size: 21px; line-height: 1.45; }
+      .panel { fill: #fbf8f3; stroke: #d8ccbf; stroke-width: 1.8; }
+      .panel-soft { fill: #fffdf9; stroke: #ddd1c4; stroke-width: 1.5; }
+      .chip { fill: #f7f1e8; stroke: #b89a4a; stroke-width: 1.6; }
+      .chip-blue { fill: #edf2fb; stroke: #7e9ac7; stroke-width: 1.6; }
+      .chip-green { fill: #edf5ef; stroke: #5f8d7d; stroke-width: 1.6; }
+      .chip-text { font-size: 15px; font-weight: 700; }
+      .section { font-size: 18px; font-weight: 700; letter-spacing: 0.06em; }
+      .body { font-size: 22px; font-weight: 700; }
+      .small { font-size: 16px; line-height: 1.45; }
+      .code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: 16px; font-weight: 700; fill: #2a2521; }
+      .card-title { font-size: 18px; font-weight: 700; }
+      .accent-bar { fill: #413631; }
+      .navy { fill: #6d86b3; }
+      .green { fill: #4f7f6f; }
+      .gold { fill: #b59143; }
+      .rust { fill: #a86347; }
+      .line { fill: none; stroke: #9f8c7d; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      .line-soft { fill: none; stroke: #cbb9aa; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 10; }
+      .white { fill: #ffffff; }
     </style>
   </defs>
 
-  <rect x="18" y="18" width="1164" height="724" rx="30" class="frame" />
+  <rect width="1200" height="760" class="bg" />
+  <rect x="24" y="24" width="1152" height="712" rx="28" class="canvas" />
+  <line x1="60" y1="58" x2="1140" y2="58" class="rule" />
 
-  <text x="64" y="74" class="ink kicker">WORKSPACE VIEW</text>
-  <text x="64" y="120" class="display title">
-    <tspan x="64" dy="0">One working loop,</tspan>
-    <tspan x="64" dy="48">not scattered artifacts</tspan>
+  <text x="72" y="38" class="ink kicker">WORKSPACE LOOP</text>
+  <text x="1048" y="38" class="ink micro" text-anchor="end">sources • edits • outputs</text>
+
+  <rect x="72" y="86" width="154" height="34" rx="17" class="chip-green" />
+  <rect x="242" y="86" width="166" height="34" rx="17" class="chip-blue" />
+  <rect x="424" y="86" width="168" height="34" rx="17" class="chip" />
+  <text x="149" y="108" class="ink chip-text" text-anchor="middle">raw inputs</text>
+  <text x="325" y="108" class="ink chip-text" text-anchor="middle">active session</text>
+  <text x="508" y="108" class="ink chip-text" text-anchor="middle">reusable outputs</text>
+
+  <text x="72" y="184" class="display title">
+    <tspan x="72" dy="0">The useful part is keeping</tspan>
+    <tspan x="72" dy="58">the work connected</tspan>
   </text>
-  <text x="64" y="188" class="muted subtitle">The practical win is keeping the source material, edits, and outputs close enough together that the work compounds.</text>
+  <text x="72" y="304" class="muted subtitle">
+    <tspan x="72" dy="0">Notes, files, drafts, and outputs stay in one working state,</tspan>
+    <tspan x="72" dy="32">so the second artifact is easier than the first.</tspan>
+  </text>
 
-  <rect x="842" y="56" width="282" height="92" rx="18" class="panel" />
-  <text x="870" y="92" class="ink label">WHY IT HELPS</text>
-  <text x="870" y="122" class="muted small">Same context, less re-explaining,</text>
-  <text x="870" y="146" class="muted small">faster move from rough notes to something usable.</text>
+  <rect x="790" y="96" width="330" height="154" rx="18" class="panel-soft" />
+  <text x="820" y="132" class="ink section">WHAT CHANGES</text>
+  <circle cx="824" cy="168" r="4" class="navy" />
+  <circle cx="824" cy="198" r="4" class="green" />
+  <circle cx="824" cy="228" r="4" class="gold" />
+  <text x="842" y="173" class="muted small">Less re-explaining between artifacts</text>
+  <text x="842" y="203" class="muted small">Easier review against the source</text>
+  <text x="842" y="233" class="muted small">Faster move to the next useful output</text>
 
-  <rect x="60" y="210" width="250" height="404" rx="22" class="sky" />
-  <text x="86" y="248" class="ink label">SOURCE MATERIAL</text>
+  <rect x="72" y="344" width="252" height="310" rx="22" class="panel" />
+  <text x="100" y="382" class="ink section">RAW INPUTS</text>
 
-  <rect x="86" y="274" width="198" height="64" rx="14" class="panel" />
-  <text x="106" y="314" class="ink code">customer-notes.md</text>
+  <rect x="100" y="406" width="196" height="50" rx="14" class="panel-soft" />
+  <rect x="100" y="470" width="196" height="50" rx="14" class="panel-soft" />
+  <rect x="100" y="534" width="196" height="50" rx="14" class="panel-soft" />
+  <rect x="100" y="598" width="196" height="50" rx="14" class="panel-soft" />
 
-  <rect x="86" y="354" width="198" height="64" rx="14" class="panel" />
-  <text x="106" y="394" class="ink code">usage-export.csv</text>
+  <text x="120" y="437" class="code">customer-notes.md</text>
+  <text x="120" y="501" class="code">usage-export.csv</text>
+  <text x="120" y="565" class="code">draft-deck.pptx</text>
+  <text x="120" y="629" class="code">screenshots/</text>
 
-  <rect x="86" y="434" width="198" height="64" rx="14" class="panel" />
-  <text x="106" y="474" class="ink code">roadmap-draft.md</text>
+  <text x="100" y="684" class="muted small">
+    <tspan x="100" dy="0">Calls, exports, drafts, and visuals</tspan>
+    <tspan x="100" dy="24">stay close to the same session.</tspan>
+  </text>
 
-  <rect x="86" y="514" width="198" height="64" rx="14" class="panel" />
-  <text x="106" y="554" class="ink code">screenshots/</text>
+  <path d="M324 500 C344 500 350 500 368 500" class="line" />
+  <path d="M760 500 C778 500 784 500 796 500" class="line" />
 
-  <text x="86" y="648" class="muted small">Notes, raw exports, drafts,</text>
-  <text x="86" y="672" class="muted small">images, and context stay nearby.</text>
+  <rect x="368" y="322" width="392" height="362" rx="24" class="panel" />
+  <rect x="368" y="322" width="392" height="14" rx="24" class="accent-bar" />
+  <text x="400" y="374" class="ink section">ACTIVE SESSION</text>
+  <text x="400" y="402" class="muted small">One place to inspect, compare, draft, and write the result back.</text>
 
-  <path d="M310 412 H350" class="line" />
-  <circle cx="330" cy="412" r="6" fill="#2e5bff" />
+  <rect x="400" y="438" width="146" height="104" rx="18" fill="#eef5f0" stroke="#c9dbd1" stroke-width="1.6" />
+  <rect x="582" y="438" width="146" height="104" rx="18" fill="#eef2fa" stroke="#c9d5ea" stroke-width="1.6" />
+  <text x="422" y="472" class="ink card-title">Inspect source</text>
+  <text x="422" y="500" class="muted small">
+    <tspan x="422" dy="0">open files</tspan>
+    <tspan x="422" dy="22">check context</tspan>
+  </text>
+  <text x="604" y="472" class="ink card-title">Pull signal</text>
+  <text x="604" y="500" class="muted small">
+    <tspan x="604" dy="0">compare changes</tspan>
+    <tspan x="604" dy="22">tighten the point</tspan>
+  </text>
 
-  <rect x="350" y="186" width="430" height="474" rx="24" class="panel" />
-  <rect x="350" y="186" width="430" height="12" rx="24" class="navy" />
-  <text x="382" y="236" class="ink label">SHARED WORKSPACE</text>
-  <text x="382" y="268" class="muted small">The useful part is having the files, prompts, edits, and outputs in one place.</text>
+  <path d="M546 490 H582" class="line-soft" />
 
-  <rect x="382" y="304" width="170" height="116" rx="18" class="mint" />
-  <circle cx="414" cy="336" r="16" fill="#18794e" />
-  <text x="414" y="342" class="stepno">1</text>
-  <text x="446" y="342" class="ink body">Read the source</text>
-  <text x="414" y="378" class="muted small">Pull from notes, docs, files,</text>
-  <text x="414" y="402" class="muted small">and whatever changed recently.</text>
+  <rect x="400" y="566" width="328" height="90" rx="18" fill="#fdfaf5" stroke="#d7cabd" stroke-width="1.6" />
+  <text x="422" y="598" class="ink card-title">Draft, check, write back</text>
+  <text x="422" y="624" class="muted small">same files • same thread • same working state</text>
+  <rect x="422" y="634" width="86" height="10" rx="5" class="navy" />
+  <rect x="518" y="634" width="62" height="10" rx="5" class="green" />
+  <rect x="590" y="634" width="48" height="10" rx="5" class="gold" />
+  <rect x="648" y="634" width="56" height="10" rx="5" class="rust" />
 
-  <rect x="578" y="304" width="170" height="116" rx="18" class="peach" />
-  <circle cx="610" cy="336" r="16" fill="#c76a10" />
-  <text x="610" y="342" class="stepno">2</text>
-  <text x="642" y="342" class="ink body">Pull out the signal</text>
-  <text x="610" y="378" class="muted small">Rank what matters, strip the</text>
-  <text x="610" y="402" class="muted small">noise, and frame the tradeoff.</text>
+  <rect x="796" y="344" width="332" height="310" rx="22" class="panel" />
+  <text x="824" y="382" class="ink section">REUSABLE OUTPUTS</text>
 
-  <rect x="382" y="446" width="170" height="116" rx="18" class="sky" />
-  <circle cx="414" cy="478" r="16" fill="#2e5bff" />
-  <text x="414" y="484" class="stepno">3</text>
-  <text x="446" y="484" class="ink body">Draft the artifact</text>
-  <text x="414" y="520" class="muted small">Turn the same context into</text>
-  <text x="414" y="544" class="muted small">a deck, note, spec, or update.</text>
+  <rect x="824" y="404" width="276" height="54" rx="16" fill="#fbf8f2" stroke="#d8ccbe" stroke-width="1.4" />
+  <rect x="824" y="470" width="276" height="54" rx="16" fill="#fbf8f2" stroke="#d8ccbe" stroke-width="1.4" />
+  <rect x="824" y="536" width="276" height="54" rx="16" fill="#fbf8f2" stroke="#d8ccbe" stroke-width="1.4" />
+  <rect x="824" y="602" width="276" height="54" rx="16" fill="#fbf8f2" stroke="#d8ccbe" stroke-width="1.4" />
 
-  <rect x="578" y="446" width="170" height="116" rx="18" class="rose" />
-  <circle cx="610" cy="478" r="16" fill="#d94841" />
-  <text x="610" y="484" class="stepno">4</text>
-  <text x="642" y="484" class="ink body">Review and revise</text>
-  <text x="610" y="520" class="muted small">Check the output, tighten it,</text>
-  <text x="610" y="544" class="muted small">and write the result back.</text>
+  <rect x="844" y="418" width="46" height="26" rx="6" class="navy" />
+  <rect x="844" y="484" width="46" height="26" rx="6" class="green" />
+  <rect x="844" y="550" width="46" height="26" rx="6" class="gold" />
+  <rect x="844" y="616" width="46" height="26" rx="6" class="rust" />
 
-  <path d="M552 362 H578" class="line-soft" />
-  <path d="M552 504 H578" class="line-soft" />
-  <path d="M467 420 V446" class="line-soft" />
-  <path d="M663 420 V446" class="line-soft" />
+  <text x="908" y="436" class="ink card-title">Editable deck</text>
+  <text x="908" y="502" class="ink card-title">Write-up or recap</text>
+  <text x="908" y="568" class="ink card-title">Decision memo</text>
+  <text x="908" y="634" class="ink card-title">Repo or site update</text>
 
-  <rect x="382" y="590" width="366" height="44" rx="16" class="sand" />
-  <text x="565" y="618" class="ink small" text-anchor="middle">Same files. Same thread. Same working state.</text>
+  <text x="908" y="456" class="muted small">something reviewable, not a restart</text>
+  <text x="908" y="522" class="muted small">a shorter pass from the same context</text>
+  <text x="908" y="588" class="muted small">turn the thread into a usable call</text>
+  <text x="908" y="654" class="muted small">make the change and show the diff</text>
 
-  <path d="M780 412 H822" class="line" />
-  <circle cx="802" cy="412" r="6" fill="#2e5bff" />
-
-  <rect x="822" y="210" width="318" height="404" rx="22" class="panel" />
-  <text x="850" y="248" class="ink label">REUSABLE OUTPUTS</text>
-
-  <rect x="850" y="276" width="262" height="66" rx="16" class="mint" />
-  <text x="878" y="314" class="ink body">Editable deck</text>
-  <text x="878" y="336" class="muted small">Slides that still point back to the source.</text>
-
-  <rect x="850" y="362" width="262" height="66" rx="16" class="sky" />
-  <text x="878" y="400" class="ink body">Write-up or recap</text>
-  <text x="878" y="422" class="muted small">A short note someone else can actually scan.</text>
-
-  <rect x="850" y="448" width="262" height="66" rx="16" class="peach" />
-  <text x="878" y="486" class="ink body">Spec or decision memo</text>
-  <text x="878" y="508" class="muted small">A tighter next artifact, not a restart.</text>
-
-  <rect x="850" y="534" width="262" height="66" rx="16" class="rose" />
-  <text x="878" y="572" class="ink body">Repo or site update</text>
-  <text x="878" y="594" class="muted small">A concrete change with files you can check.</text>
-
-  <rect x="60" y="678" width="1080" height="42" rx="18" class="navy" />
-  <text x="600" y="705" class="stepno">The point is not the chatbot. The point is keeping the work in one reusable loop.</text>
+  <rect x="72" y="694" width="1056" height="32" rx="12" class="accent-bar" />
+  <text x="600" y="716" class="white chip-text" text-anchor="middle">The win is not a better paragraph. It is a tighter loop from source material to usable output.</text>
 </svg>

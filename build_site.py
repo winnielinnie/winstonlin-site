@@ -450,7 +450,7 @@ def render_homepage(config, posts, projects, case_studies):
     <section class="section section-frame section-frame-open-source">
       <div class="section-head section-head-stack">
         <h2>Selected repositories</h2>
-        <p class="section-note">Small Python and OCI Function tools from docs work, release-note review, and platform operations.</p>
+        <p class="section-note">Small Python and OCI Function tools from workflow automation, release-note review, docs work, and platform operations.</p>
         <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
       </div>
       <div class="feature-grid repo-grid">
@@ -526,7 +526,7 @@ def render_blog_index(config, posts):
         <section class="section oracle-blogs-section">
           <div class="section-head section-head-stack oracle-blogs-head">
             <h2>Oracle writing</h2>
-            <p class="section-note oracle-blogs-note">Selected Oracle posts and <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">author profile</a>.</p>
+            <p class="section-note oracle-blogs-note">Selected Oracle posts plus my <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">author profile</a>.</p>
           </div>
           <div class="feature-grid oracle-blogs-grid">
             {''.join(oracle_blog_items)}
@@ -539,7 +539,7 @@ def render_blog_index(config, posts):
       <div class="page-hero-copy">
         <p class="eyebrow">Writing</p>
         <h1>Writing on product, platform, and AI work</h1>
-        <p class="lead">Short notes on AI workflows, platform work, incidents, small tools, and the operating details that usually decide whether something works.</p>
+        <p class="lead">Short notes on AI workflows, platform work, incidents, small tools, and the day-to-day details that usually decide how the work goes.</p>
       </div>
     </section>
     <section class="section">

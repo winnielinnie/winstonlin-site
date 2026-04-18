@@ -1,101 +1,122 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
   <title id="title">Dependency board diagram</title>
-  <desc id="desc">A planning board that shows dependency owner, status, and downstream impact in a single view.</desc>
+  <desc id="desc">A cleaner dependency board that shows ownership, status, and downstream blocked work before the milestone view hides the risk.</desc>
   <defs>
     <style>
-      .frame { fill: #fcfbf8; stroke: #ddd6cb; stroke-width: 2; }
-      .panel { fill: #ffffff; stroke: #d8d3c6; stroke-width: 2; }
-      .row-alt { fill: #faf7f2; }
-      .ink { fill: #172033; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
-      .muted { fill: #5b6475; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; }
-      .display { fill: #172033; font-family: "Newsreader", Georgia, serif; }
-      .kicker { font-size: 17px; font-weight: 800; letter-spacing: 0.18em; }
-      .title { font-size: 40px; font-weight: 600; }
-      .subtitle { font-size: 20px; }
-      .label { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; }
-      .metric { font-size: 30px; font-weight: 800; }
-      .metric-note { font-size: 15px; font-weight: 700; }
-      .cell { font-size: 18px; font-weight: 600; }
-      .cell-note { font-size: 16px; }
-      .pill-text { font-size: 15px; font-weight: 800; text-anchor: middle; }
-      .line { stroke: #ddd6cb; stroke-width: 2; }
-      .line-soft { stroke: #e7e0d7; stroke-width: 1.5; }
+      .bg { fill: #efe6da; }
+      .canvas { fill: #f7f1e8; stroke: #dbcfc1; stroke-width: 1.8; }
+      .rule { stroke: #d7cab8; stroke-width: 1.8; }
+      .ink { fill: #241c17; font-family: "Manrope", "Aptos", sans-serif; }
+      .muted { fill: #5f574f; font-family: "Manrope", "Aptos", sans-serif; }
+      .display { fill: #241c17; font-family: "Newsreader", Georgia, serif; }
+      .kicker { font-size: 15px; font-weight: 700; letter-spacing: 0.16em; }
+      .micro { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; }
+      .title { font-size: 53px; font-weight: 500; }
+      .subtitle { font-size: 21px; line-height: 1.45; }
+      .panel { fill: #fbf8f3; stroke: #d8ccbf; stroke-width: 1.8; }
+      .panel-soft { fill: #fffdf9; stroke: #ddd1c4; stroke-width: 1.5; }
+      .dark { fill: #413631; }
+      .table-head { fill: #4a403a; }
+      .row-alt { fill: #f4ede3; }
+      .section { font-size: 18px; font-weight: 700; letter-spacing: 0.06em; }
+      .metric-num { font-size: 34px; font-weight: 700; }
+      .metric-copy { font-size: 15px; }
+      .cell { font-size: 18px; font-weight: 700; }
+      .small { font-size: 15px; line-height: 1.42; }
+      .pill-text { font-size: 14px; font-weight: 700; text-anchor: middle; }
+      .line { stroke: #ddd1c3; stroke-width: 1.4; }
+      .line-strong { stroke: #cabaa8; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .white { fill: #ffffff; }
+      .rust { fill: #a86347; }
+      .gold { fill: #b59143; }
+      .green { fill: #4f7f6f; }
+      .navy { fill: #6d86b3; }
     </style>
   </defs>
 
-  <rect x="18" y="18" width="1164" height="724" rx="30" class="frame" />
+  <rect width="1200" height="760" class="bg" />
+  <rect x="24" y="24" width="1152" height="712" rx="28" class="canvas" />
+  <line x1="60" y1="58" x2="1140" y2="58" class="rule" />
 
-  <text x="64" y="74" class="ink kicker">DEPENDENCY BOARD</text>
-  <text x="64" y="118" class="display title">
-    <tspan x="64" dy="0">A planning view gets useful</tspan>
-    <tspan x="64" dy="48">when ownership and risk are visible</tspan>
+  <text x="72" y="38" class="ink kicker">DEPENDENCY BOARD</text>
+  <text x="1100" y="38" class="ink micro" text-anchor="end">owner • status • next blocked step</text>
+
+  <text x="72" y="176" class="display title">
+    <tspan x="72" dy="0">The operating view should show risk</tspan>
+    <tspan x="72" dy="56">before the milestone slide does</tspan>
   </text>
-  <text x="64" y="186" class="muted subtitle">Milestones matter, but the day-to-day operating view is usually owner, status, and what is blocked next.</text>
+  <text x="72" y="292" class="muted subtitle">
+    <tspan x="72" dy="0">You can keep the dates, but the working view needs the chain underneath:</tspan>
+    <tspan x="72" dy="32">who owns the dependency, where it stands, and what stalls if it slips.</tspan>
+  </text>
 
-  <rect x="64" y="208" width="160" height="92" rx="18" fill="#fff1e6" stroke="#ecd7c4" stroke-width="2" />
-  <text x="92" y="242" class="muted label">UNOWNED</text>
-  <text x="92" y="278" class="ink metric">2</text>
-  <text x="92" y="300" class="muted metric-note">items need an owner now</text>
+  <rect x="792" y="96" width="98" height="118" rx="18" class="panel-soft" />
+  <rect x="902" y="96" width="98" height="118" rx="18" class="panel-soft" />
+  <rect x="1012" y="96" width="108" height="118" rx="18" class="panel-soft" />
+  <text x="820" y="132" class="muted micro">UNOWNED</text>
+  <text x="930" y="132" class="muted micro">LATE</text>
+  <text x="1040" y="132" class="muted micro">BLOCKED</text>
+  <text x="820" y="176" class="ink metric-num">2</text>
+  <text x="930" y="176" class="ink metric-num">1</text>
+  <text x="1040" y="176" class="ink metric-num">2</text>
+  <text x="820" y="202" class="muted metric-copy">need owners</text>
+  <text x="930" y="202" class="muted metric-copy">already slipping</text>
+  <text x="1040" y="202" class="muted metric-copy">downstream waits</text>
 
-  <rect x="244" y="208" width="160" height="92" rx="18" fill="#f9ece7" stroke="#e6d0c4" stroke-width="2" />
-  <text x="272" y="242" class="muted label">LATE</text>
-  <text x="272" y="278" class="ink metric">1</text>
-  <text x="272" y="300" class="muted metric-note">item is already slipping</text>
+  <rect x="72" y="352" width="1056" height="300" rx="22" class="panel" />
+  <rect x="72" y="352" width="1056" height="56" rx="22" class="table-head" />
 
-  <rect x="424" y="208" width="188" height="92" rx="18" fill="#eaf1ff" stroke="#c9d7f4" stroke-width="2" />
-  <text x="452" y="242" class="muted label">DOWNSTREAM BLOCKS</text>
-  <text x="452" y="278" class="ink metric">2</text>
-  <text x="452" y="300" class="muted metric-note">workstreams are waiting on this board</text>
+  <text x="104" y="388" class="white section">DEPENDENCY</text>
+  <text x="414" y="388" class="white section">OWNER</text>
+  <text x="592" y="388" class="white section">STATUS</text>
+  <text x="782" y="388" class="white section">NEXT BLOCKED STEP</text>
 
-  <rect x="648" y="208" width="488" height="92" rx="18" class="panel" />
-  <text x="680" y="242" class="ink label">WHAT THIS VIEW ANSWERS</text>
-  <text x="680" y="272" class="muted cell-note">Who owns the dependency, what status it is in, and what gets stuck if it slips.</text>
+  <rect x="74" y="410" width="1052" height="60" class="row-alt" />
+  <rect x="74" y="530" width="1052" height="60" class="row-alt" />
 
-  <rect x="64" y="334" width="1072" height="338" rx="22" class="panel" />
-  <rect x="64" y="334" width="1072" height="58" rx="22" fill="#1e293b" />
-  <text x="96" y="370" fill="#ffffff" class="label">DEPENDENCY</text>
-  <text x="412" y="370" fill="#ffffff" class="label">OWNER</text>
-  <text x="590" y="370" fill="#ffffff" class="label">STATUS</text>
-  <text x="792" y="370" fill="#ffffff" class="label">DOWNSTREAM IMPACT</text>
+  <line x1="388" y1="408" x2="388" y2="652" class="line" />
+  <line x1="566" y1="408" x2="566" y2="652" class="line" />
+  <line x1="756" y1="408" x2="756" y2="652" class="line" />
+  <line x1="72" y1="470" x2="1128" y2="470" class="line" />
+  <line x1="72" y1="530" x2="1128" y2="530" class="line" />
+  <line x1="72" y1="590" x2="1128" y2="590" class="line" />
 
-  <rect x="66" y="394" width="1068" height="70" class="row-alt" />
-  <rect x="66" y="534" width="1068" height="70" class="row-alt" />
+  <text x="104" y="438" class="ink cell">IAM policy review</text>
+  <text x="104" y="458" class="muted small">rollout approval stays open until this lands</text>
+  <text x="414" y="446" class="ink cell">Unassigned</text>
+  <rect x="592" y="425" width="124" height="28" rx="14" fill="#f9ece4" stroke="#d8b39f" stroke-width="1.2" />
+  <text x="654" y="444" fill="#9c5338" class="pill-text">NEEDS OWNER</text>
+  <text x="782" y="446" class="ink cell">Launch checklist cannot lock</text>
 
-  <line x1="384" y1="392" x2="384" y2="672" class="line-soft" />
-  <line x1="562" y1="392" x2="562" y2="672" class="line-soft" />
-  <line x1="764" y1="392" x2="764" y2="672" class="line-soft" />
-  <line x1="64" y1="464" x2="1136" y2="464" class="line-soft" />
-  <line x1="64" y1="534" x2="1136" y2="534" class="line-soft" />
-  <line x1="64" y1="604" x2="1136" y2="604" class="line-soft" />
+  <text x="104" y="498" class="ink cell">Observability validation</text>
+  <text x="104" y="518" class="muted small">one region still has open checks</text>
+  <text x="414" y="506" class="ink cell">Platform</text>
+  <rect x="592" y="485" width="86" height="28" rx="14" fill="#faeee7" stroke="#d5b1a3" stroke-width="1.2" />
+  <text x="635" y="504" fill="#9c5338" class="pill-text">LATE</text>
+  <text x="782" y="506" class="ink cell">Field training and signoff wait</text>
 
-  <text x="96" y="430" class="ink cell">IAM policy review</text>
-  <text x="96" y="450" class="muted cell-note">Needed before rollout approval can close.</text>
-  <text x="412" y="430" class="ink cell">Unassigned</text>
-  <rect x="590" y="410" width="118" height="28" rx="14" fill="#fff1e6" />
-  <text x="649" y="429" fill="#b85b10" class="pill-text">NEEDS OWNER</text>
-  <text x="792" y="430" class="ink cell">Launch checklist cannot lock scope.</text>
+  <text x="104" y="558" class="ink cell">Cutover runbook</text>
+  <text x="104" y="578" class="muted small">draft exists, escalation path still open</text>
+  <text x="414" y="566" class="ink cell">Field + Eng</text>
+  <rect x="592" y="545" width="110" height="28" rx="14" fill="#edf5ef" stroke="#bed1c7" stroke-width="1.2" />
+  <text x="647" y="564" fill="#3f6f60" class="pill-text">IN REVIEW</text>
+  <text x="782" y="566" class="ink cell">Customer prep stays tentative</text>
 
-  <text x="96" y="500" class="ink cell">Observability validation</text>
-  <text x="96" y="520" class="muted cell-note">Service checks still open for one region.</text>
-  <text x="412" y="500" class="ink cell">Platform team</text>
-  <rect x="590" y="480" width="90" height="28" rx="14" fill="#f9ece7" />
-  <text x="635" y="499" fill="#a93f36" class="pill-text">LATE</text>
-  <text x="792" y="500" class="ink cell">Rollout signoff and field training wait.</text>
+  <text x="104" y="618" class="ink cell">Pricing approval</text>
+  <text x="104" y="638" class="muted small">commercial signoff still pending</text>
+  <text x="414" y="626" class="ink cell">Finance</text>
+  <rect x="592" y="605" width="118" height="28" rx="14" fill="#eef2fa" stroke="#c7d3e9" stroke-width="1.2" />
+  <text x="651" y="624" fill="#5572a1" class="pill-text">AT RISK +5D</text>
+  <text x="782" y="626" class="ink cell">Offer timing and paperwork slip</text>
 
-  <text x="96" y="570" class="ink cell">Cutover runbook</text>
-  <text x="96" y="590" class="muted cell-note">Draft exists, but escalation path is not final.</text>
-  <text x="412" y="570" class="ink cell">Field + Eng</text>
-  <rect x="590" y="550" width="110" height="28" rx="14" fill="#eaf7ef" />
-  <text x="645" y="569" fill="#18794e" class="pill-text">IN REVIEW</text>
-  <text x="792" y="570" class="ink cell">Customer cutover prep stays tentative.</text>
-
-  <text x="96" y="640" class="ink cell">Pricing approval</text>
-  <text x="96" y="660" class="muted cell-note">Commercial signoff is still pending.</text>
-  <text x="412" y="640" class="ink cell">Finance</text>
-  <rect x="590" y="620" width="128" height="28" rx="14" fill="#eaf1ff" />
-  <text x="654" y="639" fill="#2e5bff" class="pill-text">AT RISK +5D</text>
-  <text x="792" y="640" class="ink cell">Offer timing and paperwork slip with it.</text>
-
-  <rect x="64" y="690" width="1072" height="28" rx="14" fill="#1e293b" />
-  <text x="600" y="709" fill="#ffffff" class="pill-text">A clean milestone slide can hide this. A working board should not.</text>
+  <rect x="72" y="674" width="1056" height="44" rx="14" class="dark" />
+  <text x="102" y="702" class="white section">CHAIN UNDER THE SLIDE</text>
+  <rect x="330" y="685" width="176" height="22" rx="11" fill="#edf5ef" />
+  <rect x="556" y="685" width="164" height="22" rx="11" fill="#f8efe6" />
+  <rect x="770" y="685" width="176" height="22" rx="11" fill="#eef2fa" />
+  <text x="418" y="700" fill="#3f6f60" class="pill-text">observability validation</text>
+  <text x="638" y="700" fill="#9c5338" class="pill-text">cutover runbook</text>
+  <text x="858" y="700" fill="#5572a1" class="pill-text">field training + launch lock</text>
+  <path d="M506 696 H556" class="line-strong" />
+  <path d="M720 696 H770" class="line-strong" />
 </svg>

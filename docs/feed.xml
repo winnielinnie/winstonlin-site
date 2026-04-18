@@ -3,7 +3,7 @@
 <channel>
   <title>Winston Lin</title>
   <link>https://winnielinnie.github.io/winstonlin-site/</link>
-  <description>Case studies, writing, and practical tools from cloud products, developer platforms, AI workflows, and business systems.</description>
+  <description>Case studies, writing, and practical tools from cloud products, developer platforms, AI workflows, and operating work.</description>
   <item>
     <title>Incident Timelines Need A Stable Shape</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/incident-timelines-need-a-stable-shape/</link>
@@ -16,7 +16,7 @@
     <link>https://winnielinnie.github.io/winstonlin-site/blog/what-working-with-codex-taught-me-about-ai-work/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/what-working-with-codex-taught-me-about-ai-work/</guid>
     <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
-    <description>Months of hands-on use reinforced that useful AI work is not clever prompting. It is tools, files, review loops, and recovery paths around the model.</description>
+    <description>Months of hands-on use reinforced that useful AI work depends on tools, files, review loops, and recovery paths around the model.</description>
   </item>
   <item>
     <title>Examples Are the Interface for Small Tools</title>
@@ -65,7 +65,7 @@
     <link>https://winnielinnie.github.io/winstonlin-site/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/</guid>
     <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
-    <description>The useful version of AI for product work is a real workspace that keeps notes, data, drafts, and assets in the same loop.</description>
+    <description>The useful version of AI product work is a real workspace where notes, files, drafts, and outputs stay connected.</description>
   </item>
   <item>
     <title>Growth Breaks In The Operating Model</title>
