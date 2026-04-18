@@ -676,11 +676,6 @@ def render_about_page(config):
             <h2>Where I come from.</h2>
             {background_paragraphs}
           </section>
-          <figure class="about-photo-card about-photo-card-side">
-            <div class="about-photo">
-              <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
-            </div>
-          </figure>
         </div>
         <div class="about-story-copy about-story-copy-standalone">
           <section class="about-copy-block prose">
@@ -690,6 +685,11 @@ def render_about_page(config):
           </section>
         </div>
       </div>
+      <figure class="about-photo-card about-photo-card-side">
+        <div class="about-photo">
+          <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
+        </div>
+      </figure>
     </section>
     """
     return page_layout(

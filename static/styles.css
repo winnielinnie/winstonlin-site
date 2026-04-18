@@ -582,13 +582,16 @@ nav a.active::after {
 }
 
 .about-layout {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 284px;
+  gap: 24px;
+  align-items: start;
 }
 
 .about-main-column {
   display: grid;
   gap: 22px;
-  max-width: 100%;
+  max-width: 920px;
 }
 
 .about-photo-card {
@@ -606,10 +609,9 @@ nav a.active::after {
 
 .about-story-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 304px;
-  gap: 24px;
-  align-items: start;
-  max-width: 940px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  max-width: 920px;
 }
 
 .about-story-copy {
@@ -665,7 +667,7 @@ nav a.active::after {
   align-self: start;
   justify-self: end;
   padding: 10px;
-  margin: 38px 0 0;
+  margin: 2px 0 0;
   width: 284px;
   border-radius: 16px;
   box-shadow: 0 12px 26px rgba(61, 43, 30, 0.055);
@@ -1718,6 +1720,7 @@ code {
   }
 
   .about-layout {
+    grid-template-columns: 1fr;
     gap: 18px;
   }
 
