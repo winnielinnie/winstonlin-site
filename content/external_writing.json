@@ -4,18 +4,21 @@
     "short_title": "Functions Design Patterns",
     "date": "2026-04-07",
     "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns",
-    "publication": "Oracle Cloud Infrastructure Blog"
+    "publication": "Oracle Cloud Infrastructure Blog",
+    "summary": "A practical pattern guide for routing, validation, async execution, and the design checks that keep Functions examples useful."
   },
   {
     "title": "Introducing Long-Running Functions and Response Destinations with OCI Functions",
     "date": "2025-10-31",
     "url": "https://blogs.oracle.com/cloud-infrastructure/longrunning-functions-and-response-destinations",
-    "publication": "Oracle Cloud Infrastructure Blog"
+    "publication": "Oracle Cloud Infrastructure Blog",
+    "summary": "How detached execution and response destinations change the handoff boundary for longer-running serverless workflows."
   },
   {
     "title": "Announcing support for larger memory functions in OCI Functions",
     "date": "2024-12-17",
     "url": "https://blogs.oracle.com/developers/post/support-for-3gb-memory-functions",
-    "publication": "Oracle Developers Blog"
+    "publication": "Oracle Developers Blog",
+    "summary": "A product surface update that matters when runtime limits, workload shape, and starter-pattern guidance need to line up."
   }
 ]

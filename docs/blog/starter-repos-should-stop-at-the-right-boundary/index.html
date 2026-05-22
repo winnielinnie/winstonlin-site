@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starter Repos Should Stop at the Right Boundary | Winston Lin</title>
+  <meta name="description" content="A good starter repo should make the first handoff obvious by showing what it handles cleanly, what it leaves out, and where the real system begins.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/starter-repos-should-stop-at-the-right-boundary/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="Starter Repos Should Stop at the Right Boundary | Winston Lin">
+  <meta property="og:description" content="A good starter repo should make the first handoff obvious by showing what it handles cleanly, what it leaves out, and where the real system begins.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/starter-repos-should-stop-at-the-right-boundary/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-post">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../../projects/">Projects</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-04-19</p>
+      <h1>Starter Repos Should Stop at the Right Boundary</h1>
+      <p class="post-summary">A good starter repo should make the first handoff obvious by showing what it handles cleanly, what it leaves out, and where the real system begins.</p>
+      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><a href="../">Back to all writing</a><a href="../fun-projects-get-stronger-when-they-leave-a-reusable-artifact/">Previous note</a><a href="../small-repo-batches-should-teach-a-pattern/">Next note</a></nav>
+      <p>Starter repos are easy to get wrong. One failure mode is that they are too thin. They prove almost nothing, so the reader still has to imagine how the pattern would work in practice.</p>
+<p>The other failure mode is that they pretend to be more complete than they are. The sample starts smuggling in auth, retries, storage, deployment nuance, observability, and every adjacent concern until the repo is no longer teaching one pattern. It is just creating a smaller version of production ambiguity.</p>
+<h2>The boundary is part of the teaching</h2>
+<p>What makes a starter repo useful is not only the code inside it. It is the clarity of the boundary around it. If I open a pattern repo, I want to know:</p>
+<ul>
+<li>what exact step this repo handles</li>
+<li>what the input shape looks like</li>
+<li>what output or handoff it produces</li>
+<li>which production concerns are intentionally out of scope</li>
+</ul>
+<p>That is why I like starter repos that stop cleanly. <code>oci-fn-object-storage-router</code> should show the routing decision clearly, not hide it inside a giant downstream integration story. <code>oci-fn-csv-quality-gate</code> should validate the schema edge cleanly, not pretend the whole ingestion platform belongs in the first example.</p>
+<p><code>oci-fn-file-manifest-writer</code> should return a stable manifest shape, not drag the reader into every later batch-processing decision. That restraint is not a weakness. It is the point.</p>
+<h2>What the first useful handoff should feel like</h2>
+<p>A good starter repo usually earns trust by making the next move obvious. You can see the sample event. You can run the local command.</p>
+<p>You can inspect the result. And you can tell where a real team would attach the next system. That last part matters a lot. A starter pattern should not trap the reader between toy example and fake completeness. It should say, in effect: here is the step, here is the contract, here is where your real environment begins.</p>
+<h2>Why I keep liking small pattern repos</h2>
+<p>I keep coming back to these small repos because they reveal product taste pretty quickly. Do you make the boundary visible. Do you show the handoff shape early.</p>
+<p>Do you name the missing production concerns honestly. Do you keep the first run small enough that someone can reuse the idea before they have to absorb the whole system. Those are not just repo-writing questions.</p>
+<p>They are workflow design questions.</p>
+<h2>The bar I care about</h2>
+<p>I do not need a starter repo to solve everything. I want it to make one part of the workflow legible enough that the rest of the system can be built around it without confusion. That is usually the difference between a repo that feels reusable and one that feels like an unfinished sketch.</p>
+    </article>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+</body>
+</html>

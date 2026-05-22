@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Small Repos Should Show the Second Move | Winston Lin</title>
+  <meta name="description" content="A small public repo gets more reusable when it makes the next handoff or rerun obvious instead of stopping at the first demo.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/good-small-repos-should-show-the-second-move/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="Good Small Repos Should Show the Second Move | Winston Lin">
+  <meta property="og:description" content="A small public repo gets more reusable when it makes the next handoff or rerun obvious instead of stopping at the first demo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/good-small-repos-should-show-the-second-move/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-post">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../../projects/">Projects</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-04-28</p>
+      <h1>Good Small Repos Should Show the Second Move</h1>
+      <p class="post-summary">A small public repo gets more reusable when it makes the next handoff or rerun obvious instead of stopping at the first demo.</p>
+      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><a href="../">Back to all writing</a><a href="../project-pages-should-explain-the-batch/">Previous note</a><a href="../github-profiles-should-choose-the-first-click/">Next note</a></nav>
+      <p>The first demo matters. It is not enough. A lot of small repos do a decent job getting someone to the first useful run. The README explains the problem, shows a quick command, and gives a believable output snippet.</p>
+<p>That gets the repo to proof. What often stays fuzzy is the next move.</p>
+<h2>What I want to know after the demo</h2>
+<p>Once I have seen the tool work, I want one more answer. What would I do with this in real work next week? That answer does not need a huge integration guide. It does need to make one of these things obvious:</p>
+<ul>
+<li>what artifact the repo leaves behind</li>
+<li>what handoff it makes easier</li>
+<li>what repeated check I would rerun later</li>
+</ul>
+<p>Without that, the repo still feels like a good demo instead of a reusable tool.</p>
+
+
+    <figure class="post-diagram">
+      <img src="../../diagrams/second-move-map.svg" alt="Diagram showing a small repo moving from first proof to the artifact, handoff, or rerun path that makes it reusable.">
+    </figure>
+    
+<h2>The second move is where the repo becomes reusable</h2>
+<p><code>doc-ship-check</code> gets stronger when it is framed as the last pass before review or publish, not just a script that finds broken Markdown details. <code>one-page-canvas</code> gets stronger when the Markdown export is treated as the real output, not just a nice extra after the browser demo. <code>oci-fn-file-manifest-writer</code> gets stronger when the compact manifest is clearly the handoff artifact for the downstream batch job.</p>
+<p>Those are different kinds of repos, but the useful question is the same. After I run this once, what stable thing carries forward.</p>
+<h2>A good README should close that gap</h2>
+<p>For small public tools, I keep wanting the README to make the path visible:</p>
+<ul>
+<li>show the quick proof step</li>
+<li>show the output or artifact that survives the run</li>
+<li>show the next place that output plugs in</li>
+</ul>
+<p>That is usually enough. It tells a reader whether the repo is just a neat example or whether it actually reduces work somewhere.</p>
+<h2>Why this matters on the site too</h2>
+<p>This is also why I do not want the projects page to read like a flat inventory. The interesting part is not only that there are several small repos. It is the pattern underneath them:</p>
+<ul>
+<li>some turn repeated review work into checks</li>
+<li>some leave behind a reusable artifact</li>
+<li>some make one workflow boundary visible and easier to hand off</li>
+</ul>
+<p>That is the level where the repo batch starts to say something coherent.</p>
+<h2>The bar I keep using</h2>
+<p>If a public repo can get me to first proof and also make the second move obvious, it usually earns another look. That is the standard I keep trusting. The repo does not just work once. It tells me how it fits into the next step of real work.</p>
+    </article>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+</body>
+</html>

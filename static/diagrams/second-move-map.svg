@@ -1,0 +1,44 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Small repo second move diagram</title>
+  <desc id="desc">Diagram showing a small repo flow from landing page to quick proof, then to artifact, handoff, and rerun path.</desc>
+  <rect width="1200" height="760" rx="36" fill="#F6EFE7"/>
+  <rect x="28" y="28" width="1144" height="704" rx="30" fill="#FBF7F2" stroke="#DCCFC2" stroke-width="2"/>
+  <circle cx="200" cy="176" r="120" fill="#F1E2D7"/>
+  <circle cx="980" cy="140" r="86" fill="#ECE3D3"/>
+  <circle cx="968" cy="590" r="104" fill="#E0ECE8"/>
+  <rect x="92" y="120" width="240" height="132" rx="24" fill="#FFF9F3" stroke="#C8B6A8" stroke-width="2"/>
+  <text x="120" y="166" fill="#6D3A27" font-family="Arial, sans-serif" font-size="22" font-weight="700">Land on repo</text>
+  <text x="120" y="198" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">Problem statement</text>
+  <text x="120" y="224" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">Command example</text>
+  <rect x="418" y="120" width="290" height="150" rx="24" fill="#FFF9F3" stroke="#C8B6A8" stroke-width="2"/>
+  <text x="450" y="164" fill="#6D3A27" font-family="Arial, sans-serif" font-size="22" font-weight="700">First useful proof</text>
+  <text x="450" y="198" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">Input looks real</text>
+  <text x="450" y="224" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">Output is believable</text>
+  <text x="450" y="250" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">The repo works once</text>
+  <rect x="802" y="108" width="282" height="176" rx="24" fill="#FFF8F2" stroke="#C8B6A8" stroke-width="2"/>
+  <text x="834" y="154" fill="#6D3A27" font-family="Arial, sans-serif" font-size="22" font-weight="700">Second move</text>
+  <text x="834" y="188" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">Artifact survives</text>
+  <text x="834" y="214" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">Handoff is obvious</text>
+  <text x="834" y="240" fill="#4E4640" font-family="Arial, sans-serif" font-size="18">Rerun path is visible</text>
+  <rect x="252" y="404" width="274" height="168" rx="24" fill="#FFF8F2" stroke="#B6C8C4" stroke-width="2"/>
+  <text x="286" y="450" fill="#214842" font-family="Arial, sans-serif" font-size="22" font-weight="700">Checks</text>
+  <text x="286" y="484" fill="#42514C" font-family="Arial, sans-serif" font-size="18">Run again before review</text>
+  <text x="286" y="510" fill="#42514C" font-family="Arial, sans-serif" font-size="18">Make the standard visible</text>
+  <rect x="560" y="404" width="274" height="168" rx="24" fill="#FFF8F2" stroke="#B6C8C4" stroke-width="2"/>
+  <text x="594" y="450" fill="#214842" font-family="Arial, sans-serif" font-size="22" font-weight="700">Artifacts</text>
+  <text x="594" y="484" fill="#42514C" font-family="Arial, sans-serif" font-size="18">Export the useful output</text>
+  <text x="594" y="510" fill="#42514C" font-family="Arial, sans-serif" font-size="18">Carry it into the next step</text>
+  <rect x="868" y="404" width="244" height="168" rx="24" fill="#FFF8F2" stroke="#B6C8C4" stroke-width="2"/>
+  <text x="902" y="450" fill="#214842" font-family="Arial, sans-serif" font-size="22" font-weight="700">Boundaries</text>
+  <text x="902" y="484" fill="#42514C" font-family="Arial, sans-serif" font-size="18">One clean handoff</text>
+  <text x="902" y="510" fill="#42514C" font-family="Arial, sans-serif" font-size="18">Downstream path stays legible</text>
+  <path d="M332 186H418" stroke="#7E4B35" stroke-width="4" stroke-linecap="round"/>
+  <path d="M708 196H802" stroke="#7E4B35" stroke-width="4" stroke-linecap="round"/>
+  <path d="M944 284V344H390V404" stroke="#7E4B35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M944 344H698V404" stroke="#7E4B35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M944 344V404" stroke="#7E4B35" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="418" cy="186" r="7" fill="#7E4B35"/>
+  <circle cx="802" cy="196" r="7" fill="#7E4B35"/>
+  <circle cx="944" cy="344" r="8" fill="#7E4B35"/>
+  <text x="92" y="660" fill="#5A514A" font-family="Arial, sans-serif" font-size="24" font-weight="700">The repo feels stronger when the page makes the next step obvious.</text>
+  <text x="92" y="694" fill="#6B625C" font-family="Arial, sans-serif" font-size="19">First proof earns trust. The second move is what makes the repo reusable.</text>

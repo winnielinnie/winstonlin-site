@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Winston Lin</title>
+  <meta name="description" content="Grouped public projects, workflow tools, and OCI Functions starter patterns from Winston Lin.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/projects/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../feed.xml">
+  <link rel="stylesheet" href="../styles.css">
+  <meta property="og:title" content="Projects | Winston Lin">
+  <meta property="og:description" content="Grouped public projects, workflow tools, and OCI Functions starter patterns from Winston Lin.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/projects/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-projects">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../">Home</a><a href="./" class="active">Projects</a><a href="../about/">About</a><a href="../case-studies/">Case Studies</a><a href="../blog/">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <section class="page-hero page-hero-projects">
+      <div class="page-hero-copy">
+        <p class="eyebrow">Projects</p>
+        <h1>Small tools, starter patterns, and reusable workflow artifacts.</h1>
+        <p class="lead">This is the cleanest route through the public repo work: grouped by the kind of repeated problem each batch is trying to make more visible, more reusable, or easier to rerun.</p>
+      </div>
+    </section>
+    <section class="section jump-section">
+      <div class="section-head section-head-stack">
+        <h2>Jump by project track</h2>
+        <p class="section-note">A short path if you care more about checks, planning artifacts, or OCI Functions starter patterns.</p>
+      </div>
+      <div class="jump-scroller">
+        <a class="jump-area-link" href="#workflow-checks">Workflow checks</a><a class="jump-area-link" href="#planning-artifacts">Planning artifacts</a><a class="jump-area-link" href="#oci-functions-starter-patterns">OCI Functions starter patterns</a>
+      </div>
+    </section>
+    
+    <section class="section section-frame section-frame-explore project-map-section">
+      <div class="section-head section-head-stack">
+        <h2>How the repo tracks fit together</h2>
+        <p class="section-note">The useful split here is between checks, reusable artifacts, and starter patterns with a clean handoff boundary.</p>
+      </div>
+      <figure class="diagram-frame project-map-frame">
+        <img src="../diagrams/projects-track-map.svg" alt="Diagram showing the three repo tracks and how they route from repeated workflow problems to GitHub proof and short notes." loading="lazy">
+      </figure>
+    </section>
+    
+    
+            <section class="section section-frame section-frame-explore project-track-section" id="workflow-checks">
+              <div class="section-head section-head-stack">
+                <h2>Workflow checks</h2>
+                <p class="section-note">Small utilities that turn recurring review work into a visible, rerunnable check instead of another reminder thread.</p>
+                
+            <p class="section-note project-track-pattern">
+              One proof and one context link is enough to start this track cleanly.
+            </p>
+            <p class="section-note project-track-starter">
+              Start with <a href="repo-onramp-check/">repo-onramp-check</a>
+              if you want the clearest first example in this track. It shows the standard quickly: a small public utility that makes the README, example, and rerun path inspectable instead of assumed.
+            </p>
+            
+              </div>
+              
+            <div class="project-track-intro-grid">
+              
+    <article class="feature-card feature-card-proof">
+      <p class="meta">Starter repo · Workflow checks</p>
+      <h3><a href="repo-onramp-check/">repo-onramp-check</a></h3>
+      <p>Audits whether a public repo makes first proof, visible examples, and the rerun path obvious to a newcomer.</p>
+      <div class="card-links"><a href="repo-onramp-check/">Site guide</a><a href="https://github.com/winnielinnie/repo-onramp-check" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card feature-card-context">
+      <p class="meta">Published context · Site note</p>
+      <h3><a href="../blog/examples-are-the-interface-for-small-tools/">Examples Are the Interface for Small Tools</a></h3>
+      <p>A higher-context note on why a small tool earns trust when it makes the example, output shape, and next move obvious before a reader studies the internals.</p>
+      <div class="card-links">
+        <a href="../blog/examples-are-the-interface-for-small-tools/">Read note</a>
+      </div>
+    </article>
+    
+            </div>
+            
+              
+            <div class="project-track-rest">
+              <p class="project-track-subhead">More repos in this track</p>
+              <div class="feature-grid repo-grid">
+                
+    <article class="feature-card">
+      <p class="meta">Repo utility</p>
+      <h3><a href="doc-ship-check/">doc-ship-check</a></h3>
+      <p>Final-pass Markdown checker for placeholders, broken links, and duplicate headings.</p>
+      <div class="card-links"><a href="doc-ship-check/">Site guide</a><a href="https://github.com/winnielinnie/doc-ship-check" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">CLI utility</p>
+      <h3><a href="release-note-diff-cli/">release-note-diff-cli</a></h3>
+      <p>CLI that diffs release notes and highlights additions likely to matter.</p>
+      <div class="card-links"><a href="release-note-diff-cli/">Site guide</a><a href="https://github.com/winnielinnie/release-note-diff-cli" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Incident utility</p>
+      <h3><a href="incident-timeline-formatter/">incident-timeline-formatter</a></h3>
+      <p>Turns rough incident notes into a stable Markdown timeline with impact and handoff shape intact.</p>
+      <div class="card-links"><a href="incident-timeline-formatter/">Site guide</a><a href="https://github.com/winnielinnie/incident-timeline-formatter" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+              </div>
+            </div>
+            
+              <div class="path-links project-track-links">
+                <a href="../blog/repeated-work-should-become-a-check/">Checks note</a><a href="../blog/good-small-repos-should-show-the-second-move/">Second-move note</a><a href="../blog/project-pages-should-explain-the-batch/">Batch note</a>
+              </div>
+            </section>
+            
+            <section class="section section-frame section-frame-explore project-track-section" id="planning-artifacts">
+              <div class="section-head section-head-stack">
+                <h2>Planning artifacts</h2>
+                <p class="section-note">Fun projects and lightweight utilities that leave behind a clearer artifact, handoff, or rerun path for the next step.</p>
+                
+            <p class="section-note project-track-pattern">
+              One proof and one context link is enough to start this track cleanly.
+            </p>
+            <p class="section-note project-track-starter">
+              Start with <a href="one-page-canvas/">one-page-canvas</a>
+              if you want the clearest first example in this track. It is the cleanest example of a fun side project leaving behind a concrete exported artifact instead of stopping at a demo.
+            </p>
+            
+              </div>
+              
+            <div class="project-track-intro-grid">
+              
+    <article class="feature-card feature-card-proof">
+      <p class="meta">Starter repo · Planning artifacts</p>
+      <h3><a href="one-page-canvas/">one-page-canvas</a></h3>
+      <p>A local-first strategy canvas that keeps one-page planning structured, fast to open, and easy to export into a reusable artifact.</p>
+      <div class="card-links"><a href="one-page-canvas/">Site guide</a><a href="https://github.com/winnielinnie/one-page-canvas" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card feature-card-context">
+      <p class="meta">Published context · Site note</p>
+      <h3><a href="../blog/one-page-tools-beat-premature-decks/">One-Page Tools Beat Premature Decks</a></h3>
+      <p>A higher-context note on keeping the first artifact small, portable, and structured enough to survive the jump into a doc, review, or handoff.</p>
+      <div class="card-links">
+        <a href="../blog/one-page-tools-beat-premature-decks/">Read note</a>
+      </div>
+    </article>
+    
+            </div>
+            
+              
+            <div class="project-track-rest">
+              <p class="project-track-subhead">More repos in this track</p>
+              <div class="feature-grid repo-grid">
+                
+    <article class="feature-card">
+      <p class="meta">Planning utility</p>
+      <h3><a href="decision-journal-cli/">decision-journal-cli</a></h3>
+      <p>Keeps a decision log from turning into archaeology by making owner, assumption, and revisit date stay visible.</p>
+      <div class="card-links"><a href="decision-journal-cli/">Site guide</a><a href="https://github.com/winnielinnie/decision-journal-cli" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Planning utility</p>
+      <h3><a href="dependency-risk-check/">dependency-risk-check</a></h3>
+      <p>Flags overdue, unowned, and blocked work so plans stop hiding risk in the middle of the handoff.</p>
+      <div class="card-links"><a href="dependency-risk-check/">Site guide</a><a href="https://github.com/winnielinnie/dependency-risk-check" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Writing utility</p>
+      <h3><a href="exec-brief-cli/">exec-brief-cli</a></h3>
+      <p>Turns rough notes into a one-page leadership brief with a stable section shape.</p>
+      <div class="card-links"><a href="exec-brief-cli/">Site guide</a><a href="https://github.com/winnielinnie/exec-brief-cli" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Deck utility</p>
+      <h3><a href="tiny-deck-linter/">tiny-deck-linter</a></h3>
+      <p>Calls out the outline problems that make decks feel soft, crowded, or vague before review.</p>
+      <div class="card-links"><a href="tiny-deck-linter/">Site guide</a><a href="https://github.com/winnielinnie/tiny-deck-linter" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+              </div>
+            </div>
+            
+              <div class="path-links project-track-links">
+                <a href="../blog/fun-projects-get-stronger-when-they-leave-a-reusable-artifact/">Reusable artifact note</a><a href="../blog/good-small-repos-should-show-the-second-move/">Second-move note</a><a href="../blog/project-pages-should-explain-the-batch/">Batch note</a>
+              </div>
+            </section>
+            
+            <section class="section section-frame section-frame-explore project-track-section" id="oci-functions-starter-patterns">
+              <div class="section-head section-head-stack">
+                <h2>OCI Functions starter patterns</h2>
+                <p class="section-note">Boundary-first starter repos that show one handoff clearly, keep the contract visible, and stop before fake completeness.</p>
+                
+            <p class="section-note project-track-pattern">
+              One proof and one context link is enough to start this track cleanly.
+            </p>
+            <p class="section-note project-track-starter">
+              Start with <a href="oci-fn-object-storage-router/">oci-fn-object-storage-router</a>
+              if you want the clearest first example in this track. It makes the starter-repo rule obvious: one visible workflow boundary, one contract, and a believable next handoff.
+            </p>
+            
+              </div>
+              
+            <div class="project-track-intro-grid">
+              
+    <article class="feature-card feature-card-proof">
+      <p class="meta">Starter repo · OCI Functions starter patterns</p>
+      <h3><a href="oci-fn-object-storage-router/">oci-fn-object-storage-router</a></h3>
+      <p>OCI Function pattern for routing Object Storage events to the right downstream system.</p>
+      <div class="card-links"><a href="oci-fn-object-storage-router/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-object-storage-router" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card feature-card-context">
+      <p class="meta">Published context · Oracle Cloud Infrastructure Blog · 2026-04-07</p>
+      <h3><a href="https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns" target="_blank" rel="noreferrer">Functions Design Patterns</a></h3>
+      <p>A higher-context pattern guide for routing, validation, async execution, and the design checks that keep starter repos useful under real product constraints.</p>
+      <div class="card-links">
+        <a href="https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns" target="_blank" rel="noreferrer">Read post</a>
+      </div>
+    </article>
+    
+            </div>
+            
+              
+            <div class="project-track-rest">
+              <p class="project-track-subhead">More repos in this track</p>
+              <div class="feature-grid repo-grid">
+                
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-csv-quality-gate/">oci-fn-csv-quality-gate</a></h3>
+      <p>OCI Function pattern for validating inbound CSVs against a required schema.</p>
+      <div class="card-links"><a href="oci-fn-csv-quality-gate/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-csv-quality-gate" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-file-manifest-writer/">oci-fn-file-manifest-writer</a></h3>
+      <p>Builds a compact manifest from inbound file batches so downstream jobs can consume one stable handoff artifact.</p>
+      <div class="card-links"><a href="oci-fn-file-manifest-writer/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-file-manifest-writer" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-webhook-signature-verifier/">oci-fn-webhook-signature-verifier</a></h3>
+      <p>Checks inbound webhook signatures with a small audit payload instead of burying the verification step.</p>
+      <div class="card-links"><a href="oci-fn-webhook-signature-verifier/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-webhook-signature-verifier" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-slack-alert-normalizer/">oci-fn-slack-alert-normalizer</a></h3>
+      <p>Normalizes noisy alert payloads into a cleaner Slack-friendly incident message.</p>
+      <div class="card-links"><a href="oci-fn-slack-alert-normalizer/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-slack-alert-normalizer" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-queue-worker-starter/">oci-fn-queue-worker-starter</a></h3>
+      <p>Starter pattern for queue-driven OCI Functions work that makes the handoff, retry edge, and worker boundary easier to inspect.</p>
+      <div class="card-links"><a href="oci-fn-queue-worker-starter/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-queue-worker-starter" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-scheduled-finops-digest/">oci-fn-scheduled-finops-digest</a></h3>
+      <p>Shows a scheduled OCI Functions workflow that turns a recurring reporting task into a small digest artifact.</p>
+      <div class="card-links"><a href="oci-fn-scheduled-finops-digest/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-scheduled-finops-digest" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+              </div>
+            </div>
+            
+              <div class="path-links project-track-links">
+                <a href="../blog/starter-repos-should-stop-at-the-right-boundary/">Starter repo note</a><a href="../case-studies/">Case studies</a><a href="../blog/project-pages-should-explain-the-batch/">Batch note</a>
+              </div>
+            </section>
+            
+    
+        <section class="section section-frame section-frame-spotlight">
+          <div class="section-head section-head-stack">
+            <h2>More Oracle context around the starter work</h2>
+            <p class="section-note">A couple of additional Oracle posts that expand the OCI Functions side of the same starter-pattern preferences. <a class="oracle-blogs-link" href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Author profile</a>.</p>
+          </div>
+          <div class="external-grid">
+            
+    <article class="external-card">
+      <p class="meta">Oracle Cloud Infrastructure Blog · 2025-10-31</p>
+      <h3><a href="https://blogs.oracle.com/cloud-infrastructure/longrunning-functions-and-response-destinations" target="_blank" rel="noreferrer">Introducing Long-Running Functions and Response Destinations with OCI Functions</a></h3>
+      <p>How detached execution and response destinations change the handoff boundary for longer-running serverless workflows.</p>
+      <div class="card-links">
+        <a href="https://blogs.oracle.com/cloud-infrastructure/longrunning-functions-and-response-destinations" target="_blank" rel="noreferrer">Read post</a>
+      </div>
+    </article>
+    
+    <article class="external-card">
+      <p class="meta">Oracle Developers Blog · 2024-12-17</p>
+      <h3><a href="https://blogs.oracle.com/developers/post/support-for-3gb-memory-functions" target="_blank" rel="noreferrer">Announcing support for larger memory functions in OCI Functions</a></h3>
+      <p>A product surface update that matters when runtime limits, workload shape, and starter-pattern guidance need to line up.</p>
+      <div class="card-links">
+        <a href="https://blogs.oracle.com/developers/post/support-for-3gb-memory-functions" target="_blank" rel="noreferrer">Read post</a>
+      </div>
+    </article>
+    
+          </div>
+        </section>
+        
+    <section class="section section-frame section-frame-spotlight">
+      <div class="section-head section-head-stack">
+        <h2>Notes behind the repos</h2>
+        <p class="section-note">Short writing that explains the standard behind the public repo work, not just the repo inventory.</p>
+      </div>
+      <div class="feature-grid">
+        
+                <article class="feature-card">
+                  <p class="meta">2026-05-21</p>
+                  <h3><a href="../blog/discovery-paths-should-name-the-first-move/">Discovery paths should name the first move</a></h3>
+                  <p>A discovery card gets easier to trust when it says what the recommended first click is instead of only naming the topic area.</p>
+                </article>
+                
+                <article class="feature-card">
+                  <p class="meta">2026-05-20</p>
+                  <h3><a href="../blog/start-cards-should-name-the-route/">Start cards should name the route</a></h3>
+                  <p>A homepage card works better when it says whether it routes to proof, context, or published work before the reader has to infer the click.</p>
+                </article>
+                
+                <article class="feature-card">
+                  <p class="meta">2026-05-11</p>
+                  <h3><a href="../blog/project-tracks-should-point-to-published-work/">Project Tracks Should Point to Published Work</a></h3>
+                  <p>Grouped repo tracks earn more trust when they also point to one published post or case study that shows the same preference under real constraints.</p>
+                </article>
+                
+      </div>
+    </section>
+    <section class="section section-frame section-frame-open-source">
+      <div class="section-head section-head-stack">
+        <h2>All repositories</h2>
+        <p class="section-note">The full public set currently called out on the site.</p>
+        <a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub profile</a>
+      </div>
+      <div class="feature-grid repo-grid">
+        
+    <article class="feature-card">
+      <p class="meta">Repo utility</p>
+      <h3><a href="repo-onramp-check/">repo-onramp-check</a></h3>
+      <p>Audits whether a public repo makes first proof, visible examples, and the rerun path obvious to a newcomer.</p>
+      <div class="card-links"><a href="repo-onramp-check/">Site guide</a><a href="https://github.com/winnielinnie/repo-onramp-check" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Repo utility</p>
+      <h3><a href="doc-ship-check/">doc-ship-check</a></h3>
+      <p>Final-pass Markdown checker for placeholders, broken links, and duplicate headings.</p>
+      <div class="card-links"><a href="doc-ship-check/">Site guide</a><a href="https://github.com/winnielinnie/doc-ship-check" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">CLI utility</p>
+      <h3><a href="release-note-diff-cli/">release-note-diff-cli</a></h3>
+      <p>CLI that diffs release notes and highlights additions likely to matter.</p>
+      <div class="card-links"><a href="release-note-diff-cli/">Site guide</a><a href="https://github.com/winnielinnie/release-note-diff-cli" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Incident utility</p>
+      <h3><a href="incident-timeline-formatter/">incident-timeline-formatter</a></h3>
+      <p>Turns rough incident notes into a stable Markdown timeline with impact and handoff shape intact.</p>
+      <div class="card-links"><a href="incident-timeline-formatter/">Site guide</a><a href="https://github.com/winnielinnie/incident-timeline-formatter" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Local-first canvas</p>
+      <h3><a href="one-page-canvas/">one-page-canvas</a></h3>
+      <p>A local-first strategy canvas that keeps one-page planning structured, fast to open, and easy to export into a reusable artifact.</p>
+      <div class="card-links"><a href="one-page-canvas/">Site guide</a><a href="https://github.com/winnielinnie/one-page-canvas" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Planning utility</p>
+      <h3><a href="decision-journal-cli/">decision-journal-cli</a></h3>
+      <p>Keeps a decision log from turning into archaeology by making owner, assumption, and revisit date stay visible.</p>
+      <div class="card-links"><a href="decision-journal-cli/">Site guide</a><a href="https://github.com/winnielinnie/decision-journal-cli" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Planning utility</p>
+      <h3><a href="dependency-risk-check/">dependency-risk-check</a></h3>
+      <p>Flags overdue, unowned, and blocked work so plans stop hiding risk in the middle of the handoff.</p>
+      <div class="card-links"><a href="dependency-risk-check/">Site guide</a><a href="https://github.com/winnielinnie/dependency-risk-check" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Writing utility</p>
+      <h3><a href="exec-brief-cli/">exec-brief-cli</a></h3>
+      <p>Turns rough notes into a one-page leadership brief with a stable section shape.</p>
+      <div class="card-links"><a href="exec-brief-cli/">Site guide</a><a href="https://github.com/winnielinnie/exec-brief-cli" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Deck utility</p>
+      <h3><a href="tiny-deck-linter/">tiny-deck-linter</a></h3>
+      <p>Calls out the outline problems that make decks feel soft, crowded, or vague before review.</p>
+      <div class="card-links"><a href="tiny-deck-linter/">Site guide</a><a href="https://github.com/winnielinnie/tiny-deck-linter" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-object-storage-router/">oci-fn-object-storage-router</a></h3>
+      <p>OCI Function pattern for routing Object Storage events to the right downstream system.</p>
+      <div class="card-links"><a href="oci-fn-object-storage-router/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-object-storage-router" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-csv-quality-gate/">oci-fn-csv-quality-gate</a></h3>
+      <p>OCI Function pattern for validating inbound CSVs against a required schema.</p>
+      <div class="card-links"><a href="oci-fn-csv-quality-gate/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-csv-quality-gate" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-file-manifest-writer/">oci-fn-file-manifest-writer</a></h3>
+      <p>Builds a compact manifest from inbound file batches so downstream jobs can consume one stable handoff artifact.</p>
+      <div class="card-links"><a href="oci-fn-file-manifest-writer/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-file-manifest-writer" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-slack-alert-normalizer/">oci-fn-slack-alert-normalizer</a></h3>
+      <p>Normalizes noisy alert payloads into a cleaner Slack-friendly incident message.</p>
+      <div class="card-links"><a href="oci-fn-slack-alert-normalizer/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-slack-alert-normalizer" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-webhook-signature-verifier/">oci-fn-webhook-signature-verifier</a></h3>
+      <p>Checks inbound webhook signatures with a small audit payload instead of burying the verification step.</p>
+      <div class="card-links"><a href="oci-fn-webhook-signature-verifier/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-webhook-signature-verifier" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-queue-worker-starter/">oci-fn-queue-worker-starter</a></h3>
+      <p>Starter pattern for queue-driven OCI Functions work that makes the handoff, retry edge, and worker boundary easier to inspect.</p>
+      <div class="card-links"><a href="oci-fn-queue-worker-starter/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-queue-worker-starter" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+    <article class="feature-card">
+      <p class="meta">Functions pattern</p>
+      <h3><a href="oci-fn-scheduled-finops-digest/">oci-fn-scheduled-finops-digest</a></h3>
+      <p>Shows a scheduled OCI Functions workflow that turns a recurring reporting task into a small digest artifact.</p>
+      <div class="card-links"><a href="oci-fn-scheduled-finops-digest/">Site guide</a><a href="https://github.com/winnielinnie/oci-fn-scheduled-finops-digest" target="_blank" rel="noreferrer">GitHub</a></div>
+    </article>
+    
+      </div>
+    </section>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+</body>
+</html>

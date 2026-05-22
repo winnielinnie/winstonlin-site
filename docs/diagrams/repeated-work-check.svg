@@ -1,0 +1,32 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Repeated work should become a check</title>
+  <desc id="desc">A diagram showing reminder-driven repeated work being converted into a rerunnable check with a visible standard and reusable output.</desc>
+  <rect width="1200" height="760" rx="32" fill="#F7F1E9"/>
+  <rect x="24" y="24" width="1152" height="712" rx="28" fill="#FCFAF7" stroke="#D8CABC" stroke-width="2"/>
+  <text x="72" y="84" fill="#9C5B42" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="4">RERUNNABLE CHECKS</text>
+  <text x="72" y="148" fill="#1C1714" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Repeated work gets lighter</text>
+  <text x="72" y="196" fill="#1C1714" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">when the standard can be rerun.</text>
+  <text x="72" y="250" fill="#615852" font-family="Arial, Helvetica, sans-serif" font-size="24">The point is not more reminders. The point is a visible check that can run again before the next handoff.</text>
+
+  <rect x="72" y="324" width="314" height="290" rx="24" fill="#F7E7DD" stroke="#E1C4B2"/>
+  <text x="104" y="372" fill="#8E4F36" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="3">REMINDER LOOP</text>
+  <text x="104" y="424" fill="#1C1714" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Remember the standard</text>
+  <text x="104" y="470" fill="#3D3430" font-family="Arial, Helvetica, sans-serif" font-size="22">1. Repeat the same guidance</text>
+  <text x="104" y="510" fill="#3D3430" font-family="Arial, Helvetica, sans-serif" font-size="22">2. Hope someone checks in time</text>
+  <text x="104" y="550" fill="#3D3430" font-family="Arial, Helvetica, sans-serif" font-size="22">3. Rediscover the same miss later</text>
+
+  <path d="M424 468H776" stroke="#B78A72" stroke-width="10" stroke-linecap="round"/>
+  <path d="M742 438L794 468L742 498" stroke="#B78A72" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="504" y="430" fill="#8E4F36" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="2.5">TURN IT INTO A CHECK</text>
+
+  <rect x="814" y="284" width="314" height="370" rx="24" fill="#E8F1EC" stroke="#BFD5CC"/>
+  <text x="846" y="332" fill="#355F5A" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="3">RERUN PATH</text>
+  <text x="846" y="384" fill="#17302D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Run the same standard again</text>
+  <rect x="846" y="430" width="250" height="58" rx="16" fill="#FCFAF7" stroke="#C8DBD3"/>
+  <text x="874" y="466" fill="#17302D" font-family="Arial, Helvetica, sans-serif" font-size="22">Visible rule or schema</text>
+  <rect x="846" y="504" width="250" height="58" rx="16" fill="#FCFAF7" stroke="#C8DBD3"/>
+  <text x="874" y="540" fill="#17302D" font-family="Arial, Helvetica, sans-serif" font-size="22">Rerunnable local command</text>
+  <rect x="846" y="578" width="250" height="58" rx="16" fill="#FCFAF7" stroke="#C8DBD3"/>
+  <text x="874" y="614" fill="#17302D" font-family="Arial, Helvetica, sans-serif" font-size="22">Reusable output or pass/fail</text>
+
+  <text x="72" y="686" fill="#615852" font-family="Arial, Helvetica, sans-serif" font-size="24">Small tools become more useful when they remove memory from the loop and make the next review easier to rerun.</text>

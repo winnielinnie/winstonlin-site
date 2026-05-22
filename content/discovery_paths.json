@@ -3,6 +3,13 @@
     "title": "AI workflows",
     "who": "AI",
     "why": "Recovery, workflow quality, and usable output.",
+    "starter": {
+      "route": "Context note",
+      "label": "Workspace",
+      "url": "/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/",
+      "reason": "It is still the fastest route into how the AI workflow work stays grounded in real files, review loops, and usable artifacts."
+    },
+    "links_label": "Then keep going with",
     "links": [
       {
         "label": "Recovery paths",
@@ -11,6 +18,10 @@
       {
         "label": "Workspace",
         "url": "/blog/how-i-use-ai-as-a-pm-with-a-real-workspace/"
+      },
+      {
+        "label": "AI work note",
+        "url": "/blog/what-working-with-codex-taught-me-about-ai-work/"
       }
     ]
   },
@@ -18,6 +29,13 @@
     "title": "Platform product",
     "who": "Platform",
     "why": "Migration, developer experience, and reliability.",
+    "starter": {
+      "route": "Case study",
+      "label": "OCI Functions case study",
+      "url": "/case-studies/#oci-functions-product-direction",
+      "reason": "It is the cleanest single example of product direction, adoption work, and execution detail showing up together."
+    },
+    "links_label": "Then go broader with",
     "links": [
       {
         "label": "Case studies",
@@ -26,6 +44,10 @@
       {
         "label": "Platform friction",
         "url": "/blog/developer-platforms-mostly-fail-on-friction/"
+      },
+      {
+        "label": "Migration readiness",
+        "url": "/blog/migration-readiness-is-a-product-problem/"
       }
     ]
   },
@@ -33,6 +55,13 @@
     "title": "Business systems",
     "who": "Strategy",
     "why": "Growth, service design, and operating models.",
+    "starter": {
+      "route": "Context note",
+      "label": "Growth note",
+      "url": "/blog/growth-breaks-in-the-operating-model/",
+      "reason": "It is the shortest entry point into the operating-model and service-design side of the work."
+    },
+    "links_label": "Then branch into",
     "links": [
       {
         "label": "Growth",
@@ -41,6 +70,36 @@
       {
         "label": "Migration readiness",
         "url": "/blog/migration-readiness-is-a-product-problem/"
+      },
+      {
+        "label": "Case studies",
+        "url": "/case-studies/"
+      }
+    ]
+  },
+  {
+    "title": "Small public tools",
+    "who": "Repos",
+    "why": "Grouped project tracks, anchor repos, and the standards around checks, artifacts, and visible handoffs.",
+    "starter": {
+      "route": "Project guide",
+      "label": "repo-onramp-check",
+      "url": "/projects/repo-onramp-check/",
+      "reason": "It is the clearest first proof in the public repo work: one small tool that makes the README, example, and rerun path inspectable before the wider track branches out."
+    },
+    "links_label": "Then inspect",
+    "links": [
+      {
+        "label": "Track overview",
+        "url": "/projects/"
+      },
+      {
+        "label": "Anchor repo",
+        "url": "/projects/repo-onramp-check/"
+      },
+      {
+        "label": "Batch note",
+        "url": "/blog/project-pages-should-explain-the-batch/"
       }
     ]
   }

@@ -1,0 +1,49 @@
+<svg width="960" height="520" viewBox="0 0 960 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Anchor repo map</title>
+  <desc id="desc">Diagram showing a projects page pointing to anchor repos, which then carry proof through README, examples, and outputs before routing into the wider repo batch.</desc>
+  <rect width="960" height="520" rx="28" fill="#F6EFE6"/>
+  <circle cx="112" cy="92" r="150" fill="#E8D6C7" fill-opacity="0.6"/>
+  <circle cx="830" cy="438" r="142" fill="#D9E4DE" fill-opacity="0.55"/>
+  <rect x="76" y="150" width="210" height="148" rx="26" fill="#FFF9F2" stroke="#D7C4B5" stroke-width="2"/>
+  <text x="104" y="190" fill="#925237" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.6">PROJECTS PAGE</text>
+  <text x="104" y="228" fill="#171412" font-family="Georgia, serif" font-size="28" font-weight="700">Pick one</text>
+  <text x="104" y="260" fill="#171412" font-family="Georgia, serif" font-size="28" font-weight="700">first repo</text>
+  <text x="104" y="296" fill="#625B55" font-family="Arial, sans-serif" font-size="17">Recommend the clearest</text>
+  <text x="104" y="320" fill="#625B55" font-family="Arial, sans-serif" font-size="17">first example per track.</text>
+
+  <path d="M286 224C338 224 354 184 398 184" stroke="#925237" stroke-width="4" stroke-linecap="round"/>
+  <path d="M286 248C338 248 354 260 398 260" stroke="#355F5A" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="398" y="104" width="232" height="144" rx="28" fill="#FFFDF9" stroke="#D7C4B5" stroke-width="2"/>
+  <text x="428" y="144" fill="#925237" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1.5">ANCHOR REPO</text>
+  <text x="428" y="184" fill="#171412" font-family="Georgia, serif" font-size="30" font-weight="700">Workflow check</text>
+  <text x="428" y="218" fill="#625B55" font-family="Arial, sans-serif" font-size="17">README + sample report +</text>
+  <text x="428" y="242" fill="#625B55" font-family="Arial, sans-serif" font-size="17">visible verification path</text>
+
+  <rect x="398" y="272" width="232" height="144" rx="28" fill="#FFFCF7" stroke="#D7C4B5" stroke-width="2"/>
+  <text x="428" y="312" fill="#355F5A" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1.5">ANCHOR REPO</text>
+  <text x="428" y="352" fill="#171412" font-family="Georgia, serif" font-size="30" font-weight="700">Reusable artifact</text>
+  <text x="428" y="386" fill="#625B55" font-family="Arial, sans-serif" font-size="17">README + sample export +</text>
+  <text x="428" y="410" fill="#625B55" font-family="Arial, sans-serif" font-size="17">clear second move</text>
+
+  <path d="M630 176C694 176 696 148 742 148" stroke="#925237" stroke-width="4" stroke-linecap="round"/>
+  <path d="M630 212C696 212 700 228 742 228" stroke="#925237" stroke-width="4" stroke-linecap="round"/>
+  <path d="M630 344C694 344 696 316 742 316" stroke="#355F5A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M630 380C696 380 700 396 742 396" stroke="#355F5A" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="742" y="94" width="152" height="84" rx="22" fill="#FFF9F2" stroke="#D7C4B5" stroke-width="2"/>
+  <text x="772" y="128" fill="#171412" font-family="Georgia, serif" font-size="24" font-weight="700">README</text>
+  <text x="772" y="152" fill="#625B55" font-family="Arial, sans-serif" font-size="15">Make first proof obvious</text>
+
+  <rect x="742" y="188" width="152" height="84" rx="22" fill="#FFF9F2" stroke="#D7C4B5" stroke-width="2"/>
+  <text x="768" y="222" fill="#171412" font-family="Georgia, serif" font-size="24" font-weight="700">Example</text>
+  <text x="763" y="246" fill="#625B55" font-family="Arial, sans-serif" font-size="15">Show the check or output</text>
+
+  <rect x="742" y="282" width="152" height="84" rx="22" fill="#FFF9F2" stroke="#D7C4B5" stroke-width="2"/>
+  <text x="774" y="316" fill="#171412" font-family="Georgia, serif" font-size="24" font-weight="700">Output</text>
+  <text x="762" y="340" fill="#625B55" font-family="Arial, sans-serif" font-size="15">Leave an artifact behind</text>
+
+  <rect x="742" y="376" width="152" height="84" rx="22" fill="#FFF9F2" stroke="#D7C4B5" stroke-width="2"/>
+  <text x="764" y="410" fill="#171412" font-family="Georgia, serif" font-size="24" font-weight="700">Wider Batch</text>
+  <text x="769" y="434" fill="#625B55" font-family="Arial, sans-serif" font-size="15">The rest reads faster</text>
+</svg>

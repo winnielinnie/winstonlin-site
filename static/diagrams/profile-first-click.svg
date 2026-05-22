@@ -1,0 +1,36 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="32" fill="#F7F2EA"/>
+  <rect x="44" y="44" width="872" height="472" rx="28" fill="#FFFDFC" stroke="#DCCFBE" stroke-width="2"/>
+  <rect x="92" y="102" width="242" height="184" rx="24" fill="#35534F"/>
+  <text x="122" y="150" fill="#FFF9F2" font-family="Arial, sans-serif" font-size="17" font-weight="700">GitHub profile</text>
+  <text x="122" y="182" fill="#E5F0EE" font-family="Arial, sans-serif" font-size="14">Short bio</text>
+  <text x="122" y="206" fill="#E5F0EE" font-family="Arial, sans-serif" font-size="14">Repo tracks</text>
+  <text x="122" y="230" fill="#E5F0EE" font-family="Arial, sans-serif" font-size="14">One clear next click</text>
+  <rect x="122" y="246" width="156" height="16" rx="8" fill="#E2B98D"/>
+  <text x="370" y="132" fill="#8A5A34" font-family="Arial, sans-serif" font-size="15" font-weight="700">Pick by intent</text>
+  <path d="M334 170C396 170 398 170 454 170" stroke="#B57E56" stroke-width="4" stroke-linecap="round"/>
+  <path d="M334 194C396 194 398 194 454 194" stroke="#B57E56" stroke-width="4" stroke-linecap="round"/>
+  <path d="M334 218C396 218 398 218 454 218" stroke="#B57E56" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="472" cy="170" r="18" fill="#EEDCC8"/>
+  <circle cx="472" cy="194" r="18" fill="#EEDCC8"/>
+  <circle cx="472" cy="218" r="18" fill="#EEDCC8"/>
+  <text x="468" y="175" text-anchor="middle" fill="#8A5A34" font-family="Arial, sans-serif" font-size="14" font-weight="700">1</text>
+  <text x="468" y="199" text-anchor="middle" fill="#8A5A34" font-family="Arial, sans-serif" font-size="14" font-weight="700">2</text>
+  <text x="468" y="223" text-anchor="middle" fill="#8A5A34" font-family="Arial, sans-serif" font-size="14" font-weight="700">3</text>
+  <rect x="534" y="96" width="286" height="86" rx="18" fill="#FFF6EB" stroke="#D9C2AA" stroke-width="2"/>
+  <text x="560" y="126" fill="#8A5A34" font-family="Arial, sans-serif" font-size="16" font-weight="700">Projects page</text>
+  <text x="560" y="152" fill="#5E5146" font-family="Arial, sans-serif" font-size="14">Grouped repo tracks and</text>
+  <text x="560" y="172" fill="#5E5146" font-family="Arial, sans-serif" font-size="14">supporting notes.</text>
+  <rect x="534" y="204" width="286" height="86" rx="18" fill="#F2F7F6" stroke="#B8CEC8" stroke-width="2"/>
+  <text x="560" y="234" fill="#35534F" font-family="Arial, sans-serif" font-size="16" font-weight="700">Case studies</text>
+  <text x="560" y="260" fill="#44645F" font-family="Arial, sans-serif" font-size="14">Higher-context product and</text>
+  <text x="560" y="280" fill="#44645F" font-family="Arial, sans-serif" font-size="14">operating work.</text>
+  <rect x="534" y="312" width="286" height="86" rx="18" fill="#F9EFE7" stroke="#D7B89B" stroke-width="2"/>
+  <text x="560" y="342" fill="#925237" font-family="Arial, sans-serif" font-size="16" font-weight="700">Short note</text>
+  <text x="560" y="368" fill="#735244" font-family="Arial, sans-serif" font-size="14">The standards behind the</text>
+  <text x="560" y="388" fill="#735244" font-family="Arial, sans-serif" font-size="14">small public tools.</text>
+  <text x="92" y="352" fill="#35534F" font-family="Arial, sans-serif" font-size="26" font-weight="700">A good profile does not explain everything.</text>
+  <text x="92" y="388" fill="#5B5A57" font-family="Arial, sans-serif" font-size="18">It makes the best next click obvious.</text>
+  <rect x="92" y="422" width="728" height="46" rx="23" fill="#E8DDD0"/>
+  <text x="456" y="451" text-anchor="middle" fill="#6B584A" font-family="Arial, sans-serif" font-size="15" font-weight="700">Proof on GitHub. Routing on the site. Depth in the writing and case studies.</text>
+</svg>

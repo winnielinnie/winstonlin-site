@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Reusable artifact diagram</title>
+  <desc id="desc">A diagram showing a small project becoming reusable by leaving behind a clear output, a visible handoff, and a rerunnable check.</desc>
+  <defs>
+    <style>
+      .bg { fill: #efe6da; }
+      .canvas { fill: #f7f1e8; stroke: #dbcfc1; stroke-width: 1.8; }
+      .rule { stroke: #d7cab8; stroke-width: 1.8; }
+      .ink { fill: #241c17; font-family: "Manrope", "Aptos", sans-serif; }
+      .muted { fill: #5f574f; font-family: "Manrope", "Aptos", sans-serif; }
+      .display { fill: #241c17; font-family: "Newsreader", Georgia, serif; }
+      .kicker { font-size: 15px; font-weight: 700; letter-spacing: 0.16em; }
+      .micro { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; }
+      .title { font-size: 54px; font-weight: 500; }
+      .subtitle { font-size: 21px; line-height: 1.45; }
+      .panel { fill: #fbf8f3; stroke: #d8ccbf; stroke-width: 1.8; }
+      .panel-soft { fill: #fffdf9; stroke: #ddd1c4; stroke-width: 1.5; }
+      .section { font-size: 18px; font-weight: 700; letter-spacing: 0.06em; }
+      .small { font-size: 14px; line-height: 1.38; }
+      .card-title { font-size: 22px; font-weight: 700; }
+      .metric { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; }
+      .line { fill: none; stroke: #baa795; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .line-soft { fill: none; stroke: #d2c0b0; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 10; }
+      .white { fill: #ffffff; }
+      .navy { fill: #6d86b3; }
+      .green { fill: #4f7f6f; }
+      .gold { fill: #b59143; }
+      .rust { fill: #a86347; }
+      .dark { fill: #413631; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" class="bg" />
+  <rect x="24" y="24" width="1152" height="712" rx="28" class="canvas" />
+  <line x1="60" y1="58" x2="1140" y2="58" class="rule" />
+
+  <text x="72" y="38" class="ink kicker">REUSABLE ARTIFACT</text>
+  <text x="1090" y="38" class="ink micro" text-anchor="end">output • handoff • rerun</text>
+
+  <text x="72" y="176" class="display title">
+    <tspan x="72" dy="0">A fun project gets stronger</tspan>
+    <tspan x="72" dy="56">when it leaves something behind</tspan>
+  </text>
+  <text x="72" y="292" class="muted subtitle">
+    <tspan x="72" dy="0">The useful question is not whether the demo worked once.</tspan>
+    <tspan x="72" dy="32">It is whether the project leaves an output or check someone can reuse next time.</tspan>
+  </text>
+
+  <rect x="784" y="98" width="336" height="126" rx="18" class="panel-soft" />
+  <text x="814" y="136" class="ink section">SECOND-RUN TEST</text>
+  <text x="814" y="166" class="muted small">
+    <tspan x="814" dy="0">Can someone pick up the result,</tspan>
+    <tspan x="814" dy="20">attach the next step, and reuse it later.</tspan>
+  </text>
+
+  <rect x="72" y="356" width="1056" height="278" rx="24" class="panel" />
+
+  <rect x="108" y="392" width="284" height="206" rx="20" fill="#eef2fa" stroke="#c8d5ea" stroke-width="1.6" />
+  <rect x="458" y="392" width="284" height="206" rx="20" fill="#edf5ef" stroke="#c7dbd1" stroke-width="1.6" />
+  <rect x="808" y="392" width="284" height="206" rx="20" fill="#f8efe1" stroke="#dcc8a1" stroke-width="1.6" />
+
+  <text x="138" y="430" class="ink metric">1. OUTPUT</text>
+  <text x="138" y="476" class="ink card-title">Leave a visible result</text>
+  <text x="138" y="514" class="muted small">
+    <tspan x="138" dy="0">one-page export</tspan>
+    <tspan x="138" dy="22">clean diff summary</tspan>
+    <tspan x="138" dy="22">formatted timeline</tspan>
+  </text>
+
+  <text x="488" y="430" class="ink metric">2. HANDOFF</text>
+  <text x="488" y="476" class="ink card-title">Show the next move</text>
+  <text x="488" y="514" class="muted small">
+    <tspan x="488" dy="0">what comes in</tspan>
+    <tspan x="488" dy="22">what goes out</tspan>
+    <tspan x="488" dy="22">where the real system starts</tspan>
+  </text>
+
+  <text x="838" y="430" class="ink metric">3. RERUN</text>
+  <text x="838" y="476" class="ink card-title">Make it easy to reuse</text>
+  <text x="838" y="514" class="muted small">
+    <tspan x="838" dy="0">small schema</tspan>
+    <tspan x="838" dy="22">clear command</tspan>
+    <tspan x="838" dy="22">same check next week</tspan>
+  </text>
+
+  <path d="M392 494 H458" class="line" />
+  <path d="M742 494 H808" class="line" />
+  <path d="M392 528 H458" class="line-soft" />
+  <path d="M742 528 H808" class="line-soft" />
+
+  <rect x="72" y="658" width="1056" height="56" rx="18" class="dark" />
+  <text x="600" y="693" class="white small" text-anchor="middle">The artifact is what makes the side project portable instead of just memorable.</text>
+</svg>

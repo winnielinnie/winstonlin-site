@@ -203,17 +203,25 @@ def insert_after_section(article_html, heading_text, snippet):
 def normalize_path(path):
     if not path.startswith("/"):
         path = f"/{path}"
-    if path != "/" and not path.endswith("/"):
+    if path != "/" and not path.endswith("/") and "." not in posixpath.basename(path):
         path = f"{path}/"
     return path
 
 
 def relative_url(current_path, target_path):
+    fragment = ""
+    if "#" in target_path:
+        target_path, target_fragment = target_path.split("#", 1)
+        fragment = f"#{target_fragment}"
+
     current_path = normalize_path(current_path)
     target_path = normalize_path(target_path)
 
     current_dir = current_path.lstrip("/")
     target_dir = target_path.lstrip("/")
+
+    if "." in posixpath.basename(current_dir):
+        current_dir = posixpath.dirname(current_dir)
 
     if current_dir == "":
         base = "."
@@ -222,10 +230,10 @@ def relative_url(current_path, target_path):
 
     rel = posixpath.relpath(target_dir or ".", start=base)
     if rel == ".":
-        return "./"
+        return f"./{fragment}" if fragment else "./"
     if not rel.endswith("/"):
         rel = f"{rel}/"
-    return rel
+    return f"{rel}{fragment}"
 
 
 def static_url(current_path, asset_name):
@@ -247,8 +255,62 @@ def format_rss_date(date_text):
     return dt.strftime("%a, %d %b %Y %H:%M:%S GMT")
 
 
+def render_external_writing_cards(current_path, external_writing, limit=3):
+    cards = []
+    for item in external_writing[:limit]:
+        cards.append(render_context_feature_card(current_path, item, card_class="external-card", default_cta="Read post"))
+    return cards
+
+
+def render_context_feature_card(current_path, item, card_class="feature-card", default_cta="Read more"):
+    href = item["url"]
+    external = href.startswith("http")
+    target = ' target="_blank" rel="noreferrer"' if external else ""
+    if not external:
+        href = relative_url(current_path, href)
+
+    meta = item.get("meta", "").strip()
+    if not meta:
+        meta_bits = [item.get("publication", "").strip(), item.get("date", "").strip()]
+        meta = " · ".join(bit for bit in meta_bits if bit)
+
+    title = item.get("short_title") or item["title"]
+    summary = item.get("summary", "").strip()
+    summary_html = f"<p>{html.escape(summary)}</p>" if summary else ""
+    cta = item.get("cta", default_cta)
+    return f"""
+    <article class="{card_class}">
+      <p class="meta">{html.escape(meta)}</p>
+      <h3><a href="{html.escape(href)}"{target}>{html.escape(title)}</a></h3>
+      {summary_html}
+      <div class="card-links">
+        <a href="{html.escape(href)}"{target}>{html.escape(cta)}</a>
+      </div>
+    </article>
+    """
+
+
+def find_project_track(repo_tracks, project_name):
+    for track in repo_tracks:
+        if project_name in track.get("projects", []):
+            return track
+    return None
+
+
+def render_track_links(current_path, links, limit=3):
+    rendered = []
+    for link in links[:limit]:
+        href = link["url"]
+        external = href.startswith("http")
+        target = ' target="_blank" rel="noreferrer"' if external else ""
+        if not external:
+            href = relative_url(current_path, href)
+        rendered.append(f'<a href="{html.escape(href)}"{target}>{html.escape(link["label"])}</a>')
+    return rendered
+
+
 def page_layout(config, title, body, current_path="/", meta_description=None, og_type="website"):
-    nav_items = [('Home', '/'), ('About', '/about/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
+    nav_items = [('Home', '/'), ('Projects', '/projects/'), ('About', '/about/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
     if config.get("github_url"):
         nav_items.append(('GitHub', config["github_url"]))
     if config.get("linkedin_url"):
@@ -293,6 +355,8 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
         body_class = "page-writing"
     elif current_path == "/case-studies/":
         body_class = "page-case-studies"
+    elif current_path.startswith("/projects/"):
+        body_class = "page-projects"
     elif current_path == "/about/":
         body_class = "page-about"
 
@@ -352,6 +416,66 @@ def render_diagram(kind, current_path):
             "alt": "Diagram showing a stable incident timeline with owner, event, and impact progression.",
             "heading": "What I want from the timeline first",
         },
+        "small-repo-batches-should-teach-a-pattern": {
+            "asset": "diagrams/repo-batch-map.svg",
+            "alt": "Diagram showing a repo batch moving from a clear pattern statement to examples, boundaries, and related tools.",
+            "heading": "What I want the batch to do",
+        },
+        "fun-projects-get-stronger-when-they-leave-a-reusable-artifact": {
+            "asset": "diagrams/reusable-artifact.svg",
+            "alt": "Diagram showing a small project becoming more reusable when it leaves behind a clear output, handoff, and rerun path.",
+            "heading": "The artifact is what makes the project reusable",
+        },
+        "repeated-work-should-become-a-check": {
+            "asset": "diagrams/repeated-work-check.svg",
+            "alt": "Diagram showing repeated work becoming a small rerunnable check instead of relying on reminder loops and memory.",
+            "heading": "A good check replaces memory with a rerun",
+        },
+        "github-should-prove-and-the-site-should-route": {
+            "asset": "diagrams/site-routing-map.svg",
+            "alt": "Diagram showing GitHub as the proof layer and the personal site as the routing layer for writing, projects, and case studies.",
+            "heading": "The site should route the next move",
+        },
+        "github-profiles-should-choose-the-first-click": {
+            "asset": "diagrams/profile-first-click.svg",
+            "alt": "Diagram showing a GitHub profile routing different readers toward projects, case studies, or a short note depending on the first useful click.",
+            "heading": "The first click should match the intent",
+        },
+        "good-small-repos-should-show-the-second-move": {
+            "asset": "diagrams/second-move-map.svg",
+            "alt": "Diagram showing a small repo moving from first proof to the artifact, handoff, or rerun path that makes it reusable.",
+            "heading": "What I want to know after the demo",
+        },
+        "project-pages-should-explain-the-batch": {
+            "asset": "diagrams/project-batch-map.svg",
+            "alt": "Diagram showing a stronger projects page grouping repos into a named batch with a standard, a related note, and clearer next clicks.",
+            "heading": "A projects page should answer what the batch is proving",
+        },
+        "repo-tracks-should-recommend-a-first-example": {
+            "asset": "diagrams/first-example-map.svg",
+            "alt": "Diagram showing each repo track pointing to one best first example before branching into the wider batch.",
+            "heading": "One good example should carry the track first",
+        },
+        "anchor-repos-should-carry-the-batch": {
+            "asset": "diagrams/anchor-repo-map.svg",
+            "alt": "Diagram showing a projects page routing into anchor repos that then carry the README, example, and output proof for the wider repo batch.",
+            "heading": "The anchor repo should carry the proof",
+        },
+        "decision-logs-should-keep-the-revisit-date-visible": {
+            "asset": "diagrams/decision-revisit-loop.svg",
+            "alt": "Diagram showing a decision log staying useful when owner, assumption, and revisit date keep feeding the next review instead of sinking into archive.",
+            "heading": "The revisit date keeps the log alive",
+        },
+        "starter-patterns-should-leave-one-stable-handoff-artifact": {
+            "asset": "diagrams/handoff-artifact-map.svg",
+            "alt": "Diagram showing noisy inbound file events being condensed into one stable manifest artifact that downstream systems can consume.",
+            "heading": "One artifact should carry the handoff",
+        },
+        "alerting-starter-patterns-should-normalize-before-they-notify": {
+            "asset": "diagrams/alert-normalization-flow.svg",
+            "alt": "Diagram showing noisy alerts being normalized into one readable message before they reach chat or an on-call reader.",
+            "heading": "Normalize the message before it reaches a person",
+        },
     }
     diagram = diagrams.get(kind)
     if not diagram:
@@ -386,8 +510,44 @@ def render_post_nav(post, posts, nav_class="post-nav-top"):
     return f'<nav class="post-nav {nav_class}" aria-label="Writing navigation">{"".join(links)}</nav>'
 
 
-def render_homepage(config, posts, projects, case_studies):
-    showcase_note_slug = config.get("home_showcase_note_slug", "how-i-use-ai-as-a-pm-with-a-real-workspace")
+def render_project_card(project, current_path, extra_links=None, card_class="feature-card"):
+    card_links = []
+    site_path = project.get("site_path")
+    title_href = html.escape(project["url"])
+    title_target = ' target="_blank" rel="noreferrer"'
+    if site_path:
+        card_links.append(f'<a href="{relative_url(current_path, site_path)}">Site guide</a>')
+        title_href = relative_url(current_path, site_path)
+        title_target = ""
+
+    if extra_links:
+        for link in extra_links:
+            href = link["url"]
+            external = href.startswith("http")
+            target = ' target="_blank" rel="noreferrer"' if external else ""
+            if not external:
+                href = relative_url(current_path, href)
+            card_links.append(f'<a href="{html.escape(href)}"{target}>{html.escape(link["label"])}</a>')
+
+    card_links.append(f'<a href="{html.escape(project["url"])}" target="_blank" rel="noreferrer">GitHub</a>')
+    link_row = f'<div class="card-links">{"".join(card_links)}</div>'
+
+    return f"""
+    <article class="{html.escape(card_class)}">
+      <p class="meta">{html.escape(project['label'])}</p>
+      <h3><a href="{title_href}"{title_target}>{html.escape(project['name'])}</a></h3>
+      <p>{html.escape(project['summary'])}</p>
+      {link_row}
+    </article>
+    """
+
+
+def render_homepage(config, posts, projects, case_studies, discovery_paths, proof_points, repo_tracks, external_writing):
+    showcase_note_config = config.get("home_showcase_note", {})
+    showcase_note_slug = showcase_note_config.get(
+        "slug",
+        config.get("home_showcase_note_slug", "how-i-use-ai-as-a-pm-with-a-real-workspace"),
+    )
     current_note = find_post(posts, showcase_note_slug) or find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
     showcase_html = ""
     bio_strip = ""
@@ -406,12 +566,12 @@ def render_homepage(config, posts, projects, case_studies):
         if current_note:
             showcase_items.append(
                 {
-                    "label": "AI workflow",
-                    "meta": "Writing",
+                    "label": showcase_note_config.get("label", "Writing"),
+                    "meta": showcase_note_config.get("meta", "Writing"),
                     "title": current_note.title,
-                    "summary": current_note.summary,
+                    "summary": showcase_note_config.get("summary", current_note.summary),
                     "href": relative_url('/', f'/blog/{current_note.slug}/'),
-                    "cta": "Read note",
+                    "cta": showcase_note_config.get("cta", "Read note"),
                     "tone": "showcase-tone-workspace",
                     "external": False,
                 }
@@ -428,18 +588,33 @@ def render_homepage(config, posts, projects, case_studies):
                 "external": False,
             }
         )
-        showcase_items.append(
-            {
-                "label": "Oracle writing",
-                "meta": "Oracle Blogs",
-                "title": "Author profile and selected posts",
-                "summary": "Public writing on OCI Functions patterns, recovery, and async execution.",
-                "href": config.get("oracle_blogs_url", "https://blogs.oracle.com/"),
-                "cta": "Open Oracle profile",
-                "tone": "showcase-tone-oracle",
-                "external": True,
-            }
-        )
+        external_item = external_writing[0] if external_writing else None
+        if external_item:
+            showcase_items.append(
+                {
+                    "label": "Published elsewhere",
+                    "meta": external_item.get("publication", "Oracle Blogs"),
+                    "title": external_item.get("short_title") or external_item["title"],
+                    "summary": external_item.get("summary", external_item["title"]),
+                    "href": external_item["url"],
+                    "cta": "Read Oracle post",
+                    "tone": "showcase-tone-oracle",
+                    "external": True,
+                }
+            )
+        else:
+            showcase_items.append(
+                {
+                    "label": "Oracle writing",
+                    "meta": "Oracle Blogs",
+                    "title": "Author profile and selected posts",
+                    "summary": "Public writing on OCI Functions patterns, recovery, and async execution.",
+                    "href": config.get("oracle_blogs_url", "https://blogs.oracle.com/"),
+                    "cta": "Open Oracle profile",
+                    "tone": "showcase-tone-oracle",
+                    "external": True,
+                }
+            )
 
         showcase_cards = []
         for item in showcase_items[:3]:
@@ -468,19 +643,205 @@ def render_homepage(config, posts, projects, case_studies):
         </section>
         """
 
-    selected_projects = [project for project in projects if project["name"] != "winstonlin-site"][:4]
+    proof_html = ""
+    if proof_points:
+        proof_cards = []
+        for point in proof_points[:3]:
+            route_html = ""
+            route = point.get("route")
+            if route:
+                route_href = route["url"]
+                route_external = route_href.startswith("http")
+                route_target = ' target="_blank" rel="noreferrer"' if route_external else ""
+                if not route_external:
+                    route_href = relative_url('/', route_href)
+                route_label = html.escape(route.get("label", "Evidence"))
+                route_title = html.escape(route.get("title", "Supporting detail"))
+                route_cta = html.escape(route.get("cta", "See more"))
+                route_html = f"""
+                  <div class="proof-route-row">
+                    <div class="proof-route-meta">
+                      <span class="track-route-label">Evidence</span>
+                      <span class="path-route-pill">{route_label}</span>
+                    </div>
+                    <a class="proof-route-link" href="{html.escape(route_href)}"{route_target}>{route_cta}: {route_title}</a>
+                  </div>
+                """
+            proof_cards.append(
+                f"""
+                <article class="proof-card">
+                  <p class="proof-value">{html.escape(point['value'])}</p>
+                  <p class="proof-label">{html.escape(point['label'])}</p>
+                  <p class="proof-text">{html.escape(point['text'])}</p>
+                  {route_html}
+                </article>
+                """
+            )
+        proof_html = f"""
+        <section class="section section-frame section-frame-explore">
+          <div class="section-head section-head-stack">
+            <h2>Proof points</h2>
+            <p class="section-note">A few operating outcomes that shaped how I think about product, platform, and execution work. Each card now points to the deeper evidence behind the result.</p>
+          </div>
+          <div class="proof-grid">
+            {''.join(proof_cards)}
+          </div>
+        </section>
+        """
 
-    project_cards = []
-    for project in selected_projects:
-        project_cards.append(
-            f"""
-            <article class="feature-card">
-              <p class="meta">{html.escape(project['label'])}</p>
-              <h3><a href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">{html.escape(project['name'])}</a></h3>
-              <p>{html.escape(project['summary'])}</p>
-            </article>
+    discovery_html = ""
+    if discovery_paths:
+        path_cards = []
+        for path in discovery_paths[:4]:
+            link_items = []
+            for link in path.get("links", [])[:3]:
+                href = link["url"]
+                external = href.startswith("http")
+                target = ' target="_blank" rel="noreferrer"' if external else ""
+                if not external:
+                    href = relative_url('/', href)
+                link_items.append(f'<a href="{html.escape(href)}"{target}>{html.escape(link["label"])}</a>')
+            starter_html = ""
+            starter = path.get("starter")
+            if starter:
+                starter_href = starter["url"]
+                starter_external = starter_href.startswith("http")
+                starter_target = ' target="_blank" rel="noreferrer"' if starter_external else ""
+                if not starter_external:
+                    starter_href = relative_url('/', starter_href)
+                starter_route = starter.get("route", "Recommended first move")
+                starter_html = f"""
+                  <div class="path-starter">
+                    <div class="path-route-row">
+                      <span class="track-route-label">First move</span>
+                      <span class="path-route-pill">{html.escape(starter_route)}</span>
+                    </div>
+                    <p>
+                      Start with <a href="{html.escape(starter_href)}"{starter_target}>{html.escape(starter['label'])}</a>.
+                      {html.escape(starter['reason'])}
+                    </p>
+                  </div>
+                """
+            links_label = path.get("links_label", "Then go deeper")
+            path_cards.append(
+                f"""
+                <article class="path-card">
+                  <p class="meta">{html.escape(path['who'])}</p>
+                  <h3>{html.escape(path['title'])}</h3>
+                  <p>{html.escape(path['why'])}</p>
+                  {starter_html}
+                  <p class="path-links-label">{html.escape(links_label)}</p>
+                  <div class="path-links">
+                    {''.join(link_items)}
+                  </div>
+                </article>
+                """
+            )
+        discovery_html = f"""
+        <section class="section section-frame section-frame-explore">
+          <div class="section-head section-head-stack">
+            <h2>Ways into the work</h2>
+            <p class="section-note">A few short paths depending on whether you care more about AI workflows, platform product work, or operating-model problems. Each card now names the first move instead of leaving it implied.</p>
+          </div>
+          <div class="card-grid path-grid">
+            {''.join(path_cards)}
+          </div>
+        </section>
+        """
+
+    project_lookup = {project["name"]: project for project in projects}
+    repo_tracks_html = ""
+    if repo_tracks:
+        anchor_cards = []
+        for track in repo_tracks[:3]:
+            starter_project = project_lookup.get(track.get("starter_project", ""))
+            if not starter_project:
+                continue
+
+            track_id = slugify(track["title"])
+            starter_reason = track.get("starter_reason", "").strip()
+            proof_card = dict(starter_project)
+            proof_card["label"] = f"Proof repo · {track['title']}"
+            if starter_reason:
+                proof_card["summary"] = f"{starter_project['summary']} {starter_reason}"
+
+            context_feature = track.get("context_feature")
+            context_card = ""
+            if context_feature:
+                context_card = render_context_feature_card(
+                    "/",
+                    {
+                        **context_feature,
+                        "meta": context_feature.get("meta", f"Context note · {track['title']}"),
+                    },
+                    card_class="feature-card feature-card-context",
+                    default_cta="Read context",
+                )
+
+            proof_links = [
+                {"label": "Track guide", "url": f"/projects/#{track_id}"},
+                {"label": "Projects page", "url": "/projects/"},
+            ]
+            related_links = render_track_links("/", track.get("links", []))
+            starter_text = ""
+            if starter_project.get("site_path"):
+                starter_href = relative_url("/", starter_project["site_path"])
+                starter_link = f'<a href="{starter_href}">{html.escape(starter_project["name"])}</a>'
+            else:
+                starter_link = f'<a href="{html.escape(starter_project["url"])}" target="_blank" rel="noreferrer">{html.escape(starter_project["name"])}</a>'
+            starter_text = f"""
+              <p class="project-track-home-note">
+                <span class="track-route-label">Proof</span>
+                Start with {starter_link}. {html.escape(starter_reason)}
+              </p>
             """
-        )
+            context_text = ""
+            if context_feature and context_feature.get("title") and context_feature.get("url"):
+                context_href = context_feature["url"]
+                context_external = context_href.startswith("http")
+                context_target = ' target="_blank" rel="noreferrer"' if context_external else ""
+                if not context_external:
+                    context_href = relative_url("/", context_href)
+                context_text = f"""
+                  <p class="project-track-home-note">
+                    <span class="track-route-label">Context</span>
+                    Then read <a href="{html.escape(context_href)}"{context_target}>{html.escape(context_feature["title"])}</a> if you want the higher-context explanation behind the batch.
+                  </p>
+                """
+
+            anchor_cards.append(
+                f"""
+                <article class="project-track-home-card">
+                  <div class="project-track-home-head">
+                    <p class="meta">Repo track</p>
+                    <h3>{html.escape(track['title'])}</h3>
+                    <p>{html.escape(track['summary'])}</p>
+                    {starter_text}
+                    {context_text}
+                  </div>
+                  <div class="project-track-intro-grid project-track-home-pair">
+                    {render_project_card(proof_card, "/", extra_links=proof_links, card_class="feature-card feature-card-proof")}
+                    {context_card}
+                  </div>
+                  <div class="path-links project-track-links">
+                    {''.join(related_links)}
+                  </div>
+                </article>
+                """
+            )
+
+        if anchor_cards:
+            repo_tracks_html = f"""
+            <section class="section section-frame section-frame-open-source section-frame-project-tracks">
+              <div class="section-head section-head-stack">
+                <h2>One repo per track</h2>
+                <p class="section-note">The homepage only needs one clear repo proof and one context route for each batch. This pass makes those two jobs explicit so the first click is easier to trust. The deeper grouped inventory, shared notes, and Oracle context stay on the <a href="{relative_url('/', '/projects/')}">projects page</a>.</p>
+              </div>
+              <div class="project-track-home-grid">
+                {''.join(anchor_cards)}
+              </div>
+            </section>
+            """
 
     body = f"""
     <section class="hero">
@@ -499,17 +860,10 @@ def render_homepage(config, posts, projects, case_studies):
     </section>
 
     {showcase_html}
+    {proof_html}
+    {discovery_html}
 
-    <section class="section section-frame section-frame-open-source">
-      <div class="section-head section-head-stack">
-        <h2>Selected repositories</h2>
-        <p class="section-note">Small Python and OCI Function tools from workflow automation, release-note review, docs work, and platform operations.</p>
-        <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-      <div class="feature-grid repo-grid">
-        {''.join(project_cards)}
-      </div>
-    </section>
+    {repo_tracks_html}
     """
     return page_layout(
         config,
@@ -520,7 +874,7 @@ def render_homepage(config, posts, projects, case_studies):
     )
 
 
-def render_blog_index(config, posts):
+def render_blog_index(config, posts, external_writing):
     featured_posts = []
     featured_slugs = config.get("home_featured_post_slugs", [])[:3]
     for slug in featured_slugs:
@@ -557,31 +911,18 @@ def render_blog_index(config, posts):
             """
         )
 
-    oracle_blog_links = config.get("oracle_blog_links", [])[:3]
-    oracle_blog_items = []
-    for item in oracle_blog_links:
-        title = html.escape(item["title"])
-        url = html.escape(item["url"])
-        meta = html.escape(item.get("meta", "Oracle Blogs"))
-        oracle_blog_items.append(
-            f"""
-            <article class="feature-card oracle-blog-card">
-              <p class="meta">{meta}</p>
-              <h3><a href="{url}" target="_blank" rel="noreferrer">{title}</a></h3>
-            </article>
-            """
-        )
+    oracle_blog_items = render_external_writing_cards("/blog/", external_writing)
 
     oracle_blogs_section = ""
     if oracle_blog_items:
         oracle_author_url = html.escape(config.get("oracle_blogs_url", "https://blogs.oracle.com/"))
         oracle_blogs_section = f"""
-        <section class="section oracle-blogs-section">
+        <section class="section section-frame section-frame-spotlight oracle-blogs-section">
           <div class="section-head section-head-stack oracle-blogs-head">
-            <h2>Oracle writing</h2>
+            <h2>Published elsewhere</h2>
             <p class="section-note oracle-blogs-note">Selected Oracle posts plus my <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">author profile</a>.</p>
           </div>
-          <div class="feature-grid oracle-blogs-grid">
+          <div class="external-grid oracle-blogs-grid">
             {''.join(oracle_blog_items)}
           </div>
         </section>
@@ -755,6 +1096,207 @@ def render_about_page(config):
     )
 
 
+def render_projects_page(config, projects, repo_tracks, posts, external_writing):
+    project_lookup = {project["name"]: project for project in projects}
+    jump_links = []
+    track_sections = []
+
+    for track in repo_tracks:
+        track_id = slugify(track["title"])
+        jump_links.append(f'<a class="jump-area-link" href="#{html.escape(track_id)}">{html.escape(track["title"])}</a>')
+
+        starter_project_name = track.get("starter_project")
+        starter_reason = track.get("starter_reason", "")
+        starter_project = project_lookup.get(starter_project_name) if starter_project_name else None
+        context_feature = track.get("context_feature")
+
+        project_cards = []
+        for name in track.get("projects", []):
+            if name == starter_project_name:
+                continue
+            project = project_lookup.get(name)
+            if not project:
+                continue
+            project_cards.append(render_project_card(project, "/projects/"))
+
+        related_links = render_track_links("/projects/", track.get("links", []))
+
+        starter_html = ""
+        if starter_project:
+            if starter_project.get("site_path"):
+                starter_link = f'<a href="{relative_url("/projects/", starter_project["site_path"])}">{html.escape(starter_project["name"])}</a>'
+            else:
+                starter_link = f'<a href="{html.escape(starter_project["url"])}" target="_blank" rel="noreferrer">{html.escape(starter_project["name"])}</a>'
+            starter_html = f"""
+            <p class="section-note project-track-pattern">
+              One proof and one context link is enough to start this track cleanly.
+            </p>
+            <p class="section-note project-track-starter">
+              Start with {starter_link}
+              if you want the clearest first example in this track. {html.escape(starter_reason)}
+            </p>
+            """
+
+        intro_cards = []
+        if starter_project:
+            starter_card = dict(starter_project)
+            starter_card["label"] = f"Starter repo · {track['title']}"
+            intro_cards.append(render_project_card(starter_card, "/projects/", card_class="feature-card feature-card-proof"))
+        if context_feature:
+            intro_cards.append(
+                render_context_feature_card(
+                    "/projects/",
+                    {
+                        **context_feature,
+                        "meta": context_feature.get("meta", f"Track context · {track['title']}"),
+                    },
+                    card_class="feature-card feature-card-context",
+                    default_cta="Read context",
+                )
+            )
+
+        intro_html = ""
+        if intro_cards:
+            intro_html = f"""
+            <div class="project-track-intro-grid">
+              {''.join(intro_cards)}
+            </div>
+            """
+
+        repo_grid_html = ""
+        if project_cards:
+            repo_grid_html = f"""
+            <div class="project-track-rest">
+              <p class="project-track-subhead">More repos in this track</p>
+              <div class="feature-grid repo-grid">
+                {''.join(project_cards)}
+              </div>
+            </div>
+            """
+
+        track_sections.append(
+            f"""
+            <section class="section section-frame section-frame-explore project-track-section" id="{html.escape(track_id)}">
+              <div class="section-head section-head-stack">
+                <h2>{html.escape(track['title'])}</h2>
+                <p class="section-note">{html.escape(track['summary'])}</p>
+                {starter_html}
+              </div>
+              {intro_html}
+              {repo_grid_html}
+              <div class="path-links project-track-links">
+                {''.join(related_links)}
+              </div>
+            </section>
+            """
+        )
+
+    all_project_cards = []
+    for project in projects:
+        if project["name"] == "winstonlin-site":
+            continue
+        all_project_cards.append(render_project_card(project, "/projects/"))
+
+    project_map = f"""
+    <section class="section section-frame section-frame-explore project-map-section">
+      <div class="section-head section-head-stack">
+        <h2>How the repo tracks fit together</h2>
+        <p class="section-note">The useful split here is between checks, reusable artifacts, and starter patterns with a clean handoff boundary.</p>
+      </div>
+      <figure class="diagram-frame project-map-frame">
+        <img src="{static_url('/projects/', 'diagrams/projects-track-map.svg')}" alt="Diagram showing the three repo tracks and how they route from repeated workflow problems to GitHub proof and short notes." loading="lazy">
+      </figure>
+    </section>
+    """
+
+    latest_posts = []
+    project_featured_slugs = config.get(
+        "projects_featured_post_slugs",
+        [
+            "repeated-work-should-become-a-check",
+            "fun-projects-get-stronger-when-they-leave-a-reusable-artifact",
+            "starter-repos-should-stop-at-the-right-boundary",
+        ],
+    )
+    for slug in project_featured_slugs[:3]:
+        post = find_post(posts, slug)
+        if post:
+            latest_posts.append(
+                f"""
+                <article class="feature-card">
+                  <p class="meta">{html.escape(post.date)}</p>
+                  <h3><a href="{relative_url('/projects/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
+                  <p>{html.escape(post.summary)}</p>
+                </article>
+                """
+            )
+
+    external_writing_section = ""
+    supplemental_external = external_writing[1:] if len(external_writing) > 1 else []
+    external_cards = render_external_writing_cards("/projects/", supplemental_external)
+    if external_cards:
+        author_href = html.escape(config.get("oracle_blogs_url", "https://blogs.oracle.com/"))
+        external_writing_section = f"""
+        <section class="section section-frame section-frame-spotlight">
+          <div class="section-head section-head-stack">
+            <h2>More Oracle context around the starter work</h2>
+            <p class="section-note">A couple of additional Oracle posts that expand the OCI Functions side of the same starter-pattern preferences. <a class="oracle-blogs-link" href="{author_href}" target="_blank" rel="noreferrer">Author profile</a>.</p>
+          </div>
+          <div class="external-grid">
+            {''.join(external_cards)}
+          </div>
+        </section>
+        """
+
+    body = f"""
+    <section class="page-hero page-hero-projects">
+      <div class="page-hero-copy">
+        <p class="eyebrow">Projects</p>
+        <h1>Small tools, starter patterns, and reusable workflow artifacts.</h1>
+        <p class="lead">This is the cleanest route through the public repo work: grouped by the kind of repeated problem each batch is trying to make more visible, more reusable, or easier to rerun.</p>
+      </div>
+    </section>
+    <section class="section jump-section">
+      <div class="section-head section-head-stack">
+        <h2>Jump by project track</h2>
+        <p class="section-note">A short path if you care more about checks, planning artifacts, or OCI Functions starter patterns.</p>
+      </div>
+      <div class="jump-scroller">
+        {''.join(jump_links)}
+      </div>
+    </section>
+    {project_map}
+    {''.join(track_sections)}
+    {external_writing_section}
+    <section class="section section-frame section-frame-spotlight">
+      <div class="section-head section-head-stack">
+        <h2>Notes behind the repos</h2>
+        <p class="section-note">Short writing that explains the standard behind the public repo work, not just the repo inventory.</p>
+      </div>
+      <div class="feature-grid">
+        {''.join(latest_posts)}
+      </div>
+    </section>
+    <section class="section section-frame section-frame-open-source">
+      <div class="section-head section-head-stack">
+        <h2>All repositories</h2>
+        <p class="section-note">The full public set currently called out on the site.</p>
+        <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub profile</a>
+      </div>
+      <div class="feature-grid repo-grid">
+        {''.join(all_project_cards)}
+      </div>
+    </section>
+    """
+    return page_layout(
+        config,
+        "Projects",
+        body,
+        "/projects/",
+        meta_description="Grouped public projects, workflow tools, and OCI Functions starter patterns from Winston Lin.",
+    )
+
+
 def render_post_page(config, post, posts):
     current_path = f"/blog/{post.slug}/"
     post_diagram, diagram_heading = render_diagram(post.slug, current_path)
@@ -781,6 +1323,111 @@ def render_post_page(config, post, posts):
     )
 
 
+def render_project_spotlight_page(config, spotlight, projects, repo_tracks):
+    project_lookup = {project["name"]: project for project in projects}
+    project = project_lookup.get(spotlight["project"])
+    if not project:
+        raise KeyError(f"Missing project metadata for spotlight: {spotlight['project']}")
+
+    current_path = project.get("site_path", f"/projects/{project['name']}/")
+    track = find_project_track(repo_tracks, project["name"])
+
+    proof_cards = []
+    for point in spotlight.get("proof_points", [])[:3]:
+        proof_cards.append(
+            f"""
+            <article class="proof-card">
+              <p class="proof-label">{html.escape(point['label'])}</p>
+              <p>{html.escape(point['text'])}</p>
+            </article>
+            """
+        )
+
+    track_links = []
+    track_context_card = render_project_card(project, current_path)
+    if track:
+        track_id = slugify(track["title"])
+        track_links = [f'<a href="{relative_url(current_path, f"/projects/#{track_id}")}">Open full track</a>']
+        track_links.extend(render_track_links(current_path, track.get("links", []), limit=2))
+        track_context_card = f"""
+        <article class="feature-card">
+          <p class="meta">Project track</p>
+          <h3><a href="{relative_url(current_path, f'/projects/#{track_id}')}">{html.escape(track['title'])}</a></h3>
+          <p>This repo sits inside the {html.escape(track['title'].lower())} batch, where the shared standard is {html.escape(track['summary'].lower())}</p>
+          <div class="card-links">
+            {''.join(track_links)}
+          </div>
+        </article>
+        """
+
+    context_feature_card = track_context_card
+    if track and track.get("context_feature"):
+        context_feature_card = render_context_feature_card(current_path, track["context_feature"], default_cta="Read context")
+
+    body = f"""
+    <section class="page-hero page-hero-projects">
+      <div class="page-hero-copy">
+        <p class="eyebrow">{html.escape(spotlight['eyebrow'])}</p>
+        <h1>{html.escape(spotlight['headline'])}</h1>
+        <p class="lead">{html.escape(spotlight['lead'])}</p>
+        <div class="hero-links">
+          <a class="button-link primary" href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">Open GitHub repo</a>
+          <a class="button-link" href="{relative_url(current_path, '/projects/')}">Back to projects</a>
+        </div>
+      </div>
+    </section>
+    <section class="section section-frame section-frame-explore">
+      <div class="section-head section-head-stack">
+        <h2>Why this repo carries the track</h2>
+        <p class="section-note">A short site-side guide before the proof layer on GitHub.</p>
+      </div>
+      <div class="proof-grid project-proof-grid">
+        {''.join(proof_cards)}
+      </div>
+    </section>
+    <section class="section section-frame section-frame-spotlight">
+      <div class="section-head section-head-stack">
+        <h2>{html.escape(spotlight['artifact_heading'])}</h2>
+        <p class="section-note">{html.escape(project['name'])} as a first useful success, not only a demo.</p>
+      </div>
+      <div class="project-spotlight-layout">
+        <div class="project-spotlight-copy">
+          <p>{html.escape(spotlight['artifact_text'])}</p>
+          <p>{html.escape(spotlight['next_text'])}</p>
+        </div>
+        <div class="project-code-card">
+          <p class="meta">Quick run</p>
+          <pre><code>{html.escape(spotlight['sample_command'])}</code></pre>
+          <p class="meta">Sample output shape</p>
+          <pre><code>{html.escape(spotlight['sample_output'])}</code></pre>
+        </div>
+      </div>
+    </section>
+    <section class="section section-frame section-frame-open-source">
+      <div class="section-head section-head-stack">
+        <h2>{html.escape(spotlight['next_heading'])}</h2>
+        <p class="section-note">{html.escape(project['summary'])}</p>
+      </div>
+      <div class="project-next-grid">
+        <article class="feature-card">
+          <p>{html.escape(spotlight['next_text'])}</p>
+          <div class="card-links">
+            {''.join(track_links)}
+          </div>
+        </article>
+        {context_feature_card}
+      </div>
+    </section>
+    """
+    return page_layout(
+        config,
+        project["name"],
+        body,
+        current_path,
+        meta_description=spotlight["lead"],
+    )
+
+
 def ensure_clean_dist():
     if OUTPUT_DIR.exists():
         shutil.rmtree(OUTPUT_DIR)
@@ -793,12 +1440,18 @@ def write_text(path, content):
     Path(path).write_text(content)
 
 
-def write_support_files(config, posts):
+def write_support_files(config, posts, project_spotlights):
     site_url = config.get("site_url", "").rstrip("/")
     if not site_url:
         return
 
-    urls = ["/", "/about/", "/blog/", "/case-studies/"] + [f"/blog/{post.slug}/" for post in posts]
+    spotlight_urls = []
+    for spotlight in project_spotlights:
+        project_name = spotlight.get("project")
+        if project_name:
+            spotlight_urls.append(f"/projects/{project_name}/")
+
+    urls = ["/", "/about/", "/blog/", "/case-studies/", "/projects/"] + spotlight_urls + [f"/blog/{post.slug}/" for post in posts]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path in urls:
         sitemap.append("  <url>")
@@ -838,14 +1491,14 @@ def render_not_found_page(config):
       <p class="eyebrow">Not found</p>
       <h1>This page wandered off</h1>
       <p>The link may be old, or I may have moved something while cleaning up the site.</p>
-      <p><a href="../">Back home</a></p>
+      <p><a href="./">Back home</a></p>
     </section>
     """
     return page_layout(
         config,
         "Not Found",
         body,
-        "/404/",
+        "/404.html",
         meta_description="Winston Lin portfolio page not found.",
     )
 
@@ -853,23 +1506,35 @@ def render_not_found_page(config):
 def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
+    project_spotlights = load_json(CONTENT_DIR / "project_spotlights.json")
+    repo_tracks = load_json(CONTENT_DIR / "repo_tracks.json")
+    external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
+    discovery_paths = load_json(CONTENT_DIR / "discovery_paths.json")
+    proof_points = load_json(CONTENT_DIR / "proof_points.json")
     posts = load_posts()
 
     ensure_clean_dist()
     shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, case_studies))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, case_studies, discovery_paths, proof_points, repo_tracks, external_writing))
     write_text(OUTPUT_DIR / "about" / "index.html", render_about_page(config))
-    write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts))
+    write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts, external_writing))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
+    write_text(OUTPUT_DIR / "projects" / "index.html", render_projects_page(config, projects, repo_tracks, posts, external_writing))
     write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
+
+    for spotlight in project_spotlights:
+        project_name = spotlight.get("project")
+        if not project_name:
+            continue
+        write_text(OUTPUT_DIR / "projects" / project_name / "index.html", render_project_spotlight_page(config, spotlight, projects, repo_tracks))
 
     for post in posts:
         write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post, posts))
 
-    write_support_files(config, posts)
+    write_support_files(config, posts, project_spotlights)
 
 
 if __name__ == "__main__":

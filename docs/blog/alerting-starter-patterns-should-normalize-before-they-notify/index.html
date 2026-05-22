@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerting Starter Patterns Should Normalize Before They Notify | Winston Lin</title>
+  <meta name="description" content="A starter alerting repo gets more reusable when it turns raw alert payloads into one readable message shape before the workflow hands the problem to a person.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/alerting-starter-patterns-should-normalize-before-they-notify/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="Alerting Starter Patterns Should Normalize Before They Notify | Winston Lin">
+  <meta property="og:description" content="A starter alerting repo gets more reusable when it turns raw alert payloads into one readable message shape before the workflow hands the problem to a person.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/alerting-starter-patterns-should-normalize-before-they-notify/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-post">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../../projects/">Projects</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-05-06</p>
+      <h1>Alerting Starter Patterns Should Normalize Before They Notify</h1>
+      <p class="post-summary">A starter alerting repo gets more reusable when it turns raw alert payloads into one readable message shape before the workflow hands the problem to a person.</p>
+      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><a href="../">Back to all writing</a><a href="../homepages-should-offer-short-paths-by-intent/">Previous note</a><a href="../decision-logs-should-keep-the-revisit-date-visible/">Next note</a></nav>
+      <p>Some starter alerting repos stop too early. They show that an event can be forwarded into chat. That is technically true and still not very useful.</p>
+<p>If the payload stays noisy, the next system boundary is just a human reader doing cleanup by eye.</p>
+<h2>Normalize the message before it reaches a person</h2>
+<p><code>oci-fn-slack-alert-normalizer</code> is the kind of starter pattern I want more of. The repo does not try to build a whole incident platform. It does one smaller and more believable job:</p>
+<ul>
+<li>map severity into one consistent scale</li>
+<li>keep the title readable</li>
+<li>preserve the resource context</li>
+<li>return one Slack-ready message shape</li>
+</ul>
+<p>That is enough to make the pattern reusable.</p>
+
+
+    <figure class="post-diagram">
+      <img src="../../diagrams/alert-normalization-flow.svg" alt="Diagram showing noisy alerts being normalized into one readable message before they reach chat or an on-call reader.">
+    </figure>
+    
+<h2>Human-facing boundaries are still boundaries</h2>
+<p>I think this is where a lot of starter repos get weaker than they need to. They treat the step before a person reads the message as if it were just presentation. It is not.</p>
+<p>That is still a boundary with a contract. If the alert that reaches chat is inconsistent, the operator is doing normalization work that the starter repo could have made visible much earlier.</p>
+<h2>A useful starter repo should leave one readable artifact</h2>
+<p>For alerting, the useful artifact is not only that the function ran. It is that the output is already shaped for the next real consumer. That might be:</p>
+<ul>
+<li>a normalized severity</li>
+<li>one stable title format</li>
+<li>a compact resource reference</li>
+<li>a message block another alerting step can reuse</li>
+</ul>
+<p>That is what makes the first run feel like proof instead of only plumbing.</p>
+<h2>The bar I keep using</h2>
+<p>If a starter alerting repo helps me answer &quot;what would the on-call person actually read&quot; after one local run, it is already doing the right job. That is usually enough boundary clarity for the rest of the workflow to attach cleanly later.</p>
+    </article>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+</body>
+</html>

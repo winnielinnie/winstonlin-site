@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starter Patterns Should Leave One Stable Handoff Artifact | Winston Lin</title>
+  <meta name="description" content="A starter repo gets stronger when the first run leaves behind one compact artifact that a downstream system could actually consume instead of forcing every later step to re-parse the same raw input.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/starter-patterns-should-leave-one-stable-handoff-artifact/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="Starter Patterns Should Leave One Stable Handoff Artifact | Winston Lin">
+  <meta property="og:description" content="A starter repo gets stronger when the first run leaves behind one compact artifact that a downstream system could actually consume instead of forcing every later step to re-parse the same raw input.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/starter-patterns-should-leave-one-stable-handoff-artifact/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-post">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../../projects/">Projects</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <article class="post-page prose">
+      <p class="meta">2026-05-05</p>
+      <h1>Starter Patterns Should Leave One Stable Handoff Artifact</h1>
+      <p class="post-summary">A starter repo gets stronger when the first run leaves behind one compact artifact that a downstream system could actually consume instead of forcing every later step to re-parse the same raw input.</p>
+      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><a href="../">Back to all writing</a><a href="../decision-logs-should-keep-the-revisit-date-visible/">Previous note</a><a href="../docs-checks-should-point-at-publish-blockers/">Next note</a></nav>
+      <p>A lot of starter repos show the trigger and stop there. That is useful, but it still leaves the handoff vague. I keep wanting the first example to leave one stable artifact behind.</p>
+<p>That gives the next system something concrete to trust instead of asking every downstream step to reinterpret the raw event all over again.</p>
+<h2>One artifact should carry the handoff</h2>
+<p><code>oci-fn-file-manifest-writer</code> is the kind of example I want more of. The input is just a batch of file paths. The useful part is what survives the run:</p>
+<ul>
+<li>one manifest</li>
+<li>one file count</li>
+<li>one grouping shape</li>
+<li>one extension summary the next job can consume</li>
+</ul>
+<p>That is a much better starter pattern than a sample that only says &quot;an event arrived.&quot;</p>
+
+
+    <figure class="post-diagram">
+      <img src="../../diagrams/handoff-artifact-map.svg" alt="Diagram showing noisy inbound file events being condensed into one stable manifest artifact that downstream systems can consume.">
+    </figure>
+    
+<h2>The first run should remove downstream guesswork</h2>
+<p>Good starter patterns do not need to model the entire production workflow. They should make the next handoff easier to inspect. If a downstream worker, queue consumer, or reconciliation job can read one manifest instead of reparsing five object names and inventing its own grouping rules, the starter repo has already done something real.</p>
+<p>That is the standard I keep using. The first output should reduce repeated interpretation work later.</p>
+<h2>This is how a boundary-first repo becomes reusable</h2>
+<p>I like boundary-first starter repos because they stop at a believable seam. The stronger version also leaves behind a believable contract artifact. That might be:</p>
+<ul>
+<li>a routing decision</li>
+<li>a validation result</li>
+<li>a manifest for the next batch job</li>
+</ul>
+<p>Those artifacts make it easier to attach the next real system without rewriting the boundary story from scratch.</p>
+<h2>What I keep optimizing for</h2>
+<p>If the first local run leaves behind something another system could use immediately, the sample is already stronger than most starter repos. That is usually enough proof. The rest of the production stack can come later.</p>
+    </article>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+</body>
+</html>

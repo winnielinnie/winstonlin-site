@@ -1,0 +1,59 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Project batch diagram</title>
+  <desc id="desc">Diagram showing how a strong projects page groups repos into a batch with a standard, related note, and clear next clicks.</desc>
+  <rect width="1200" height="760" rx="36" fill="#F4EEE5"/>
+  <rect x="28" y="28" width="1144" height="704" rx="30" fill="#FCF8F3" stroke="#D8CCBE" stroke-width="2"/>
+  <circle cx="186" cy="140" r="94" fill="#EFE1D2"/>
+  <circle cx="994" cy="158" r="106" fill="#E3ECE6"/>
+  <circle cx="1028" cy="610" r="86" fill="#F0E4D7"/>
+
+  <rect x="84" y="112" width="280" height="196" rx="26" fill="#FFF9F2" stroke="#CDBAA8" stroke-width="2"/>
+  <text x="116" y="158" fill="#6D3F2C" font-family="Arial, sans-serif" font-size="24" font-weight="700">Flat repo list</text>
+  <text x="116" y="198" fill="#4F4741" font-family="Arial, sans-serif" font-size="19">One long inventory</text>
+  <text x="116" y="228" fill="#4F4741" font-family="Arial, sans-serif" font-size="19">Mixed repo types</text>
+  <text x="116" y="258" fill="#4F4741" font-family="Arial, sans-serif" font-size="19">Reader must infer pattern</text>
+
+  <rect x="446" y="92" width="318" height="238" rx="28" fill="#173A37"/>
+  <text x="482" y="142" fill="#BEE5DB" font-family="Arial, sans-serif" font-size="18" font-weight="700">BETTER PROJECTS PAGE</text>
+  <text x="482" y="194" fill="#FFFFFF" font-family="Georgia, serif" font-size="42" font-weight="600">Name the batch</text>
+  <rect x="482" y="224" width="244" height="76" rx="18" fill="#25554F"/>
+  <text x="508" y="256" fill="#F7FFFD" font-family="Arial, sans-serif" font-size="20" font-weight="700">Workflow checks</text>
+  <text x="508" y="284" fill="#D8EEE7" font-family="Arial, sans-serif" font-size="18">Make repeated review visible</text>
+
+  <rect x="848" y="112" width="272" height="196" rx="26" fill="#FFF9F2" stroke="#B8C9C4" stroke-width="2"/>
+  <text x="880" y="158" fill="#204742" font-family="Arial, sans-serif" font-size="24" font-weight="700">Reader can tell</text>
+  <text x="880" y="198" fill="#485650" font-family="Arial, sans-serif" font-size="19">What repeated problem</text>
+  <text x="880" y="228" fill="#485650" font-family="Arial, sans-serif" font-size="19">What standard ties it together</text>
+  <text x="880" y="258" fill="#485650" font-family="Arial, sans-serif" font-size="19">Where to click next</text>
+
+  <rect x="118" y="436" width="270" height="180" rx="24" fill="#FFF8F1" stroke="#D1BFAD" stroke-width="2"/>
+  <text x="150" y="484" fill="#6D3F2C" font-family="Arial, sans-serif" font-size="22" font-weight="700">Grouped repos</text>
+  <text x="150" y="520" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Checks</text>
+  <text x="150" y="548" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Artifacts</text>
+  <text x="150" y="576" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Starter patterns</text>
+
+  <rect x="466" y="436" width="270" height="180" rx="24" fill="#FFF8F1" stroke="#D1BFAD" stroke-width="2"/>
+  <text x="498" y="484" fill="#6D3F2C" font-family="Arial, sans-serif" font-size="22" font-weight="700">Batch note</text>
+  <text x="498" y="520" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Short explanation</text>
+  <text x="498" y="548" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Why these repos belong together</text>
+  <text x="498" y="576" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">What the pattern proves</text>
+
+  <rect x="814" y="436" width="270" height="180" rx="24" fill="#FFF8F1" stroke="#D1BFAD" stroke-width="2"/>
+  <text x="846" y="484" fill="#6D3F2C" font-family="Arial, sans-serif" font-size="22" font-weight="700">Next clicks</text>
+  <text x="846" y="520" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Repo for proof</text>
+  <text x="846" y="548" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Case study for context</text>
+  <text x="846" y="576" fill="#4F4741" font-family="Arial, sans-serif" font-size="18">Writing for the standard</text>
+
+  <path d="M364 210H446" stroke="#81503A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M764 210H848" stroke="#81503A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M605 330V386H252V436" stroke="#81503A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M605 386H601V436" stroke="#81503A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M605 386H949V436" stroke="#81503A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <circle cx="446" cy="210" r="8" fill="#81503A"/>
+  <circle cx="848" cy="210" r="8" fill="#81503A"/>
+  <circle cx="605" cy="386" r="8" fill="#81503A"/>
+
+  <text x="84" y="682" fill="#574E47" font-family="Arial, sans-serif" font-size="24" font-weight="700">The page gets stronger when it explains the pattern, not just the inventory.</text>
+  <text x="84" y="714" fill="#6A625B" font-family="Arial, sans-serif" font-size="19">GitHub can prove each repo. The projects page should explain what the batch adds up to.</text>
+</svg>

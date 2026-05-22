@@ -1,0 +1,40 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Alerting starter patterns should normalize before they notify</title>
+  <desc id="desc">Diagram showing noisy raw alerts being normalized into one readable message before they reach chat or an operator.</desc>
+  <rect width="1200" height="720" rx="36" fill="#F5EEE6"/>
+  <rect x="48" y="48" width="1104" height="624" rx="28" fill="#FFFDF9" stroke="#DCCFBE" stroke-width="2"/>
+  <text x="88" y="118" fill="#855D2B" font-family="Manrope, Arial, sans-serif" font-size="22" font-weight="700">Human-facing workflow boundary</text>
+  <text x="88" y="162" fill="#3F3124" font-family="Newsreader, Georgia, serif" font-size="48" font-weight="600">Normalize the message before it reaches a person.</text>
+  <text x="88" y="202" fill="#6A5B4B" font-family="Manrope, Arial, sans-serif" font-size="22">The useful starter pattern is not raw event to chat. It is noisy payload to one readable alert shape.</text>
+  <rect x="88" y="258" width="294" height="304" rx="24" fill="#F7E1D7" stroke="#E3BFAF"/>
+  <text x="120" y="306" fill="#984C35" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">RAW ALERTS</text>
+  <text x="120" y="352" fill="#241A15" font-family="Newsreader, Georgia, serif" font-size="38" font-weight="600">Noisy inbound payloads</text>
+  <rect x="120" y="392" width="228" height="52" rx="14" fill="#FFF8F3" stroke="#E7CBBF"/>
+  <text x="144" y="424" fill="#4D3D33" font-family="Manrope, Arial, sans-serif" font-size="21">Mixed severity labels</text>
+  <rect x="120" y="456" width="228" height="52" rx="14" fill="#FFF8F3" stroke="#E7CBBF"/>
+  <text x="144" y="488" fill="#4D3D33" font-family="Manrope, Arial, sans-serif" font-size="21">Uneven titles and fields</text>
+  <rect x="120" y="520" width="228" height="52" rx="14" fill="#FFF8F3" stroke="#E7CBBF"/>
+  <text x="144" y="552" fill="#4D3D33" font-family="Manrope, Arial, sans-serif" font-size="21">Hard to scan in chat</text>
+  <rect x="454" y="240" width="294" height="340" rx="24" fill="#173B39"/>
+  <text x="486" y="288" fill="#BFE8DF" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">NORMALIZATION LAYER</text>
+  <text x="486" y="334" fill="#FFFFFF" font-family="Newsreader, Georgia, serif" font-size="38" font-weight="600">Starter repo proves the shape</text>
+  <rect x="486" y="386" width="228" height="56" rx="16" fill="#25534F"/>
+  <text x="512" y="420" fill="#EBFFFA" font-family="Manrope, Arial, sans-serif" font-size="21">Map severity</text>
+  <rect x="486" y="456" width="228" height="56" rx="16" fill="#25534F"/>
+  <text x="512" y="490" fill="#EBFFFA" font-family="Manrope, Arial, sans-serif" font-size="21">Keep title and resource</text>
+  <rect x="486" y="526" width="228" height="56" rx="16" fill="#25534F"/>
+  <text x="512" y="560" fill="#EBFFFA" font-family="Manrope, Arial, sans-serif" font-size="21">Return one readable payload</text>
+  <rect x="820" y="258" width="292" height="304" rx="24" fill="#EEE4CF" stroke="#D5C39B"/>
+  <text x="852" y="306" fill="#7C6330" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">READABLE OUTPUT</text>
+  <text x="852" y="352" fill="#2F261B" font-family="Newsreader, Georgia, serif" font-size="38" font-weight="600">One message the operator can use</text>
+  <rect x="852" y="392" width="228" height="144" rx="18" fill="#FFFDF8" stroke="#DBCFB4"/>
+  <text x="878" y="428" fill="#2F261B" font-family="Manrope, Arial, sans-serif" font-size="21" font-weight="700">[high] DB CPU High</text>
+  <text x="878" y="464" fill="#5A4C39" font-family="Manrope, Arial, sans-serif" font-size="20">Severity: high</text>
+  <text x="878" y="494" fill="#5A4C39" font-family="Manrope, Arial, sans-serif" font-size="20">Resource: db-prod-1</text>
+  <text x="878" y="524" fill="#5A4C39" font-family="Manrope, Arial, sans-serif" font-size="20">CPU above threshold</text>
+  <path d="M396 410H438" stroke="#B97A58" stroke-width="12" stroke-linecap="round"/>
+  <path d="M724 410H804" stroke="#B97A58" stroke-width="12" stroke-linecap="round"/>
+  <path d="M418 382L458 410L418 438" stroke="#B97A58" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M778 382L818 410L778 438" stroke="#B97A58" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="88" y="628" fill="#665747" font-family="Manrope, Arial, sans-serif" font-size="22">A starter alerting repo becomes more reusable when the first run replaces raw noise with one message shape the next human or system can trust.</text>
+</svg>

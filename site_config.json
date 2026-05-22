@@ -9,7 +9,13 @@
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
   "oracle_blogs_url": "https://blogs.oracle.com/authors/winstonlin_1/",
-  "home_showcase_note_slug": "what-working-with-codex-taught-me-about-ai-work",
+  "home_showcase_note": {
+    "slug": "discovery-paths-should-name-the-first-move",
+    "label": "First-move note",
+    "meta": "Writing",
+    "cta": "Read note"
+  },
+  "home_showcase_note_slug": "discovery-paths-should-name-the-first-move",
   "oracle_blog_links": [
     {
       "title": "OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists",
@@ -38,8 +44,25 @@
     "Cross-border businesses"
   ],
   "home_featured_post_slugs": [
+    "discovery-paths-should-name-the-first-move",
+    "start-cards-should-name-the-route",
+    "github-profiles-should-keep-one-context-link-per-track",
+    "project-tracks-should-point-to-published-work",
+    "homepages-should-offer-short-paths-by-intent",
+    "alerting-starter-patterns-should-normalize-before-they-notify",
+    "decision-logs-should-keep-the-revisit-date-visible",
+    "starter-patterns-should-leave-one-stable-handoff-artifact",
+    "anchor-repos-should-carry-the-batch",
+    "repo-tracks-should-recommend-a-first-example",
+    "project-pages-should-explain-the-batch",
+    "good-small-repos-should-show-the-second-move",
+    "github-profiles-should-choose-the-first-click",
+    "repeated-work-should-become-a-check",
+    "github-should-prove-and-the-site-should-route",
+    "fun-projects-get-stronger-when-they-leave-a-reusable-artifact",
+    "small-repo-batches-should-teach-a-pattern",
+    "starter-repos-should-stop-at-the-right-boundary",
     "what-working-with-codex-taught-me-about-ai-work",
-    "incident-timelines-need-a-stable-shape",
     "dependencies-need-owners-before-they-need-slides",
     "examples-are-the-interface-for-small-tools",
     "public-repos-need-a-short-path-to-first-useful-success",
@@ -47,6 +70,31 @@
     "public-surfaces-should-route-not-recite",
     "fun-projects-are-how-i-test-workflow-ideas",
     "one-page-tools-beat-premature-decks"
+  ],
+  "projects_featured_post_slugs": [
+    "discovery-paths-should-name-the-first-move",
+    "start-cards-should-name-the-route",
+    "project-tracks-should-point-to-published-work",
+    "alerting-starter-patterns-should-normalize-before-they-notify",
+    "decision-logs-should-keep-the-revisit-date-visible",
+    "starter-patterns-should-leave-one-stable-handoff-artifact",
+    "docs-checks-should-point-at-publish-blockers",
+    "fun-projects-get-stronger-when-they-leave-a-reusable-artifact",
+    "validation-gates-should-fail-in-a-useful-shape"
+  ],
+  "home_featured_project_names": [
+    "repo-onramp-check",
+    "doc-ship-check",
+    "release-note-diff-cli",
+    "incident-timeline-formatter",
+    "one-page-canvas",
+    "tiny-deck-linter",
+    "decision-journal-cli",
+    "dependency-risk-check",
+    "exec-brief-cli",
+    "oci-fn-object-storage-router",
+    "oci-fn-csv-quality-gate",
+    "oci-fn-file-manifest-writer"
   ],
   "experience_highlights": [
     "Principal Product Manager for OCI Functions, focused on developer experience and execution model",

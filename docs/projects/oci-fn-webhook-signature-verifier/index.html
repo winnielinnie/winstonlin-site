@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oci-fn-webhook-signature-verifier | Winston Lin</title>
+  <meta name="description" content="This guide exists because signature checks are one of those boundaries that look obvious until they are buried inside a bigger integration. The repo keeps the scope narrow: raw payload in, computed HMAC out, pass or fail made visible.">
+  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/projects/oci-fn-webhook-signature-verifier/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <meta property="og:title" content="oci-fn-webhook-signature-verifier | Winston Lin">
+  <meta property="og:description" content="This guide exists because signature checks are one of those boundaries that look obvious until they are buried inside a bigger integration. The repo keeps the scope narrow: raw payload in, computed HMAC out, pass or fail made visible.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/projects/oci-fn-webhook-signature-verifier/">
+  <meta name="twitter:card" content="summary">
+</head>
+<body class="page-projects">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-brand">
+        <p class="site-kicker">San Francisco, CA</p>
+        <div class="site-brand-row">
+          <figure class="site-portrait">
+            <img src="../../winston-headshot.jpg" alt="Portrait of Winston">
+          </figure>
+          <a href="../../" class="site-name">Winston Lin</a>
+        </div>
+      </div>
+      <nav><a href="../../">Home</a><a href="../" class="active">Projects</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../../blog/">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+    </header>
+    <main>
+      
+    <section class="page-hero page-hero-projects">
+      <div class="page-hero-copy">
+        <p class="eyebrow">OCI Functions starter patterns</p>
+        <h1>oci-fn-webhook-signature-verifier keeps a small security boundary legible instead of hiding verification inside a larger webhook stack.</h1>
+        <p class="lead">This guide exists because signature checks are one of those boundaries that look obvious until they are buried inside a bigger integration. The repo keeps the scope narrow: raw payload in, computed HMAC out, pass or fail made visible.</p>
+        <div class="hero-links">
+          <a class="button-link primary" href="https://github.com/winnielinnie/oci-fn-webhook-signature-verifier" target="_blank" rel="noreferrer">Open GitHub repo</a>
+          <a class="button-link" href="../">Back to projects</a>
+        </div>
+      </div>
+    </section>
+    <section class="section section-frame section-frame-explore">
+      <div class="section-head section-head-stack">
+        <h2>Why this repo carries the track</h2>
+        <p class="section-note">A short site-side guide before the proof layer on GitHub.</p>
+      </div>
+      <div class="proof-grid project-proof-grid">
+        
+            <article class="proof-card">
+              <p class="proof-label">What it proves</p>
+              <p>A starter security repo gets stronger when it exposes the verification step and the audit output directly instead of hiding the most important boundary inside framework glue.</p>
+            </article>
+            
+            <article class="proof-card">
+              <p class="proof-label">Why it matters in this track</p>
+              <p>It belongs in the OCI Functions starter pattern track because it shows a credible boundary with a believable contract: body, signature, secret, and a small audit payload the next layer can inspect.</p>
+            </article>
+            
+            <article class="proof-card">
+              <p class="proof-label">What survives the first run</p>
+              <p>The verification result is the artifact. It makes the security decision and the computed digest visible enough for later logging, rejection, or replay handling.</p>
+            </article>
+            
+      </div>
+    </section>
+    <section class="section section-frame section-frame-spotlight">
+      <div class="section-head section-head-stack">
+        <h2>What the first useful success looks like</h2>
+        <p class="section-note">oci-fn-webhook-signature-verifier as a first useful success, not only a demo.</p>
+      </div>
+      <div class="project-spotlight-layout">
+        <div class="project-spotlight-copy">
+          <p>The first useful run is a pass or fail decision with the provided and computed signature both visible. That is enough to make the boundary inspectable before you add a webhook gateway, database write, or retry behavior.</p>
+          <p>Use this when a signed webhook flow should prove the verification boundary first, then layer in auth, replay protection, or downstream event handling after the contract is clear.</p>
+        </div>
+        <div class="project-code-card">
+          <p class="meta">Quick run</p>
+          <pre><code>python3 - &lt;&lt;&#x27;PY&#x27;
+import json, hmac, hashlib
+from func import verify_signature
+payload = &#x27;{&quot;event&quot;:&quot;invoice.paid&quot;,&quot;id&quot;:&quot;evt_123&quot;}&#x27;
+secret = &#x27;topsecret&#x27;
+provided = hmac.new(secret.encode(&#x27;utf-8&#x27;), payload.encode(&#x27;utf-8&#x27;), hashlib.sha256).hexdigest()
+valid, computed = verify_signature(secret, payload, provided)
+print(json.dumps({&quot;valid&quot;: valid, &quot;provided_signature&quot;: provided, &quot;computed_signature&quot;: computed}, indent=2))
+PY</code></pre>
+          <p class="meta">Sample output shape</p>
+          <pre><code>{
+  &quot;valid&quot;: true,
+  &quot;provided_signature&quot;: &quot;723b7093e99ad943b3c5f2afe02f66a1e0c2306c26a3cf76fc52be0173ff337d&quot;,
+  &quot;computed_signature&quot;: &quot;723b7093e99ad943b3c5f2afe02f66a1e0c2306c26a3cf76fc52be0173ff337d&quot;
+}</code></pre>
+        </div>
+      </div>
+    </section>
+    <section class="section section-frame section-frame-open-source">
+      <div class="section-head section-head-stack">
+        <h2>Where it routes next</h2>
+        <p class="section-note">Checks inbound webhook signatures with a small audit payload instead of burying the verification step.</p>
+      </div>
+      <div class="project-next-grid">
+        <article class="feature-card">
+          <p>Use this when a signed webhook flow should prove the verification boundary first, then layer in auth, replay protection, or downstream event handling after the contract is clear.</p>
+          <div class="card-links">
+            <a href="../#oci-functions-starter-patterns">Open full track</a><a href="../../blog/starter-repos-should-stop-at-the-right-boundary/">Starter repo note</a><a href="../../case-studies/">Case studies</a>
+          </div>
+        </article>
+        
+    <article class="feature-card">
+      <p class="meta">Published context · Oracle Cloud Infrastructure Blog · 2026-04-07</p>
+      <h3><a href="https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns" target="_blank" rel="noreferrer">Functions Design Patterns</a></h3>
+      <p>A higher-context pattern guide for routing, validation, async execution, and the design checks that keep starter repos useful under real product constraints.</p>
+      <div class="card-links">
+        <a href="https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns" target="_blank" rel="noreferrer">Read post</a>
+      </div>
+    </article>
+    
+      </div>
+    </section>
+    
+    </main>
+    <footer class="site-footer">
+      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
+    </footer>
+  </div>
+</body>
+</html>

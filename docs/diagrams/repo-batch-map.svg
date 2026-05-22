@@ -1,0 +1,62 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Repo batch pattern map</title>
+  <desc id="desc">A diagram showing a coherent small-repo batch flowing from one pattern statement into example repos, proof points, and explicit boundaries.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="60" x2="1060" y2="660" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF9F3"/>
+      <stop offset="100%" stop-color="#F1E5D8"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="170" y1="164" x2="1036" y2="164" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A86143"/>
+      <stop offset="48%" stop-color="#4D7B75"/>
+      <stop offset="100%" stop-color="#A6874D"/>
+    </linearGradient>
+    <linearGradient id="cardWarm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF7F0"/>
+      <stop offset="100%" stop-color="#F7ECE2"/>
+    </linearGradient>
+    <linearGradient id="cardCool" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F4FBF9"/>
+      <stop offset="100%" stop-color="#E8F2EF"/>
+    </linearGradient>
+    <linearGradient id="cardGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FBF6E6"/>
+      <stop offset="100%" stop-color="#F2E7CF"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="24" y="24" width="1152" height="672" rx="34" fill="url(#bg)" stroke="#DCCDBD"/>
+  <rect x="80" y="72" width="1040" height="576" rx="28" fill="#FFFCF8" fill-opacity="0.66" stroke="#E2D5C8"/>
+
+  <text x="124" y="126" fill="#9C5B42" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="4">PUBLIC REPO STORY</text>
+  <text x="124" y="174" fill="#171412" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="600">Teach a reusable pattern, not just volume.</text>
+  <text x="124" y="214" fill="#605851" font-family="Arial, Helvetica, sans-serif" font-size="24">A small repo batch should reveal one workflow point of view across multiple tools.</text>
+
+  <path d="M124 248H514" stroke="url(#accentLine)" stroke-width="5" stroke-linecap="round"/>
+
+  <rect x="124" y="290" width="292" height="154" rx="24" fill="url(#cardWarm)" stroke="#E0C7B7"/>
+  <text x="152" y="330" fill="#9C5B42" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="2.2">PATTERN</text>
+  <text x="152" y="372" fill="#181412" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="600">Make the first useful</text>
+  <text x="152" y="406" fill="#181412" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="600">success obvious.</text>
+  <text x="152" y="436" fill="#5F5952" font-family="Arial, Helvetica, sans-serif" font-size="20">Clear problem, visible output, honest limits.</text>
+
+  <rect x="454" y="290" width="292" height="154" rx="24" fill="url(#cardCool)" stroke="#BFD4CD"/>
+  <text x="482" y="330" fill="#3F6B65" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="2.2">EXAMPLES</text>
+  <text x="482" y="374" fill="#181412" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">repo-onramp-check</text>
+  <text x="482" y="406" fill="#181412" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">doc-ship-check</text>
+  <text x="482" y="438" fill="#181412" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">incident-timeline-formatter</text>
+
+  <rect x="784" y="290" width="292" height="154" rx="24" fill="url(#cardGold)" stroke="#D8C496"/>
+  <text x="812" y="330" fill="#8A7340" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="2.2">BOUNDARIES</text>
+  <text x="812" y="372" fill="#181412" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Stay narrow.</text>
+  <text x="812" y="404" fill="#5F5952" font-family="Arial, Helvetica, sans-serif" font-size="20">Small schemas.</text>
+  <text x="812" y="434" fill="#5F5952" font-family="Arial, Helvetica, sans-serif" font-size="20">No fake platform story.</text>
+
+  <path d="M271 444V510" stroke="#CDA78F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M600 444V510" stroke="#8FB3AA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M929 444V510" stroke="#D4B979" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="188" y="520" width="824" height="92" rx="24" fill="#FFF9F3" stroke="#DCCDBD"/>
+  <text x="224" y="558" fill="#7C7068" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="2">SITE + PROFILE ROUTING</text>
+  <text x="224" y="596" fill="#181412" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Use the site to explain the pattern and GitHub to prove it with runnable examples.</text>
+</svg>

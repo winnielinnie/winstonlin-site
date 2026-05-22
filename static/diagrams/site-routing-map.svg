@@ -1,0 +1,29 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="36" fill="#F5EFE4"/>
+  <rect x="52" y="52" width="1096" height="616" rx="28" fill="#FFFDF8" stroke="#D9CDBA" stroke-width="2"/>
+  <text x="88" y="116" fill="#826B3C" font-family="Manrope, Arial, sans-serif" font-size="22" font-weight="700">Portfolio surface split</text>
+  <text x="88" y="154" fill="#4D4030" font-family="Manrope, Arial, sans-serif" font-size="44" font-weight="800">GitHub proves. The site routes.</text>
+  <text x="88" y="188" fill="#6A5C49" font-family="Manrope, Arial, sans-serif" font-size="22">One surface shows shipped work. The other tells a stranger where to start and where to go next.</text>
+
+  <rect x="88" y="238" width="430" height="320" rx="26" fill="#183A37"/>
+  <text x="124" y="296" fill="#CBE9E1" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">PROOF</text>
+  <text x="124" y="340" fill="#FFFFFF" font-family="Newsreader, Georgia, serif" font-size="50" font-weight="600">GitHub</text>
+  <text x="124" y="386" fill="#D8EEE7" font-family="Manrope, Arial, sans-serif" font-size="24">Pinned repos, README quality, boundaries, examples.</text>
+  <rect x="124" y="426" width="356" height="92" rx="20" fill="#25554F"/>
+  <text x="150" y="464" fill="#F8FFFD" font-family="Manrope, Arial, sans-serif" font-size="24" font-weight="700">What should be obvious</text>
+  <text x="150" y="498" fill="#D8EEE7" font-family="Manrope, Arial, sans-serif" font-size="22">This person ships practical tools and starter patterns.</text>
+
+  <rect x="682" y="238" width="430" height="320" rx="26" fill="#6B3419"/>
+  <text x="718" y="296" fill="#FFD8C2" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">ROUTING</text>
+  <text x="718" y="340" fill="#FFF8F2" font-family="Newsreader, Georgia, serif" font-size="50" font-weight="600">Personal site</text>
+  <text x="718" y="386" fill="#F8D9C9" font-family="Manrope, Arial, sans-serif" font-size="24">Entry points, grouped tracks, notes, and higher-context case studies.</text>
+  <rect x="718" y="426" width="356" height="92" rx="20" fill="#8A4522"/>
+  <text x="744" y="464" fill="#FFF8F2" font-family="Manrope, Arial, sans-serif" font-size="24" font-weight="700">What should be obvious</text>
+  <text x="744" y="498" fill="#F8D9C9" font-family="Manrope, Arial, sans-serif" font-size="22">Start here. Then choose proof, writing, or case-study depth.</text>
+
+  <path d="M540 398H656" stroke="#C78F52" stroke-width="12" stroke-linecap="round"/>
+  <path d="M634 370L680 398L634 426" stroke="#C78F52" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="176" y="590" width="848" height="44" rx="22" fill="#EFE3D1"/>
+  <text x="218" y="620" fill="#5F503F" font-family="Manrope, Arial, sans-serif" font-size="22">Shared narrative: narrow tools, visible handoffs, reusable artifacts, short path to first useful success.</text>
+</svg>

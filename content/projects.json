@@ -7,26 +7,114 @@
   },
   {
     "label": "Repo utility",
+    "name": "repo-onramp-check",
+    "url": "https://github.com/winnielinnie/repo-onramp-check",
+    "summary": "Audits whether a public repo makes first proof, visible examples, and the rerun path obvious to a newcomer.",
+    "site_path": "/projects/repo-onramp-check/"
+  },
+  {
+    "label": "Repo utility",
     "name": "doc-ship-check",
     "url": "https://github.com/winnielinnie/doc-ship-check",
-    "summary": "Final-pass Markdown checker for placeholders, broken links, and duplicate headings."
+    "summary": "Final-pass Markdown checker for placeholders, broken links, and duplicate headings.",
+    "site_path": "/projects/doc-ship-check/"
   },
   {
     "label": "CLI utility",
     "name": "release-note-diff-cli",
     "url": "https://github.com/winnielinnie/release-note-diff-cli",
-    "summary": "CLI that diffs release notes and highlights additions likely to matter."
+    "summary": "CLI that diffs release notes and highlights additions likely to matter.",
+    "site_path": "/projects/release-note-diff-cli/"
+  },
+  {
+    "label": "Incident utility",
+    "name": "incident-timeline-formatter",
+    "url": "https://github.com/winnielinnie/incident-timeline-formatter",
+    "summary": "Turns rough incident notes into a stable Markdown timeline with impact and handoff shape intact.",
+    "site_path": "/projects/incident-timeline-formatter/"
+  },
+  {
+    "label": "Local-first canvas",
+    "name": "one-page-canvas",
+    "url": "https://github.com/winnielinnie/one-page-canvas",
+    "summary": "A local-first strategy canvas that keeps one-page planning structured, fast to open, and easy to export into a reusable artifact.",
+    "site_path": "/projects/one-page-canvas/"
+  },
+  {
+    "label": "Planning utility",
+    "name": "decision-journal-cli",
+    "url": "https://github.com/winnielinnie/decision-journal-cli",
+    "summary": "Keeps a decision log from turning into archaeology by making owner, assumption, and revisit date stay visible.",
+    "site_path": "/projects/decision-journal-cli/"
+  },
+  {
+    "label": "Planning utility",
+    "name": "dependency-risk-check",
+    "url": "https://github.com/winnielinnie/dependency-risk-check",
+    "summary": "Flags overdue, unowned, and blocked work so plans stop hiding risk in the middle of the handoff.",
+    "site_path": "/projects/dependency-risk-check/"
+  },
+  {
+    "label": "Writing utility",
+    "name": "exec-brief-cli",
+    "url": "https://github.com/winnielinnie/exec-brief-cli",
+    "summary": "Turns rough notes into a one-page leadership brief with a stable section shape.",
+    "site_path": "/projects/exec-brief-cli/"
+  },
+  {
+    "label": "Deck utility",
+    "name": "tiny-deck-linter",
+    "url": "https://github.com/winnielinnie/tiny-deck-linter",
+    "summary": "Calls out the outline problems that make decks feel soft, crowded, or vague before review.",
+    "site_path": "/projects/tiny-deck-linter/"
   },
   {
     "label": "Functions pattern",
     "name": "oci-fn-object-storage-router",
     "url": "https://github.com/winnielinnie/oci-fn-object-storage-router",
-    "summary": "OCI Function pattern for routing Object Storage events to the right downstream system."
+    "summary": "OCI Function pattern for routing Object Storage events to the right downstream system.",
+    "site_path": "/projects/oci-fn-object-storage-router/"
   },
   {
     "label": "Functions pattern",
     "name": "oci-fn-csv-quality-gate",
     "url": "https://github.com/winnielinnie/oci-fn-csv-quality-gate",
-    "summary": "OCI Function pattern for validating inbound CSVs against a required schema."
+    "summary": "OCI Function pattern for validating inbound CSVs against a required schema.",
+    "site_path": "/projects/oci-fn-csv-quality-gate/"
+  },
+  {
+    "label": "Functions pattern",
+    "name": "oci-fn-file-manifest-writer",
+    "url": "https://github.com/winnielinnie/oci-fn-file-manifest-writer",
+    "summary": "Builds a compact manifest from inbound file batches so downstream jobs can consume one stable handoff artifact.",
+    "site_path": "/projects/oci-fn-file-manifest-writer/"
+  },
+  {
+    "label": "Functions pattern",
+    "name": "oci-fn-slack-alert-normalizer",
+    "url": "https://github.com/winnielinnie/oci-fn-slack-alert-normalizer",
+    "summary": "Normalizes noisy alert payloads into a cleaner Slack-friendly incident message.",
+    "site_path": "/projects/oci-fn-slack-alert-normalizer/"
+  },
+  {
+    "label": "Functions pattern",
+    "name": "oci-fn-webhook-signature-verifier",
+    "url": "https://github.com/winnielinnie/oci-fn-webhook-signature-verifier",
+    "summary": "Checks inbound webhook signatures with a small audit payload instead of burying the verification step.",
+    "site_path": "/projects/oci-fn-webhook-signature-verifier/"
+  },
+  {
+    "label": "Functions pattern",
+    "name": "oci-fn-queue-worker-starter",
+    "url": "https://github.com/winnielinnie/oci-fn-queue-worker-starter",
+    "summary": "Starter pattern for queue-driven OCI Functions work that makes the handoff, retry edge, and worker boundary easier to inspect.",
+    "site_path": "/projects/oci-fn-queue-worker-starter/"
+  },
+  {
+    "label": "Functions pattern",
+    "name": "oci-fn-scheduled-finops-digest",
+    "url": "https://github.com/winnielinnie/oci-fn-scheduled-finops-digest",
+    "summary": "Shows a scheduled OCI Functions workflow that turns a recurring reporting task into a small digest artifact.",
+    "site_path": "/projects/oci-fn-scheduled-finops-digest/"
   }
 ]

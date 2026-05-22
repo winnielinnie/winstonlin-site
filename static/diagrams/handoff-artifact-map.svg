@@ -1,0 +1,32 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="36" fill="#EEF3F1"/>
+  <rect x="68" y="76" width="1064" height="568" rx="30" fill="#FAFDFC" stroke="#B9CBC6" stroke-width="2"/>
+  <text x="100" y="134" fill="#28433D" font-family="Georgia, serif" font-size="40">A starter pattern gets stronger when one artifact carries the handoff</text>
+  <rect x="110" y="210" width="260" height="220" rx="24" fill="#FBE8DA" stroke="#C98653" stroke-width="2"/>
+  <text x="140" y="254" fill="#8A542C" font-family="Arial, sans-serif" font-size="18">Raw batch</text>
+  <text x="140" y="292" fill="#33251A" font-family="Arial, sans-serif" font-size="30" font-weight="700">Inbound file names</text>
+  <text x="140" y="334" fill="#564538" font-family="Arial, sans-serif" font-size="18">finance/inbound/*.csv</text>
+  <text x="140" y="360" fill="#564538" font-family="Arial, sans-serif" font-size="18">claims/raw/*.json</text>
+  <text x="140" y="386" fill="#564538" font-family="Arial, sans-serif" font-size="18">images/product/*.png</text>
+  <text x="140" y="420" fill="#564538" font-family="Arial, sans-serif" font-size="18">Noisy, repeated parsing work</text>
+  <rect x="472" y="182" width="256" height="276" rx="24" fill="#DDEFE7" stroke="#5A8C74" stroke-width="2"/>
+  <text x="500" y="226" fill="#34644E" font-family="Arial, sans-serif" font-size="18">Starter repo output</text>
+  <text x="500" y="264" fill="#1F352C" font-family="Arial, sans-serif" font-size="30" font-weight="700">Manifest artifact</text>
+  <text x="500" y="306" fill="#3E5C4F" font-family="Arial, sans-serif" font-size="18">file_count</text>
+  <text x="500" y="332" fill="#3E5C4F" font-family="Arial, sans-serif" font-size="18">groups by prefix</text>
+  <text x="500" y="358" fill="#3E5C4F" font-family="Arial, sans-serif" font-size="18">extensions summary</text>
+  <text x="500" y="384" fill="#3E5C4F" font-family="Arial, sans-serif" font-size="18">generated_at</text>
+  <text x="500" y="424" fill="#3E5C4F" font-family="Arial, sans-serif" font-size="18">One compact handoff</text>
+  <rect x="830" y="210" width="260" height="220" rx="24" fill="#E7E8FA" stroke="#7073B2" stroke-width="2"/>
+  <text x="860" y="254" fill="#525693" font-family="Arial, sans-serif" font-size="18">Downstream system</text>
+  <text x="860" y="292" fill="#272A4D" font-family="Arial, sans-serif" font-size="30" font-weight="700">Consume one contract</text>
+  <text x="860" y="334" fill="#464A6E" font-family="Arial, sans-serif" font-size="18">Worker</text>
+  <text x="930" y="334" fill="#464A6E" font-family="Arial, sans-serif" font-size="18">Queue</text>
+  <text x="1000" y="334" fill="#464A6E" font-family="Arial, sans-serif" font-size="18">Audit</text>
+  <text x="860" y="374" fill="#464A6E" font-family="Arial, sans-serif" font-size="18">No reparsing the raw event</text>
+  <rect x="264" y="488" width="676" height="104" rx="22" fill="#FFF" stroke="#CBD6D2" stroke-width="2"/>
+  <text x="300" y="532" fill="#5D716C" font-family="Arial, sans-serif" font-size="18">Boundary-first rule</text>
+  <text x="300" y="568" fill="#293633" font-family="Arial, sans-serif" font-size="30" font-weight="700">The first run should remove repeated interpretation work for the next step.</text>
+  <path d="M370 320H452" stroke="#CF8754" stroke-width="6" stroke-linecap="round"/>
+  <path d="M728 320H810" stroke="#5C8F76" stroke-width="6" stroke-linecap="round"/>
+</svg>

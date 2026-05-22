@@ -1,0 +1,105 @@
+[
+  {
+    "title": "Workflow checks",
+    "summary": "Small utilities that turn recurring review work into a visible, rerunnable check instead of another reminder thread.",
+    "starter_project": "repo-onramp-check",
+    "starter_reason": "It shows the standard quickly: a small public utility that makes the README, example, and rerun path inspectable instead of assumed.",
+    "context_feature": {
+      "meta": "Published context · Site note",
+      "title": "Examples Are the Interface for Small Tools",
+      "url": "/blog/examples-are-the-interface-for-small-tools/",
+      "summary": "A higher-context note on why a small tool earns trust when it makes the example, output shape, and next move obvious before a reader studies the internals.",
+      "cta": "Read note"
+    },
+    "projects": [
+      "repo-onramp-check",
+      "doc-ship-check",
+      "release-note-diff-cli",
+      "incident-timeline-formatter"
+    ],
+    "links": [
+      {
+        "label": "Checks note",
+        "url": "/blog/repeated-work-should-become-a-check/"
+      },
+      {
+        "label": "Second-move note",
+        "url": "/blog/good-small-repos-should-show-the-second-move/"
+      },
+      {
+        "label": "Batch note",
+        "url": "/blog/project-pages-should-explain-the-batch/"
+      }
+    ]
+  },
+  {
+    "title": "Planning artifacts",
+    "summary": "Fun projects and lightweight utilities that leave behind a clearer artifact, handoff, or rerun path for the next step.",
+    "starter_project": "one-page-canvas",
+    "starter_reason": "It is the cleanest example of a fun side project leaving behind a concrete exported artifact instead of stopping at a demo.",
+    "context_feature": {
+      "meta": "Published context · Site note",
+      "title": "One-Page Tools Beat Premature Decks",
+      "url": "/blog/one-page-tools-beat-premature-decks/",
+      "summary": "A higher-context note on keeping the first artifact small, portable, and structured enough to survive the jump into a doc, review, or handoff.",
+      "cta": "Read note"
+    },
+    "projects": [
+      "one-page-canvas",
+      "decision-journal-cli",
+      "dependency-risk-check",
+      "exec-brief-cli",
+      "tiny-deck-linter"
+    ],
+    "links": [
+      {
+        "label": "Reusable artifact note",
+        "url": "/blog/fun-projects-get-stronger-when-they-leave-a-reusable-artifact/"
+      },
+      {
+        "label": "Second-move note",
+        "url": "/blog/good-small-repos-should-show-the-second-move/"
+      },
+      {
+        "label": "Batch note",
+        "url": "/blog/project-pages-should-explain-the-batch/"
+      }
+    ]
+  },
+  {
+    "title": "OCI Functions starter patterns",
+    "summary": "Boundary-first starter repos that show one handoff clearly, keep the contract visible, and stop before fake completeness.",
+    "starter_project": "oci-fn-object-storage-router",
+    "starter_reason": "It makes the starter-repo rule obvious: one visible workflow boundary, one contract, and a believable next handoff.",
+    "context_feature": {
+      "meta": "Published context · Oracle Cloud Infrastructure Blog · 2026-04-07",
+      "title": "Functions Design Patterns",
+      "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns",
+      "summary": "A higher-context pattern guide for routing, validation, async execution, and the design checks that keep starter repos useful under real product constraints.",
+      "cta": "Read post"
+    },
+    "projects": [
+      "oci-fn-object-storage-router",
+      "oci-fn-csv-quality-gate",
+      "oci-fn-file-manifest-writer",
+      "oci-fn-webhook-signature-verifier",
+      "oci-fn-slack-alert-normalizer",
+      "oci-fn-queue-worker-starter",
+      "oci-fn-scheduled-finops-digest"
+    ],
+    "links": [
+      {
+        "label": "Starter repo note",
+        "url": "/blog/starter-repos-should-stop-at-the-right-boundary/"
+      },
+      {
+        "label": "Case studies",
+        "url": "/case-studies/"
+      },
+      {
+        "label": "Batch note",
+        "url": "/blog/project-pages-should-explain-the-batch/"
+      }
+    ]
+  }
+]

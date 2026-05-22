@@ -1,0 +1,642 @@
+[
+  {
+    "project": "repo-onramp-check",
+    "eyebrow": "Workflow checks",
+    "headline": "repo-onramp-check turns repo quality into visible proof instead of a vague README promise.",
+    "lead": "This is the anchor repo for the workflow-check track because it makes a normally fuzzy standard inspectable: can a stranger reach first useful success without guessing what to run or what to trust.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A public repo should expose the README, a runnable example, sample files, and a verification path early enough that a newcomer does not need to infer the basics."
+      },
+      {
+        "label": "Why it is the anchor",
+        "text": "It carries the standard for the whole track quickly: a small utility that turns repeated repo review advice into a rerunnable check."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The audit output is the useful artifact. It gives you a compact report you can use before publishing a repo or reviewing someone else's first-run experience."
+      }
+    ],
+    "sample_command": "python3 repo_onramp_check.py .",
+    "sample_output": "Score: 5/5\nREADME present: yes\nQuick-start guidance: yes\nRunnable example: yes\nSample data or examples: yes\nTests or verification path: yes",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first run is intentionally small: point the checker at a repo, inspect the score, and then decide whether the README, example, or verification path still needs work. That makes the next move obvious before the repo is shared more widely.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this before publishing a small tool, before recommending a starter repo internally, or before linking someone to a public repo as the anchor example for a broader pattern.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/repo-onramp-check"
+      },
+      {
+        "label": "Anchor repo note",
+        "url": "/blog/anchor-repos-should-carry-the-batch/"
+      },
+      {
+        "label": "Workflow checks track",
+        "url": "/projects/#workflow-checks"
+      }
+    ]
+  },
+  {
+    "project": "one-page-canvas",
+    "eyebrow": "Planning artifacts",
+    "headline": "one-page-canvas is the clearest example of a fun project leaving behind a reusable planning artifact.",
+    "lead": "This is the anchor repo for the planning-artifact track because it does not stop at a pleasant demo. The important part is the plain Markdown page it exports and how easily that page can move into docs, tickets, and review notes.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A small side project gets stronger when the output is portable enough to survive beyond the first demo and useful enough to shape the next conversation."
+      },
+      {
+        "label": "Why it is the anchor",
+        "text": "It teaches the track standard quickly: a narrow tool, a clear one-page structure, and one reusable artifact instead of a larger vague workspace story."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The exported Markdown canvas is the artifact. It gives the project a handoff shape that can be reused after the browser tab closes."
+      }
+    ],
+    "sample_command": "python3 serve_canvas.py",
+    "sample_output": "Serves the canvas locally at http://127.0.0.1:8765/index.html and lets the draft export into Markdown.",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first success is not only that the local canvas opens. It is that the draft becomes one page with enough structure to reuse in a doc, review, or planning thread without rebuilding the thinking from scratch.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when a rough strategy or product-review idea should stay on one page first, then move into a doc, a ticket, or a deck only after the shape is tight enough to travel.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/one-page-canvas"
+      },
+      {
+        "label": "Reusable artifact note",
+        "url": "/blog/fun-projects-get-stronger-when-they-leave-a-reusable-artifact/"
+      },
+      {
+        "label": "Planning artifacts track",
+        "url": "/projects/#planning-artifacts"
+      }
+    ]
+  },
+  {
+    "project": "oci-fn-object-storage-router",
+    "eyebrow": "OCI Functions starter patterns",
+    "headline": "oci-fn-object-storage-router shows the boundary-first starter pattern I keep wanting public examples to teach.",
+    "lead": "This is the anchor repo for the OCI Functions starter track because it makes one workflow boundary legible: inspect the inbound Object Storage event, decide the route, and stop before the rest of production complexity crowds the example.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "Starter repos are strongest when they teach one visible handoff clearly instead of pretending to carry the entire downstream integration story."
+      },
+      {
+        "label": "Why it is the anchor",
+        "text": "It carries the track standard quickly: one event shape, one routing decision, and one believable place where the real system begins next."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The route decision payload is the artifact. It makes the handoff contract visible enough that a queue, webhook, or internal API can be attached later without losing the shape."
+      }
+    ],
+    "sample_command": "python3 func.py sample-event.json",
+    "sample_output": "{\n  \"matched\": true,\n  \"route\": \"finance-ingest\",\n  \"rule\": \"finance-csv\",\n  \"bucket\": \"shared-inbound\",\n  \"object_name\": \"finance/inbound/april-close.csv\"\n}",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a local route decision against a realistic sample event. You can see the bucket, object name, matching rule, and next route before you have to care about auth, retries, or downstream delivery details.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when you want a starter pattern to clarify the contract before wiring in real downstream systems such as queues, webhooks, or internal APIs.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/oci-fn-object-storage-router"
+      },
+      {
+        "label": "Starter repo note",
+        "url": "/blog/starter-repos-should-stop-at-the-right-boundary/"
+      },
+      {
+        "label": "OCI Functions track",
+        "url": "/projects/#oci-functions-starter-patterns"
+      }
+    ]
+  },
+  {
+    "project": "doc-ship-check",
+    "eyebrow": "Workflow checks",
+    "headline": "doc-ship-check is the clearest example of a last-mile workflow check staying focused on publish blockers.",
+    "lead": "This guide exists because the repo shows a useful standard for workflow checks: catch the few issues that reliably slow review, handoff, or publishing instead of turning the tool into a vague writing assistant.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A narrow check can be more reusable than a broader reviewer when it points directly at the blockers most likely to stop a draft from shipping cleanly."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It expands the workflow-check idea beyond repo onboarding: repeated cleanup work can be turned into a rerunnable pass that shortens the finish instead of adding another review thread."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The issue list is the artifact. It gives you a compact repair list you can clear before review or handoff."
+      }
+    ],
+    "sample_command": "python3 doc_ship_check.py tests/fixtures/docs",
+    "sample_output": "- tests/fixtures/docs/bad/readme.md: placeholder text 'TODO'\n- tests/fixtures/docs/bad/readme.md: broken relative link 'missing.md'\n- tests/fixtures/docs/bad/readme.md: placeholder text 'ADD TEXT'\n- tests/fixtures/docs/bad/readme.md: duplicate heading '# bad doc'",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a short list of fixable publish blockers. That is enough to turn the tool from a concept into a practical finish-line check for Markdown-heavy work.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this before publishing docs, before asking another team to review a draft, or anywhere the last pass keeps surfacing the same cleanup issues.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/doc-ship-check"
+      },
+      {
+        "label": "Docs-check note",
+        "url": "/blog/docs-checks-should-point-at-publish-blockers/"
+      },
+      {
+        "label": "Workflow checks track",
+        "url": "/projects/#workflow-checks"
+      }
+    ]
+  },
+  {
+    "project": "release-note-diff-cli",
+    "eyebrow": "Workflow checks",
+    "headline": "release-note-diff-cli shows how a tiny check can compress a noisy review task into one visible shortlist.",
+    "lead": "This guide exists because release-note review is a good example of repeated workflow drag: the raw material is long, the important changes are usually sparse, and the first useful output is a compact shortlist rather than a full analysis layer.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A small public tool can be valuable when it shortens a recurring scan into one concrete output shape without pretending to replace the later judgment call."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It shows the workflow-check pattern in a different setting: not docs cleanup, but repeated review work where the first job is to surface what changed and what might matter."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The additions shortlist is the artifact. It gives the next review step a much smaller surface area to inspect."
+      }
+    ],
+    "sample_command": "python3 release_note_diff.py sample_old.txt sample_new.txt",
+    "sample_output": "Added: 2\nRemoved: 0\nImportant additions: 2\n\nImportant additions:\n- Launched detached invocation support\n- Fixed retry bug in function executor",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a tight scan result that highlights which additions deserve attention. That makes the second move obvious: read the few changed items that are most likely to affect your product or workflow.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when recurring release-note review should start with a shortlist, whether the follow-up is product analysis, platform planning, or customer guidance.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/release-note-diff-cli"
+      },
+      {
+        "label": "Examples note",
+        "url": "/blog/examples-are-the-interface-for-small-tools/"
+      },
+      {
+        "label": "Workflow checks track",
+        "url": "/projects/#workflow-checks"
+      }
+    ]
+  },
+  {
+    "project": "oci-fn-csv-quality-gate",
+    "eyebrow": "OCI Functions starter patterns",
+    "headline": "oci-fn-csv-quality-gate is the clearest example of a starter validation repo making the failure path reusable.",
+    "lead": "This guide exists because the repo shows a boundary-first starter pattern that is useful in both directions: the passing case proves the contract, and the failing case makes the repair path inspectable instead of implicit.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A starter validation repo gets stronger when it shows both the accepted schema edge and the structured failure output a downstream workflow can actually use."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It extends the starter-pattern standard beyond routing: the boundary is not only where valid data passes, but where bad input is rejected in a visible and repairable shape."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The validation result is the artifact. It gives you a stable response shape that later alerting, quarantine, or retry logic can consume."
+      }
+    ],
+    "sample_command": "python3 func.py sample_missing_currency.csv --schema-file schema.json",
+    "sample_output": "{\n  \"valid\": false,\n  \"reason\": \"missing_required_columns\",\n  \"missing_columns\": [\n    \"currency\"\n  ],\n  \"unexpected_columns\": [],\n  \"row_count\": 1\n}",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is often the failing case. When the response tells you exactly what broke and why, the starter repo has already made the boundary reusable instead of only demonstrative.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when a starter pattern should clarify the validation contract before you add notifications, quarantine handling, or a deeper ingestion pipeline.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/oci-fn-csv-quality-gate"
+      },
+      {
+        "label": "Validation-gate note",
+        "url": "/blog/validation-gates-should-fail-in-a-useful-shape/"
+      },
+      {
+        "label": "OCI Functions track",
+        "url": "/projects/#oci-functions-starter-patterns"
+      }
+    ]
+  },
+  {
+    "project": "incident-timeline-formatter",
+    "eyebrow": "Workflow checks",
+    "headline": "incident-timeline-formatter makes incident sequence, impact, and handoffs readable before the review turns into argument.",
+    "lead": "This guide exists because incident notes are often technically complete and still hard to use. The repo stays focused on one repeated problem: turning messy notes into a timeline shape that a real review can build on.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A small workflow utility can be useful when it stabilizes the structure people need before analysis, not after."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It extends the workflow-check idea beyond linting. The check here is on sequence and handoff clarity, which are often the first blockers in an incident writeup."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The formatted timeline is the artifact. It preserves event order, visible impact changes, and ownership handoffs in one reviewable shape."
+      }
+    ],
+    "sample_command": "python3 incident_timeline_formatter.py sample_incident.json",
+    "sample_output": "# Incident Timeline\n\n- Events: 4\n- Window: 2026-04-17 08:04 UTC to 2026-04-17 08:43 UTC\n- Impact updates: 2\n\n## Timeline\n\n- 2026-04-17 08:04 UTC | API Gateway | Webhook retries start spiking for partner ingest. | status: signal | impact: Delayed order intake for one region.\n- 2026-04-17 08:11 UTC | On-call | Confirms queue backlog and starts incident thread. | status: investigating",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a stable Markdown timeline that lets the team agree on sequence, impact changes, and handoffs before the deeper analysis starts. That alone removes a lot of review drag.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this before an incident review, before sharing rough notes with another team, or anywhere the real blocker is that the event sequence still is not trustworthy enough to discuss cleanly.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/incident-timeline-formatter"
+      },
+      {
+        "label": "Incident timeline note",
+        "url": "/blog/incident-timelines-need-a-stable-shape/"
+      },
+      {
+        "label": "Workflow checks track",
+        "url": "/projects/#workflow-checks"
+      }
+    ]
+  },
+  {
+    "project": "decision-journal-cli",
+    "eyebrow": "Planning artifacts",
+    "headline": "decision-journal-cli keeps old decisions from disappearing into archive by making the reopen signal visible.",
+    "lead": "This guide exists because planning work often remembers that a decision happened but loses the assumption, owner, and revisit point that would make it reusable later. The repo stays close to that gap.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A small planning tool gets more useful when it helps pull the right old decision back into the current review instead of only recording history."
+      },
+      {
+        "label": "Why it is in this track",
+        "text": "It fits the planning-artifact track because the output is not the log itself. The useful artifact is the shortlist of stale and still-open decisions that should shape the next conversation."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The stale-decision summary is the artifact. It gives a review meeting a better starting point than a long archive dump."
+      }
+    ],
+    "sample_command": "python3 decision_journal.py sample_decisions.jsonl --today 2026-04-11",
+    "sample_output": "Total decisions: 3\nOpen decisions: 2\nClosed decisions: 1\nStale decisions: 1\n\nBy owner:\n- Mickey: 1\n- Winston: 2\n\nStale decisions:\n- Consolidate weekly customer notes into a single repo (Winston)",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a compact view of which decisions are still open, which ones are stale, and who owns them. That is enough to make the next review materially sharper.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this before roadmap reviews, quarterly planning, or any working session where old calls keep resurfacing because the original assumptions and revisit dates were never kept visible enough.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/decision-journal-cli"
+      },
+      {
+        "label": "Decision log note",
+        "url": "/blog/decision-logs-should-keep-the-revisit-date-visible/"
+      },
+      {
+        "label": "Planning artifacts track",
+        "url": "/projects/#planning-artifacts"
+      }
+    ]
+  },
+  {
+    "project": "dependency-risk-check",
+    "eyebrow": "Planning artifacts",
+    "headline": "dependency-risk-check is the cleanest example of a planning tool exposing the risk that usually hides in the middle of the handoff.",
+    "lead": "This guide exists because plans often look clean until someone asks who owns the late item, what is blocked, and which dependency is about to break the schedule. The repo makes that risk visible without pretending to replace planning.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A planning utility can be valuable when it turns hidden dependency trouble into a visible repair list before the meeting starts."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It extends the planning-artifact idea from one-page drafts into execution risk. The artifact here is a compact risk view that helps the next conversation focus on the actual blockers."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The risk summary is the artifact. It shows overdue, unowned, and blocked work in one scan instead of leaving the operator to infer the problem from the raw plan."
+      }
+    ],
+    "sample_command": "python3 dependency_risk_check.py sample_plan.json --today 2026-04-15",
+    "sample_output": "Total items: 4\nOpen items: 3\nCompleted items: 1\nMissing owners: 1\nOverdue items: 2\nBlocked items: 1\n\nMissing owners:\n- Write migration runbook\n\nBlocked items:\n- Analytics cutover <- warehouse-backfill [open]",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a shortlist of the dependencies most likely to break the handoff: missing owners, overdue items, and blocked work. That gives the plan a usable repair path immediately.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this before launch reviews, cross-team rollout meetings, or anywhere the plan keeps sounding clean until somebody asks what is already late or who is actually carrying the dependency.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/dependency-risk-check"
+      },
+      {
+        "label": "Dependency note",
+        "url": "/blog/dependencies-need-owners-before-they-need-slides/"
+      },
+      {
+        "label": "Planning artifacts track",
+        "url": "/projects/#planning-artifacts"
+      }
+    ]
+  },
+  {
+    "project": "exec-brief-cli",
+    "eyebrow": "Planning artifacts",
+    "headline": "exec-brief-cli shows the planning-artifact pattern in writing form: rough notes become one stable brief that can travel upward cleanly.",
+    "lead": "This guide exists because a lot of strategy or product writing fails on shape before it fails on ideas. The repo stays close to one repeated problem: turning raw notes into a short leadership brief without dragging in a whole writing system.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A small writing utility can matter when it imposes one durable section shape on messy material and makes the next handoff easier."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It belongs in the planning-artifact track because the artifact is the one-page brief itself: concise enough to travel, stable enough to review, and narrow enough to rerun."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The generated brief is the artifact. It turns scattered notes into a leadership-ready shape without asking the user to rebuild the structure manually."
+      }
+    ],
+    "sample_command": "python3 brief_builder.py sample_brief.json",
+    "sample_output": "# Why We Should Simplify Serverless Onboarding\n\n**Audience:** Product and field leadership\n\n## Thesis\nDeveloper adoption is being slowed more by setup friction than by missing advanced capabilities.\n\n## Key Points\n- The clearest recurring customer ask is a simpler code-first packaging path.",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a one-page brief that already has the thesis, key points, risks, and ask in the right order. That lets the next review focus on the argument instead of the shape.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when rough notes should become a short leadership brief, a product-direction one-pager, or a cleaner internal narrative before the material spreads into slides and comment threads.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/exec-brief-cli"
+      },
+      {
+        "label": "One-page note",
+        "url": "/blog/one-page-tools-beat-premature-decks/"
+      },
+      {
+        "label": "Planning artifacts track",
+        "url": "/projects/#planning-artifacts"
+      }
+    ]
+  },
+  {
+    "project": "tiny-deck-linter",
+    "eyebrow": "Planning artifacts",
+    "headline": "tiny-deck-linter turns last-minute deck softness into a visible repair list before review starts.",
+    "lead": "This guide exists because decks often fail in predictable ways: vague titles, crowded bullets, and outlines that hide the actual point of the slide. The repo keeps the scope narrow and the fix list short.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A deck utility can be more reusable when it flags the few outline problems that reliably make slides feel weak instead of trying to be a full presentation coach."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It fits the planning-artifact track because the output is a concise repair list for the deck, which is exactly the artifact the next edit pass needs."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The linter findings are the artifact. They give the editor a short punch list for tightening titles and bullets before the deck goes wider."
+      }
+    ],
+    "sample_command": "python3 deck_linter.py sample_outline.md",
+    "sample_output": "- weak title: 'Overview'\n- too many bullets under 'Overview': 5\n- bullet 1 under 'Overview' is too long\n- bullet 2 under 'Overview' is too long\n- title too long: 'What Changed In The Last Two Quarters Across The Entire Business'",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is not a presentation score. It is a short list of the titles and bullets most likely to make the deck feel soft, crowded, or vague during review.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this before executive reviews, before exporting a slide outline into PowerPoint, or anywhere a deck should get tighter without starting another round of subjective formatting debate.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/tiny-deck-linter"
+      },
+      {
+        "label": "One-page note",
+        "url": "/blog/one-page-tools-beat-premature-decks/"
+      },
+      {
+        "label": "Planning artifacts track",
+        "url": "/projects/#planning-artifacts"
+      }
+    ]
+  },
+  {
+    "project": "oci-fn-file-manifest-writer",
+    "eyebrow": "OCI Functions starter patterns",
+    "headline": "oci-fn-file-manifest-writer is the clearest example of a starter repo leaving behind one compact handoff artifact instead of repeating raw event parsing downstream.",
+    "lead": "This guide exists because many event-driven examples stop at the trigger. The repo pushes one step further: turn a messy inbound batch into a manifest a later worker can actually consume.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A starter pattern gets more reusable when the first run leaves one stable artifact behind instead of forcing every downstream component to reinterpret the same input."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It extends the OCI Functions starter pattern from routing and validation into batch handoff design. The point is not only to receive an event, but to leave a compact contract artifact for the next step."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The manifest is the artifact. It captures totals, file groups, and extension summary in a stable JSON shape a downstream job can reuse."
+      }
+    ],
+    "sample_command": "python3 - <<'PY'\nimport json\nfrom func import build_manifest\npayload = json.load(open('sample-event.json'))\nprint(json.dumps(build_manifest(payload), indent=2))\nPY",
+    "sample_output": "{\n  \"generated_at\": \"2026-05-05T16:03:11.575412+00:00\",\n  \"file_count\": 5,\n  \"groups\": {\n    \"claims\": 2,\n    \"finance\": 2,\n    \"images\": 1\n  },\n  \"extensions\": {\n    \"csv\": 2,\n    \"json\": 2,\n    \"png\": 1\n  }\n}",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a manifest that another system could read immediately. That makes the starter repo feel like a real boundary pattern instead of only a trigger demo.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when an event-driven workflow should condense a file batch into one compact handoff for a queue worker, reconciliation job, or downstream ingest step.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/oci-fn-file-manifest-writer"
+      },
+      {
+        "label": "Handoff artifact note",
+        "url": "/blog/starter-patterns-should-leave-one-stable-handoff-artifact/"
+      },
+      {
+        "label": "OCI Functions track",
+        "url": "/projects/#oci-functions-starter-patterns"
+      }
+    ]
+  },
+  {
+    "project": "oci-fn-slack-alert-normalizer",
+    "eyebrow": "OCI Functions starter patterns",
+    "headline": "oci-fn-slack-alert-normalizer shows the starter pattern I want for noisy alert edges: normalize the message before it reaches a person.",
+    "lead": "This guide exists because alerting paths are often technically connected and still hard to use. The repo stays close to one repeated problem: turn inconsistent payloads into one readable incident message before chat becomes another noisy system boundary.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A starter alerting repo gets more reusable when it normalizes severity, resource context, and message shape before the notification ever reaches a human reader."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It extends the OCI Functions starter pattern beyond routing and validation into the human-facing edge of the workflow. The boundary here is not only machine-to-machine. It is raw alert payload to readable incident message."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The Slack-ready payload is the artifact. It gives the next alerting step one compact message shape that is easier to route, reuse, or review."
+      }
+    ],
+    "sample_command": "python3 - <<'PY'\nimport json\nfrom func import normalize_alert\npayload = '{\"title\":\"DB CPU High\",\"severity\":\"ERROR\",\"resourceName\":\"db-prod-1\",\"message\":\"CPU above threshold\"}'\nprint(json.dumps(normalize_alert(payload), indent=2))\nPY",
+    "sample_output": "{\n  \"text\": \"[high] DB CPU High\",\n  \"blocks\": [\n    {\n      \"type\": \"section\",\n      \"text\": {\n        \"type\": \"mrkdwn\",\n        \"text\": \"*DB CPU High*\\nSeverity: `high`\\nResource: `db-prod-1`\\nCPU above threshold\"\n      }\n    }\n  ]\n}",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a Slack-ready alert that already has the normalized severity, resource, and summary in one stable shape. That makes the repo useful before you wire in a real chat webhook or incident routing layer.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when a noisy alert source should become a cleaner chat payload first, whether the next step is Slack delivery, incident triage, or a broader alert-handling workflow.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/oci-fn-slack-alert-normalizer"
+      },
+      {
+        "label": "Alert-normalization note",
+        "url": "/blog/alerting-starter-patterns-should-normalize-before-they-notify/"
+      },
+      {
+        "label": "OCI Functions track",
+        "url": "/projects/#oci-functions-starter-patterns"
+      }
+    ]
+  },
+  {
+    "project": "oci-fn-webhook-signature-verifier",
+    "eyebrow": "OCI Functions starter patterns",
+    "headline": "oci-fn-webhook-signature-verifier keeps a small security boundary legible instead of hiding verification inside a larger webhook stack.",
+    "lead": "This guide exists because signature checks are one of those boundaries that look obvious until they are buried inside a bigger integration. The repo keeps the scope narrow: raw payload in, computed HMAC out, pass or fail made visible.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A starter security repo gets stronger when it exposes the verification step and the audit output directly instead of hiding the most important boundary inside framework glue."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It belongs in the OCI Functions starter pattern track because it shows a credible boundary with a believable contract: body, signature, secret, and a small audit payload the next layer can inspect."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The verification result is the artifact. It makes the security decision and the computed digest visible enough for later logging, rejection, or replay handling."
+      }
+    ],
+    "sample_command": "python3 - <<'PY'\nimport json, hmac, hashlib\nfrom func import verify_signature\npayload = '{\"event\":\"invoice.paid\",\"id\":\"evt_123\"}'\nsecret = 'topsecret'\nprovided = hmac.new(secret.encode('utf-8'), payload.encode('utf-8'), hashlib.sha256).hexdigest()\nvalid, computed = verify_signature(secret, payload, provided)\nprint(json.dumps({\"valid\": valid, \"provided_signature\": provided, \"computed_signature\": computed}, indent=2))\nPY",
+    "sample_output": "{\n  \"valid\": true,\n  \"provided_signature\": \"723b7093e99ad943b3c5f2afe02f66a1e0c2306c26a3cf76fc52be0173ff337d\",\n  \"computed_signature\": \"723b7093e99ad943b3c5f2afe02f66a1e0c2306c26a3cf76fc52be0173ff337d\"\n}",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a pass or fail decision with the provided and computed signature both visible. That is enough to make the boundary inspectable before you add a webhook gateway, database write, or retry behavior.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when a signed webhook flow should prove the verification boundary first, then layer in auth, replay protection, or downstream event handling after the contract is clear.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/oci-fn-webhook-signature-verifier"
+      },
+      {
+        "label": "Starter repo note",
+        "url": "/blog/starter-repos-should-stop-at-the-right-boundary/"
+      },
+      {
+        "label": "OCI Functions track",
+        "url": "/projects/#oci-functions-starter-patterns"
+      }
+    ]
+  },
+  {
+    "project": "oci-fn-queue-worker-starter",
+    "eyebrow": "OCI Functions starter patterns",
+    "headline": "oci-fn-queue-worker-starter makes the queue handoff legible before retries and worker logic disappear into framework glue.",
+    "lead": "This guide exists because async starter repos often hide the real boundary. The repo stays close to one repeated problem: accept a queue work item, validate the contract, and return one normalized result shape that a retry or audit path can actually inspect.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A queue worker starter repo gets more reusable when it makes the payload contract, validation edge, and result shape visible before the rest of the async system grows around it."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It extends the OCI Functions starter pattern from routing and validation into async worker design. The important boundary is not only event arrival. It is the handoff between queued work and a stable worker result."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The normalized work result is the artifact. It gives a later retry, queue monitor, or downstream writer one compact status shape to consume."
+      }
+    ],
+    "sample_command": "python3 - <<'PY'\nimport json\nfrom func import handle_work_item\npayload = json.load(open('sample-work-item.json'))\nprint(json.dumps(handle_work_item(payload), indent=2))\nPY",
+    "sample_output": "{\n  \"ok\": true,\n  \"task_id\": \"task-1042\",\n  \"worker\": \"invoice-sync\",\n  \"status\": \"processed\",\n  \"processed_records\": 3,\n  \"retryable\": false\n}",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a worker result that already shows task identity, status, and whether the item is retryable. That makes the starter repo useful before you add a real queue trigger, dead-letter handling, or metrics layer.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when a starter pattern should make the queue handoff and worker result contract obvious before the rest of the background-processing workflow is built out.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/oci-fn-queue-worker-starter"
+      },
+      {
+        "label": "Starter repo note",
+        "url": "/blog/starter-repos-should-stop-at-the-right-boundary/"
+      },
+      {
+        "label": "OCI Functions track",
+        "url": "/projects/#oci-functions-starter-patterns"
+      }
+    ]
+  },
+  {
+    "project": "oci-fn-scheduled-finops-digest",
+    "eyebrow": "OCI Functions starter patterns",
+    "headline": "oci-fn-scheduled-finops-digest shows the scheduled starter pattern I want more repos to teach: end the run with one compact operational brief.",
+    "lead": "This guide exists because scheduled serverless examples often prove only that the trigger fired. The repo stays close to the more useful boundary: take a simple usage summary, identify what moved, and leave behind a digest another person can actually read or route.",
+    "proof_points": [
+      {
+        "label": "What it proves",
+        "text": "A scheduled starter repo gets stronger when the first run ends with one readable digest artifact instead of a vague timer demo or a wall of raw metrics."
+      },
+      {
+        "label": "Why it matters in this track",
+        "text": "It extends the OCI Functions starter pattern into recurring operations work. The visible boundary here is scheduled input to concise summary artifact, which is a more believable starter outcome than a trigger alone."
+      },
+      {
+        "label": "What survives the first run",
+        "text": "The FinOps digest is the artifact. It gives email, chat, or dashboard workflows one compact summary they can reuse without rerunning the analysis in each downstream step."
+      }
+    ],
+    "sample_command": "python3 - <<'PY'\nimport json\nfrom func import build_digest\npayload = json.load(open('sample-usage-summary.json'))\nprint(build_digest(payload))\nPY",
+    "sample_output": "Daily FinOps Digest\n\nTop movers:\n- Object Storage +12.4% ($184)\n- Functions invocations +9.1% ($63)\n\nWatchlist:\n- Analytics dev tenancy crossed budget threshold\n- Backup egress returned to normal range",
+    "artifact_heading": "What the first useful success looks like",
+    "artifact_text": "The first useful run is a short digest a human could read immediately. That makes the repo useful before you wire in a scheduler, email destination, or broader reporting pipeline.",
+    "next_heading": "Where it routes next",
+    "next_text": "Use this when a scheduled starter pattern should leave one compact reporting artifact behind first, whether the next step is email delivery, chat posting, or a broader monthly review workflow.",
+    "links": [
+      {
+        "label": "Open GitHub repo",
+        "url": "https://github.com/winnielinnie/oci-fn-scheduled-finops-digest"
+      },
+      {
+        "label": "Project batch note",
+        "url": "/blog/project-pages-should-explain-the-batch/"
+      },
+      {
+        "label": "OCI Functions track",
+        "url": "/projects/#oci-functions-starter-patterns"
+      }
+    ]
+  }
+]

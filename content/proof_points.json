@@ -2,16 +2,34 @@
   {
     "value": "80%",
     "label": "YoY growth",
-    "text": "OCI Functions growth after reducing friction and improving migration readiness."
+    "text": "OCI Functions growth after reducing friction and improving migration readiness.",
+    "route": {
+      "label": "Case study",
+      "title": "OCI Functions product direction",
+      "url": "/case-studies/#oci-functions-product-direction",
+      "cta": "See case study"
+    }
   },
   {
     "value": "30 days",
     "label": "Regional delivery",
-    "text": "Build timelines compressed from about 3 months through deterministic orchestration."
+    "text": "Build timelines compressed from about 3 months through deterministic orchestration.",
+    "route": {
+      "label": "Case study",
+      "title": "Regional delivery orchestration",
+      "url": "/case-studies/#service-installer",
+      "cta": "See case study"
+    }
   },
   {
     "value": "60%",
     "label": "Faster RCA",
-    "text": "Dependency and health visibility made incident response materially faster."
+    "text": "Dependency and health visibility made incident response materially faster.",
+    "route": {
+      "label": "Case study",
+      "title": "Dependency and health registry",
+      "url": "/case-studies/#feature-registry",
+      "cta": "See case study"
+    }
   }
 ]
