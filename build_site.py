@@ -572,7 +572,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                     "summary": showcase_note_config.get("summary", current_note.summary),
                     "href": relative_url('/', f'/blog/{current_note.slug}/'),
                     "cta": showcase_note_config.get("cta", "Read note"),
-                    "tone": "showcase-tone-workspace",
                     "external": False,
                 }
             )
@@ -584,7 +583,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                 "summary": featured_study["home_summary"],
                 "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
                 "cta": "Read case study",
-                "tone": "showcase-tone-functions",
                 "external": False,
             }
         )
@@ -598,7 +596,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                     "summary": external_item.get("summary", external_item["title"]),
                     "href": external_item["url"],
                     "cta": "Read Oracle post",
-                    "tone": "showcase-tone-oracle",
                     "external": True,
                 }
             )
@@ -611,7 +608,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                     "summary": "Public writing on OCI Functions patterns, recovery, and async execution.",
                     "href": config.get("oracle_blogs_url", "https://blogs.oracle.com/"),
                     "cta": "Open Oracle profile",
-                    "tone": "showcase-tone-oracle",
                     "external": True,
                 }
             )
@@ -621,7 +617,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
             target = ' target="_blank" rel="noreferrer"' if item["external"] else ""
             showcase_cards.append(
                 f"""
-                <article class="showcase-card {html.escape(item['tone'])}">
+                <article class="showcase-card">
                   <div class="showcase-panel-copy">
                     <p class="meta">{html.escape(item['label'])} · {html.escape(item['meta'])}</p>
                     <h3><a href="{html.escape(item['href'])}"{target}>{html.escape(item['title'])}</a></h3>
@@ -706,10 +702,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                 starter_route = starter.get("route", "Recommended first move")
                 starter_html = f"""
                   <div class="path-starter">
-                    <div class="path-route-row">
-                      <span class="track-route-label">First move</span>
-                      <span class="path-route-pill">{html.escape(starter_route)}</span>
-                    </div>
+                    <p class="path-route-line">Start here <span>{html.escape(starter_route)}</span></p>
                     <p>
                       Start with <a href="{html.escape(starter_href)}"{starter_target}>{html.escape(starter['label'])}</a>.
                       {html.escape(starter['reason'])}
@@ -755,7 +748,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
             track_id = slugify(track["title"])
             starter_reason = track.get("starter_reason", "").strip()
             proof_card = dict(starter_project)
-            proof_card["label"] = f"Proof repo · {track['title']}"
+            proof_card["label"] = f"Start repo · {track['title']}"
             if starter_reason:
                 proof_card["summary"] = starter_reason
 
@@ -768,7 +761,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                         **context_feature,
                         "meta": context_feature.get("meta", f"Context note · {track['title']}"),
                     },
-                    card_class="feature-card feature-card-context",
                     default_cta="Read context",
                 )
 
@@ -786,7 +778,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                     <p>{html.escape(track['summary'])}</p>
                   </div>
                   <div class="project-track-intro-grid project-track-home-pair">
-                    {render_project_card(proof_card, "/", extra_links=proof_links, card_class="feature-card feature-card-proof")}
+                    {render_project_card(proof_card, "/", extra_links=proof_links)}
                     {context_card}
                   </div>
                   <div class="path-links project-track-links">
@@ -992,12 +984,12 @@ def render_case_studies_page(config, case_studies):
     </section>
     <section class="section jump-section" id="case-jumps">
       <div class="section-head section-head-stack">
-        <h2>Jump by area</h2>
-        <p class="section-note">Quick ways into the main areas of work.</p>
+        <h2>Work areas</h2>
+        <p class="section-note">Pick the branch you want to scan first.</p>
       </div>
-      <div class="jump-scroller">
+      <nav class="jump-tree" aria-label="Case study areas">
         {''.join(jump_links)}
-      </div>
+      </nav>
     </section>
     <section class="section case-study-groups">
       {''.join(group_sections)}
@@ -1112,12 +1104,8 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
             else:
                 starter_link = f'<a href="{html.escape(starter_project["url"])}" target="_blank" rel="noreferrer">{html.escape(starter_project["name"])}</a>'
             starter_html = f"""
-            <p class="section-note project-track-pattern">
-              One proof and one context link is enough to start this track cleanly.
-            </p>
             <p class="section-note project-track-starter">
-              Start with {starter_link}
-              if you want the clearest first example in this track. {html.escape(starter_reason)}
+              Start with {starter_link}. {html.escape(starter_reason)}
             </p>
             """
 
@@ -1125,7 +1113,7 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
         if starter_project:
             starter_card = dict(starter_project)
             starter_card["label"] = f"Starter repo · {track['title']}"
-            intro_cards.append(render_project_card(starter_card, "/projects/", card_class="feature-card feature-card-proof"))
+            intro_cards.append(render_project_card(starter_card, "/projects/"))
         if context_feature:
             intro_cards.append(
                 render_context_feature_card(
@@ -1134,7 +1122,6 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
                         **context_feature,
                         "meta": context_feature.get("meta", f"Track context · {track['title']}"),
                     },
-                    card_class="feature-card feature-card-context",
                     default_cta="Read context",
                 )
             )
@@ -1254,12 +1241,12 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
     </section>
     <section class="section jump-section">
       <div class="section-head section-head-stack">
-        <h2>Jump by project track</h2>
-        <p class="section-note">A short path if you care more about checks, planning artifacts, or OCI Functions starter patterns.</p>
+        <h2>Project tracks</h2>
+        <p class="section-note">Pick the branch that matches the artifact you want.</p>
       </div>
-      <div class="jump-scroller">
+      <nav class="jump-tree" aria-label="Project tracks">
         {''.join(jump_links)}
-      </div>
+      </nav>
     </section>
     {project_map}
     {''.join(track_sections)}
