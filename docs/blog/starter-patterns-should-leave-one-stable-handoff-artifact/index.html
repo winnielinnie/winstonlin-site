@@ -30,10 +30,10 @@
           <a href="../../" class="site-name">Winston Lin</a>
         </div>
       </div>
-      <nav><a href="../../">Home</a><a href="../../projects/">Projects</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+      <nav><a href="../../">Home</a><a href="../../case-studies/">Case Studies</a><a href="../../projects/">Projects</a><a href="../" class="active">Writing</a><a href="../../about/">About</a></nav>
     </header>
     <main>
-      
+
     <article class="post-page prose">
       <p class="meta">2026-05-05</p>
       <h1>Starter Patterns Should Leave One Stable Handoff Artifact</h1>
@@ -55,7 +55,7 @@
     <figure class="post-diagram">
       <img src="../../diagrams/handoff-artifact-map.svg" alt="Diagram showing noisy inbound file events being condensed into one stable manifest artifact that downstream systems can consume.">
     </figure>
-    
+
 <h2>The first run should remove downstream guesswork</h2>
 <p>Good starter patterns do not need to model the entire production workflow. They should make the next handoff easier to inspect. If a downstream worker, queue consumer, or reconciliation job can read one manifest instead of reparsing five object names and inventing its own grouping rules, the starter repo has already done something real.</p>
 <p>That is the standard I keep using. The first output should reduce repeated interpretation work later.</p>
@@ -70,7 +70,7 @@
 <h2>What I keep optimizing for</h2>
 <p>If the first local run leaves behind something another system could use immediately, the sample is already stronger than most starter repos. That is usually enough proof. The rest of the production stack can come later.</p>
     </article>
-    
+
     </main>
     <footer class="site-footer">
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>

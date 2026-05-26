@@ -30,10 +30,10 @@
           <a href="../../" class="site-name">Winston Lin</a>
         </div>
       </div>
-      <nav><a href="../../">Home</a><a href="../../projects/">Projects</a><a href="../../about/">About</a><a href="../../case-studies/">Case Studies</a><a href="../" class="active">Writing</a><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
+      <nav><a href="../../">Home</a><a href="../../case-studies/">Case Studies</a><a href="../../projects/">Projects</a><a href="../" class="active">Writing</a><a href="../../about/">About</a></nav>
     </header>
     <main>
-      
+
     <article class="post-page prose">
       <p class="meta">2026-05-06</p>
       <h1>Alerting Starter Patterns Should Normalize Before They Notify</h1>
@@ -55,7 +55,7 @@
     <figure class="post-diagram">
       <img src="../../diagrams/alert-normalization-flow.svg" alt="Diagram showing noisy alerts being normalized into one readable message before they reach chat or an on-call reader.">
     </figure>
-    
+
 <h2>Human-facing boundaries are still boundaries</h2>
 <p>I think this is where a lot of starter repos get weaker than they need to. They treat the step before a person reads the message as if it were just presentation. It is not.</p>
 <p>That is still a boundary with a contract. If the alert that reaches chat is inconsistent, the operator is doing normalization work that the starter repo could have made visible much earlier.</p>
@@ -71,7 +71,7 @@
 <h2>The bar I keep using</h2>
 <p>If a starter alerting repo helps me answer &quot;what would the on-call person actually read&quot; after one local run, it is already doing the right job. That is usually enough boundary clarity for the rest of the workflow to attach cleanly later.</p>
     </article>
-    
+
     </main>
     <footer class="site-footer">
       <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>

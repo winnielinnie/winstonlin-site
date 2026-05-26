@@ -310,11 +310,13 @@ def render_track_links(current_path, links, limit=3):
 
 
 def page_layout(config, title, body, current_path="/", meta_description=None, og_type="website"):
-    nav_items = [('Home', '/'), ('Projects', '/projects/'), ('About', '/about/'), ('Case Studies', '/case-studies/'), ('Writing', '/blog/')]
-    if config.get("github_url"):
-        nav_items.append(('GitHub', config["github_url"]))
-    if config.get("linkedin_url"):
-        nav_items.append(('LinkedIn', config["linkedin_url"]))
+    nav_items = [
+        ("Home", "/"),
+        ("Case Studies", "/case-studies/"),
+        ("Projects", "/projects/"),
+        ("Writing", "/blog/"),
+        ("About", "/about/"),
+    ]
     nav_html = []
     for label, url in nav_items:
         external = url.startswith("http")
@@ -542,7 +544,30 @@ def render_project_card(project, current_path, extra_links=None, card_class="fea
     """
 
 
-def render_homepage(config, posts, projects, case_studies, discovery_paths, proof_points, repo_tracks, external_writing):
+def render_project_row(project, current_path):
+    site_path = project.get("site_path")
+    title_href = html.escape(project["url"])
+    title_target = ' target="_blank" rel="noreferrer"'
+    card_links = []
+    if site_path:
+        title_href = relative_url(current_path, site_path)
+        title_target = ""
+        card_links.append(f'<a href="{relative_url(current_path, site_path)}">Guide</a>')
+    card_links.append(f'<a href="{html.escape(project["url"])}" target="_blank" rel="noreferrer">GitHub</a>')
+
+    return f"""
+    <article class="project-row">
+      <div class="project-row-title">
+        <p class="meta">{html.escape(project['label'])}</p>
+        <h3><a href="{title_href}"{title_target}>{html.escape(project['name'])}</a></h3>
+      </div>
+      <p>{html.escape(project['summary'])}</p>
+      <div class="card-links">{"".join(card_links)}</div>
+    </article>
+    """
+
+
+def render_homepage(config, posts, case_studies, external_writing):
     showcase_note_config = config.get("home_showcase_note", {})
     showcase_note_slug = showcase_note_config.get(
         "slug",
@@ -588,8 +613,8 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
         if external_item:
             showcase_items.append(
                 {
-                    "label": "Published elsewhere",
-                    "meta": external_item.get("publication", "Oracle Blogs"),
+                    "label": "Oracle post",
+                    "meta": "OCI Blog",
                     "title": external_item.get("short_title") or external_item["title"],
                     "summary": external_item.get("summary", external_item["title"]),
                     "href": external_item["url"],
@@ -637,128 +662,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
         </section>
         """
 
-    discovery_html = ""
-    if discovery_paths:
-        path_cards = []
-        for path in discovery_paths[:4]:
-            link_items = []
-            for link in path.get("links", [])[:3]:
-                href = link["url"]
-                external = href.startswith("http")
-                target = ' target="_blank" rel="noreferrer"' if external else ""
-                if not external:
-                    href = relative_url('/', href)
-                link_items.append(f'<a href="{html.escape(href)}"{target}>{html.escape(link["label"])}</a>')
-            starter_html = ""
-            starter = path.get("starter")
-            if starter:
-                starter_href = starter["url"]
-                starter_external = starter_href.startswith("http")
-                starter_target = ' target="_blank" rel="noreferrer"' if starter_external else ""
-                if not starter_external:
-                    starter_href = relative_url('/', starter_href)
-                starter_route = starter.get("route", "Recommended first move")
-                starter_html = f"""
-                  <div class="path-starter">
-                    <p class="path-route-line">Start here <span>{html.escape(starter_route)}</span></p>
-                    <p>
-                      Start with <a href="{html.escape(starter_href)}"{starter_target}>{html.escape(starter['label'])}</a>.
-                      {html.escape(starter['reason'])}
-                    </p>
-                  </div>
-                """
-            links_label = path.get("links_label", "Then go deeper")
-            path_cards.append(
-                f"""
-                <article class="path-card">
-                  <p class="meta">{html.escape(path['who'])}</p>
-                  <h3>{html.escape(path['title'])}</h3>
-                  <p>{html.escape(path['why'])}</p>
-                  {starter_html}
-                  <p class="path-links-label">{html.escape(links_label)}</p>
-                  <div class="path-links">
-                    {''.join(link_items)}
-                  </div>
-                </article>
-                """
-            )
-        discovery_html = f"""
-        <section class="section section-frame section-frame-explore">
-          <div class="section-head section-head-stack">
-            <h2>Ways into the work</h2>
-            <p class="section-note">Choose the first click by what you care about.</p>
-          </div>
-          <div class="card-grid path-grid">
-            {''.join(path_cards)}
-          </div>
-        </section>
-        """
-
-    project_lookup = {project["name"]: project for project in projects}
-    repo_tracks_html = ""
-    if repo_tracks:
-        anchor_cards = []
-        for track in repo_tracks[:3]:
-            starter_project = project_lookup.get(track.get("starter_project", ""))
-            if not starter_project:
-                continue
-
-            track_id = slugify(track["title"])
-            starter_reason = track.get("starter_reason", "").strip()
-            proof_card = dict(starter_project)
-            proof_card["label"] = f"Start repo · {track['title']}"
-            if starter_reason:
-                proof_card["summary"] = starter_reason
-
-            context_feature = track.get("context_feature")
-            context_card = ""
-            if context_feature:
-                context_card = render_context_feature_card(
-                    "/",
-                    {
-                        **context_feature,
-                        "meta": context_feature.get("meta", f"Context note · {track['title']}"),
-                    },
-                    default_cta="Read context",
-                )
-
-            proof_links = [
-                {"label": "Track guide", "url": f"/projects/#{track_id}"},
-                {"label": "Projects page", "url": "/projects/"},
-            ]
-            related_links = render_track_links("/", track.get("links", []))
-            anchor_cards.append(
-                f"""
-                <article class="project-track-home-card">
-                  <div class="project-track-home-head">
-                    <p class="meta">Repo track</p>
-                    <h3>{html.escape(track['title'])}</h3>
-                    <p>{html.escape(track['summary'])}</p>
-                  </div>
-                  <div class="project-track-intro-grid project-track-home-pair">
-                    {render_project_card(proof_card, "/", extra_links=proof_links)}
-                    {context_card}
-                  </div>
-                  <div class="path-links project-track-links">
-                    {''.join(related_links)}
-                  </div>
-                </article>
-                """
-            )
-
-        if anchor_cards:
-            repo_tracks_html = f"""
-            <section class="section section-frame section-frame-open-source section-frame-project-tracks">
-              <div class="section-head section-head-stack">
-                <h2>One repo per track</h2>
-                <p class="section-note">One proof repo, one context route, and the rest on the <a href="{relative_url('/', '/projects/')}">projects page</a>.</p>
-              </div>
-              <div class="project-track-home-grid">
-                {''.join(anchor_cards)}
-              </div>
-            </section>
-            """
-
     body = f"""
     <section class="hero">
       <div class="hero-layout">
@@ -776,9 +679,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
     </section>
 
     {showcase_html}
-    {discovery_html}
-
-    {repo_tracks_html}
     """
     return page_layout(
         config,
@@ -812,11 +712,17 @@ def render_blog_index(config, posts, external_writing):
             """
         )
 
-    cards = []
-    for post in posts:
-        if post.slug in featured_keys:
+    selected_cards = []
+    archive_cards = []
+    selected_keys = set()
+    selected_slugs = config.get("writing_selected_post_slugs", [])
+
+    for slug in selected_slugs:
+        post = find_post(posts, slug)
+        if not post or post.slug in featured_keys:
             continue
-        cards.append(
+        selected_keys.add(post.slug)
+        selected_cards.append(
             f"""
             <article class="post-list-item">
               <p class="meta">{html.escape(post.date)}</p>
@@ -825,6 +731,47 @@ def render_blog_index(config, posts, external_writing):
             </article>
             """
         )
+
+    if not selected_cards:
+        for post in posts:
+            if post.slug in featured_keys:
+                continue
+            selected_keys.add(post.slug)
+            selected_cards.append(
+                f"""
+                <article class="post-list-item">
+                  <p class="meta">{html.escape(post.date)}</p>
+                  <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
+                  <p>{html.escape(post.summary)}</p>
+                </article>
+                """
+            )
+            if len(selected_cards) >= 8:
+                break
+
+    for post in posts:
+        if post.slug in featured_keys or post.slug in selected_keys:
+            continue
+        archive_cards.append(
+            f"""
+            <article class="post-list-item">
+              <p class="meta">{html.escape(post.date)}</p>
+              <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
+              <p>{html.escape(post.summary)}</p>
+            </article>
+            """
+        )
+
+    archive_html = ""
+    if archive_cards:
+        archive_html = f"""
+        <details class="archive-details">
+          <summary>Show more notes</summary>
+          <div class="archive-list">
+            {''.join(archive_cards)}
+          </div>
+        </details>
+        """
 
     oracle_blog_items = render_external_writing_cards("/blog/", external_writing)
 
@@ -859,8 +806,9 @@ def render_blog_index(config, posts, external_writing):
     </section>
     {oracle_blogs_section}
     <section class="section post-list">
-      <h2 class="section-title">All writing</h2>
-      {''.join(cards)}
+      <h2 class="section-title">Selected notes</h2>
+      {''.join(selected_cards)}
+      {archive_html}
     </section>
     """
     return page_layout(
@@ -873,8 +821,25 @@ def render_blog_index(config, posts, external_writing):
 
 
 def render_case_studies_page(config, case_studies):
-    def render_signal_list(items):
-        return f"<ul>{''.join(f'<li>{html.escape(item)}</li>' for item in items)}</ul>"
+    def first_item(items):
+        return items[0] if items else ""
+
+    def render_signal_rows(study):
+        rows = [
+            ("Focus", first_item(study.get("what_i_did", []))),
+            ("Constraint", first_item(study.get("why_it_was_hard", []))),
+            ("Result", first_item(study.get("outcome", []))),
+        ]
+        return "".join(
+            f"""
+            <div class="study-signal-row">
+              <p class="meta">{html.escape(label)}</p>
+              <p>{html.escape(text)}</p>
+            </div>
+            """
+            for label, text in rows
+            if text
+        )
 
     grouped = {}
     for study in case_studies:
@@ -886,9 +851,7 @@ def render_case_studies_page(config, case_studies):
         group_id = slugify(period)
         cards = []
         for study in studies:
-            focus = render_signal_list(study["what_i_did"])
-            constraint = render_signal_list(study["why_it_was_hard"])
-            result = render_signal_list(study["outcome"])
+            signal_rows = render_signal_rows(study)
             cards.append(
                 f"""
                 <article class="timeline-item" id="{html.escape(study['slug'])}">
@@ -898,19 +861,8 @@ def render_case_studies_page(config, case_studies):
                     <p class="post-summary">{html.escape(study['tagline'])}</p>
                   </div>
                   <p class="study-problem-copy">{html.escape(study['problem'])}</p>
-                  <div class="study-signal-grid">
-                    <section class="study-signal">
-                      <p class="meta">What I did</p>
-                      {focus}
-                    </section>
-                    <section class="study-signal">
-                      <p class="meta">What made it hard</p>
-                      {constraint}
-                    </section>
-                    <section class="study-signal">
-                      <p class="meta">What changed</p>
-                      {result}
-                    </section>
+                  <div class="study-signal-list">
+                    {signal_rows}
                   </div>
                 </article>
                 """
@@ -971,8 +923,8 @@ def render_about_page(config):
     <section class="page-hero page-hero-about">
       <div class="page-hero-copy">
         <p class="eyebrow">About</p>
-        <h1>About me.</h1>
-        <p class="lead">A bit more on my background and how I like to work:</p>
+        <h1>A little context.</h1>
+        <p class="lead">Where I am from, how I work, and what I care about outside the desk.</p>
       </div>
     </section>
     <section class="section about-layout">
@@ -1015,7 +967,6 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
     project_lookup = {project["name"]: project for project in projects}
     jump_links = []
     track_sections = []
-    track_map_rows = []
 
     for track in repo_tracks:
         track_id = slugify(track["title"])
@@ -1025,34 +976,15 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
         starter_reason = track.get("starter_reason", "")
         starter_project = project_lookup.get(starter_project_name) if starter_project_name else None
         context_feature = track.get("context_feature")
-        context_title = context_feature.get("title", "Context note") if context_feature else "Context note"
 
-        if starter_project:
-            starter_name = starter_project["name"]
-        else:
-            starter_name = track.get("starter_project", "First repo")
-        track_map_rows.append(
-            "\n".join(
-                [
-                    "            <tr>",
-                    f"              <th scope=\"row\">{html.escape(track['title'])}</th>",
-                    f"              <td>{html.escape(starter_name)}</td>",
-                    f"              <td>{html.escape(context_title)}</td>",
-                    "            </tr>",
-                ]
-            )
-        )
-
-        project_cards = []
+        project_rows = []
         for name in track.get("projects", []):
             if name == starter_project_name:
                 continue
             project = project_lookup.get(name)
             if not project:
                 continue
-            project_cards.append(render_project_card(project, "/projects/"))
-
-        related_links = render_track_links("/projects/", track.get("links", []))
+            project_rows.append(render_project_row(project, "/projects/"))
 
         starter_html = ""
         if starter_project:
@@ -1092,12 +1024,12 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
             """
 
         repo_grid_html = ""
-        if project_cards:
+        if project_rows:
             repo_grid_html = f"""
             <div class="project-track-rest">
-              <p class="project-track-subhead">More repos in this track</p>
-              <div class="feature-grid repo-grid">
-                {''.join(project_cards)}
+              <p class="project-track-subhead">More in this track</p>
+              <div class="project-row-list">
+                {''.join(project_rows)}
               </div>
             </div>
             """
@@ -1112,121 +1044,28 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
               </div>
               {intro_html}
               {repo_grid_html}
-              <div class="path-links project-track-links">
-                {''.join(related_links)}
-              </div>
             </section>
             """
         )
-
-    all_project_cards = []
-    for project in projects:
-        if project["name"] == "winstonlin-site":
-            continue
-        all_project_cards.append(render_project_card(project, "/projects/"))
-
-    track_map_rows_html = "\n".join(track_map_rows)
-    project_map = f"""
-    <section class="section section-frame section-frame-explore project-map-section">
-      <div class="section-head section-head-stack">
-        <h2>How the repo tracks fit together</h2>
-        <p class="section-note">The useful split here is between checks, reusable artifacts, and starter patterns with a clean handoff boundary.</p>
-      </div>
-      <div class="track-map-table-wrap">
-        <table class="track-map-table">
-          <thead>
-            <tr>
-              <th scope="col">Track</th>
-              <th scope="col">Start with</th>
-              <th scope="col">Then read</th>
-            </tr>
-          </thead>
-          <tbody>
-{track_map_rows_html}
-          </tbody>
-        </table>
-      </div>
-    </section>
-    """
-
-    latest_posts = []
-    project_featured_slugs = config.get(
-        "projects_featured_post_slugs",
-        [
-            "repeated-work-should-become-a-check",
-            "fun-projects-get-stronger-when-they-leave-a-reusable-artifact",
-            "starter-repos-should-stop-at-the-right-boundary",
-        ],
-    )
-    for slug in project_featured_slugs[:3]:
-        post = find_post(posts, slug)
-        if post:
-            latest_posts.append(
-                f"""
-                <article class="feature-card">
-                  <p class="meta">{html.escape(post.date)}</p>
-                  <h3><a href="{relative_url('/projects/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
-                  <p>{html.escape(post.summary)}</p>
-                </article>
-                """
-            )
-
-    external_writing_section = ""
-    supplemental_external = external_writing[1:] if len(external_writing) > 1 else []
-    external_cards = render_external_writing_cards("/projects/", supplemental_external)
-    if external_cards:
-        author_href = html.escape(config.get("oracle_blogs_url", "https://blogs.oracle.com/"))
-        external_writing_section = f"""
-        <section class="section section-frame section-frame-spotlight">
-          <div class="section-head section-head-stack">
-            <h2>More Oracle context around the starter work</h2>
-            <p class="section-note">A couple of additional Oracle posts that expand the OCI Functions side of the same starter-pattern preferences. <a class="oracle-blogs-link" href="{author_href}" target="_blank" rel="noreferrer">Author profile</a>.</p>
-          </div>
-          <div class="external-grid">
-            {''.join(external_cards)}
-          </div>
-        </section>
-        """
 
     body = f"""
     <section class="page-hero page-hero-projects">
       <div class="page-hero-copy">
         <p class="eyebrow">Projects</p>
-        <h1>Small tools, starter patterns, and reusable workflow artifacts.</h1>
-        <p class="lead">This is the cleanest route through the public repo work: grouped by the kind of repeated problem each batch is trying to make more visible, more reusable, or easier to rerun.</p>
+        <h1>Small tools and starter patterns.</h1>
+        <p class="lead">Pick a track, start with one repo, then skim the rest.</p>
       </div>
     </section>
     <section class="section jump-section">
       <div class="section-head section-head-stack">
         <h2>Project tracks</h2>
-        <p class="section-note">Pick the branch that matches the artifact you want.</p>
+        <p class="section-note">Three branches, one best first click in each.</p>
       </div>
       <nav class="jump-tree" aria-label="Project tracks">
         {''.join(jump_links)}
       </nav>
     </section>
-    {project_map}
     {''.join(track_sections)}
-    {external_writing_section}
-    <section class="section section-frame section-frame-spotlight">
-      <div class="section-head section-head-stack">
-        <h2>Notes behind the repos</h2>
-        <p class="section-note">Short writing that explains the standard behind the public repo work, not just the repo inventory.</p>
-      </div>
-      <div class="feature-grid">
-        {''.join(latest_posts)}
-      </div>
-    </section>
-    <section class="section section-frame section-frame-open-source">
-      <div class="section-head section-head-stack">
-        <h2>All repositories</h2>
-        <p class="section-note">The full public set currently called out on the site.</p>
-        <a href="{html.escape(config['github_url'])}" target="_blank" rel="noreferrer">GitHub profile</a>
-      </div>
-      <div class="feature-grid repo-grid">
-        {''.join(all_project_cards)}
-      </div>
-    </section>
     """
     return page_layout(
         config,
@@ -1377,7 +1216,8 @@ def ensure_clean_dist():
 
 def write_text(path, content):
     path.parent.mkdir(parents=True, exist_ok=True)
-    Path(path).write_text(content)
+    clean_content = "" if content == "" else "\n".join(line.rstrip() for line in content.splitlines()) + "\n"
+    Path(path).write_text(clean_content)
 
 
 def write_support_files(config, posts, project_spotlights):
@@ -1450,15 +1290,13 @@ def build():
     repo_tracks = load_json(CONTENT_DIR / "repo_tracks.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
-    discovery_paths = load_json(CONTENT_DIR / "discovery_paths.json")
-    proof_points = load_json(CONTENT_DIR / "proof_points.json")
     posts = load_posts()
 
     ensure_clean_dist()
     shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, projects, case_studies, discovery_paths, proof_points, repo_tracks, external_writing))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, case_studies, external_writing))
     write_text(OUTPUT_DIR / "about" / "index.html", render_about_page(config))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts, external_writing))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))

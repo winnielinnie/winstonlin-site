@@ -1,14 +1,14 @@
 [
   {
     "title": "Workflow checks",
-    "summary": "Small utilities that turn recurring review work into a visible, rerunnable check instead of another reminder thread.",
+    "summary": "Tiny checks for review work that keeps coming back.",
     "starter_project": "repo-onramp-check",
-    "starter_reason": "It shows the standard quickly: a small public utility that makes the README, example, and rerun path inspectable instead of assumed.",
+    "starter_reason": "The README, sample output, and rerun path are all visible.",
     "context_feature": {
-      "meta": "Published context · Site note",
+      "meta": "Context note",
       "title": "Examples Are the Interface for Small Tools",
       "url": "/blog/examples-are-the-interface-for-small-tools/",
-      "summary": "A higher-context note on why a small tool earns trust when it makes the example, output shape, and next move obvious before a reader studies the internals.",
+      "summary": "Why a good example teaches a small tool faster than architecture talk.",
       "cta": "Read note"
     },
     "projects": [
@@ -34,14 +34,14 @@
   },
   {
     "title": "Planning artifacts",
-    "summary": "Fun projects and lightweight utilities that leave behind a clearer artifact, handoff, or rerun path for the next step.",
+    "summary": "Small tools that leave behind a useful artifact.",
     "starter_project": "one-page-canvas",
-    "starter_reason": "It is the cleanest example of a fun side project leaving behind a concrete exported artifact instead of stopping at a demo.",
+    "starter_reason": "It turns a messy planning prompt into something portable.",
     "context_feature": {
-      "meta": "Published context · Site note",
+      "meta": "Context note",
       "title": "One-Page Tools Beat Premature Decks",
       "url": "/blog/one-page-tools-beat-premature-decks/",
-      "summary": "A higher-context note on keeping the first artifact small, portable, and structured enough to survive the jump into a doc, review, or handoff.",
+      "summary": "Why the first planning artifact should stay small and portable.",
       "cta": "Read note"
     },
     "projects": [
@@ -68,14 +68,14 @@
   },
   {
     "title": "OCI Functions starter patterns",
-    "summary": "Boundary-first starter repos that show one handoff clearly, keep the contract visible, and stop before fake completeness.",
+    "summary": "Functions patterns with one clear boundary.",
     "starter_project": "oci-fn-object-storage-router",
-    "starter_reason": "It makes the starter-repo rule obvious: one visible workflow boundary, one contract, and a believable next handoff.",
+    "starter_reason": "It shows the event, contract, and next handoff without pretending to be a full app.",
     "context_feature": {
-      "meta": "Published context · Oracle Cloud Infrastructure Blog · 2026-04-07",
+      "meta": "Oracle post · 2026-04-07",
       "title": "Functions Design Patterns",
       "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-common-patterns",
-      "summary": "A higher-context pattern guide for routing, validation, async execution, and the design checks that keep starter repos useful under real product constraints.",
+      "summary": "A practical pattern guide for routing, validation, and async execution.",
       "cta": "Read post"
     },
     "projects": [
