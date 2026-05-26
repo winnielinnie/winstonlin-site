@@ -14,6 +14,7 @@ POSTS_DIR = CONTENT_DIR / "posts"
 STATIC_DIR = ROOT / "static"
 DIST_DIR = ROOT / "dist"
 OUTPUT_DIR = ROOT / "docs"
+ASSET_VERSION = "20260526-polish"
 
 
 @dataclass
@@ -373,7 +374,7 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
   <link rel="alternate" type="application/rss+xml" title="{html.escape(config['name'])} RSS" href="{static_url(current_path, 'feed.xml')}">
-  <link rel="stylesheet" href="{static_url(current_path, 'styles.css')}">{og_tags}
+  <link rel="stylesheet" href="{static_url(current_path, 'styles.css')}?v={ASSET_VERSION}">{og_tags}
 </head>
 <body class="{body_class}">
   <div class="page-shell">
