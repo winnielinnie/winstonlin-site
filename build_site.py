@@ -635,7 +635,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head section-head-stack showcase-head">
             <h2>Start here</h2>
-            <p class="section-note">A few good entry points if you want the short version first.</p>
+            <p class="section-note">Three fast routes into the work.</p>
           </div>
           <div class="showcase-grid">
             {''.join(showcase_cards)}
@@ -681,7 +681,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
         <section class="section section-frame section-frame-explore">
           <div class="section-head section-head-stack">
             <h2>Proof points</h2>
-            <p class="section-note">A few operating outcomes that shaped how I think about product, platform, and execution work. Each card now points to the deeper evidence behind the result.</p>
+            <p class="section-note">Operating outcomes with a direct case-study route behind each claim.</p>
           </div>
           <div class="proof-grid">
             {''.join(proof_cards)}
@@ -741,7 +741,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
         <section class="section section-frame section-frame-explore">
           <div class="section-head section-head-stack">
             <h2>Ways into the work</h2>
-            <p class="section-note">A few short paths depending on whether you care more about AI workflows, platform product work, or operating-model problems. Each card now names the first move instead of leaving it implied.</p>
+            <p class="section-note">Choose the first click by what you care about.</p>
           </div>
           <div class="card-grid path-grid">
             {''.join(path_cards)}
@@ -763,7 +763,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
             proof_card = dict(starter_project)
             proof_card["label"] = f"Proof repo · {track['title']}"
             if starter_reason:
-                proof_card["summary"] = f"{starter_project['summary']} {starter_reason}"
+                proof_card["summary"] = starter_reason
 
             context_feature = track.get("context_feature")
             context_card = ""
@@ -783,32 +783,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                 {"label": "Projects page", "url": "/projects/"},
             ]
             related_links = render_track_links("/", track.get("links", []))
-            starter_text = ""
-            if starter_project.get("site_path"):
-                starter_href = relative_url("/", starter_project["site_path"])
-                starter_link = f'<a href="{starter_href}">{html.escape(starter_project["name"])}</a>'
-            else:
-                starter_link = f'<a href="{html.escape(starter_project["url"])}" target="_blank" rel="noreferrer">{html.escape(starter_project["name"])}</a>'
-            starter_text = f"""
-              <p class="project-track-home-note">
-                <span class="track-route-label">Proof</span>
-                Start with {starter_link}. {html.escape(starter_reason)}
-              </p>
-            """
-            context_text = ""
-            if context_feature and context_feature.get("title") and context_feature.get("url"):
-                context_href = context_feature["url"]
-                context_external = context_href.startswith("http")
-                context_target = ' target="_blank" rel="noreferrer"' if context_external else ""
-                if not context_external:
-                    context_href = relative_url("/", context_href)
-                context_text = f"""
-                  <p class="project-track-home-note">
-                    <span class="track-route-label">Context</span>
-                    Then read <a href="{html.escape(context_href)}"{context_target}>{html.escape(context_feature["title"])}</a> if you want the higher-context explanation behind the batch.
-                  </p>
-                """
-
             anchor_cards.append(
                 f"""
                 <article class="project-track-home-card">
@@ -816,8 +790,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                     <p class="meta">Repo track</p>
                     <h3>{html.escape(track['title'])}</h3>
                     <p>{html.escape(track['summary'])}</p>
-                    {starter_text}
-                    {context_text}
                   </div>
                   <div class="project-track-intro-grid project-track-home-pair">
                     {render_project_card(proof_card, "/", extra_links=proof_links, card_class="feature-card feature-card-proof")}
@@ -835,7 +807,7 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
             <section class="section section-frame section-frame-open-source section-frame-project-tracks">
               <div class="section-head section-head-stack">
                 <h2>One repo per track</h2>
-                <p class="section-note">The homepage only needs one clear repo proof and one context route for each batch. This pass makes those two jobs explicit so the first click is easier to trust. The deeper grouped inventory, shared notes, and Oracle context stay on the <a href="{relative_url('/', '/projects/')}">projects page</a>.</p>
+                <p class="section-note">One proof repo, one context route, and the rest on the <a href="{relative_url('/', '/projects/')}">projects page</a>.</p>
               </div>
               <div class="project-track-home-grid">
                 {''.join(anchor_cards)}
