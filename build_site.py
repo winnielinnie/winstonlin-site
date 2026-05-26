@@ -552,11 +552,9 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
     showcase_html = ""
     bio_strip = ""
     if config.get("home_bio_strip"):
-        bio_strip = f"""
-        <div class="bio-strip">
+        bio_strip = f"""<div class="bio-strip">
           <p>{html.escape(config["home_bio_strip"])}</p>
-        </div>
-        """
+        </div>"""
     if case_studies:
         featured_study = next(
             (study for study in case_studies if study["slug"] == "oci-functions-product-direction"),
@@ -635,46 +633,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
           </div>
           <div class="showcase-grid">
             {''.join(showcase_cards)}
-          </div>
-        </section>
-        """
-
-    proof_html = ""
-    if proof_points:
-        proof_cards = []
-        for point in proof_points[:3]:
-            route_html = ""
-            route = point.get("route")
-            if route:
-                route_href = route["url"]
-                route_external = route_href.startswith("http")
-                route_target = ' target="_blank" rel="noreferrer"' if route_external else ""
-                if not route_external:
-                    route_href = relative_url('/', route_href)
-                route_label = html.escape(route.get("label", "Evidence"))
-                route_html = f"""
-                  <a class="proof-compact-link" href="{html.escape(route_href)}"{route_target}>{route_label}</a>
-                """
-            proof_cards.append(
-                f"""
-                <article class="proof-item">
-                  <p class="proof-compact-value">
-                    <span>{html.escape(point['value'])}</span>
-                    <strong>{html.escape(point['label'])}</strong>
-                  </p>
-                  <p>{html.escape(point['text'])}</p>
-                  {route_html}
-                </article>
-                """
-            )
-        proof_html = f"""
-        <section class="section section-frame section-frame-explore">
-          <div class="section-head section-head-stack">
-            <h2>Selected outcomes</h2>
-            <p class="section-note">A compact reference to the measurable parts of the case studies.</p>
-          </div>
-          <div class="proof-list">
-            {''.join(proof_cards)}
           </div>
         </section>
         """
@@ -818,7 +776,6 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
     </section>
 
     {showcase_html}
-    {proof_html}
     {discovery_html}
 
     {repo_tracks_html}
