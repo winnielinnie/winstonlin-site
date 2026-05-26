@@ -656,23 +656,17 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
                 if not route_external:
                     route_href = relative_url('/', route_href)
                 route_label = html.escape(route.get("label", "Evidence"))
-                route_title = html.escape(route.get("title", "Supporting detail"))
-                route_cta = html.escape(route.get("cta", "See more"))
                 route_html = f"""
-                  <div class="proof-route-row">
-                    <div class="proof-route-meta">
-                      <span class="track-route-label">Evidence</span>
-                      <span class="path-route-pill">{route_label}</span>
-                    </div>
-                    <a class="proof-route-link" href="{html.escape(route_href)}"{route_target}>{route_cta}: {route_title}</a>
-                  </div>
+                  <a class="proof-compact-link" href="{html.escape(route_href)}"{route_target}>{route_label}</a>
                 """
             proof_cards.append(
                 f"""
-                <article class="proof-card">
-                  <p class="proof-value">{html.escape(point['value'])}</p>
-                  <p class="proof-label">{html.escape(point['label'])}</p>
-                  <p class="proof-text">{html.escape(point['text'])}</p>
+                <article class="proof-item">
+                  <p class="proof-compact-value">
+                    <span>{html.escape(point['value'])}</span>
+                    <strong>{html.escape(point['label'])}</strong>
+                  </p>
+                  <p>{html.escape(point['text'])}</p>
                   {route_html}
                 </article>
                 """
@@ -680,10 +674,10 @@ def render_homepage(config, posts, projects, case_studies, discovery_paths, proo
         proof_html = f"""
         <section class="section section-frame section-frame-explore">
           <div class="section-head section-head-stack">
-            <h2>Proof points</h2>
-            <p class="section-note">Operating outcomes with a direct case-study route behind each claim.</p>
+            <h2>Selected outcomes</h2>
+            <p class="section-note">A compact reference to the measurable parts of the case studies.</p>
           </div>
-          <div class="proof-grid">
+          <div class="proof-list">
             {''.join(proof_cards)}
           </div>
         </section>
@@ -1046,8 +1040,8 @@ def render_about_page(config):
         </div>
         <div class="about-story-copy about-story-copy-standalone">
           <section class="about-copy-block prose">
-            <p class="eyebrow">Outside of work</p>
-            <h2>Outside of work.</h2>
+            <p class="eyebrow">Personal</p>
+            <h2>Away from the desk.</h2>
             {personal_paragraphs}
           </section>
         </div>
@@ -1072,6 +1066,7 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
     project_lookup = {project["name"]: project for project in projects}
     jump_links = []
     track_sections = []
+    track_map_rows = []
 
     for track in repo_tracks:
         track_id = slugify(track["title"])
@@ -1081,6 +1076,23 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
         starter_reason = track.get("starter_reason", "")
         starter_project = project_lookup.get(starter_project_name) if starter_project_name else None
         context_feature = track.get("context_feature")
+        context_title = context_feature.get("title", "Context note") if context_feature else "Context note"
+
+        if starter_project:
+            starter_name = starter_project["name"]
+        else:
+            starter_name = track.get("starter_project", "First repo")
+        track_map_rows.append(
+            "\n".join(
+                [
+                    "            <tr>",
+                    f"              <th scope=\"row\">{html.escape(track['title'])}</th>",
+                    f"              <td>{html.escape(starter_name)}</td>",
+                    f"              <td>{html.escape(context_title)}</td>",
+                    "            </tr>",
+                ]
+            )
+        )
 
         project_cards = []
         for name in track.get("projects", []):
@@ -1169,15 +1181,27 @@ def render_projects_page(config, projects, repo_tracks, posts, external_writing)
             continue
         all_project_cards.append(render_project_card(project, "/projects/"))
 
+    track_map_rows_html = "\n".join(track_map_rows)
     project_map = f"""
     <section class="section section-frame section-frame-explore project-map-section">
       <div class="section-head section-head-stack">
         <h2>How the repo tracks fit together</h2>
         <p class="section-note">The useful split here is between checks, reusable artifacts, and starter patterns with a clean handoff boundary.</p>
       </div>
-      <figure class="diagram-frame project-map-frame">
-        <img src="{static_url('/projects/', 'diagrams/projects-track-map.svg')}" alt="Diagram showing the three repo tracks and how they route from repeated workflow problems to GitHub proof and short notes." loading="lazy">
-      </figure>
+      <div class="track-map-table-wrap">
+        <table class="track-map-table">
+          <thead>
+            <tr>
+              <th scope="col">Track</th>
+              <th scope="col">Start with</th>
+              <th scope="col">Then read</th>
+            </tr>
+          </thead>
+          <tbody>
+{track_map_rows_html}
+          </tbody>
+        </table>
+      </div>
     </section>
     """
 

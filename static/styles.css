@@ -796,6 +796,53 @@ nav a.active::after {
   margin: 6px 0 0;
 }
 
+.track-map-table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(212, 216, 207, 0.95);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 250, 0.78);
+}
+
+.track-map-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-family: var(--sans);
+}
+
+.track-map-table th,
+.track-map-table td {
+  padding: 16px 18px;
+  text-align: left;
+  border-bottom: 1px solid rgba(212, 216, 207, 0.86);
+  vertical-align: top;
+}
+
+.track-map-table thead th {
+  background: rgba(240, 243, 236, 0.86);
+  color: #44504a;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.track-map-table tbody th {
+  width: 28%;
+  color: #29433f;
+  font-size: 0.98rem;
+}
+
+.track-map-table td {
+  color: #2d2924;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.track-map-table tr:last-child th,
+.track-map-table tr:last-child td {
+  border-bottom: 0;
+}
+
 .diagram-frame {
   overflow: hidden;
   border-radius: var(--radius);
@@ -1136,6 +1183,59 @@ nav a.active::after {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 10px 0 2px;
+}
+
+.proof-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.proof-item {
+  padding-top: 12px;
+  border-top: 1px solid rgba(212, 216, 207, 0.95);
+}
+
+.proof-compact-value {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 7px;
+}
+
+.proof-compact-value span {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #29433f;
+}
+
+.proof-compact-value strong {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.proof-item p:not(.proof-compact-value) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.proof-compact-link {
+  display: inline-flex;
+  margin-top: 9px;
+  color: var(--accent-deep);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.proof-compact-link:hover {
+  color: var(--ink);
 }
 
 .proof-card {
@@ -2217,6 +2317,7 @@ code {
 
 @media (max-width: 860px) {
   .proof-grid,
+  .proof-list,
   .card-grid,
   .path-grid,
   .hero-layout,
