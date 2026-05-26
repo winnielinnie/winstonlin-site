@@ -2665,3 +2665,79 @@ nav a {
     border-radius: 22px;
   }
 }
+
+/* Overflow guards: let dense cards and link rows wrap instead of forcing spillover. */
+.feature-card,
+.showcase-card,
+.external-card,
+.project-card,
+.post-card,
+.post-list-item,
+.proof-card,
+.path-card,
+.focus-card,
+.timeline-item,
+.project-row-title,
+.project-row > p,
+.project-row .card-links,
+.showcase-panel-copy,
+.spotlight-main,
+.spotlight-footer {
+  min-width: 0;
+}
+
+.page-case-studies .page-hero .lead,
+.jump-area-link,
+.project-row h3,
+.project-row h3 a,
+.project-row > p,
+.feature-card h3,
+.feature-card h3 a,
+.feature-card p,
+.showcase-card h3,
+.showcase-card h3 a,
+.showcase-card p,
+.external-card h3,
+.external-card h3 a,
+.external-card p,
+.path-card h3,
+.path-card p,
+.focus-card h3,
+.focus-card p,
+.timeline-item h2,
+.timeline-item p,
+.post-list-item h2,
+.post-list-item p,
+.spotlight-card h2,
+.spotlight-summary,
+.proof-card p,
+.proof-route-link,
+.section-head a {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.page-case-studies .page-hero .lead {
+  white-space: normal;
+}
+
+.project-row {
+  grid-template-columns: minmax(150px, 0.32fr) minmax(0, 1fr) minmax(92px, 110px);
+}
+
+.project-row .card-links {
+  justify-content: flex-end;
+  align-self: center;
+  row-gap: 6px;
+  white-space: normal;
+}
+
+.project-row .card-links a,
+.spotlight-link,
+.spotlight-meta {
+  white-space: normal;
+}
+
+.project-row .card-links a {
+  text-align: right;
+}

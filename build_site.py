@@ -14,7 +14,7 @@ POSTS_DIR = CONTENT_DIR / "posts"
 STATIC_DIR = ROOT / "static"
 DIST_DIR = ROOT / "dist"
 OUTPUT_DIR = ROOT / "docs"
-ASSET_VERSION = "20260526-polish"
+ASSET_VERSION = "20260526-overflow-fix"
 
 
 @dataclass
