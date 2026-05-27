@@ -14,7 +14,7 @@ POSTS_DIR = CONTENT_DIR / "posts"
 STATIC_DIR = ROOT / "static"
 DIST_DIR = ROOT / "dist"
 OUTPUT_DIR = ROOT / "docs"
-ASSET_VERSION = "20260526-quiet-polish"
+ASSET_VERSION = "20260526-home-hero"
 
 
 @dataclass
@@ -675,6 +675,18 @@ def render_homepage(config, posts, case_studies, external_writing):
             <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
           </div>
         </div>
+        <aside class="hero-signal-card" aria-label="Work signals">
+          <p class="meta">Current lanes</p>
+          <div class="hero-signal-main">
+            <span>Product judgment</span>
+            <strong>Cloud platforms, AI workflows, and operating systems that have to hold up in real use.</strong>
+          </div>
+          <div class="hero-signal-list">
+            <p><span>Build</span> developer-facing systems</p>
+            <p><span>Write</span> practical field notes</p>
+            <p><span>Advise</span> small-business growth</p>
+          </div>
+        </aside>
       </div>
       {bio_strip}
     </section>
