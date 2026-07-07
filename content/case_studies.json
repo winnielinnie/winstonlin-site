@@ -3,40 +3,41 @@
     "slug": "oci-functions-product-direction",
     "title": "Reframing OCI Functions Around Adoption and Reliable Execution",
     "period": "OCI Functions",
-    "home_summary": "Built OCI Functions direction around simpler onboarding, developer trust, and reliable async execution.",
-    "home_keyline": "Code-only deploy, trust, and async clarity were the core bets.",
+    "home_summary": "Built OCI Functions direction around adoption, migration readiness, developer trust, and reliable execution for 1,000+ enterprise customers.",
+    "home_keyline": "Code-first onboarding, migration readiness, trust, and async clarity were the core bets.",
     "home_focus": [
       "Onboarding",
       "Trust",
       "Async",
       "Migration"
     ],
-    "tagline": "Shaped OCI Functions direction around onboarding, trust, async work, and migration readiness.",
-    "problem": "OCI Functions had strong platform pieces, but the first-run path still felt heavier than the market leaders and the broader story around async work and migration was too scattered.",
+    "tagline": "Shaped OCI Functions direction around onboarding, migration readiness, trust, async work, and enterprise adoption.",
+    "problem": "OCI Functions had strong platform pieces, but the first-run path, migration story, and reliable-execution model still had to compete with developer expectations set by Lambda and other modern serverless platforms.",
     "what_i_did": [
-      "Built the product thesis and priority order around code-only onboarding, debugging, trust, async clarity, and OCI-native automation.",
+      "Owned product strategy for OCI Functions across adoption, migration readiness, workload coverage, code-first deployment, async execution, long-running functions, tooling enhancements, and agent-platform interactions.",
       "Turned customer pain, market shifts, and backlog reality into a clearer roadmap story instead of treating each request as a separate feature ask.",
-      "Used detached invocation, delivery destinations, and provisioned concurrency as part of a more coherent story about reliable completion and enterprise automation."
+      "Used detached invocation, response destinations, provisioned concurrency, and code-only direction as part of a more coherent story about reliable completion and enterprise automation."
     ],
     "why_it_was_hard": [
-      "The sequencing had to be honest: simplify first, earn trust second, then expand into longer-running workflows without turning the product into a grab bag.",
-      "Functions sat in a market where AWS, Azure, Cloudflare, and Vercel were shaping expectations in different ways, so the story had to be both credible and differentiated."
+      "The sequencing had to be honest: simplify onboarding, earn developer trust, then expand into longer-running and migration-heavy workflows without turning the product into a grab bag.",
+      "Functions sat in a market where AWS, Azure, Cloudflare, and Vercel shaped expectations in different ways, so the story had to be both credible and differentiated."
     ],
     "outcome": [
-      "Created a clearer strategic frame for OCI Functions as the OCI execution layer for automation and integrations.",
-      "Grounded the roadmap in a small set of adoption and trust bets instead of chasing feature parity."
+      "Helped drive 80% YoY usage growth by improving activation, migration readiness, workload coverage, and enterprise adoption.",
+      "Created a clearer strategic frame for OCI Functions as the OCI execution layer for automation and integrations."
     ]
   },
   {
     "slug": "ai-assisted-functions-workflows",
     "title": "AI-Assisted Functions Setup and Troubleshooting",
     "period": "OCI Functions",
-    "tagline": "Explored AI-assisted setup and troubleshooting flows for OCI Functions, with emphasis on recovery and next steps.",
-    "problem": "Serverless adoption often breaks on the first-run experience: packaging, environment setup, troubleshooting, and the distance between docs and a working deployment.",
+    "tagline": "Shipped AI-assisted setup and troubleshooting workflows for OCI Functions, with emphasis on validation, recovery, and next steps.",
+    "problem": "Serverless adoption often breaks on the first-run experience: packaging, environment setup, IAM, troubleshooting, and the distance between docs and a working deployment.",
     "what_i_did": [
-      "Explored AI-assisted setup and troubleshooting flows using MCP-style integrations and reusable skills.",
+      "Shipped AI-assisted deployment and troubleshooting workflows that help developers validate environments, deploy functions, diagnose failures, and recover from common setup issues.",
+      "Created internal Functions skill artifacts and ownership guidance so product knowledge could become reusable workflow support instead of repeated one-off help.",
       "Treated the problem as a workflow-design problem, not just a model-response problem.",
-      "Focused on making the output operationally useful: what should happen next, what failed, and how to recover."
+      "Focused on making the output operationally useful: what failed, what the developer should check next, and where the recovery path should stop or escalate."
     ],
     "why_it_was_hard": [
       "AI features are easy to demo and much harder to trust in real developer workflows.",
@@ -52,9 +53,10 @@
     "title": "Functions Migration and DX Storytelling",
     "period": "OCI Functions",
     "tagline": "Built migration, patterns, and docs narratives that made OCI Functions easier to understand for real workloads.",
-    "problem": "A lot of the OCI Functions value was buried in scattered docs and product surfaces. Migration from Lambda, async behavior, and common design patterns were all understandable, but not yet packaged in the way users actually needed.",
+    "problem": "A lot of the OCI Functions value was buried in scattered docs and product surfaces. Migration from Lambda, async behavior, service limits, and common design patterns were understandable, but not yet packaged in the way customers, architects, and field teams actually needed.",
     "what_i_did": [
       "Developed a migration story for moving AWS Lambda workloads to OCI Functions by preserving business logic and replacing cloud-specific integration code.",
+      "Fed customer and team feedback about ZIP deployment, runtime management, environment drift, and framework expectations into Code-only Functions direction.",
       "Wrote and shaped practical design content around common Functions patterns, OCI-native integration flows, identity, eventing, and operational gotchas.",
       "Treated docs and external content as product surface, using them to reduce fear, clarify concept mapping, and shorten time to first useful success."
     ],
@@ -64,7 +66,28 @@
     ],
     "outcome": [
       "Created a more credible migration and usage narrative for OCI Functions across docs, blogs, and pattern-oriented content.",
-      "Made it easier to explain OCI Functions as a practical runtime for event-driven automation instead of an abstract serverless feature."
+      "Made it easier to explain OCI Functions as a practical runtime for event-driven automation instead of an abstract serverless feature.",
+      "Connected day-to-day migration friction to roadmap direction instead of treating Lambda comparisons as isolated objections."
+    ]
+  },
+  {
+    "slug": "oci-functions-product-boundaries",
+    "title": "Customer Architecture and Support Boundaries",
+    "period": "OCI Functions",
+    "tagline": "Turned ambiguous customer asks into clearer architecture guidance, support boundaries, and roadmap signal.",
+    "problem": "Many high-value Functions questions were not clean feature requests. They were ambiguous asks about extreme scale, Lambda migration, large-memory ingestion, enterprise governance, cold starts, IAM, adjacent services, and whether a pattern was supportable at all.",
+    "what_i_did": [
+      "Separated immediate customer guidance from product learning: what is supported today, what requires an architecture change, what belongs in service limits, and what should influence roadmap direction.",
+      "Clarified support boundaries around modified runtimes and framework assumptions while preserving the signal that migration customers expected simpler deployment and runtime ergonomics.",
+      "Helped field and engineering reason through large-scale and enterprise scenarios such as AI-generated function fleets, high-throughput file ingestion, governance controls, capacity-constrained environments, and low-latency execution."
+    ],
+    "why_it_was_hard": [
+      "The risky move would have been to answer every question as either yes, no, or file a ticket. The useful product work was deciding which questions exposed product gaps, adjacent-service dependencies, support risks, or future workload patterns.",
+      "Customer trust depended on being precise about today's platform boundaries while still converting repeated friction into roadmap, docs, examples, or service-limit planning."
+    ],
+    "outcome": [
+      "Gave customer and field teams clearer answers without over-promising unsupported surfaces.",
+      "Turned escalation patterns into product inputs around migration readiness, supportability, service limits, operational confidence, and future serverless workload shape."
     ]
   },
   {

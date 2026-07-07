@@ -568,7 +568,7 @@ def render_project_row(project, current_path):
     """
 
 
-def render_homepage(config, posts, case_studies, external_writing):
+def render_homepage(config, posts, case_studies, external_writing, proof_points=None):
     showcase_note_config = config.get("home_showcase_note", {})
     showcase_note_slug = showcase_note_config.get(
         "slug",
@@ -663,6 +663,37 @@ def render_homepage(config, posts, case_studies, external_writing):
         </section>
         """
 
+    proof_cards = []
+    for point in (proof_points or [])[:3]:
+        route = point.get("route", {})
+        href = route.get("url", "/case-studies/")
+        if not href.startswith("http"):
+            href = relative_url("/", href)
+        target = ' target="_blank" rel="noreferrer"' if href.startswith("http") else ""
+        proof_cards.append(
+            f"""
+            <article class="proof-card">
+              <p class="proof-value">{html.escape(point['value'])}</p>
+              <p class="proof-label">{html.escape(point['label'])}</p>
+              <p class="proof-text">{html.escape(point['text'])}</p>
+              <div class="proof-route-row">
+                <span class="proof-route-meta">{html.escape(route.get('label', 'Evidence'))}</span>
+                <a class="proof-route-link" href="{html.escape(href)}"{target}>{html.escape(route.get('cta', 'See proof'))}</a>
+              </div>
+            </article>
+            """
+        )
+
+    proof_html = ""
+    if proof_cards:
+        proof_html = f"""
+        <section class="section proof-section">
+          <div class="proof-grid">
+            {''.join(proof_cards)}
+          </div>
+        </section>
+        """
+
     body = f"""
     <section class="hero">
       <div class="hero-layout">
@@ -679,6 +710,7 @@ def render_homepage(config, posts, case_studies, external_writing):
       {bio_strip}
     </section>
 
+    {proof_html}
     {showcase_html}
     """
     return page_layout(
@@ -1288,6 +1320,7 @@ def build():
     config = load_json(ROOT / "site_config.json")
     projects = load_json(CONTENT_DIR / "projects.json")
     project_spotlights = load_json(CONTENT_DIR / "project_spotlights.json")
+    proof_points = load_json(CONTENT_DIR / "proof_points.json")
     repo_tracks = load_json(CONTENT_DIR / "repo_tracks.json")
     external_writing = load_json(CONTENT_DIR / "external_writing.json")
     case_studies = load_json(CONTENT_DIR / "case_studies.json")
@@ -1297,7 +1330,7 @@ def build():
     shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
     write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, case_studies, external_writing))
+    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, case_studies, external_writing, proof_points))
     write_text(OUTPUT_DIR / "about" / "index.html", render_about_page(config))
     write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts, external_writing))
     write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))

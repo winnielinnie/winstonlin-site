@@ -3,7 +3,14 @@
 <channel>
   <title>Winston Lin</title>
   <link>https://winnielinnie.github.io/winstonlin-site/</link>
-  <description>Case studies, writing, and practical tools from cloud products, developer platforms, AI workflows, and operating work.</description>
+  <description>Case studies, writing, and practical tools on cloud platforms, developer workflows, serverless adoption, migration, troubleshooting, and AI-assisted work.</description>
+  <item>
+    <title>Support Boundaries Are Product Strategy</title>
+    <link>https://winnielinnie.github.io/winstonlin-site/blog/support-boundaries-are-product-strategy/</link>
+    <guid>https://winnielinnie.github.io/winstonlin-site/blog/support-boundaries-are-product-strategy/</guid>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+    <description>Senior platform PM work often shows up in the decision to clarify what is supported, what is a roadmap gap, and what a customer should do next.</description>
+  </item>
   <item>
     <title>Proof points should route to evidence</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/proof-points-should-route-to-evidence/</link>
@@ -136,13 +143,6 @@
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/fun-projects-get-stronger-when-they-leave-a-reusable-artifact/</guid>
     <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
     <description>A small side project gets more useful when it leaves behind a clear output, handoff, or rerun path that someone can carry into real work.</description>
-  </item>
-  <item>
-    <title>Starter Repos Should Stop at the Right Boundary</title>
-    <link>https://winnielinnie.github.io/winstonlin-site/blog/starter-repos-should-stop-at-the-right-boundary/</link>
-    <guid>https://winnielinnie.github.io/winstonlin-site/blog/starter-repos-should-stop-at-the-right-boundary/</guid>
-    <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
-    <description>A good starter repo should make the first handoff obvious by showing what it handles cleanly, what it leaves out, and where the real system begins.</description>
   </item>
 </channel>
 </rss>

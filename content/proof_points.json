@@ -1,5 +1,16 @@
 [
   {
+    "value": "1,000+",
+    "label": "Enterprise customers",
+    "text": "OCI Functions product strategy across adoption, migration, async execution, and developer trust.",
+    "route": {
+      "label": "Case study",
+      "title": "OCI Functions product direction",
+      "url": "/case-studies/#oci-functions-product-direction",
+      "cta": "See case study"
+    }
+  },
+  {
     "value": "80%",
     "label": "YoY growth",
     "text": "OCI Functions growth after reducing friction and improving migration readiness.",
@@ -18,17 +29,6 @@
       "label": "Case study",
       "title": "Regional delivery orchestration",
       "url": "/case-studies/#service-installer",
-      "cta": "See case study"
-    }
-  },
-  {
-    "value": "60%",
-    "label": "Faster RCA",
-    "text": "Dependency and health visibility made incident response materially faster.",
-    "route": {
-      "label": "Case study",
-      "title": "Dependency and health registry",
-      "url": "/case-studies/#feature-registry",
       "cta": "See case study"
     }
   }
