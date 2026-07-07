@@ -1,8 +1,8 @@
 [
   {
     "value": "1,000+",
-    "label": "Enterprise customers",
-    "text": "OCI Functions operates at meaningful enterprise scale, where setup, migration, async workflows, and troubleshooting need to stay clear.",
+    "label": "Cloud scale",
+    "text": "Platform product work in cloud infrastructure, where developer workflows, migration, and reliability have to hold up at enterprise scale.",
     "route": {
       "label": "Case study",
       "title": "OCI Functions product direction",
@@ -11,24 +11,24 @@
     }
   },
   {
-    "value": "80%",
-    "label": "YoY growth",
-    "text": "Part of a broader activation, migration readiness, and workload coverage push for OCI Functions.",
+    "value": "$30K-$20M+",
+    "label": "Advisory range",
+    "text": "Startup, SMB, and family-business advisory across product positioning, pricing, growth, operations, and technology decisions.",
     "route": {
       "label": "Case study",
-      "title": "OCI Functions product direction",
-      "url": "/case-studies/#oci-functions-product-direction",
+      "title": "Startup and small business advisory",
+      "url": "/case-studies/#startup-small-business-advisory",
       "cta": "See case study"
     }
   },
   {
-    "value": "30 days",
-    "label": "Regional delivery",
-    "text": "Regional launch work where clearer sequencing, validation, and ownership reduced delivery drag.",
+    "value": "10+",
+    "label": "Enterprise implementations",
+    "text": "Discovery-to-go-live SaaS implementation work across construction, utilities, telecom, and asset management customers.",
     "route": {
       "label": "Case study",
-      "title": "Regional delivery orchestration",
-      "url": "/case-studies/#service-installer",
+      "title": "Enterprise delivery through better discovery",
+      "url": "/case-studies/#sitetracker-enterprise-delivery",
       "cta": "See case study"
     }
   }

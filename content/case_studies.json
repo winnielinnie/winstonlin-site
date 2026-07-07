@@ -1,5 +1,33 @@
 [
   {
+    "slug": "startup-small-business-advisory",
+    "title": "Startup and Small Business Advisory",
+    "period": "Advisory",
+    "home_summary": "Advisory work across product positioning, pricing, growth, operations, and technology decisions for growing businesses.",
+    "home_keyline": "Operator-minded advice for founders, SMBs, and family businesses.",
+    "home_focus": [
+      "Positioning",
+      "Pricing",
+      "Growth",
+      "Operations"
+    ],
+    "tagline": "Advise early-stage startups, SMBs, and family businesses across North America and Asia on product, growth, operations, and technology choices.",
+    "problem": "Growing businesses rarely need abstract strategy alone. They need sharper positioning, better pricing logic, clearer operating rhythm, practical technology choices, and a way to connect day-to-day execution to the next stage of growth.",
+    "what_i_did": [
+      "Advised early-stage startups, SMBs, and family businesses on product positioning, pricing, growth strategy, operations, and technology decisions.",
+      "Worked with companies ranging from roughly $30K to $20M+ in annual revenue, including projects tied to $1M+ in revenue growth.",
+      "Helped teams clarify the offer, identify the actual operating bottleneck, and choose where technology or process change would create leverage."
+    ],
+    "why_it_was_hard": [
+      "Smaller and growing businesses often mix product, sales, service design, finance, and operations into one messy problem, so the work has to find the real constraint before recommending a fix.",
+      "The useful answer is rarely just 'use more software.' It is deciding what the business should make clearer, repeat more reliably, price differently, or stop doing."
+    ],
+    "outcome": [
+      "Created practical operating and growth recommendations for businesses across different stages, geographies, and business models.",
+      "Built a stronger investor/operator lens for evaluating markets, offers, customer behavior, and the systems a company needs as it scales."
+    ]
+  },
+  {
     "slug": "oci-functions-product-direction",
     "title": "Reframing OCI Functions Around Adoption and Reliable Execution",
     "period": "OCI Functions",

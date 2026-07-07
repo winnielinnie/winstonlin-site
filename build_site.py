@@ -584,6 +584,10 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
             (study for study in case_studies if study["slug"] == "oci-functions-product-direction"),
             case_studies[0],
         )
+        advisory_study = next(
+            (study for study in case_studies if study["slug"] == "startup-small-business-advisory"),
+            None,
+        )
         showcase_items = []
         showcase_items.append(
             {
@@ -599,11 +603,11 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
         showcase_items.append(
             {
                 "label": "2",
-                "meta": "Projects",
-                "title": "Practical tools and starter patterns",
-                "summary": "Small repos for workflow checks, planning artifacts, and OCI Functions examples.",
-                "href": relative_url("/", "/projects/"),
-                "cta": "View projects",
+                "meta": "Advisory",
+                "title": advisory_study["title"] if advisory_study else "Advisory and operating work",
+                "summary": advisory_study["home_summary"] if advisory_study else "Product, growth, pricing, operations, and technology decisions for growing businesses.",
+                "href": f"{relative_url('/', '/case-studies/')}#startup-small-business-advisory" if advisory_study else relative_url("/", "/about/"),
+                "cta": "See advisory work",
                 "external": False,
             }
         )
@@ -932,8 +936,18 @@ def render_case_studies_page(config, case_studies):
 def render_about_page(config):
     about = config.get("about", {})
     intro = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("intro", []))
+    advisory_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("advisory", []))
     background_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("background", []))
     personal_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("personal", []))
+    advisory_block = ""
+    if advisory_paragraphs:
+        advisory_block = f"""
+          <section class="about-copy-block prose">
+            <p class="eyebrow">Advisory</p>
+            <h2>Company-building work.</h2>
+            {advisory_paragraphs}
+          </section>
+        """
 
     body = f"""
     <section class="page-hero page-hero-about">
@@ -949,6 +963,7 @@ def render_about_page(config):
           {intro}
         </div>
         <div class="about-story-grid">
+          {advisory_block}
           <section class="about-copy-block prose">
             <p class="eyebrow">Background</p>
             <h2>Where I come from.</h2>
@@ -975,7 +990,7 @@ def render_about_page(config):
         "About",
         body,
         "/about/",
-        meta_description="About Winston Lin: background, work, and interests across cloud products, developer tools, AI workflows, and small businesses.",
+        meta_description="About Winston Lin: background, work, advisory, investing interests, cloud products, developer tools, AI workflows, and small businesses.",
     )
 
 

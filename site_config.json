@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
-  "title": "I work on cloud products and developer tools.",
-  "tagline": "I'm a Principal Product Manager at Oracle, focused on OCI Functions and tools that help developers build, run, and operate with more confidence. I work across setup, migration, troubleshooting, and operations.",
+  "title": "I help technical products and growing businesses work better.",
+  "tagline": "I'm a product leader in cloud infrastructure and developer platforms. I also advise startups, SMBs, and family businesses on product positioning, pricing, growth, operations, and technology decisions.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Case studies, writing, and practical tools on cloud platforms, developer workflows, serverless migration, troubleshooting, and AI-assisted work.",
+  "meta_description": "Case studies, writing, and practical tools on cloud platforms, developer workflows, startup advisory, operating systems, and AI-assisted work.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
@@ -17,7 +17,7 @@
     "cta": "Read the workflow"
   },
   "home_showcase_note_slug": "how-i-use-ai-as-a-pm-with-a-real-workspace",
-  "home_bio_strip": "Principal PM for OCI Functions at Oracle Cloud Infrastructure. I also advise a small set of businesses on growth, service design, and operating rhythm.",
+  "home_bio_strip": "Principal PM at Oracle Cloud Infrastructure. Outside the day job, I advise a small set of startups, SMBs, and family businesses across North America and Asia.",
   "oracle_blog_links": [
     {
       "title": "OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists",
@@ -54,7 +54,12 @@
   ],
   "about": {
     "intro": [
-      "I'm based in San Francisco and work across cloud products, developer tools, AI workflows, and business systems. Most of my work has lived in the part of the job where direction, constraints, and day-to-day execution all meet. Outside the day job, I also advise and invest in a small set of businesses and startups in the U.S. and Asia."
+      "I'm based in San Francisco and work across cloud products, developer tools, AI workflows, business systems, and early-stage operating questions. Most of my work has lived in the part of the job where direction, constraints, customer value, and day-to-day execution all meet."
+    ],
+    "advisory": [
+      "Outside the day job, I advise early-stage startups, SMBs, and family businesses across North America and Asia on product positioning, pricing, growth strategy, operations, and technology decisions.",
+      "That work has ranged from small businesses doing tens of thousands in annual revenue to companies above $20M, including projects tied to $1M+ in revenue growth.",
+      "I am interested in the operator/investor side of company building: how a market is chosen, how the offer is shaped, how the operating rhythm changes as the business grows, and where technology actually changes the slope."
     ],
     "background": [
       "I grew up between Taipei and Orange County, which made me comfortable moving between different environments early.",
