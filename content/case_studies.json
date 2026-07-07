@@ -3,28 +3,28 @@
     "slug": "oci-functions-product-direction",
     "title": "Reframing OCI Functions Around Adoption and Reliable Execution",
     "period": "OCI Functions",
-    "home_summary": "Built OCI Functions direction around adoption, migration readiness, developer trust, and reliable execution for 1,000+ enterprise customers.",
-    "home_keyline": "Code-first onboarding, migration readiness, trust, and async clarity were the core bets.",
+    "home_summary": "Built OCI Functions direction around setup, migration readiness, troubleshooting, and reliable execution for 1,000+ enterprise customers.",
+    "home_keyline": "Simpler setup, migration readiness, debugging, and async clarity were the core bets.",
     "home_focus": [
       "Onboarding",
       "Trust",
       "Async",
       "Migration"
     ],
-    "tagline": "Shaped OCI Functions direction around onboarding, migration readiness, trust, async work, and enterprise adoption.",
-    "problem": "OCI Functions had strong platform pieces, but the first-run path, migration story, and reliable-execution model still had to compete with developer expectations set by Lambda and other modern serverless platforms.",
+    "tagline": "Shaped OCI Functions direction around setup, migration readiness, troubleshooting, async work, and enterprise adoption.",
+    "problem": "OCI Functions had strong platform pieces, but the first-run path, migration story, and reliable-execution model still needed to feel simpler and clearer for developers comparing it with Lambda and other serverless platforms.",
     "what_i_did": [
-      "Owned product strategy for OCI Functions across adoption, migration readiness, workload coverage, code-first deployment, async execution, long-running functions, tooling enhancements, and agent-platform interactions.",
-      "Turned customer pain, market shifts, and backlog reality into a clearer roadmap story instead of treating each request as a separate feature ask.",
-      "Used detached invocation, response destinations, provisioned concurrency, and code-only direction as part of a more coherent story about reliable completion and enterprise automation."
+      "Owned product strategy for OCI Functions across setup, migration readiness, workload coverage, code-first deployment, async execution, long-running functions, tooling enhancements, and agent-platform interactions.",
+      "Turned customer pain, market shifts, and backlog reality into clearer roadmap choices instead of treating each request as a separate feature ask.",
+      "Used detached invocation, response destinations, provisioned concurrency, and code-only direction as part of a clearer story about reliable completion and enterprise automation."
     ],
     "why_it_was_hard": [
-      "The sequencing had to be honest: simplify onboarding, earn developer trust, then expand into longer-running and migration-heavy workflows without turning the product into a grab bag.",
+      "The sequencing had to be practical: simplify setup, improve debugging, then expand into longer-running and migration-heavy workflows without turning the product into a grab bag.",
       "Functions sat in a market where AWS, Azure, Cloudflare, and Vercel shaped expectations in different ways, so the story had to be both credible and differentiated."
     ],
     "outcome": [
       "Helped drive 80% YoY usage growth by improving activation, migration readiness, workload coverage, and enterprise adoption.",
-      "Created a clearer strategic frame for OCI Functions as the OCI execution layer for automation and integrations."
+      "Made the product story easier to explain: OCI Functions as a practical execution layer for automation and integrations."
     ]
   },
   {
@@ -72,17 +72,17 @@
   },
   {
     "slug": "oci-functions-product-boundaries",
-    "title": "Customer Architecture and Support Boundaries",
+    "title": "Customer Architecture Questions",
     "period": "OCI Functions",
-    "tagline": "Turned ambiguous customer asks into clearer architecture guidance, support boundaries, and roadmap signal.",
-    "problem": "Many high-value Functions questions were not clean feature requests. They were ambiguous asks about extreme scale, Lambda migration, large-memory ingestion, enterprise governance, cold starts, IAM, adjacent services, and whether a pattern was supportable at all.",
+    "tagline": "Turned hard customer questions into clearer architecture guidance, support answers, and product follow-up.",
+    "problem": "Many high-value Functions questions were not clean feature requests. They were asks about extreme scale, Lambda migration, large-memory ingestion, enterprise governance, cold starts, IAM, adjacent services, and whether a pattern was supportable at all.",
     "what_i_did": [
-      "Separated immediate customer guidance from product learning: what is supported today, what requires an architecture change, what belongs in service limits, and what should influence roadmap direction.",
-      "Clarified support boundaries around modified runtimes and framework assumptions while preserving the signal that migration customers expected simpler deployment and runtime ergonomics.",
+      "Separated the immediate customer answer from the product follow-up: what is supported today, what requires an architecture change, what belongs in service limits, and what should influence roadmap direction.",
+      "Gave clear support answers around modified runtimes and framework assumptions while preserving the signal that migration customers expected simpler deployment and runtime ergonomics.",
       "Helped field and engineering reason through large-scale and enterprise scenarios such as AI-generated function fleets, high-throughput file ingestion, governance controls, capacity-constrained environments, and low-latency execution."
     ],
     "why_it_was_hard": [
-      "The risky move would have been to answer every question as either yes, no, or file a ticket. The useful product work was deciding which questions exposed product gaps, adjacent-service dependencies, support risks, or future workload patterns.",
+      "The risky move would have been to answer every question as either yes, no, or file a ticket. The useful work was deciding which questions exposed product gaps, adjacent-service dependencies, support risks, or future workload patterns.",
       "Customer trust depended on being precise about today's platform boundaries while still converting repeated friction into roadmap, docs, examples, or service-limit planning."
     ],
     "outcome": [

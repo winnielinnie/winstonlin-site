@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
-  "title": "I work on the adoption layer of complex systems.",
-  "tagline": "I build product direction for cloud platforms, developer workflows, and AI-assisted systems, especially where onboarding, migration, troubleshooting, and trust decide whether the product actually gets used.",
+  "title": "I work on cloud products and developer tools.",
+  "tagline": "I work on OCI Functions and developer platforms, with a focus on making setup, migration, troubleshooting, and day-to-day operations easier to understand.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Case studies, writing, and practical tools on cloud platforms, developer workflows, serverless adoption, migration, troubleshooting, and AI-assisted work.",
+  "meta_description": "Case studies, writing, and practical tools on cloud platforms, developer workflows, serverless migration, troubleshooting, and AI-assisted work.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
@@ -17,7 +17,7 @@
     "cta": "Read the workflow"
   },
   "home_showcase_note_slug": "how-i-use-ai-as-a-pm-with-a-real-workspace",
-  "home_bio_strip": "Principal PM for OCI Functions at Oracle Cloud Infrastructure. I also advise and invest in a small set of businesses around growth, service design, and operating rhythm.",
+  "home_bio_strip": "Principal PM for OCI Functions at Oracle Cloud Infrastructure. I also advise a small set of businesses on growth, service design, and operating rhythm.",
   "oracle_blog_links": [
     {
       "title": "OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists",

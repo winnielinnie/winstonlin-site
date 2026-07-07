@@ -3,13 +3,13 @@
 <channel>
   <title>Winston Lin</title>
   <link>https://winnielinnie.github.io/winstonlin-site/</link>
-  <description>Case studies, writing, and practical tools on cloud platforms, developer workflows, serverless adoption, migration, troubleshooting, and AI-assisted work.</description>
+  <description>Case studies, writing, and practical tools on cloud platforms, developer workflows, serverless migration, troubleshooting, and AI-assisted work.</description>
   <item>
-    <title>Support Boundaries Are Product Strategy</title>
+    <title>Clear Support Answers Build Trust</title>
     <link>https://winnielinnie.github.io/winstonlin-site/blog/support-boundaries-are-product-strategy/</link>
     <guid>https://winnielinnie.github.io/winstonlin-site/blog/support-boundaries-are-product-strategy/</guid>
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
-    <description>Senior platform PM work often shows up in the decision to clarify what is supported, what is a roadmap gap, and what a customer should do next.</description>
+    <description>Platform PM work often comes down to a simple question: what can the customer rely on today, and what should the product team learn from the ask?</description>
   </item>
   <item>
     <title>Proof points should route to evidence</title>
