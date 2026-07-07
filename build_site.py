@@ -318,6 +318,10 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
         ("Writing", "/blog/"),
         ("About", "/about/"),
     ]
+    if config.get("oracle_blogs_url"):
+        nav_items.append(("Oracle", config["oracle_blogs_url"]))
+    if config.get("linkedin_url"):
+        nav_items.append(("LinkedIn", config["linkedin_url"]))
     nav_html = []
     for label, url in nav_items:
         external = url.startswith("http")
@@ -380,13 +384,7 @@ def page_layout(config, title, body, current_path="/", meta_description=None, og
   <div class="page-shell">
     <header class="site-header">
       <div class="site-brand">
-        <p class="site-kicker">{html.escape(config["location"])}</p>
-        <div class="site-brand-row">
-          <figure class="site-portrait">
-            <img src="{static_url(current_path, 'winston-headshot.jpg')}" alt="Portrait of Winston">
-          </figure>
-          <a href="{relative_url(current_path, '/')}" class="site-name">{html.escape(config["name"])}</a>
-        </div>
+        <a href="{relative_url(current_path, '/')}" class="site-name">{html.escape(config["name"])}</a>
       </div>
       <nav>{"".join(nav_html)}</nav>
     </header>
@@ -587,22 +585,10 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
             case_studies[0],
         )
         showcase_items = []
-        if current_note:
-            showcase_items.append(
-                {
-                    "label": showcase_note_config.get("label", "Writing"),
-                    "meta": showcase_note_config.get("meta", "Writing"),
-                    "title": current_note.title,
-                    "summary": showcase_note_config.get("summary", current_note.summary),
-                    "href": relative_url('/', f'/blog/{current_note.slug}/'),
-                    "cta": showcase_note_config.get("cta", "Read note"),
-                    "external": False,
-                }
-            )
         showcase_items.append(
             {
-                "label": "Case study",
-                "meta": featured_study["period"],
+                "label": "1",
+                "meta": "Case study",
                 "title": featured_study["title"],
                 "summary": featured_study["home_summary"],
                 "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
@@ -610,29 +596,27 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
                 "external": False,
             }
         )
-        external_item = external_writing[0] if external_writing else None
-        if external_item:
+        showcase_items.append(
+            {
+                "label": "2",
+                "meta": "Projects",
+                "title": "Practical tools and starter patterns",
+                "summary": "Small repos for workflow checks, planning artifacts, and OCI Functions examples.",
+                "href": relative_url("/", "/projects/"),
+                "cta": "View projects",
+                "external": False,
+            }
+        )
+        if current_note:
             showcase_items.append(
                 {
-                    "label": "Oracle post",
-                    "meta": "OCI Blog",
-                    "title": external_item.get("short_title") or external_item["title"],
-                    "summary": external_item.get("summary", external_item["title"]),
-                    "href": external_item["url"],
-                    "cta": "Read Oracle post",
-                    "external": True,
-                }
-            )
-        else:
-            showcase_items.append(
-                {
-                    "label": "Oracle writing",
-                    "meta": "Oracle Blogs",
-                    "title": "Author profile and selected posts",
-                    "summary": "Public writing on OCI Functions patterns, recovery, and async execution.",
-                    "href": config.get("oracle_blogs_url", "https://blogs.oracle.com/"),
-                    "cta": "Open Oracle profile",
-                    "external": True,
+                    "label": "3",
+                    "meta": "Writing",
+                    "title": current_note.title,
+                    "summary": showcase_note_config.get("summary", current_note.summary),
+                    "href": relative_url('/', f'/blog/{current_note.slug}/'),
+                    "cta": showcase_note_config.get("cta", "Read the workflow"),
+                    "external": False,
                 }
             )
 
@@ -643,7 +627,7 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
                 f"""
                 <article class="showcase-card">
                   <div class="showcase-panel-copy">
-                    <p class="meta">{html.escape(item['label'])} · {html.escape(item['meta'])}</p>
+                    <p class="meta">{html.escape(item['label'])}</p>
                     <h3><a href="{html.escape(item['href'])}"{target}>{html.escape(item['title'])}</a></h3>
                     <p class="showcase-summary">{html.escape(item['summary'])}</p>
                   </div>
@@ -655,7 +639,7 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
         <section class="section showcase-section section-frame section-frame-spotlight">
           <div class="section-head section-head-stack showcase-head">
             <h2>Start here</h2>
-            <p class="section-note">Three fast routes into the work.</p>
+          <p class="section-note">Three fast routes into the work.</p>
           </div>
           <div class="showcase-grid">
             {''.join(showcase_cards)}
@@ -687,7 +671,7 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
     proof_html = ""
     if proof_cards:
         proof_html = f"""
-        <section class="section proof-section">
+        <section class="section proof-section" aria-label="Selected context">
           <div class="proof-grid">
             {''.join(proof_cards)}
           </div>
@@ -698,7 +682,6 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
     <section class="hero">
       <div class="hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow">Work and Writing</p>
           <h1>{html.escape(config["title"])}</h1>
           <p class="lead">{html.escape(config["tagline"])}</p>
           <div class="hero-links">
@@ -710,8 +693,8 @@ def render_homepage(config, posts, case_studies, external_writing, proof_points=
       {bio_strip}
     </section>
 
-    {proof_html}
     {showcase_html}
+    {proof_html}
     """
     return page_layout(
         config,

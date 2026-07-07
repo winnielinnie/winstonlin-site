@@ -2,7 +2,7 @@
   {
     "value": "1,000+",
     "label": "Enterprise customers",
-    "text": "OCI Functions product work across setup, migration, async workflows, and troubleshooting.",
+    "text": "OCI Functions operates at meaningful enterprise scale, where setup, migration, async workflows, and troubleshooting need to stay clear.",
     "route": {
       "label": "Case study",
       "title": "OCI Functions product direction",
@@ -13,7 +13,7 @@
   {
     "value": "80%",
     "label": "YoY growth",
-    "text": "OCI Functions growth after improving setup, migration readiness, and workload coverage.",
+    "text": "Part of a broader activation, migration readiness, and workload coverage push for OCI Functions.",
     "route": {
       "label": "Case study",
       "title": "OCI Functions product direction",
@@ -24,7 +24,7 @@
   {
     "value": "30 days",
     "label": "Regional delivery",
-    "text": "Build timelines compressed from about 3 months with clearer sequencing and validation.",
+    "text": "Regional launch work where clearer sequencing, validation, and ownership reduced delivery drag.",
     "route": {
       "label": "Case study",
       "title": "Regional delivery orchestration",
