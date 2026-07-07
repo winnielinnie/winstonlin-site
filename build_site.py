@@ -14,7 +14,7 @@ POSTS_DIR = CONTENT_DIR / "posts"
 STATIC_DIR = ROOT / "static"
 DIST_DIR = ROOT / "dist"
 OUTPUT_DIR = ROOT / "docs"
-ASSET_VERSION = "20260527-clean-editorial"
+ASSET_VERSION = "20260707-type-scale"
 
 
 @dataclass
