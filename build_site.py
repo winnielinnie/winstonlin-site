@@ -257,6 +257,7 @@ def format_rss_date(date_text):
 
 # Templates share one small visual system. Content stays in JSON and Markdown.
 ASSET_VERSION = '20261016-editorial'
+HEADSHOT_ASSET = 'winston-headshot-retouched.jpg'
 ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 DOWN = '<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 NEXT = '<svg class="flow-arrow" viewBox="0 0 64 20" fill="none" aria-hidden="true"><path d="M1 10h60m-7-7 7 7-7 7" stroke="currentColor" stroke-width="1.2"/></svg>'
@@ -299,7 +300,7 @@ def page_layout(config, title, body, current_path='/', meta_description=None, og
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(page_title)}</title><meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{esc(canonical)}"><link rel="icon" href="{static_url(current_path,'favicon.svg')}" type="image/svg+xml">
-<meta property="og:title" content="{esc(page_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{og_type}"><meta property="og:url" content="{esc(canonical)}"><meta property="og:image" content="{config['site_url']}/winston-headshot.jpg"><meta name="twitter:card" content="summary">
+<meta property="og:title" content="{esc(page_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{og_type}"><meta property="og:url" content="{esc(canonical)}"><meta property="og:image" content="{config['site_url']}/{HEADSHOT_ASSET}"><meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{static_url(current_path,'styles.css')}?v={ASSET_VERSION}">
@@ -331,7 +332,7 @@ def collection_row(current,title,meta,target):
 
 
 def render_homepage(config,posts,studies,external):
-    body=f'''<section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">Making complex products<br class="desktop-break"> easier to use.</h1><p>{esc(config['tagline'])}</p><div class="hero-actions"><a href="#selected-work" class="button">Explore my work{DOWN}</a>{link('/','/about/','More about me')}</div></div><figure class="portrait"><img src="winston-headshot.jpg" alt="Winston Lin" width="350" height="432" fetchpriority="high"><figcaption>San Francisco, CA</figcaption></figure></section>
+    body=f'''<section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">Making complex products<br class="desktop-break"> easier to use.</h1><p>{esc(config['tagline'])}</p><div class="hero-actions"><a href="#selected-work" class="button">Explore my work{DOWN}</a>{link('/','/about/','More about me')}</div></div><figure class="portrait"><img src="{HEADSHOT_ASSET}" alt="Winston Lin" width="350" height="432" fetchpriority="high"><figcaption>San Francisco, CA</figcaption></figure></section>
 <div class="experience-strip"><p><span>Currently</span>Principal Product Manager, Oracle</p><p><span>Previously</span>Sitetracker · Cisco</p></div>
 <section class="home-work" id="selected-work">{section_heading('Selected work','/','/case-studies/','View all work')}{''.join(work_row(x,i+1,featured=True) for i,x in enumerate(studies[:3]))}</section>
 <section class="home-writing">{section_heading('Writing & small builds','/','/blog/','Browse the collection')}
@@ -452,7 +453,7 @@ def build():
     if OUTPUT_DIR.exists(): shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir()
     # Only copy declared public assets, never arbitrary untracked files.
-    assets=['styles.css','favicon.svg','winston-headshot.jpg','winston-trail-clean.png','winston-trail.png']
+    assets=['styles.css','favicon.svg','winston-headshot.jpg',HEADSHOT_ASSET,'winston-trail-clean.png','winston-trail.png']
     for asset in assets: shutil.copy2(STATIC_DIR/asset,OUTPUT_DIR/asset)
     if (STATIC_DIR/'diagrams').exists(): shutil.copytree(STATIC_DIR/'diagrams',OUTPUT_DIR/'diagrams')
     pages={'/':render_homepage(config,posts,studies,external),'/case-studies/':render_work_index(config,studies),'/blog/':render_blog_index(config,posts,external),'/projects/':render_projects_page(config,projects,tracks),'/about/':render_about_page(config)}
