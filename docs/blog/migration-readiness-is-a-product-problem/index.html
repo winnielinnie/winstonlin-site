@@ -1,50 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Migration Readiness Is A Product Problem | Winston Lin</title>
-  <meta name="description" content="Migration pain is often designed into packaging, docs, and defaults long before a customer ever starts.">
-  <link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/">
-  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
-  <link rel="alternate" type="application/rss+xml" title="Winston Lin RSS" href="../../feed.xml">
-  <link rel="stylesheet" href="../../styles.css?v=20260707-type-scale">
-  <meta property="og:title" content="Migration Readiness Is A Product Problem | Winston Lin">
-  <meta property="og:description" content="Migration pain is often designed into packaging, docs, and defaults long before a customer ever starts.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/">
-  <meta name="twitter:card" content="summary">
-</head>
-<body class="page-post">
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="site-brand">
-        <a href="../../" class="site-name">Winston Lin</a>
-      </div>
-      <nav><a href="../../">Home</a><a href="../../case-studies/">Case Studies</a><a href="../../projects/">Projects</a><a href="../" class="active">Writing</a><a href="../../about/">About</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a></nav>
-    </header>
-    <main>
-
-    <article class="post-page prose">
-      <p class="meta">2026-03-21</p>
-      <h1>Migration Readiness Is A Product Problem</h1>
-      <p class="post-summary">Migration pain is often designed into packaging, docs, and defaults long before a customer ever starts.</p>
-      <nav class="post-nav post-nav-top" aria-label="Writing navigation"><a href="../">Back to all writing</a><a href="../feature-registries-are-about-operational-clarity/">Previous note</a><a href="../what-building-internal-platforms-taught-me/">Next note</a></nav>
-      <p>Migration work gets framed in a few different ways depending on who is talking. Sales teams tend to see it as a motion. Field teams tend to see it as an enablement problem.</p>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Migration Readiness Is A Product Problem | Winston Lin</title><meta name="description" content="Migration pain is often designed into packaging, docs, and defaults long before a customer ever starts.">
+<link rel="canonical" href="https://winnielinnie.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/"><link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Migration Readiness Is A Product Problem | Winston Lin"><meta property="og:description" content="Migration pain is often designed into packaging, docs, and defaults long before a customer ever starts."><meta property="og:type" content="article"><meta property="og:url" content="https://winnielinnie.github.io/winstonlin-site/blog/migration-readiness-is-a-product-problem/"><meta property="og:image" content="https://winnielinnie.github.io/winstonlin-site/winston-headshot.jpg"><meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=20261016-editorial">
+<link rel="alternate" type="application/rss+xml" title="Winston Lin — Writing" href="../../feed.xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Winston Lin", "url": "https://winnielinnie.github.io/winstonlin-site/", "jobTitle": "Principal Product Manager", "worksFor": {"@type": "Organization", "name": "Oracle"}, "sameAs": ["https://www.linkedin.com/in/winston-lins/", "https://github.com/winnielinnie"]}</script>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="site-shell">
+<header class="site-header"><a class="wordmark" href="../../">Winston Lin<span>.</span></a><nav aria-label="Main navigation"><a href="../../case-studies/">Work</a><a href="../" aria-current="page">Writing</a><a href="../../about/">About</a><a class="contact-link" href="#contact">Get in touch<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav></header>
+<main id="main"><div class="back-link"><a class="text-link" href="../">All writing</a></div><article class="reading-page"><header class="reading-header"><h1>Migration Readiness Is A Product Problem</h1><p class="reading-deck">Migration pain is often designed into packaging, docs, and defaults long before a customer ever starts.</p><div class="article-meta"><time datetime="2026-03-21">2026-03-21</time><span>1 min read</span></div></header><div class="prose"><p>Migration work gets framed in a few different ways depending on who is talking. Sales teams tend to see it as a motion. Field teams tend to see it as an enablement problem.</p>
 <p>Customers tend to see it as risk. All of that is true, but product teams should take more ownership here than they usually do. The reason is simple: a lot of migration pain is designed in early.</p>
 <p>If the local development loop is slower than the alternative, that matters. If the packaging model is unfamiliar, that matters. If the docs assume the reader already understands the platform internals, that matters.</p>
 <p>If the migration path depends on five “temporary” workarounds that never got cleaned up, that definitely matters. This is one reason I like looking at migration readiness as a product quality signal instead of a side program. It forces better questions. Not just “can this workload run here,” but “what would make a reasonable engineer confident enough to move it here without feeling trapped.”</p>
 <p>The interesting thing is that migration-readiness work often makes the product better even for users who are not migrating from anywhere. Cleaner defaults, sharper examples, clearer failure states, and simpler packaging help everyone. A lot of roadmap debates get more useful once this frame is on the table. Some features are about parity. Some are about expansion. And some are about making the platform feel like a place you can actually land.</p>
-<p>Those last ones are usually more leveraged than they first appear.</p>
-    </article>
-
-    </main>
-    <footer class="site-footer">
-      <div class="compact-links"><a href="https://github.com/winnielinnie" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/winston-lins/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://blogs.oracle.com/authors/winstonlin_1/" target="_blank" rel="noreferrer">Oracle Blogs</a><a href="mailto:winstonl.96@gmail.com">Email</a></div>
-    </footer>
-  </div>
-</body>
-</html>
+<p>Those last ones are usually more leveraged than they first appear.</p></div></article><section class="read-next"><div class="section-heading"><h2>Keep reading</h2></div><a class="collection-row" href="../what-building-internal-platforms-taught-me/"><span><span class="collection-title">What Building Internal Platforms Taught Me</span><span class="collection-meta">Internal platforms teach product judgment quickly because the users are technical, close to the work, and too busy to tolerate fluff.</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></section></main>
+<footer id="contact" class="site-footer"><div><p class="footer-invitation">Have a problem worth working on?</p><a class="email-link" href="mailto:winstonl.96@gmail.com">winstonl.96@gmail.com<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div><div class="footer-right"><div class="social-links"><a class="text-link" href="https://www.linkedin.com/in/winston-lins/">LinkedIn<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="text-link" href="https://github.com/winnielinnie">GitHub<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div><small>© 2026 Winston Lin</small></div></footer>
+</div></body></html>

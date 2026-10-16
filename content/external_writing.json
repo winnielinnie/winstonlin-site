@@ -1,5 +1,19 @@
 [
   {
+    "title": "Code-only deployment for OCI Functions",
+    "date": "2026-09-29",
+    "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-code-only-deployment",
+    "publication": "Oracle Cloud Infrastructure Blog",
+    "summary": "A simpler deployment path, with managed runtimes and a clear division of responsibility."
+  },
+  {
+    "title": "AI-guided deployment and troubleshooting",
+    "date": "2026-07-13",
+    "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-ai-serverless-deployment-skills",
+    "publication": "Oracle Cloud Infrastructure Blog · Co-authored",
+    "summary": "Two published skills for the practical work around deploying and diagnosing a function."
+  },
+  {
     "title": "OCI Functions in Customer Workflows: Common Patterns and Practical Design Checklists",
     "short_title": "Functions Design Patterns",
     "date": "2026-04-07",

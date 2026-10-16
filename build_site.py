@@ -6,15 +6,14 @@ import shutil
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urljoin
 
 
 ROOT = Path(__file__).resolve().parent
 CONTENT_DIR = ROOT / "content"
 POSTS_DIR = CONTENT_DIR / "posts"
 STATIC_DIR = ROOT / "static"
-DIST_DIR = ROOT / "dist"
 OUTPUT_DIR = ROOT / "docs"
-ASSET_VERSION = "20260707-type-scale"
 
 
 @dataclass
@@ -256,1096 +255,227 @@ def format_rss_date(date_text):
     return dt.strftime("%a, %d %b %Y %H:%M:%S GMT")
 
 
-def render_external_writing_cards(current_path, external_writing, limit=3):
-    cards = []
-    for item in external_writing[:limit]:
-        cards.append(render_context_feature_card(current_path, item, card_class="external-card", default_cta="Read post"))
-    return cards
+# Templates share one small visual system. Content stays in JSON and Markdown.
+ASSET_VERSION = '20261016-editorial'
+ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+DOWN = '<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+NEXT = '<svg class="flow-arrow" viewBox="0 0 64 20" fill="none" aria-hidden="true"><path d="M1 10h60m-7-7 7 7-7 7" stroke="currentColor" stroke-width="1.2"/></svg>'
 
 
-def render_context_feature_card(current_path, item, card_class="feature-card", default_cta="Read more"):
-    href = item["url"]
-    external = href.startswith("http")
-    target = ' target="_blank" rel="noreferrer"' if external else ""
-    if not external:
-        href = relative_url(current_path, href)
-
-    meta = item.get("meta", "").strip()
-    if not meta:
-        meta_bits = [item.get("publication", "").strip(), item.get("date", "").strip()]
-        meta = " · ".join(bit for bit in meta_bits if bit)
-
-    title = item.get("short_title") or item["title"]
-    summary = item.get("summary", "").strip()
-    summary_html = f"<p>{html.escape(summary)}</p>" if summary else ""
-    cta = item.get("cta", default_cta)
-    return f"""
-    <article class="{card_class}">
-      <p class="meta">{html.escape(meta)}</p>
-      <h3><a href="{html.escape(href)}"{target}>{html.escape(title)}</a></h3>
-      {summary_html}
-      <div class="card-links">
-        <a href="{html.escape(href)}"{target}>{html.escape(cta)}</a>
-      </div>
-    </article>
-    """
+def esc(value):
+    return html.escape(str(value), quote=True)
 
 
-def find_project_track(repo_tracks, project_name):
-    for track in repo_tracks:
-        if project_name in track.get("projects", []):
-            return track
-    return None
+def href(current, target):
+    if target.startswith(('https://', 'http://', 'mailto:', '#')):
+        return target
+    return relative_url(current, target)
 
 
-def render_track_links(current_path, links, limit=3):
-    rendered = []
-    for link in links[:limit]:
-        href = link["url"]
-        external = href.startswith("http")
-        target = ' target="_blank" rel="noreferrer"' if external else ""
-        if not external:
-            href = relative_url(current_path, href)
-        rendered.append(f'<a href="{html.escape(href)}"{target}>{html.escape(link["label"])}</a>')
-    return rendered
+def link(current, target, label, css='text-link', arrow=True):
+    return f'<a class="{esc(css)}" href="{esc(href(current, target))}">{esc(label)}{ARROW if arrow else ""}</a>'
 
 
-def page_layout(config, title, body, current_path="/", meta_description=None, og_type="website"):
-    nav_items = [
-        ("Home", "/"),
-        ("Case Studies", "/case-studies/"),
-        ("Projects", "/projects/"),
-        ("Writing", "/blog/"),
-        ("About", "/about/"),
-    ]
-    if config.get("oracle_blogs_url"):
-        nav_items.append(("Oracle", config["oracle_blogs_url"]))
-    if config.get("linkedin_url"):
-        nav_items.append(("LinkedIn", config["linkedin_url"]))
-    nav_html = []
-    for label, url in nav_items:
-        external = url.startswith("http")
-        target = ' target="_blank" rel="noreferrer"' if external else ""
-        is_active = url == current_path or (url != "/" and current_path.startswith(url))
-        active = ' class="active"' if is_active else ""
-        href = url if external else relative_url(current_path, url)
-        nav_html.append(f'<a href="{href}"{target}{active}>{html.escape(label)}</a>')
-
-    meta_description_text = meta_description or config.get("meta_description", config["tagline"])
-    meta_description_escaped = html.escape(meta_description_text)
-    canonical = absolute_url(config, current_path)
-    title_text = html.escape(config["name"]) if title == config["name"] else f"{html.escape(title)} | {html.escape(config['name'])}"
-    canonical_tag = f'\n  <link rel="canonical" href="{html.escape(canonical)}">' if canonical else ""
-    favicon_tag = f'\n  <link rel="icon" type="image/svg+xml" href="{static_url(current_path, "favicon.svg")}">'
-    footer_links = []
-    if config.get("github_url"):
-        footer_links.append(f'<a href="{html.escape(config["github_url"])}" target="_blank" rel="noreferrer">GitHub</a>')
-    if config.get("linkedin_url"):
-        footer_links.append(f'<a href="{html.escape(config["linkedin_url"])}" target="_blank" rel="noreferrer">LinkedIn</a>')
-    if config.get("oracle_blogs_url"):
-        footer_links.append(f'<a href="{html.escape(config["oracle_blogs_url"])}" target="_blank" rel="noreferrer">Oracle Blogs</a>')
-    footer_links.append(f'<a href="mailto:{html.escape(config["email"])}">Email</a>')
-    og_tags = ""
-    if canonical:
-        og_tags = f"""
-  <meta property="og:title" content="{title_text}">
-  <meta property="og:description" content="{meta_description_escaped}">
-  <meta property="og:type" content="{html.escape(og_type)}">
-  <meta property="og:url" content="{html.escape(canonical)}">
-  <meta name="twitter:card" content="summary">
-""".rstrip()
-
-    body_class = "page-home"
-    if current_path.startswith("/blog/") and current_path != "/blog/":
-        body_class = "page-post"
-    elif current_path == "/blog/":
-        body_class = "page-writing"
-    elif current_path == "/case-studies/":
-        body_class = "page-case-studies"
-    elif current_path.startswith("/projects/"):
-        body_class = "page-projects"
-    elif current_path == "/about/":
-        body_class = "page-about"
-
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title_text}</title>
-  <meta name="description" content="{meta_description_escaped}">{canonical_tag}{favicon_tag}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
-  <link rel="alternate" type="application/rss+xml" title="{html.escape(config['name'])} RSS" href="{static_url(current_path, 'feed.xml')}">
-  <link rel="stylesheet" href="{static_url(current_path, 'styles.css')}?v={ASSET_VERSION}">{og_tags}
-</head>
-<body class="{body_class}">
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="site-brand">
-        <a href="{relative_url(current_path, '/')}" class="site-name">{html.escape(config["name"])}</a>
-      </div>
-      <nav>{"".join(nav_html)}</nav>
-    </header>
-    <main>
-      {body}
-    </main>
-    <footer class="site-footer">
-      <div class="compact-links">{''.join(footer_links)}</div>
-    </footer>
-  </div>
-</body>
-</html>
-"""
+def paragraphs(items):
+    return ''.join(f'<p>{esc(item)}</p>' for item in items)
 
 
-def render_diagram(kind, current_path):
-    diagrams = {
-        "how-i-use-ai-as-a-pm-with-a-real-workspace": {
-            "asset": "diagrams/workspace-loop.svg",
-            "alt": "Diagram showing source material feeding one shared workspace and then several reusable outputs.",
-            "heading": "What the workflow actually looks like",
-        },
-        "dependencies-need-owners-before-they-need-slides": {
-            "asset": "diagrams/dependency-board.svg",
-            "alt": "Diagram showing a dependency board with owner, status, and downstream impact visible in one view.",
-            "heading": "The failure mode is usually in the middle",
-        },
-        "incident-timelines-need-a-stable-shape": {
-            "asset": "diagrams/incident-timeline.svg",
-            "alt": "Diagram showing a stable incident timeline with owner, event, and impact progression.",
-            "heading": "What I want from the timeline first",
-        },
-        "small-repo-batches-should-teach-a-pattern": {
-            "asset": "diagrams/repo-batch-map.svg",
-            "alt": "Diagram showing a repo batch moving from a clear pattern statement to examples, boundaries, and related tools.",
-            "heading": "What I want the batch to do",
-        },
-        "fun-projects-get-stronger-when-they-leave-a-reusable-artifact": {
-            "asset": "diagrams/reusable-artifact.svg",
-            "alt": "Diagram showing a small project becoming more reusable when it leaves behind a clear output, handoff, and rerun path.",
-            "heading": "The artifact is what makes the project reusable",
-        },
-        "repeated-work-should-become-a-check": {
-            "asset": "diagrams/repeated-work-check.svg",
-            "alt": "Diagram showing repeated work becoming a small rerunnable check instead of relying on reminder loops and memory.",
-            "heading": "A good check replaces memory with a rerun",
-        },
-        "github-should-prove-and-the-site-should-route": {
-            "asset": "diagrams/site-routing-map.svg",
-            "alt": "Diagram showing GitHub as the proof layer and the personal site as the routing layer for writing, projects, and case studies.",
-            "heading": "The site should route the next move",
-        },
-        "github-profiles-should-choose-the-first-click": {
-            "asset": "diagrams/profile-first-click.svg",
-            "alt": "Diagram showing a GitHub profile routing different readers toward projects, case studies, or a short note depending on the first useful click.",
-            "heading": "The first click should match the intent",
-        },
-        "good-small-repos-should-show-the-second-move": {
-            "asset": "diagrams/second-move-map.svg",
-            "alt": "Diagram showing a small repo moving from first proof to the artifact, handoff, or rerun path that makes it reusable.",
-            "heading": "What I want to know after the demo",
-        },
-        "project-pages-should-explain-the-batch": {
-            "asset": "diagrams/project-batch-map.svg",
-            "alt": "Diagram showing a stronger projects page grouping repos into a named batch with a standard, a related note, and clearer next clicks.",
-            "heading": "A projects page should answer what the batch is proving",
-        },
-        "repo-tracks-should-recommend-a-first-example": {
-            "asset": "diagrams/first-example-map.svg",
-            "alt": "Diagram showing each repo track pointing to one best first example before branching into the wider batch.",
-            "heading": "One good example should carry the track first",
-        },
-        "anchor-repos-should-carry-the-batch": {
-            "asset": "diagrams/anchor-repo-map.svg",
-            "alt": "Diagram showing a projects page routing into anchor repos that then carry the README, example, and output proof for the wider repo batch.",
-            "heading": "The anchor repo should carry the proof",
-        },
-        "decision-logs-should-keep-the-revisit-date-visible": {
-            "asset": "diagrams/decision-revisit-loop.svg",
-            "alt": "Diagram showing a decision log staying useful when owner, assumption, and revisit date keep feeding the next review instead of sinking into archive.",
-            "heading": "The revisit date keeps the log alive",
-        },
-        "starter-patterns-should-leave-one-stable-handoff-artifact": {
-            "asset": "diagrams/handoff-artifact-map.svg",
-            "alt": "Diagram showing noisy inbound file events being condensed into one stable manifest artifact that downstream systems can consume.",
-            "heading": "One artifact should carry the handoff",
-        },
-        "alerting-starter-patterns-should-normalize-before-they-notify": {
-            "asset": "diagrams/alert-normalization-flow.svg",
-            "alt": "Diagram showing noisy alerts being normalized into one readable message before they reach chat or an on-call reader.",
-            "heading": "Normalize the message before it reaches a person",
-        },
-    }
-    diagram = diagrams.get(kind)
-    if not diagram:
-        return "", None
-
-    diagram_html = f"""
-    <figure class="post-diagram">
-      <img src="{static_url(current_path, diagram['asset'])}" alt="{html.escape(diagram['alt'])}">
-    </figure>
-    """
-    return diagram_html, diagram["heading"]
+def flow_diagram(items):
+    return '<div class="workflow" aria-label="' + esc(' then '.join(items)) + '">' + NEXT.join(f'<span>{esc(item)}</span>' for item in items) + '</div>'
 
 
-def render_post_nav(post, posts, nav_class="post-nav-top"):
-    current_index = next((index for index, item in enumerate(posts) if item.slug == post.slug), 0)
-    newer_post = posts[current_index - 1] if current_index > 0 else None
-    older_post = posts[current_index + 1] if current_index + 1 < len(posts) else None
-    current_path = f"/blog/{post.slug}/"
-
-    links = [
-        f'<a href="{relative_url(current_path, "/blog/")}">Back to all writing</a>',
-    ]
-    if newer_post:
-        links.append(
-            f'<a href="{relative_url(current_path, f"/blog/{newer_post.slug}/")}">Previous note</a>'
-        )
-    if older_post:
-        links.append(
-            f'<a href="{relative_url(current_path, f"/blog/{older_post.slug}/")}">Next note</a>'
-        )
-
-    return f'<nav class="post-nav {nav_class}" aria-label="Writing navigation">{"".join(links)}</nav>'
-
-
-def render_project_card(project, current_path, extra_links=None, card_class="feature-card"):
-    card_links = []
-    site_path = project.get("site_path")
-    title_href = html.escape(project["url"])
-    title_target = ' target="_blank" rel="noreferrer"'
-    if site_path:
-        card_links.append(f'<a href="{relative_url(current_path, site_path)}">Site guide</a>')
-        title_href = relative_url(current_path, site_path)
-        title_target = ""
-
-    if extra_links:
-        for link in extra_links:
-            href = link["url"]
-            external = href.startswith("http")
-            target = ' target="_blank" rel="noreferrer"' if external else ""
-            if not external:
-                href = relative_url(current_path, href)
-            card_links.append(f'<a href="{html.escape(href)}"{target}>{html.escape(link["label"])}</a>')
-
-    card_links.append(f'<a href="{html.escape(project["url"])}" target="_blank" rel="noreferrer">GitHub</a>')
-    link_row = f'<div class="card-links">{"".join(card_links)}</div>'
-
-    return f"""
-    <article class="{html.escape(card_class)}">
-      <p class="meta">{html.escape(project['label'])}</p>
-      <h3><a href="{title_href}"{title_target}>{html.escape(project['name'])}</a></h3>
-      <p>{html.escape(project['summary'])}</p>
-      {link_row}
-    </article>
-    """
+def page_layout(config, title, body, current_path='/', meta_description=None, og_type='website'):
+    page_title = f'{title} | Winston Lin' if title != config['name'] else 'Winston Lin — Product leader'
+    description = meta_description or config['meta_description']
+    canonical = absolute_url(config,current_path)
+    nav=[]
+    for label,path in [('Work','/case-studies/'),('Writing','/blog/'),('About','/about/')]:
+        active = current_path.startswith(path) or (label=='Work' and current_path.startswith('/projects/'))
+        current_attr = ' aria-current="page"' if active else ''
+        nav.append(f'<a href="{href(current_path,path)}"{current_attr}>{label}</a>')
+    structured=json.dumps({'@context':'https://schema.org','@type':'Person','name':'Winston Lin','url':config['site_url']+'/', 'jobTitle':'Principal Product Manager','worksFor':{'@type':'Organization','name':'Oracle'},'sameAs':[config['linkedin_url'],config['github_url']]},ensure_ascii=False).replace('<','\\u003c')
+    return f'''<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(page_title)}</title><meta name="description" content="{esc(description)}">
+<link rel="canonical" href="{esc(canonical)}"><link rel="icon" href="{static_url(current_path,'favicon.svg')}" type="image/svg+xml">
+<meta property="og:title" content="{esc(page_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{og_type}"><meta property="og:url" content="{esc(canonical)}"><meta property="og:image" content="{config['site_url']}/winston-headshot.jpg"><meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{static_url(current_path,'styles.css')}?v={ASSET_VERSION}">
+<link rel="alternate" type="application/rss+xml" title="Winston Lin — Writing" href="{static_url(current_path,'feed.xml')}">
+<script type="application/ld+json">{structured}</script>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="site-shell">
+<header class="site-header"><a class="wordmark" href="{href(current_path,'/')}">Winston Lin<span>.</span></a><nav aria-label="Main navigation">{''.join(nav)}{link(current_path,'#contact','Get in touch','contact-link')}</nav></header>
+<main id="main">{body}</main>
+<footer id="contact" class="site-footer"><div><p class="footer-invitation">Have a problem worth working on?</p>{link(current_path,'mailto:'+config['email'],config['email'],'email-link')}</div><div class="footer-right"><div class="social-links">{link(current_path,config['linkedin_url'],'LinkedIn')}{link(current_path,config['github_url'],'GitHub')}</div><small>© {datetime.now().year} Winston Lin</small></div></footer>
+</div></body></html>'''
 
 
-def render_project_row(project, current_path):
-    site_path = project.get("site_path")
-    title_href = html.escape(project["url"])
-    title_target = ' target="_blank" rel="noreferrer"'
-    card_links = []
-    if site_path:
-        title_href = relative_url(current_path, site_path)
-        title_target = ""
-        card_links.append(f'<a href="{relative_url(current_path, site_path)}">Guide</a>')
-    card_links.append(f'<a href="{html.escape(project["url"])}" target="_blank" rel="noreferrer">GitHub</a>')
-
-    return f"""
-    <article class="project-row">
-      <div class="project-row-title">
-        <p class="meta">{html.escape(project['label'])}</p>
-        <h3><a href="{title_href}"{title_target}>{html.escape(project['name'])}</a></h3>
-      </div>
-      <p>{html.escape(project['summary'])}</p>
-      <div class="card-links">{"".join(card_links)}</div>
-    </article>
-    """
+def section_heading(title, current='/', target=None, label=None):
+    return f'<div class="section-heading"><h2>{esc(title)}</h2>{link(current,target,label) if target else ""}</div>'
 
 
-def render_homepage(config, posts, case_studies, external_writing, proof_points=None):
-    showcase_note_config = config.get("home_showcase_note", {})
-    showcase_note_slug = showcase_note_config.get(
-        "slug",
-        config.get("home_showcase_note_slug", "how-i-use-ai-as-a-pm-with-a-real-workspace"),
-    )
-    current_note = find_post(posts, showcase_note_slug) or find_post(posts, "how-i-use-ai-as-a-pm-with-a-real-workspace")
-    showcase_html = ""
-    bio_strip = ""
-    if config.get("home_bio_strip"):
-        bio_strip = f"""<div class="bio-strip">
-          <p>{html.escape(config["home_bio_strip"])}</p>
-        </div>"""
-    if case_studies:
-        featured_study = next(
-            (study for study in case_studies if study["slug"] == "oci-functions-product-direction"),
-            case_studies[0],
-        )
-        advisory_study = next(
-            (study for study in case_studies if study["slug"] == "startup-small-business-advisory"),
-            None,
-        )
-        showcase_items = []
-        showcase_items.append(
-            {
-                "label": "1",
-                "meta": "Case study",
-                "title": featured_study["title"],
-                "summary": featured_study["home_summary"],
-                "href": f"{relative_url('/', '/case-studies/')}#{featured_study['slug']}",
-                "cta": "Read case study",
-                "external": False,
-            }
-        )
-        showcase_items.append(
-            {
-                "label": "2",
-                "meta": "Advisory",
-                "title": advisory_study["title"] if advisory_study else "Advisory and operating work",
-                "summary": advisory_study["home_summary"] if advisory_study else "Product, growth, pricing, operations, and technology decisions for growing businesses.",
-                "href": f"{relative_url('/', '/case-studies/')}#startup-small-business-advisory" if advisory_study else relative_url("/", "/about/"),
-                "cta": "See advisory work",
-                "external": False,
-            }
-        )
-        if current_note:
-            showcase_items.append(
-                {
-                    "label": "3",
-                    "meta": "Writing",
-                    "title": current_note.title,
-                    "summary": showcase_note_config.get("summary", current_note.summary),
-                    "href": relative_url('/', f'/blog/{current_note.slug}/'),
-                    "cta": showcase_note_config.get("cta", "Read the workflow"),
-                    "external": False,
-                }
-            )
-
-        showcase_cards = []
-        for item in showcase_items[:3]:
-            target = ' target="_blank" rel="noreferrer"' if item["external"] else ""
-            showcase_cards.append(
-                f"""
-                <article class="showcase-card">
-                  <div class="showcase-panel-copy">
-                    <p class="meta">{html.escape(item['label'])}</p>
-                    <h3><a href="{html.escape(item['href'])}"{target}>{html.escape(item['title'])}</a></h3>
-                    <p class="showcase-summary">{html.escape(item['summary'])}</p>
-                  </div>
-                  <a class="spotlight-link" href="{html.escape(item['href'])}"{target}>{html.escape(item['cta'])}</a>
-                </article>
-                """
-            )
-        showcase_html = f"""
-        <section class="section showcase-section section-frame section-frame-spotlight">
-          <div class="section-head section-head-stack showcase-head">
-            <h2>Start here</h2>
-          <p class="section-note">Three fast routes into the work.</p>
-          </div>
-          <div class="showcase-grid">
-            {''.join(showcase_cards)}
-          </div>
-        </section>
-        """
-
-    proof_cards = []
-    for point in (proof_points or [])[:3]:
-        route = point.get("route", {})
-        href = route.get("url", "/case-studies/")
-        if not href.startswith("http"):
-            href = relative_url("/", href)
-        target = ' target="_blank" rel="noreferrer"' if href.startswith("http") else ""
-        proof_cards.append(
-            f"""
-            <article class="proof-card">
-              <p class="proof-value">{html.escape(point['value'])}</p>
-              <p class="proof-label">{html.escape(point['label'])}</p>
-              <p class="proof-text">{html.escape(point['text'])}</p>
-              <div class="proof-route-row">
-                <span class="proof-route-meta">{html.escape(route.get('label', 'Evidence'))}</span>
-                <a class="proof-route-link" href="{html.escape(href)}"{target}>{html.escape(route.get('cta', 'See proof'))}</a>
-              </div>
-            </article>
-            """
-        )
-
-    proof_html = ""
-    if proof_cards:
-        proof_html = f"""
-        <section class="section proof-section" aria-label="Selected context">
-          <div class="proof-grid">
-            {''.join(proof_cards)}
-          </div>
-        </section>
-        """
-
-    body = f"""
-    <section class="hero">
-      <div class="hero-layout">
-        <div class="hero-copy">
-          <h1>{html.escape(config["title"])}</h1>
-          <p class="lead">{html.escape(config["tagline"])}</p>
-          <div class="hero-links">
-            <a class="button-link primary" href="{relative_url('/', '/case-studies/')}">Read case studies</a>
-            <a class="button-link" href="{relative_url('/', '/blog/')}">Browse writing</a>
-          </div>
-        </div>
-      </div>
-      {bio_strip}
-    </section>
-
-    {showcase_html}
-    {proof_html}
-    """
-    return page_layout(
-        config,
-        config["name"],
-        body,
-        "/",
-        meta_description=config.get("meta_description", config["tagline"]),
-    )
+def work_row(study, number, current='/', featured=False):
+    target=f'/case-studies/{study["slug"]}/'
+    flow=flow_diagram(study['flow']) if study.get('flow') else ''
+    return f'''<article class="work-row{' featured' if featured else ''}" id="{esc(study['slug'])}">
+<span class="work-number">{number:02}</span><div class="work-title"><p class="meta">{esc(study['period'])}</p><h3>{link(current,target,study['title'],'title-link',False)}</h3>{link(current,target,'Read the story')}</div>
+<div class="work-description"><p>{esc(study.get('home_summary',study['tagline']))}</p>{flow}<p class="work-focus">{esc(study.get('focus',study.get('role','Product judgment · Customer workflows')))}</p></div></article>'''
 
 
-def render_blog_index(config, posts, external_writing):
-    featured_posts = []
-    featured_slugs = config.get("home_featured_post_slugs", [])[:3]
-    for slug in featured_slugs:
-        post = find_post(posts, slug)
-        if post:
-            featured_posts.append(post)
-    if not featured_posts:
-        featured_posts = posts[:3]
-
-    featured_cards = []
-    featured_keys = {post.slug for post in featured_posts}
-    for post in featured_posts:
-        featured_cards.append(
-            f"""
-            <article class="feature-card">
-              <p class="meta">{html.escape(post.date)}</p>
-              <h3><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h3>
-              <p>{html.escape(post.summary)}</p>
-            </article>
-            """
-        )
-
-    selected_cards = []
-    archive_cards = []
-    selected_keys = set()
-    selected_slugs = config.get("writing_selected_post_slugs", [])
-
-    for slug in selected_slugs:
-        post = find_post(posts, slug)
-        if not post or post.slug in featured_keys:
-            continue
-        selected_keys.add(post.slug)
-        selected_cards.append(
-            f"""
-            <article class="post-list-item">
-              <p class="meta">{html.escape(post.date)}</p>
-              <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
-              <p>{html.escape(post.summary)}</p>
-            </article>
-            """
-        )
-
-    if not selected_cards:
-        for post in posts:
-            if post.slug in featured_keys:
-                continue
-            selected_keys.add(post.slug)
-            selected_cards.append(
-                f"""
-                <article class="post-list-item">
-                  <p class="meta">{html.escape(post.date)}</p>
-                  <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
-                  <p>{html.escape(post.summary)}</p>
-                </article>
-                """
-            )
-            if len(selected_cards) >= 8:
-                break
-
-    for post in posts:
-        if post.slug in featured_keys or post.slug in selected_keys:
-            continue
-        archive_cards.append(
-            f"""
-            <article class="post-list-item">
-              <p class="meta">{html.escape(post.date)}</p>
-              <h2><a href="{relative_url('/blog/', f'/blog/{post.slug}/')}">{html.escape(post.title)}</a></h2>
-              <p>{html.escape(post.summary)}</p>
-            </article>
-            """
-        )
-
-    archive_html = ""
-    if archive_cards:
-        archive_html = f"""
-        <details class="archive-details">
-          <summary>Show more notes</summary>
-          <div class="archive-list">
-            {''.join(archive_cards)}
-          </div>
-        </details>
-        """
-
-    oracle_blog_items = render_external_writing_cards("/blog/", external_writing)
-
-    oracle_blogs_section = ""
-    if oracle_blog_items:
-        oracle_author_url = html.escape(config.get("oracle_blogs_url", "https://blogs.oracle.com/"))
-        oracle_blogs_section = f"""
-        <section class="section section-frame section-frame-spotlight oracle-blogs-section">
-          <div class="section-head section-head-stack oracle-blogs-head">
-            <h2>Published elsewhere</h2>
-            <p class="section-note oracle-blogs-note">Selected Oracle posts plus my <a class="oracle-blogs-link" href="{oracle_author_url}" target="_blank" rel="noreferrer">author profile</a>.</p>
-          </div>
-          <div class="external-grid oracle-blogs-grid">
-            {''.join(oracle_blog_items)}
-          </div>
-        </section>
-        """
-
-    body = f"""
-    <section class="page-hero page-hero-writing">
-      <div class="page-hero-copy">
-        <p class="eyebrow">Writing</p>
-        <h1>Writing on product, platform, and AI work</h1>
-        <p class="lead">Short notes on AI workflows, platform work, incidents, small tools, and the day-to-day details that usually decide how the work goes.</p>
-      </div>
-    </section>
-    <section class="section">
-      <h2 class="section-title">Featured writing</h2>
-      <div class="feature-grid">
-        {''.join(featured_cards)}
-      </div>
-    </section>
-    {oracle_blogs_section}
-    <section class="section post-list">
-      <h2 class="section-title">Selected notes</h2>
-      {''.join(selected_cards)}
-      {archive_html}
-    </section>
-    """
-    return page_layout(
-        config,
-        "Writing",
-        body,
-        "/blog/",
-        meta_description="Writing on AI workflows, platform work, incidents, small tools, and the operating details around them.",
-    )
+def collection_row(current,title,meta,target):
+    return f'<a class="collection-row" href="{esc(href(current,target))}"><span><span class="collection-title">{esc(title)}</span><span class="collection-meta">{esc(meta)}</span></span>{ARROW}</a>'
 
 
-def render_case_studies_page(config, case_studies):
-    def first_item(items):
-        return items[0] if items else ""
+def render_homepage(config,posts,studies,external):
+    body=f'''<section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">Making complex products<br class="desktop-break"> easier to use.</h1><p>{esc(config['tagline'])}</p><div class="hero-actions"><a href="#selected-work" class="button">Explore my work{DOWN}</a>{link('/','/about/','More about me')}</div></div><figure class="portrait"><img src="winston-headshot.jpg" alt="Winston Lin" width="350" height="432" fetchpriority="high"><figcaption>San Francisco, CA</figcaption></figure></section>
+<div class="experience-strip"><p><span>Currently</span>Principal Product Manager, Oracle</p><p><span>Previously</span>Sitetracker · Cisco</p></div>
+<section class="home-work" id="selected-work">{section_heading('Selected work','/','/case-studies/','View all work')}{''.join(work_row(x,i+1,featured=True) for i,x in enumerate(studies[:3]))}</section>
+<section class="home-writing">{section_heading('Writing & small builds','/','/blog/','Browse the collection')}
+{collection_row('/','Trustworthy AI needs a recovery path','Essay · AI & product','/blog/trustworthy-ai-products-need-recovery-paths/')}
+{collection_row('/','Long-running Functions and Response Destinations','Oracle publication · Serverless','https://blogs.oracle.com/cloud-infrastructure/longrunning-functions-and-response-destinations')}
+{collection_row('/','One-page canvas','Open-source project · Planning','/projects/one-page-canvas/')}
+</section><section class="home-about"><h2>A little about me</h2><div><p class="about-statement">I like finding the useful path through a complicated problem.</p><p>My work spans cloud products, enterprise software, and practical advice for growing businesses. I’m based in San Francisco.</p>{link('/','/about/','More about me')}</div></section>'''
+    return page_layout(config,config['name'],body)
 
-    def render_signal_rows(study):
-        rows = [
-            ("Focus", first_item(study.get("what_i_did", []))),
-            ("Constraint", first_item(study.get("why_it_was_hard", []))),
-            ("Result", first_item(study.get("outcome", []))),
-        ]
-        return "".join(
-            f"""
-            <div class="study-signal-row">
-              <p class="meta">{html.escape(label)}</p>
-              <p>{html.escape(text)}</p>
-            </div>
-            """
-            for label, text in rows
-            if text
-        )
 
-    grouped = {}
-    for study in case_studies:
-        grouped.setdefault(study["period"], []).append(study)
+def page_intro(title,summary):
+    return f'<header class="page-intro"><h1>{esc(title)}</h1><p>{esc(summary)}</p></header>'
 
-    jump_links = []
-    group_sections = []
-    for period, studies in grouped.items():
-        group_id = slugify(period)
-        cards = []
-        for study in studies:
-            signal_rows = render_signal_rows(study)
-            cards.append(
-                f"""
-                <article class="timeline-item" id="{html.escape(study['slug'])}">
-                  <div class="study-head">
-                    <p class="meta">{html.escape(study['period'])}</p>
-                    <h2>{html.escape(study['title'])}</h2>
-                    <p class="post-summary">{html.escape(study['tagline'])}</p>
-                  </div>
-                  <p class="study-problem-copy">{html.escape(study['problem'])}</p>
-                  <div class="study-signal-list">
-                    {signal_rows}
-                  </div>
-                </article>
-                """
-            )
-        jump_links.append(
-            f"""
-            <a class="jump-area-link" href="#{html.escape(group_id)}">{html.escape(period)}</a>
-            """
-        )
-        group_sections.append(
-            f"""
-            <section class="case-group" id="{html.escape(group_id)}">
-              <h2 class="section-title case-group-title">{html.escape(period)}</h2>
-              <div class="timeline">
-                {''.join(cards)}
-              </div>
-            </section>
-            """
-        )
 
-    body = f"""
-    <section class="page-hero page-hero-case">
-      <div class="page-hero-copy">
-        <p class="eyebrow">Product, platform, and delivery</p>
-        <h1>Case studies</h1>
-        <p class="lead">A small set of product and platform projects, with the constraints and outcomes called out directly.</p>
-      </div>
-    </section>
-    <section class="section jump-section" id="case-jumps">
-      <div class="section-head section-head-stack">
-        <h2>Work areas</h2>
-        <p class="section-note">Pick the branch you want to scan first.</p>
-      </div>
-      <nav class="jump-tree" aria-label="Case study areas">
-        {''.join(jump_links)}
-      </nav>
-    </section>
-    <section class="section case-study-groups">
-      {''.join(group_sections)}
-    </section>
-    """
-    return page_layout(
-        config,
-        "Case Studies",
-        body,
-        "/case-studies/",
-        meta_description="Case studies spanning OCI Functions, CI/CD, and adjacent platform systems.",
-    )
+def render_work_index(config,studies):
+    current='/case-studies/'
+    # Old group fragments remain valid, along with every original story slug.
+    aliases=''.join(f'<span id="{s}" class="fragment-alias"></span>' for s in ['case-jumps','advisory','oci-functions','oke-oci-kubernetes-engine','oci-dev-platform','sitetracker'])
+    body=page_intro('Selected work.','Product decisions, the constraints behind them, and what happened next.')
+    body+=aliases+'<section class="work-list" aria-label="Case studies">'+''.join(work_row(s,i+1,current) for i,s in enumerate(studies))+'</section>'
+    body+=f'<div class="section-end">{link(current,"/projects/","Explore my small builds")}</div>'
+    return page_layout(config,'Work',body,current)
+
+
+def render_case_detail(config,study,studies):
+    current=f'/case-studies/{study["slug"]}/'
+    sources=''
+    if study.get('sources'):
+        sources='<section class="case-sources"><h2>See the work</h2>'+''.join(link(current,s['url'],s['label']) for s in study['sources'])+'</section>'
+    body=f'''<div class="back-link">{link(current,'/case-studies/','All work',arrow=False)}</div>
+<article class="reading-page case-page"><header class="reading-header"><h1>{esc(study['title'])}</h1><p class="reading-deck">{esc(study['tagline'])}</p><div class="article-meta"><span>{esc(study['period'])}</span><span>{esc(study.get('role','Product contribution'))}</span></div></header>
+{flow_diagram(study['flow']) if study.get('flow') else ''}
+<div class="prose"><section><h2>The problem</h2><p>{esc(study['problem'])}</p></section><section><h2>My contribution</h2>{paragraphs(study['what_i_did'])}</section><section><h2>The decisions</h2>{paragraphs(study['why_it_was_hard'])}</section><section><h2>Where it landed</h2>{paragraphs(study['outcome'])}</section>{sources}</div></article>'''
+    others=[s for s in studies[:3] if s['slug']!=study['slug']]
+    body+='<section class="read-next">'+section_heading('More work')+''.join(collection_row(current,s['title'],s['period'],f'/case-studies/{s["slug"]}/') for s in others[:2])+'</section>'
+    return page_layout(config,study['title'],body,current,study['tagline'],'article')
+
+
+def render_blog_index(config,posts,external):
+    current='/blog/'
+    chosen=['trustworthy-ai-products-need-recovery-paths','support-boundaries-are-product-strategy','how-i-use-ai-as-a-pm-with-a-real-workspace','what-building-internal-platforms-taught-me']
+    selected=[p for slug in chosen for p in posts if p.slug==slug]
+    body=page_intro('Notes from the work.','Writing on product decisions, developer experience, and the practical side of AI.')
+    body+='<section class="collection-section">'+section_heading('Published at Oracle')+''.join(collection_row(current,x['title'],f'{x["publication"]} · {x["date"]}',x['url']) for x in external)+'</section>'
+    body+='<section class="collection-section">'+section_heading('Selected essays')+''.join(collection_row(current,p.title,f'{p.date} · {max(1,round(len(p.body_markdown.split())/220))} min read',f'/blog/{p.slug}/') for p in selected)+'</section>'
+    archive=[p for p in posts if p not in selected]
+    body+='<details class="archive"><summary>All other essays <span>'+str(len(archive))+'</span></summary><div>'+''.join(collection_row(current,p.title,p.date,f'/blog/{p.slug}/') for p in archive)+'</div></details>'
+    body+='<div class="section-end">'+link(current,'/projects/','Browse small builds')+'</div>'
+    return page_layout(config,'Writing',body,current)
+
+
+def render_post_page(config,post,posts):
+    current=f'/blog/{post.slug}/'
+    # Body-level H1s become H2s so each document has one clear primary heading.
+    article=markdown_to_html(post.body_markdown).replace('<h1>','<h2>').replace('</h1>','</h2>')
+    body=f'''<div class="back-link">{link(current,'/blog/','All writing',arrow=False)}</div><article class="reading-page"><header class="reading-header"><h1>{esc(post.title)}</h1><p class="reading-deck">{esc(post.summary)}</p><div class="article-meta"><time datetime="{esc(post.date)}">{esc(post.date)}</time><span>{max(1,round(len(post.body_markdown.split())/220))} min read</span></div></header><div class="prose">{article}</div></article>'''
+    index=posts.index(post)
+    next_post=posts[(index+1)%len(posts)]
+    body+='<section class="read-next">'+section_heading('Keep reading')+collection_row(current,next_post.title,next_post.summary,f'/blog/{next_post.slug}/')+'</section>'
+    return page_layout(config,post.title,body,current,post.summary,'article')
+
+
+def render_projects_page(config,projects,tracks):
+    current='/projects/'
+    body=page_intro('Small tools, real uses.','Open-source experiments in planning, developer workflows, and serverless patterns.')
+    by={p['name']:p for p in projects}
+    used=set()
+    for track in tracks:
+        # Keep track anchors from existing incoming links.
+        names=[n for n in track.get('projects',[]) if isinstance(n,str) and n in by]
+        if not names:
+            names=[p['name'] for p in projects if (p['label']=='Functions pattern') == ('Functions' in track['title']) and p['name'] not in used and p['name']!='winstonlin-site']
+        names=[n for n in names if n not in used]
+        if not names: continue
+        used.update(names)
+        rows=''.join(collection_row(current,n,by[n]['summary'],by[n].get('site_path',by[n]['url'])) for n in names)
+        body+=f'<section class="collection-section" id="{slugify(track["title"])}">{section_heading(track["title"])}{rows}</section>'
+    remaining=[p for p in projects if p['name'] not in used]
+    if remaining:
+        body+='<section class="collection-section">'+section_heading('More on GitHub')+''.join(collection_row(current,p['name'],p['summary'],p.get('site_path',p['url'])) for p in remaining)+'</section>'
+    return page_layout(config,'Small builds',body,current)
+
+
+def render_project_detail(config,project,spotlight):
+    current=f'/projects/{project["name"]}/'
+    body=f'<div class="back-link">{link(current,"/projects/","All small builds",arrow=False)}</div><article class="reading-page"><header class="reading-header"><h1>{esc(project["name"])}</h1><p class="reading-deck">{esc(project["summary"])}</p><div class="article-meta"><span>{esc(project["label"])}</span>{link(current,project["url"],"View on GitHub")}</div></header><div class="prose">'
+    if spotlight:
+        body+=f'<h2>What it does</h2><p>{esc(spotlight["artifact_text"])}</p><h2>Try it locally</h2><pre><code>{esc(spotlight["sample_command"])}</code></pre><h2>Example output</h2><pre><code>{esc(spotlight["sample_output"])}</code></pre><h2>Where it helps</h2><p>{esc(spotlight["next_text"])}</p>'
+    body+='</div></article>'
+    return page_layout(config,project['name'],body,current,project['summary'])
 
 
 def render_about_page(config):
-    about = config.get("about", {})
-    intro = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("intro", []))
-    advisory_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("advisory", []))
-    background_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("background", []))
-    personal_paragraphs = "".join(f"<p>{html.escape(paragraph)}</p>" for paragraph in about.get("personal", []))
-    advisory_block = ""
-    if advisory_paragraphs:
-        advisory_block = f"""
-          <section class="about-copy-block prose">
-            <p class="eyebrow">Advisory</p>
-            <h2>Company-building work.</h2>
-            {advisory_paragraphs}
-          </section>
-        """
-
-    body = f"""
-    <section class="page-hero page-hero-about">
-      <div class="page-hero-copy">
-        <p class="eyebrow">About</p>
-        <h1>A little context.</h1>
-        <p class="lead">Where I am from, how I work, and what I care about outside the desk.</p>
-      </div>
-    </section>
-    <section class="section about-layout">
-      <div class="about-main-column">
-        <div class="about-intro prose">
-          {intro}
-        </div>
-        <div class="about-story-grid">
-          {advisory_block}
-          <section class="about-copy-block prose">
-            <p class="eyebrow">Background</p>
-            <h2>Where I come from.</h2>
-            {background_paragraphs}
-          </section>
-        </div>
-        <div class="about-story-copy about-story-copy-standalone">
-          <section class="about-copy-block prose">
-            <p class="eyebrow">Personal</p>
-            <h2>Away from the desk.</h2>
-            {personal_paragraphs}
-          </section>
-        </div>
-      </div>
-      <figure class="about-photo-card about-photo-card-side">
-        <div class="about-photo">
-          <img src="{static_url('/about/', 'winston-trail-clean.png')}" alt="Winston standing on a mountain trail">
-        </div>
-      </figure>
-    </section>
-    """
-    return page_layout(
-        config,
-        "About",
-        body,
-        "/about/",
-        meta_description="About Winston Lin: background, work, advisory, investing interests, cloud products, developer tools, AI workflows, and small businesses.",
-    )
+    current='/about/'
+    about=config['about']
+    body=page_intro('A little about me.','Product leader, builder, and a curious person outside the day job.')
+    body+=f'<div class="about-layout"><div class="prose"><section>{paragraphs(about["intro"])}</section><section><h2>Outside the day job</h2>{paragraphs(about["advisory"])}</section><section><h2>Where I come from</h2>{paragraphs(about["background"])}</section><section><h2>Away from the desk</h2>{paragraphs(about["personal"])}</section></div><figure class="about-portrait"><img src="{static_url(current,"winston-trail-clean.png")}" alt="Winston on a mountain trail" width="400" height="533" loading="lazy"><figcaption>Outside, whenever I can.</figcaption></figure></div>'
+    body+='<section class="experience-list">'+section_heading('The path so far')
+    for dates,company,role in [('2022–Present','Oracle Cloud Infrastructure','Principal Product Manager, OCI Functions; earlier work in developer platforms and Kubernetes.'),('2021–2022','Sitetracker','Enterprise software implementations and customer workflows.'),('2019–2021','Cisco','Engineering program management for enterprise networking.')]:
+        body+=f'<div class="experience-row"><span>{dates}</span><div><h3>{company}</h3><p>{role}</p></div></div>'
+    body+='</section>'
+    return page_layout(config,'About',body,current)
 
 
-def render_projects_page(config, projects, repo_tracks, posts, external_writing):
-    project_lookup = {project["name"]: project for project in projects}
-    jump_links = []
-    track_sections = []
-
-    for track in repo_tracks:
-        track_id = slugify(track["title"])
-        jump_links.append(f'<a class="jump-area-link" href="#{html.escape(track_id)}">{html.escape(track["title"])}</a>')
-
-        starter_project_name = track.get("starter_project")
-        starter_reason = track.get("starter_reason", "")
-        starter_project = project_lookup.get(starter_project_name) if starter_project_name else None
-        context_feature = track.get("context_feature")
-
-        project_rows = []
-        for name in track.get("projects", []):
-            if name == starter_project_name:
-                continue
-            project = project_lookup.get(name)
-            if not project:
-                continue
-            project_rows.append(render_project_row(project, "/projects/"))
-
-        starter_html = ""
-        if starter_project:
-            if starter_project.get("site_path"):
-                starter_link = f'<a href="{relative_url("/projects/", starter_project["site_path"])}">{html.escape(starter_project["name"])}</a>'
-            else:
-                starter_link = f'<a href="{html.escape(starter_project["url"])}" target="_blank" rel="noreferrer">{html.escape(starter_project["name"])}</a>'
-            starter_html = f"""
-            <p class="section-note project-track-starter">
-              Start with {starter_link}. {html.escape(starter_reason)}
-            </p>
-            """
-
-        intro_cards = []
-        if starter_project:
-            starter_card = dict(starter_project)
-            starter_card["label"] = f"Starter repo · {track['title']}"
-            intro_cards.append(render_project_card(starter_card, "/projects/"))
-        if context_feature:
-            intro_cards.append(
-                render_context_feature_card(
-                    "/projects/",
-                    {
-                        **context_feature,
-                        "meta": context_feature.get("meta", f"Track context · {track['title']}"),
-                    },
-                    default_cta="Read context",
-                )
-            )
-
-        intro_html = ""
-        if intro_cards:
-            intro_html = f"""
-            <div class="project-track-intro-grid">
-              {''.join(intro_cards)}
-            </div>
-            """
-
-        repo_grid_html = ""
-        if project_rows:
-            repo_grid_html = f"""
-            <div class="project-track-rest">
-              <p class="project-track-subhead">More in this track</p>
-              <div class="project-row-list">
-                {''.join(project_rows)}
-              </div>
-            </div>
-            """
-
-        track_sections.append(
-            f"""
-            <section class="section section-frame section-frame-explore project-track-section" id="{html.escape(track_id)}">
-              <div class="section-head section-head-stack">
-                <h2>{html.escape(track['title'])}</h2>
-                <p class="section-note">{html.escape(track['summary'])}</p>
-                {starter_html}
-              </div>
-              {intro_html}
-              {repo_grid_html}
-            </section>
-            """
-        )
-
-    body = f"""
-    <section class="page-hero page-hero-projects">
-      <div class="page-hero-copy">
-        <p class="eyebrow">Projects</p>
-        <h1>Small tools and starter patterns.</h1>
-        <p class="lead">Pick a track, start with one repo, then skim the rest.</p>
-      </div>
-    </section>
-    <section class="section jump-section">
-      <div class="section-head section-head-stack">
-        <h2>Project tracks</h2>
-        <p class="section-note">Three branches, one best first click in each.</p>
-      </div>
-      <nav class="jump-tree" aria-label="Project tracks">
-        {''.join(jump_links)}
-      </nav>
-    </section>
-    {''.join(track_sections)}
-    """
-    return page_layout(
-        config,
-        "Projects",
-        body,
-        "/projects/",
-        meta_description="Grouped public projects, workflow tools, and OCI Functions starter patterns from Winston Lin.",
-    )
-
-
-def render_post_page(config, post, posts):
-    current_path = f"/blog/{post.slug}/"
-    post_diagram, diagram_heading = render_diagram(post.slug, current_path)
-    article_body = markdown_to_html(post.body_markdown)
-    if post_diagram and diagram_heading:
-        article_body = insert_after_section(article_body, diagram_heading, post_diagram)
-
-    article = f"""
-    <article class="post-page prose">
-      <p class="meta">{html.escape(post.date)}</p>
-      <h1>{html.escape(post.title)}</h1>
-      <p class="post-summary">{html.escape(post.summary)}</p>
-      {render_post_nav(post, posts, "post-nav-top")}
-      {article_body}
-    </article>
-    """
-    return page_layout(
-        config,
-        post.title,
-        article,
-        current_path,
-        meta_description=post.summary,
-        og_type="article",
-    )
-
-
-def render_project_spotlight_page(config, spotlight, projects, repo_tracks):
-    project_lookup = {project["name"]: project for project in projects}
-    project = project_lookup.get(spotlight["project"])
-    if not project:
-        raise KeyError(f"Missing project metadata for spotlight: {spotlight['project']}")
-
-    current_path = project.get("site_path", f"/projects/{project['name']}/")
-    track = find_project_track(repo_tracks, project["name"])
-
-    proof_cards = []
-    for point in spotlight.get("proof_points", [])[:3]:
-        proof_cards.append(
-            f"""
-            <article class="proof-card">
-              <p class="proof-label">{html.escape(point['label'])}</p>
-              <p>{html.escape(point['text'])}</p>
-            </article>
-            """
-        )
-
-    track_links = []
-    track_context_card = render_project_card(project, current_path)
-    if track:
-        track_id = slugify(track["title"])
-        track_links = [f'<a href="{relative_url(current_path, f"/projects/#{track_id}")}">Open full track</a>']
-        track_links.extend(render_track_links(current_path, track.get("links", []), limit=2))
-        track_context_card = f"""
-        <article class="feature-card">
-          <p class="meta">Project track</p>
-          <h3><a href="{relative_url(current_path, f'/projects/#{track_id}')}">{html.escape(track['title'])}</a></h3>
-          <p>This repo sits inside the {html.escape(track['title'].lower())} batch, where the shared standard is {html.escape(track['summary'].lower())}</p>
-          <div class="card-links">
-            {''.join(track_links)}
-          </div>
-        </article>
-        """
-
-    context_feature_card = track_context_card
-    if track and track.get("context_feature"):
-        context_feature_card = render_context_feature_card(current_path, track["context_feature"], default_cta="Read context")
-
-    body = f"""
-    <section class="page-hero page-hero-projects">
-      <div class="page-hero-copy">
-        <p class="eyebrow">{html.escape(spotlight['eyebrow'])}</p>
-        <h1>{html.escape(spotlight['headline'])}</h1>
-        <p class="lead">{html.escape(spotlight['lead'])}</p>
-        <div class="hero-links">
-          <a class="button-link primary" href="{html.escape(project['url'])}" target="_blank" rel="noreferrer">Open GitHub repo</a>
-          <a class="button-link" href="{relative_url(current_path, '/projects/')}">Back to projects</a>
-        </div>
-      </div>
-    </section>
-    <section class="section section-frame section-frame-explore">
-      <div class="section-head section-head-stack">
-        <h2>Why this repo carries the track</h2>
-        <p class="section-note">A short site-side guide before the proof layer on GitHub.</p>
-      </div>
-      <div class="proof-grid project-proof-grid">
-        {''.join(proof_cards)}
-      </div>
-    </section>
-    <section class="section section-frame section-frame-spotlight">
-      <div class="section-head section-head-stack">
-        <h2>{html.escape(spotlight['artifact_heading'])}</h2>
-        <p class="section-note">{html.escape(project['name'])} as a first useful success, not only a demo.</p>
-      </div>
-      <div class="project-spotlight-layout">
-        <div class="project-spotlight-copy">
-          <p>{html.escape(spotlight['artifact_text'])}</p>
-          <p>{html.escape(spotlight['next_text'])}</p>
-        </div>
-        <div class="project-code-card">
-          <p class="meta">Quick run</p>
-          <pre><code>{html.escape(spotlight['sample_command'])}</code></pre>
-          <p class="meta">Sample output shape</p>
-          <pre><code>{html.escape(spotlight['sample_output'])}</code></pre>
-        </div>
-      </div>
-    </section>
-    <section class="section section-frame section-frame-open-source">
-      <div class="section-head section-head-stack">
-        <h2>{html.escape(spotlight['next_heading'])}</h2>
-        <p class="section-note">{html.escape(project['summary'])}</p>
-      </div>
-      <div class="project-next-grid">
-        <article class="feature-card">
-          <p>{html.escape(spotlight['next_text'])}</p>
-          <div class="card-links">
-            {''.join(track_links)}
-          </div>
-        </article>
-        {context_feature_card}
-      </div>
-    </section>
-    """
-    return page_layout(
-        config,
-        project["name"],
-        body,
-        current_path,
-        meta_description=spotlight["lead"],
-    )
-
-
-def ensure_clean_dist():
-    if OUTPUT_DIR.exists():
-        shutil.rmtree(OUTPUT_DIR)
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUTPUT_DIR / "blog").mkdir(parents=True, exist_ok=True)
-
-
-def write_text(path, content):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    clean_content = "" if content == "" else "\n".join(line.rstrip() for line in content.splitlines()) + "\n"
-    Path(path).write_text(clean_content)
-
-
-def write_support_files(config, posts, project_spotlights):
-    site_url = config.get("site_url", "").rstrip("/")
-    if not site_url:
-        return
-
-    spotlight_urls = []
-    for spotlight in project_spotlights:
-        project_name = spotlight.get("project")
-        if project_name:
-            spotlight_urls.append(f"/projects/{project_name}/")
-
-    urls = ["/", "/about/", "/blog/", "/case-studies/", "/projects/"] + spotlight_urls + [f"/blog/{post.slug}/" for post in posts]
-    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for path in urls:
-        sitemap.append("  <url>")
-        sitemap.append(f"    <loc>{html.escape(absolute_url(config, path))}</loc>")
-        sitemap.append("  </url>")
-    sitemap.append("</urlset>")
-    write_text(OUTPUT_DIR / "sitemap.xml", "\n".join(sitemap))
-    write_text(OUTPUT_DIR / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n")
-    feed_items = []
-    for post in posts[:20]:
-        post_url = absolute_url(config, f"/blog/{post.slug}/")
-        feed_items.append(
-            f"""  <item>
-    <title>{html.escape(post.title)}</title>
-    <link>{html.escape(post_url)}</link>
-    <guid>{html.escape(post_url)}</guid>
-    <pubDate>{html.escape(format_rss_date(post.date))}</pubDate>
-    <description>{html.escape(post.summary)}</description>
-  </item>"""
-        )
-    feed = f"""<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
-<channel>
-  <title>{html.escape(config["name"])}</title>
-  <link>{html.escape(site_url + "/")}</link>
-  <description>{html.escape(config.get("meta_description", config["tagline"]))}</description>
-{chr(10).join(feed_items)}
-</channel>
-</rss>
-"""
-    write_text(OUTPUT_DIR / "feed.xml", feed)
-
-
-def render_not_found_page(config):
-    body = """
-    <section class="section prose">
-      <p class="eyebrow">Not found</p>
-      <h1>This page wandered off</h1>
-      <p>The link may be old, or I may have moved something while cleaning up the site.</p>
-      <p><a href="./">Back home</a></p>
-    </section>
-    """
-    return page_layout(
-        config,
-        "Not Found",
-        body,
-        "/404.html",
-        meta_description="Winston Lin portfolio page not found.",
-    )
+def write_text(path,content):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    path.write_text(content.rstrip()+'\n' if content else '')
 
 
 def build():
-    config = load_json(ROOT / "site_config.json")
-    projects = load_json(CONTENT_DIR / "projects.json")
-    project_spotlights = load_json(CONTENT_DIR / "project_spotlights.json")
-    proof_points = load_json(CONTENT_DIR / "proof_points.json")
-    repo_tracks = load_json(CONTENT_DIR / "repo_tracks.json")
-    external_writing = load_json(CONTENT_DIR / "external_writing.json")
-    case_studies = load_json(CONTENT_DIR / "case_studies.json")
-    posts = load_posts()
+    config=load_json(ROOT/'site_config.json')
+    studies=load_json(CONTENT_DIR/'case_studies.json')
+    projects=load_json(CONTENT_DIR/'projects.json')
+    spotlights=load_json(CONTENT_DIR/'project_spotlights.json')
+    tracks=load_json(CONTENT_DIR/'repo_tracks.json')
+    external=load_json(CONTENT_DIR/'external_writing.json')
+    posts=load_posts()
+    if OUTPUT_DIR.exists(): shutil.rmtree(OUTPUT_DIR)
+    OUTPUT_DIR.mkdir()
+    # Only copy declared public assets, never arbitrary untracked files.
+    assets=['styles.css','favicon.svg','winston-headshot.jpg','winston-trail-clean.png','winston-trail.png']
+    for asset in assets: shutil.copy2(STATIC_DIR/asset,OUTPUT_DIR/asset)
+    if (STATIC_DIR/'diagrams').exists(): shutil.copytree(STATIC_DIR/'diagrams',OUTPUT_DIR/'diagrams')
+    pages={'/':render_homepage(config,posts,studies,external),'/case-studies/':render_work_index(config,studies),'/blog/':render_blog_index(config,posts,external),'/projects/':render_projects_page(config,projects,tracks),'/about/':render_about_page(config)}
+    for study in studies: pages[f'/case-studies/{study["slug"]}/']=render_case_detail(config,study,studies)
+    for post in posts: pages[f'/blog/{post.slug}/']=render_post_page(config,post,posts)
+    spot_by={x['project']:x for x in spotlights}
+    for project in projects:
+        if project.get('site_path'): pages[project['site_path']]=render_project_detail(config,project,spot_by.get(project['name']))
+    for path,content in pages.items(): write_text(OUTPUT_DIR/path.strip('/')/'index.html',content)
+    # Rooted homepage link also works when GitHub serves this file for an arbitrarily nested URL.
+    not_found=page_intro('That page isn’t here.','The address may have changed. You can find the current work and writing from the homepage.')+link('/404.html',config['site_url']+'/','Back to the homepage','button')
+    not_found_html=page_layout(config,'Page not found',not_found,'/404.html')
+    # A missing URL can be arbitrarily deep; every non-fragment URL must be rooted.
+    not_found_html=re.sub(r'(href|src)="([^"]+)"', lambda m: f'{m[1]}="{m[2] if m[2].startswith("#") else urljoin(config["site_url"]+"/",m[2])}"', not_found_html)
+    write_text(OUTPUT_DIR/'404.html',not_found_html)
+    write_text(OUTPUT_DIR/'.nojekyll','')
+    sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{esc(absolute_url(config,p))}</loc></url>' for p in pages)+'</urlset>'
+    write_text(OUTPUT_DIR/'sitemap.xml',sitemap)
+    write_text(OUTPUT_DIR/'robots.txt',f'User-agent: *\nAllow: /\nSitemap: {config["site_url"]}/sitemap.xml')
+    items=''.join(f'<item><title>{esc(p.title)}</title><link>{esc(absolute_url(config,f"/blog/{p.slug}/"))}</link><guid>{esc(absolute_url(config,f"/blog/{p.slug}/"))}</guid><pubDate>{format_rss_date(p.date)}</pubDate><description>{esc(p.summary)}</description></item>' for p in posts[:20])
+    write_text(OUTPUT_DIR/'feed.xml',f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Winston Lin</title><link>{esc(config["site_url"])}/</link><description>{esc(config["meta_description"])}</description>{items}</channel></rss>')
+    print(f'Built {len(pages)+1} pages for {config["site_url"]}')
 
-    ensure_clean_dist()
-    shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
-    write_text(OUTPUT_DIR / ".nojekyll", "")
 
-    write_text(OUTPUT_DIR / "index.html", render_homepage(config, posts, case_studies, external_writing, proof_points))
-    write_text(OUTPUT_DIR / "about" / "index.html", render_about_page(config))
-    write_text(OUTPUT_DIR / "blog" / "index.html", render_blog_index(config, posts, external_writing))
-    write_text(OUTPUT_DIR / "case-studies" / "index.html", render_case_studies_page(config, case_studies))
-    write_text(OUTPUT_DIR / "projects" / "index.html", render_projects_page(config, projects, repo_tracks, posts, external_writing))
-    write_text(OUTPUT_DIR / "404.html", render_not_found_page(config))
-
-    for spotlight in project_spotlights:
-        project_name = spotlight.get("project")
-        if not project_name:
-            continue
-        write_text(OUTPUT_DIR / "projects" / project_name / "index.html", render_project_spotlight_page(config, spotlight, projects, repo_tracks))
-
-    for post in posts:
-        write_text(OUTPUT_DIR / "blog" / post.slug / "index.html", render_post_page(config, post, posts))
-
-    write_support_files(config, posts, project_spotlights)
-
-
-if __name__ == "__main__":
+if __name__=='__main__':
     build()

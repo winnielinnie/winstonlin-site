@@ -1,37 +1,9 @@
 [
   {
-    "slug": "startup-small-business-advisory",
-    "title": "Startup and Small Business Advisory",
-    "period": "Advisory",
-    "home_summary": "Advisory work across product positioning, pricing, growth, operations, and technology decisions for growing businesses.",
-    "home_keyline": "Operator-minded advice for founders, SMBs, and family businesses.",
-    "home_focus": [
-      "Positioning",
-      "Pricing",
-      "Growth",
-      "Operations"
-    ],
-    "tagline": "Advise early-stage startups, SMBs, and family businesses across North America and Asia on product, growth, operations, and technology choices.",
-    "problem": "Growing businesses rarely need abstract strategy alone. They need sharper positioning, better pricing logic, clearer operating rhythm, practical technology choices, and a way to connect day-to-day execution to the next stage of growth.",
-    "what_i_did": [
-      "Advised early-stage startups, SMBs, and family businesses on product positioning, pricing, growth strategy, operations, and technology decisions.",
-      "Worked with companies ranging from roughly $30K to $20M+ in annual revenue, including projects tied to $1M+ in revenue growth.",
-      "Helped teams clarify the offer, identify the actual operating bottleneck, and choose where technology or process change would create leverage."
-    ],
-    "why_it_was_hard": [
-      "Smaller and growing businesses often mix product, sales, service design, finance, and operations into one messy problem, so the work has to find the real constraint before recommending a fix.",
-      "The useful answer is rarely just 'use more software.' It is deciding what the business should make clearer, repeat more reliably, price differently, or stop doing."
-    ],
-    "outcome": [
-      "Created practical operating and growth recommendations for businesses across different stages, geographies, and business models.",
-      "Built a stronger investor/operator lens for evaluating markets, offers, customer behavior, and the systems a company needs as it scales."
-    ]
-  },
-  {
     "slug": "oci-functions-product-direction",
-    "title": "Reframing OCI Functions Around Adoption and Reliable Execution",
-    "period": "OCI Functions",
-    "home_summary": "A case study on setup, migration readiness, troubleshooting, and reliable execution for OCI Functions.",
+    "title": "A shorter path from code to running.",
+    "period": "Oracle · Developer experience",
+    "home_summary": "Developers wanted to deploy their code without taking on container setup and runtime maintenance.",
     "home_keyline": "Simpler setup, migration readiness, debugging, and async clarity were the core bets.",
     "home_focus": [
       "Onboarding",
@@ -39,42 +11,104 @@
       "Async",
       "Migration"
     ],
-    "tagline": "Shaped OCI Functions direction around setup, migration readiness, troubleshooting, async work, and enterprise adoption.",
-    "problem": "OCI Functions had strong platform pieces, but the first-run path, migration story, and reliable-execution model still needed to feel simpler and clearer for developers comparing it with Lambda and other serverless platforms.",
+    "tagline": "Defining a simpler deployment path for OCI Functions, with clear responsibilities for the platform and the developer.",
+    "problem": "Developers arriving from other serverless platforms expected to upload code and run it. The existing container workflow asked them to handle packaging, image builds, registry setup, and runtime maintenance before they reached that first success.",
     "what_i_did": [
-      "Owned product strategy for OCI Functions across setup, migration readiness, workload coverage, code-first deployment, async execution, long-running functions, tooling enhancements, and agent-platform interactions.",
-      "Turned customer pain, market shifts, and backlog reality into clearer roadmap choices instead of treating each request as a separate feature ask.",
-      "Used detached invocation, response destinations, provisioned concurrency, and code-only direction as part of a clearer story about reliable completion and enterprise automation."
+      "Brought customer and field feedback into a product definition for code-only deployment and authored the requirements.",
+      "Worked with engineering and design on the responsibility split: the platform manages the supported runtime; developers keep control of their code, dependencies, and testing.",
+      "Worked through runtime updates, version control, and the developer experience across existing tools. Planned staged customer validation and helped prepare the launch."
     ],
     "why_it_was_hard": [
-      "The sequencing had to be practical: simplify setup, improve debugging, then expand into longer-running and migration-heavy workflows without turning the product into a grab bag.",
-      "Functions sat in a market where AWS, Azure, Cloudflare, and Vercel shaped expectations in different ways, so the story had to be both credible and differentiated."
+      "A managed runtime reduces setup work, but enterprise teams still need to test updates and decide when to adopt them. The design had to make both responsibilities clear.",
+      "The simpler path also needed to fit existing release workflows while preserving the container option for workloads that need more control."
     ],
     "outcome": [
-      "Helped drive 80% YoY usage growth by improving activation, migration readiness, workload coverage, and enterprise adoption.",
-      "Made the product story easier to explain: OCI Functions as a practical execution layer for automation and integrations."
+      "Code-only deployment became publicly available in September 2026. I authored the launch article explaining the experience and its tradeoffs.",
+      "The release gives developers a simpler deployment option. Its effect on adoption and broader platform growth has not been established in this case study."
+    ],
+    "role": "Product strategy & definition",
+    "flow": [
+      "Source",
+      "Managed runtime",
+      "Running function"
+    ],
+    "focus": "Product definition · Runtime ownership · Launch & rollout",
+    "sources": [
+      {
+        "label": "Read my launch article",
+        "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-code-only-deployment"
+      },
+      {
+        "label": "Oracle release notes · September 24, 2026",
+        "url": "https://docs.oracle.com/en-us/iaas/releasenotes/functions/functions-code-only-functions.htm"
+      }
     ]
   },
   {
     "slug": "ai-assisted-functions-workflows",
-    "title": "AI-Assisted Functions Setup and Troubleshooting",
-    "period": "OCI Functions",
-    "tagline": "Shipped AI-assisted setup and troubleshooting workflows for OCI Functions, with emphasis on validation, recovery, and next steps.",
-    "problem": "Serverless adoption often breaks on the first-run experience: packaging, environment setup, IAM, troubleshooting, and the distance between docs and a working deployment.",
+    "title": "Useful answers. Clear boundaries.",
+    "period": "Oracle · AI workflows",
+    "tagline": "Helping AI assistants guide developers through deployment and troubleshooting, with clear limits on what to do next.",
+    "problem": "A failed deployment can come from configuration, permissions, application state, or the runtime itself. Developers need help distinguishing those problems before they can choose a useful fix.",
     "what_i_did": [
-      "Shipped AI-assisted deployment and troubleshooting workflows that help developers validate environments, deploy functions, diagnose failures, and recover from common setup issues.",
-      "Created internal Functions skill artifacts and ownership guidance so product knowledge could become reusable workflow support instead of repeated one-off help.",
-      "Treated the problem as a workflow-design problem, not just a model-response problem.",
-      "Focused on making the output operationally useful: what failed, what the developer should check next, and where the recovery path should stop or escalate."
+      "Helped define the deployment and troubleshooting workflows with engineering, including what context the assistant should inspect.",
+      "Focused troubleshooting on diagnosis and recommendations before changes to the environment.",
+      "Coordinated scenario testing and worked through release readiness and maintenance responsibilities. Co-authored the public launch article with an engineering partner."
     ],
     "why_it_was_hard": [
-      "AI features are easy to demo and much harder to trust in real developer workflows.",
-      "The bar was not 'did the assistant say something plausible.' The bar was whether it reduced friction without creating new ambiguity."
+      "A plausible explanation can still send someone in the wrong direction. The assistant needs to connect its advice to evidence and make uncertainty visible.",
+      "The experience has to explain when a user should check a result or decide whether to continue. That is especially important when a suggested change affects infrastructure."
     ],
     "outcome": [
-      "Created a credible path for AI-assisted setup and triage instead of treating AI as a novelty.",
-      "Sharpened my view that trustworthy AI products need strong recovery paths, explicit boundaries, and good workflow design."
+      "Two Functions skills were published in Oracle’s open-source skills repository, with a joint launch article in July 2026.",
+      "The skills are public. Adoption and developer productivity results have not yet been verified for this account."
+    ],
+    "role": "Product scope, testing & launch writing",
+    "home_summary": "Shaping AI-assisted troubleshooting around evidence, diagnosis, and a clear next step.",
+    "flow": [
+      "Inspect",
+      "Explain",
+      "Recommend"
+    ],
+    "focus": "Workflow design · Scenario testing · Human control",
+    "sources": [
+      {
+        "label": "Read the launch article",
+        "url": "https://blogs.oracle.com/cloud-infrastructure/oci-functions-ai-serverless-deployment-skills"
+      },
+      {
+        "label": "Explore the published skills",
+        "url": "https://github.com/oracle/skills/tree/main/oci/functions"
+      }
     ]
+  },
+  {
+    "slug": "service-installer",
+    "title": "A clearer view of what’s ready.",
+    "period": "Oracle · Internal platforms",
+    "tagline": "Turning a fragmented delivery process into a clearer view of readiness and the work that needed attention.",
+    "problem": "Service teams had to coordinate dependencies and delivery plans across several systems. A status label could reflect someone’s confidence without showing whether the underlying work was actually ready.",
+    "what_i_did": [
+      "Worked with service teams, design, and engineering to understand the planning and readiness workflow.",
+      "Helped separate user-reported status from system evidence and clarify what should qualify a service as ready.",
+      "Narrowed the initial scope around the critical production path, so the team could make progress while broader requests were still being resolved."
+    ],
+    "why_it_was_hard": [
+      "Different teams used different signals to describe readiness. The product needed a shared meaning that was useful during real delivery decisions.",
+      "Design and engineering were moving together, so prioritization had to stay explicit as requirements changed."
+    ],
+    "outcome": [
+      "The team had a clearer initial scope, a more useful readiness model, and a shared view of the critical path.",
+      "The documented result is a clearer plan and readiness model. A delivery-speed improvement has not been independently measured."
+    ],
+    "role": "Product discovery & prioritization",
+    "home_summary": "Helping service teams see dependencies, ownership, and the work blocking a regional launch.",
+    "flow": [
+      "Dependencies",
+      "Readiness",
+      "Delivery"
+    ],
+    "focus": "Discovery · Prioritization · Engineering partnership"
   },
   {
     "slug": "oci-functions-migration-and-docs",
@@ -96,26 +130,6 @@
       "Created a more credible migration and usage narrative for OCI Functions across docs, blogs, and pattern-oriented content.",
       "Made it easier to explain OCI Functions as a practical runtime for event-driven automation instead of an abstract serverless feature.",
       "Connected day-to-day migration friction to roadmap direction instead of treating Lambda comparisons as isolated objections."
-    ]
-  },
-  {
-    "slug": "oci-functions-product-boundaries",
-    "title": "Customer Architecture Questions",
-    "period": "OCI Functions",
-    "tagline": "Turned hard customer questions into clearer architecture guidance, support answers, and product follow-up.",
-    "problem": "Many high-value Functions questions were not clean feature requests. They were asks about extreme scale, Lambda migration, large-memory ingestion, enterprise governance, cold starts, IAM, adjacent services, and whether a pattern was supportable at all.",
-    "what_i_did": [
-      "Separated the immediate customer answer from the product follow-up: what is supported today, what requires an architecture change, what belongs in service limits, and what should influence roadmap direction.",
-      "Gave clear support answers around modified runtimes and framework assumptions while preserving the signal that migration customers expected simpler deployment and runtime ergonomics.",
-      "Helped field and engineering reason through large-scale and enterprise scenarios such as AI-generated function fleets, high-throughput file ingestion, governance controls, capacity-constrained environments, and low-latency execution."
-    ],
-    "why_it_was_hard": [
-      "The risky move would have been to answer every question as either yes, no, or file a ticket. The useful work was deciding which questions exposed product gaps, adjacent-service dependencies, support risks, or future workload patterns.",
-      "Customer trust depended on being precise about today's platform boundaries while still converting repeated friction into roadmap, docs, examples, or service-limit planning."
-    ],
-    "outcome": [
-      "Gave customer and field teams clearer answers without over-promising unsupported surfaces.",
-      "Turned escalation patterns into product inputs around migration readiness, supportability, service limits, operational confidence, and future serverless workload shape."
     ]
   },
   {
@@ -142,7 +156,7 @@
     "slug": "feature-registry",
     "title": "Dependency and Health Registry",
     "period": "OCI Dev Platform",
-    "tagline": "Built a dependency and health model that made incidents easier to reason about.",
+    "tagline": "Helped define a dependency and health model for investigating incidents and blocked builds.",
     "problem": "When incidents or build failures happened, teams could usually see the symptom but not the real dependency path, ownership chain, or impact radius.",
     "what_i_did": [
       "Helped shape the service around operational questions rather than turning it into a passive inventory.",
@@ -154,28 +168,28 @@
       "The challenge was balancing a strong formal model with an onboarding path that service teams would actually adopt and maintain."
     ],
     "outcome": [
-      "Helped make root-cause analysis materially faster and easier to reason about.",
-      "The work made ownership, dependency, and impact questions far more answerable during incidents, rollout debugging, and regional build operations."
+      "Helped define a more useful model of dependencies, ownership, and health for investigating incidents and blocked builds.",
+      "My contribution was product framing and workflow definition. A reduction in incident resolution time has not been independently established."
     ]
   },
   {
-    "slug": "service-installer",
-    "title": "Regional Delivery Orchestration",
-    "period": "OCI Dev Platform",
-    "tagline": "Turned regional delivery from reactive coordination into a system with clearer sequencing, validation, and rollback paths.",
-    "problem": "Regional buildouts depended on manual scheduling, service-specific runbooks, and late discovery of broken dependencies.",
+    "slug": "oci-functions-product-boundaries",
+    "title": "Customer Architecture Questions",
+    "period": "OCI Functions",
+    "tagline": "Turned hard customer questions into clearer architecture guidance, support answers, and product follow-up.",
+    "problem": "Many high-value Functions questions were not clean feature requests. They were asks about extreme scale, Lambda migration, large-memory ingestion, enterprise governance, cold starts, IAM, adjacent services, and whether a pattern was supportable at all.",
     "what_i_did": [
-      "Helped frame the work as a product for orchestration rather than one more coordination layer on top of messy existing processes.",
-      "Pushed toward formal build specifications that made build-time dependencies, execution order, and rollback paths explicit enough to validate before execution.",
-      "Focused the design on testability, interventions, and high-confidence rollout sets so teams could catch breakage before it blocked a live regional build."
+      "Separated the immediate customer answer from the product follow-up: what is supported today, what requires an architecture change, what belongs in service limits, and what should influence roadmap direction.",
+      "Gave clear support answers around modified runtimes and framework assumptions while preserving the signal that migration customers expected simpler deployment and runtime ergonomics.",
+      "Helped field and engineering reason through large-scale and enterprise scenarios such as AI-generated function fleets, high-throughput file ingestion, governance controls, capacity-constrained environments, and low-latency execution."
     ],
     "why_it_was_hard": [
-      "The hard part was not automation alone. It was deciding what needed to become shared platform behavior versus what should stay local.",
-      "Region build systems accumulate exceptions quickly, so the product challenge was creating enough structure to make the plan deterministic without hard-coding every edge case."
+      "The risky move would have been to answer every question as either yes, no, or file a ticket. The useful work was deciding which questions exposed product gaps, adjacent-service dependencies, support risks, or future workload patterns.",
+      "Customer trust depended on being precise about today's platform boundaries while still converting repeated friction into roadmap, docs, examples, or service-limit planning."
     ],
     "outcome": [
-      "Helped compress regional delivery timelines from about 3 months to roughly 30 days.",
-      "The work created a more predictable foundation for launch planning, earlier dependency validation, and far less real-time coordination during critical build windows."
+      "Gave customer and field teams clearer answers without over-promising unsupported surfaces.",
+      "Turned escalation patterns into product inputs around migration readiness, supportability, service limits, operational confidence, and future serverless workload shape."
     ]
   },
   {
@@ -196,6 +210,33 @@
     "outcome": [
       "Delivered solutions that supported large operational teams and gave customers a clearer path from system design to day-to-day adoption.",
       "The work sharpened my ability to get to the real requirement quickly, design around it, and tie product decisions back to business impact."
+    ]
+  },
+  {
+    "slug": "startup-small-business-advisory",
+    "title": "Startup and Small Business Advisory",
+    "period": "Advisory",
+    "home_summary": "Advisory work across product positioning, pricing, growth, operations, and technology decisions for growing businesses.",
+    "home_keyline": "Operator-minded advice for founders, SMBs, and family businesses.",
+    "home_focus": [
+      "Positioning",
+      "Pricing",
+      "Growth",
+      "Operations"
+    ],
+    "tagline": "Advise early-stage startups, SMBs, and family businesses across North America and Asia on product, growth, operations, and technology choices.",
+    "problem": "Growing businesses rarely need abstract strategy alone. They need sharper positioning, better pricing logic, clearer operating rhythm, practical technology choices, and a way to connect day-to-day execution to the next stage of growth.",
+    "what_i_did": [
+      "Advised early-stage startups, SMBs, and family businesses on product positioning, pricing, growth strategy, operations, and technology decisions.",
+      "Helped teams clarify the offer, identify the actual operating bottleneck, and choose where technology or process change would create leverage."
+    ],
+    "why_it_was_hard": [
+      "Smaller and growing businesses often mix product, sales, service design, finance, and operations into one messy problem, so the work has to find the real constraint before recommending a fix.",
+      "The useful answer is rarely just 'use more software.' It is deciding what the business should make clearer, repeat more reliably, price differently, or stop doing."
+    ],
+    "outcome": [
+      "Created practical operating and growth recommendations for businesses across different stages, geographies, and business models.",
+      "Built a stronger investor/operator lens for evaluating markets, offers, customer behavior, and the systems a company needs as it scales."
     ]
   }
 ]

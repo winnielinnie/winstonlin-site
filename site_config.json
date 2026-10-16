@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
-  "title": "I help technical products and growing businesses work better.",
-  "tagline": "I'm a product leader in cloud infrastructure and developer platforms. I also advise startups, SMBs, and family businesses on product positioning, pricing, growth, operations, and technology decisions.",
+  "title": "Making complex products easier to use.",
+  "tagline": "I’m Winston, a product leader at Oracle working on developer tools, cloud platforms, and AI-assisted workflows.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Case studies, writing, and practical tools on cloud platforms, developer workflows, startup advisory, operating systems, and AI-assisted work.",
+  "meta_description": "Winston Lin is a Principal Product Manager at Oracle. Selected work in developer experience, cloud platforms, and AI-assisted workflows, plus writing and small builds.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
@@ -54,12 +54,12 @@
   ],
   "about": {
     "intro": [
-      "I'm based in San Francisco and work across cloud products, developer tools, AI workflows, business systems, and early-stage operating questions. Most of my work has lived in the part of the job where direction, constraints, customer value, and day-to-day execution all meet."
+      "I’m a Principal Product Manager at Oracle, where I lead product strategy for OCI Functions. My work focuses on helping developers get from code to something they can run, understand, and trust.",
+      "Earlier at Oracle, I worked on internal developer platforms and contributed to Kubernetes product and partner initiatives. Before that, I worked on enterprise software implementations at Sitetracker and engineering programs at Cisco."
     ],
     "advisory": [
-      "Outside the day job, I advise early-stage startups, SMBs, and family businesses across North America and Asia on product positioning, pricing, growth strategy, operations, and technology decisions.",
-      "That work has ranged from small businesses doing tens of thousands in annual revenue to companies above $20M, including projects tied to $1M+ in revenue growth.",
-      "I am interested in the operator/investor side of company building: how a market is chosen, how the offer is shaped, how the operating rhythm changes as the business grows, and where technology actually changes the slope."
+      "Outside Oracle, I advise a small set of startups, small businesses, and family businesses across North America and Asia. The work ranges from product positioning and pricing to operations and technology decisions.",
+      "I like getting close enough to a business to understand what is slowing it down, then helping the team decide what to change first."
     ],
     "background": [
       "I grew up between Taipei and Orange County, which made me comfortable moving between different environments early.",
