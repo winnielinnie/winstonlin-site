@@ -1,10 +1,10 @@
 {
   "name": "Winston Lin",
-  "title": "Making complex products easier to use.",
-  "tagline": "I’m Winston, a product leader at Oracle working on developer tools, cloud platforms, and AI-assisted workflows.",
+  "title": "Winston Lin — Product manager",
+  "tagline": "Product manager in San Francisco.",
   "location": "San Francisco, CA",
   "site_url": "https://winnielinnie.github.io/winstonlin-site",
-  "meta_description": "Winston Lin is a Principal Product Manager at Oracle. Selected work in developer experience, cloud platforms, and AI-assisted workflows, plus writing and small builds.",
+  "meta_description": "Winston Lin is a Principal Product Manager at Oracle, based in San Francisco. Selected product work, writing, and a little about me.",
   "email": "winstonl.96@gmail.com",
   "linkedin_url": "https://www.linkedin.com/in/winston-lins/",
   "github_url": "https://github.com/winnielinnie",
@@ -55,19 +55,18 @@
   "about": {
     "intro": [
       "I’m a Principal Product Manager at Oracle, where I lead product strategy for OCI Functions. My work focuses on helping developers get from code to something they can run, understand, and trust.",
-      "Earlier at Oracle, I worked on internal developer platforms and contributed to Kubernetes product and partner initiatives. Before that, I worked on enterprise software implementations at Sitetracker and engineering programs at Cisco."
+      "Earlier at Oracle, I worked on internal developer platforms and contributed to Kubernetes product and partner initiatives. Before that, I worked on enterprise software implementations at Sitetracker and engineering programs at Cisco.",
+      "I’m especially interested in enterprise AI and the everyday workflows where better software can make a real difference."
     ],
     "advisory": [
       "Outside Oracle, I advise a small set of startups, small businesses, and family businesses across North America and Asia. The work ranges from product positioning and pricing to operations and technology decisions.",
       "I like getting close enough to a business to understand what is slowing it down, then helping the team decide what to change first."
     ],
     "background": [
-      "I grew up between Taipei and Orange County, which made me comfortable moving between different environments early.",
-      "I later earned a B.S. from UC Berkeley Haas and got more interested in the overlap between business and technology.",
-      "I grew up doing a lot of competitive math and community volunteering. That mix of analytical work and helping people still shapes how I think and how I like to work."
+      "I grew up between Taipei and Orange County, then studied business at UC Berkeley Haas."
     ],
     "personal": [
-      "Outside of work, I like being outdoors, hiking around the Bay Area, and shooting on Fujifilm. I grew up playing sports and still play basketball and volleyball when I can. More recently I’ve gotten into running and Barry's classes. I’m also a big anime fan, especially Frieren and Your Lie in April, and I spend time thinking about investing, real estate, and long-term bets on businesses."
+      "I like hiking around the Bay Area, taking photos, and playing basketball and volleyball when I can. Recently I’ve been getting into running. I’m also an anime fan—Frieren and Your Lie in April are favorites."
     ]
   }
 }

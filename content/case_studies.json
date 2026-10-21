@@ -1,9 +1,9 @@
 [
   {
     "slug": "oci-functions-product-direction",
-    "title": "A shorter path from code to running.",
-    "period": "Oracle · Developer experience",
-    "home_summary": "Developers wanted to deploy their code without taking on container setup and runtime maintenance.",
+    "title": "Code-only deployment",
+    "period": "Oracle · 2026",
+    "home_summary": "I defined the product requirements for deploying code without building and maintaining a container.",
     "home_keyline": "Simpler setup, migration readiness, debugging, and async clarity were the core bets.",
     "home_focus": [
       "Onboarding",
@@ -42,12 +42,13 @@
         "label": "Oracle release notes · September 24, 2026",
         "url": "https://docs.oracle.com/en-us/iaas/releasenotes/functions/functions-code-only-functions.htm"
       }
-    ]
+    ],
+    "public_status": "Shipped September 2026"
   },
   {
     "slug": "ai-assisted-functions-workflows",
-    "title": "Useful answers. Clear boundaries.",
-    "period": "Oracle · AI workflows",
+    "title": "AI deployment & troubleshooting",
+    "period": "Oracle · 2026",
     "tagline": "Helping AI assistants guide developers through deployment and troubleshooting, with clear limits on what to do next.",
     "problem": "A failed deployment can come from configuration, permissions, application state, or the runtime itself. Developers need help distinguishing those problems before they can choose a useful fix.",
     "what_i_did": [
@@ -64,7 +65,7 @@
       "The skills are public. Adoption and developer productivity results have not yet been verified for this account."
     ],
     "role": "Product scope, testing & launch writing",
-    "home_summary": "Shaping AI-assisted troubleshooting around evidence, diagnosis, and a clear next step.",
+    "home_summary": "I worked with engineering on AI deployment and troubleshooting skills, starting with diagnosis before changes.",
     "flow": [
       "Inspect",
       "Explain",
@@ -80,11 +81,12 @@
         "label": "Explore the published skills",
         "url": "https://github.com/oracle/skills/tree/main/oci/functions"
       }
-    ]
+    ],
+    "public_status": "Published July 2026"
   },
   {
     "slug": "service-installer",
-    "title": "A clearer view of what’s ready.",
+    "title": "Planning regional launches",
     "period": "Oracle · Internal platforms",
     "tagline": "Turning a fragmented delivery process into a clearer view of readiness and the work that needed attention.",
     "problem": "Service teams had to coordinate dependencies and delivery plans across several systems. A status label could reflect someone’s confidence without showing whether the underlying work was actually ready.",
@@ -102,13 +104,14 @@
       "The documented result is a clearer plan and readiness model. A delivery-speed improvement has not been independently measured."
     ],
     "role": "Product discovery & prioritization",
-    "home_summary": "Helping service teams see dependencies, ownership, and the work blocking a regional launch.",
+    "home_summary": "I worked with service teams to make launch dependencies and readiness easier to understand.",
     "flow": [
       "Dependencies",
       "Readiness",
       "Delivery"
     ],
-    "focus": "Discovery · Prioritization · Engineering partnership"
+    "focus": "Discovery · Prioritization · Engineering partnership",
+    "public_status": "Internal product work"
   },
   {
     "slug": "oci-functions-migration-and-docs",

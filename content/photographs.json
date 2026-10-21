@@ -1,0 +1,282 @@
+[
+  {
+    "slug": "alpine-valley",
+    "title": "Valley",
+    "alt": "Green meadows and a small settlement beneath steep mountains, glaciers and broken clouds",
+    "width": 2100,
+    "height": 1400,
+    "asset": "alpine-valley-photo.jpg",
+    "thumbnail": "alpine-valley-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "mirror-escalators",
+    "title": "Reflections",
+    "alt": "A staircase and people reflected across angular mirrored walls in black and white",
+    "width": 1124,
+    "height": 1405,
+    "asset": "mirror-escalators-photo.jpg",
+    "thumbnail": "mirror-escalators-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "beachline",
+    "title": "Beachline",
+    "alt": "Beachgoers and colorful umbrellas along a pale pebble shore beside blue water",
+    "width": 2100,
+    "height": 1400,
+    "asset": "beachline-photo.jpg",
+    "thumbnail": "beachline-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "coastal-bay",
+    "title": "Above the bay",
+    "alt": "Terracotta rooftops above a curved blue-green bay dotted with boats",
+    "width": 2100,
+    "height": 1400,
+    "asset": "coastal-bay-photo.jpg",
+    "thumbnail": "coastal-bay-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "cactus-garden",
+    "title": "Cactus garden",
+    "alt": "A stone figure framed by tall cacti beneath softly textured clouds",
+    "width": 1680,
+    "height": 2100,
+    "asset": "cactus-garden-photo.jpg",
+    "thumbnail": "cactus-garden-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "carved-stone",
+    "title": "Carved stone",
+    "alt": "Warm limestone arches, a circular carved window and a small clock seen from below",
+    "width": 1680,
+    "height": 2100,
+    "asset": "carved-stone-photo.jpg",
+    "thumbnail": "carved-stone-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "red-flowers",
+    "title": "Red flowers",
+    "alt": "Two people sitting on a dock beside red flowers, with a sailboat and mountain lake beyond",
+    "width": 2100,
+    "height": 1400,
+    "asset": "red-flowers-photo.jpg",
+    "thumbnail": "red-flowers-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "island-light",
+    "title": "A break in the clouds",
+    "alt": "Sunlight falling across a wooded island and a small castle beneath a mountain",
+    "width": 1680,
+    "height": 2100,
+    "asset": "island-light-photo.jpg",
+    "thumbnail": "island-light-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "high-ridge",
+    "title": "Ridge",
+    "alt": "A small white hut on a vivid green rocky ridge above distant fields and forests",
+    "width": 1680,
+    "height": 2100,
+    "asset": "high-ridge-photo.jpg",
+    "thumbnail": "high-ridge-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "lighthouse",
+    "title": "Lighthouse",
+    "alt": "A small white lighthouse with a red roof on a rocky headland above blue-gray water",
+    "width": 1680,
+    "height": 2100,
+    "asset": "lighthouse-photo.jpg",
+    "thumbnail": "lighthouse-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "forest-passage",
+    "title": "Through the trees",
+    "alt": "A weathered container passage beneath spreading pale tree branches and dense green forest",
+    "width": 1448,
+    "height": 1810,
+    "asset": "forest-passage-photo.jpg",
+    "thumbnail": "forest-passage-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "giant-leaves",
+    "title": "Under the leaves",
+    "alt": "A hiker beneath oversized green leaves on a narrow forest trail",
+    "asset": "giant-leaves-photo.jpg",
+    "thumbnail": "giant-leaves-thumb.jpg",
+    "width": 1300,
+    "height": 1625,
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "ridge-climb",
+    "title": "The climb",
+    "alt": "Winston climbing a rocky path above steep green ridges beneath low clouds",
+    "asset": "ridge-climb-photo.jpg",
+    "thumbnail": "ridge-climb-thumb.jpg",
+    "width": 1023,
+    "height": 682,
+    "thumbnail_width": 900
+  },
+  {
+    "slug": "black-shore",
+    "title": "Black shore",
+    "alt": "Foam, dark rocks and footprints along a diagonal shoreline in black and white",
+    "width": 2100,
+    "height": 2100,
+    "asset": "black-shore-photo.jpg",
+    "thumbnail": "black-shore-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "lava-floor",
+    "title": "Across the lava",
+    "alt": "Small hikers crossing a textured black lava floor beneath bright clouds",
+    "asset": "lava-floor-photo.jpg",
+    "thumbnail": "lava-floor-thumb.jpg",
+    "width": 1488,
+    "height": 1860,
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "crater-wide",
+    "title": "The crater",
+    "alt": "A pale footpath crossing a wide volcanic basin beneath a forested rim and low clouds",
+    "asset": "crater-wide-photo.jpg",
+    "thumbnail": "crater-wide-thumb.jpg",
+    "width": 1389,
+    "height": 926,
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "cactus-flower",
+    "title": "In bloom",
+    "alt": "Two pale flowers with red centers on a round green cactus in warm sunlight",
+    "width": 2100,
+    "height": 2100,
+    "asset": "cactus-flower-photo.jpg",
+    "thumbnail": "cactus-flower-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "quiet-alley",
+    "title": "Quiet alley",
+    "alt": "A narrow path between a red brick wall, pale buildings and green plants",
+    "width": 1680,
+    "height": 2100,
+    "asset": "quiet-alley-photo.jpg",
+    "thumbnail": "quiet-alley-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "wood-and-glass",
+    "title": "Wood and glass",
+    "alt": "Carved wooden balconies rising beside a glass and steel skylight",
+    "width": 1680,
+    "height": 2100,
+    "asset": "wood-and-glass-photo.jpg",
+    "thumbnail": "wood-and-glass-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "rail-tunnel",
+    "title": "Around the bend",
+    "alt": "Curving railway tracks disappearing beneath repeating green steel arches",
+    "width": 2100,
+    "height": 1400,
+    "asset": "rail-tunnel-photo.jpg",
+    "thumbnail": "rail-tunnel-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "goldfish",
+    "title": "Goldfish",
+    "alt": "Orange and white goldfish swimming through dark teal water and tiny bubbles",
+    "width": 1400,
+    "height": 2100,
+    "asset": "goldfish-photo.jpg",
+    "thumbnail": "goldfish-thumb.jpg",
+    "thumbnail_width": 700
+  },
+  {
+    "slug": "underground",
+    "title": "Underground",
+    "alt": "People walking through a curved lava tunnel lit by warm orange lamps",
+    "width": 1680,
+    "height": 2100,
+    "asset": "underground-photo.jpg",
+    "thumbnail": "underground-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "patchwork",
+    "title": "Patchwork",
+    "alt": "Aerial patchwork of green and yellow fields divided by a river, roads and small settlements",
+    "width": 2085,
+    "height": 1390,
+    "asset": "patchwork-photo.jpg",
+    "thumbnail": "patchwork-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "sheep-field",
+    "title": "In the field",
+    "alt": "A flock of sheep scattered across a green field beneath a pale blue sky",
+    "asset": "sheep-field-photo.jpg",
+    "thumbnail": "sheep-field-thumb.jpg",
+    "width": 1446,
+    "height": 964,
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "lantern-stage",
+    "title": "Lanterns",
+    "alt": "A wooden festival stage with glowing paper lanterns and silhouettes against the night",
+    "width": 1680,
+    "height": 2100,
+    "asset": "lantern-stage-photo.jpg",
+    "thumbnail": "lantern-stage-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "osaka-night",
+    "title": "Night street",
+    "alt": "Lanterns and bright signs lining a night street beneath an illuminated tower",
+    "width": 1680,
+    "height": 2100,
+    "asset": "osaka-night-photo.jpg",
+    "thumbnail": "osaka-night-thumb.jpg",
+    "thumbnail_width": 840
+  },
+  {
+    "slug": "night-silhouettes",
+    "title": "After dark",
+    "alt": "Four silhouettes on a rocky ridge above city lights under a purple night sky",
+    "width": 2100,
+    "height": 1400,
+    "asset": "night-silhouettes-photo.jpg",
+    "thumbnail": "night-silhouettes-thumb.jpg",
+    "thumbnail_width": 1050
+  },
+  {
+    "slug": "miyajima",
+    "title": "At dusk",
+    "alt": "A warmly lit torii gate reflected in blue water, framed by a stone lantern and pine branches",
+    "width": 1680,
+    "height": 2100,
+    "asset": "miyajima-photo.jpg",
+    "thumbnail": "miyajima-thumb.jpg",
+    "thumbnail_width": 840
+  }
+]
